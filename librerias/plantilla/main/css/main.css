@@ -65,3 +65,11 @@
 .dato_afiliado{
 	margin: 0 0 0px;
 }
+
+
+
+.div_archivo{
+	background-color:#CBC9FF;
+	height:400px;
+	overflow: auto;
+}

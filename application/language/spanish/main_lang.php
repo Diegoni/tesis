@@ -1,329 +1,232 @@
 <?php
+/*--------------------------------------------------------------------------------  
+    A
+ --------------------------------------------------------------------------------*/ 
 
-//A
+$lang['acumulado']          = "Acumulado";
+$lang['activo']             = "Activo";
+$lang['accion']             = "Acción";
+$lang['actualizar']         = "Actualizar";
+$lang['adicionales']        = "Adicionales";
+$lang['agencia']            = "Agencia";
+$lang['agregar']            = "Agregar";
+$lang['agregar_per']        = "Agregar y permanecer";
+$lang['anterior']           = "Anterior";
+$lang['apellido']           = "Apellido";
+$lang['advertencia']        = "Advertencia";
+$lang['auditorias']         = "Auditorias";
+$lang['asunto_warning']     = "Asunto warning";
+$lang['asunto_danger']      = "Asunto danger";
+$lang['archivo']            = "Archivo";
 
-$lang['accion'] 			= "Acción";
-$lang['acciones'] 			= "Acciones";
-$lang['activos'] 			= "Activos";
-$lang['actuales'] 			= "Actuales";
-$lang['actualizar'] 		= "Actualizar";
-$lang['advertencia'] 		= "Advertencia";
-$lang['afiliados'] 			= "Afiliados";
-$lang['ayuda'] 				= "Ayuda";
-$lang['agregar'] 			= "Agregar";
-$lang['agregar_per'] 		= "Agregar y permanecer";
-$lang['administrar']		= "Administrar";
-$lang['alias'] 				= "Alias";
-$lang['aumento'] 			= "Aumento";
-$lang['anular'] 			= "Anular";
-$lang['apellido'] 			= "Apellido";
-$lang['aprobar'] 			= "Aprobar";
-$lang['acciones'] 			= "Acciones";
-$lang['añadir'] 			= "Añadir";
-$lang['acerca_de'] 			= "Acerca De";
-$lang['administracion'] 	= "Administración";
-$lang['archivo'] 			= "Archivo";
-$lang['alerta'] 			= "Alerta";
-$lang['avanzado'] 			= "Avanzado";
-$lang['asociar'] 			= "Asociar";
-$lang['agencia'] 			= "Agencia";
+/*--------------------------------------------------------------------------------  
+    B
+ --------------------------------------------------------------------------------*/ 
 
-//B
+ $lang['banco']              = "Banco";
+ $lang['barra']              = "Barra";
+ $lang['buscar']             = "Buscar";
+ $lang['backup']             = "Backup";
 
-$lang['base']				= "Base";
-$lang['boletas']			= "Boletas";
-$lang['buscar']				= "Buscar";
-$lang['busqueda_avanzada']	= "Busqueda Avanzada";
-$lang['barra']				= "Barra";
+/*--------------------------------------------------------------------------------  
+    C
+ --------------------------------------------------------------------------------*/ 
 
-//C
+$lang['carga']              = "Carga";
+$lang['categoria']          = "Categoria";
+$lang['codigo']             = "Codigo";
+$lang['contraseña']         = "Contraseña";
+$lang['confirm_pass']       = "Confirmar Password";
+$lang['comentario']         = "Comentario";
+$lang['comercio_visa']      = "Visa";
+$lang['comercio_mastercard']= "Mastercard";
+$lang['comercio_nativa_visa'] = "Nativa Visa";
+$lang['comercio_nativa_mastercard'] = "Nativa Mastercard";
+$lang['cod_post']           = "Codigo Postal";
+$lang['cuit']               = "Cuit";
+$lang['cargando']           = "Cargando";
+$lang['conciliar']          = "Conciliar";
 
-$lang['campo'] 				= "Campo";
-$lang['cargando'] 			= "Cargando";
-$lang['cambiar_ente'] 		= "Cambiar de ente";
-$lang['carpetas'] 			= "Carpetas";
-$lang['calendario']			= "Calendario";
-$lang['calle']				= "Calle";
-$lang['carga'] 				= "Carga";
-$lang['cargar'] 			= "Cargar";
-$lang['cancelar'] 			= "Cancelar";
-$lang['cantidad'] 			= "Cantidad";
-$lang['cerrar'] 			= "Cerrar";
-$lang['correo'] 			= "E-Mail";
-$lang['color'] 				= "Color";
-$lang['config'] 			= "Config";
-$lang['correos'] 			= "E-Mails";
-$lang['codigo'] 			= "Código";
-$lang['codigo_barra'] 		= "Código de barra";
-$lang['confirma_accion'] 	= "Confirma acción?";
-$lang['confirmar'] 			= "Confirmar";
-$lang['contacto'] 			= "Contacto";
-$lang['continuar'] 			= "Continuar";
-$lang['columnas'] 			= "Columnas";
-$lang['condicion'] 			= "Condición";
-$lang['condiciones'] 		= "Condiciones";
-$lang['contraseña'] 		= "Contraseña";
-$lang['cuit'] 				= "Cuit";
-$lang['cod_area'] 			= "Código Área";
-$lang['codigo_postal'] 		= "Código Postal";
-$lang['comentarios'] 		= "Comentarios";
-$lang['crear'] 				= "Crear";
-$lang['creacion']			= "Creación";
-$lang['configuraciones']	= "Configuraciones";
-$lang['convenio']			= "Convenio";
-$lang['convenios']			= "Convenios";
-$lang['cuadro']				= "Cuadro";
-$lang['canvas_x']	 		= "Tamaño x";
-$lang['canvas_y']	 		= "Tamaño y";
+/*--------------------------------------------------------------------------------  
+    D
+ --------------------------------------------------------------------------------*/ 
 
-//D
+$lang['datos']              = "Datos";
+$lang['detalle']            = "Detalle";
+$lang['domicilio']          = "Domicilio";
+$lang['date_add']           = "Fecha alta";
 
-$lang['db'] 				= "DB";
-$lang['datos'] 				= "Datos";
-$lang['detalle'] 			= "Detalle";
-$lang['descargar'] 			= "Descargar";
-$lang['descuento'] 			= "Descuento";
-$lang['depto'] 				= "Depto";
-$lang['delete_ok'] 			= "fue eliminado con éxito";
-$lang['direccion'] 			= "Dirección";
-$lang['direcciones'] 		= "Direcciones";
-$lang['dias'] 				= "Días";
-$lang['date'] 				= "Fecha";
-$lang['date_add'] 			= "Fecha alta";
-$lang['date_upd'] 			= "Fecha modificación";
-$lang['departamento'] 		= "Depto";
-$lang['deberia']	 		= "Debería";
-$lang['documento'] 			= "Documento";
-$lang['documentos'] 		= "Documentos";
-$lang['documentos_pestanas']= "Administración de documentos";
+/*--------------------------------------------------------------------------------  
+    E
+ --------------------------------------------------------------------------------*/ 
 
-//E
+$lang['entidad']            = "Entidad";
+$lang['editar']             = "Editar";
+$lang['estado']             = "Estado";
+$lang['email']              = "Email";
+$lang['error']              = "Error";
+$lang['empresa']            = "Empresa";
+$lang['empresas']           = "Empresas";
+$lang['email_salida']       = "Email salida";
+$lang['esquema']            = "Esquema";
+$lang['eliminar']           = "Eliminar";
 
-$lang['ente'] 				= "Ente";
-$lang['entes'] 				= "Entes";
-$lang['enviados'] 			= "Enviados";
-$lang['eliminar'] 			= "Eliminar";
-$lang['eliminado'] 			= "Eliminado";
-$lang['eliminada'] 			= "Eliminada";
-$lang['email'] 				= "Email";
-$lang['enviar'] 			= "Enviar";
-$lang['enviado'] 			= "Enviado";
-$lang['en_proceso'] 		= "En Proceso";
-$lang['editar'] 			= "Editar";
-$lang['error'] 				= "Error";
-$lang['estado'] 			= "Estado";
-$lang['estadisticas'] 		= "Estadísticas";
-$lang['el_registro'] 		= "El registro";
-$lang['exito'] 				= "Exito";
-$lang['externa'] 			= "Externa";
-$lang['entrega'] 			= "Entrega";
-$lang['extension'] 			= "Extensión";
-$lang['eliminar_archivos']	= "eliminar archivos";
+/*--------------------------------------------------------------------------------  
+    F
+ --------------------------------------------------------------------------------*/ 
 
-//F
+$lang['fec_alta']           = "Fecha Alta";
+$lang['fecha']              = "Fecha";
+$lang['facturas']           = "Facturas";
+$lang['final']              = "Final";
+$lang['formato']            = "Formato";
 
-$lang['fecha'] 				= "Fecha";
-$lang['fechapago'] 			= "Fecha del pago";
-$lang['fija'] 				= "Fija";
-$lang['ficha'] 				= "Ficha";
-$lang['filtro'] 			= "Filtro";
-$lang['filtros'] 			= "Filtros";
-$lang['final'] 				= "Final";
-$lang['fondo'] 				= "Fondo";
-$lang['formato'] 			= "Formato";
-$lang['falta_pago']			= "Falta de pago";
-$lang['formato_incorrecto'] = "El formato del archivo no es el correcto";
+/*--------------------------------------------------------------------------------  
+    G
+ --------------------------------------------------------------------------------*/ 
 
-//G
+$lang['grupo']              = "Grupo";
 
-$lang['generar'] 			= "Generar";
-$lang['guardar'] 			= "Guardar";
-$lang['grupo'] 				= "Grupo";
-$lang['grupos'] 			= "Grupos";
-$lang['guardaryvolver'] 	= "Guardar y Volver";
+/*--------------------------------------------------------------------------------  
+    I
+ --------------------------------------------------------------------------------*/ 
 
-//H
+$lang['icono']              = "Icono";
+$lang['icon']               = "Icono";
+$lang['id']                 = "ID";
+$lang['ingrese']            = "Ingrese";
+$lang['INH']                = "INH";
+$lang['inicio']             = "Inicio";
+$lang['insert_ok']          = "Registro se agrego";
+$lang['informacion']        = "Información";
+$lang['importe']            = "Importe";
+$lang['importe_operacion']  = "Importe operación";
+$lang['id_agencia']         = "Id agencia";
 
-$lang['herramientas'] 		= "Herramientas";
-$lang['home'] 				= "Home";
-$lang['hasta'] 				= "Hasta";
-$lang['height']				= "Alto";
+/*--------------------------------------------------------------------------------  
+    L
+ --------------------------------------------------------------------------------*/ 
 
+$lang['limite']             = "Limite";
+$lang['localidad']          = "Localidad";
+$lang['log_in']             = "Log in";
+$lang['lote']               = "Lote";
+$lang['link']               = "Link";
+$lang['log']                = "Log";
 
-//I
+/*--------------------------------------------------------------------------------  
+    M
+ --------------------------------------------------------------------------------*/ 
 
-$lang['id'] 				= "ID";
-$lang['IP'] 				= "IP";
-$lang['iva'] 				= "Iva";
-$lang['inicio'] 			= "Inicio";
-$lang['icono'] 				= "Icono";
-$lang['ingrese'] 			= "Ingrese";
-$lang['insert_ok'] 			= "fue insertado con éxito";
-$lang['imagen'] 			= "Imagen";
-$lang['informacion'] 		= "Información";
-$lang['imposible_enviar'] 	= "Imposible de enviar";
-$lang['importe'] 			= "Importe";
-$lang['impresion'] 			= "Impresión";
-$lang['imprimir'] 			= "Imprimir";
-$lang['importe_1'] 			= "Primer importe";
-$lang['importe_2'] 			= "Segundo importe";
-$lang['input_max'] 			= "Input máximo";
-$lang['importe_max'] 		= "Importe máximo";
+$lang['modificar']          = "Modificar";
+$lang['monto']              = "Monto";
+$lang['menu']               = "Menu";
 
-//J
+/*--------------------------------------------------------------------------------  
+    N
+ --------------------------------------------------------------------------------*/ 
 
+$lang['nombre']             = "Nombre";
+$lang['nombres']            = "Nombres";
+$lang['nuevo']              = "Nuevo";
+$lang['ok']                 = "OK";
+$lang['new_password']       = "Nueva Password";
+$lang['no_encontrada']      = "no encontrada";
 
-//K
+/*--------------------------------------------------------------------------------  
+    O
+ --------------------------------------------------------------------------------*/ 
 
+$lang['olvidaste_pass']     = "Olvidaste tu pass?";
+$lang['opciones']           = "Opciones";
+$lang['only_999']           = "Solo usuario 999";
+$lang['orden']              = "Orden";
 
-//L
+/*--------------------------------------------------------------------------------  
+    P
+ --------------------------------------------------------------------------------*/ 
 
-$lang['listado_de'] 		= "Listado de";
-$lang['leer_mas'] 			= "Leer más";
-$lang['leyenda'] 			= "Leyenda";
-$lang['limite'] 			= "Límite";
-$lang['listados'] 			= "Listados";
-$lang['localidad'] 			= "Localidad";
-$lang['log_in'] 			= "Log in";
-$lang['lote'] 				= "Lote";
-$lang['last_login'] 		= "Último login";
+$lang['pais']               = "Pais";
+$lang['padre']              = "Padre";
+$lang['provincia']          = "Provincia";
+$lang['password']           = "Password";
+$lang['peligro']            = "Peligro";
+$lang['permiso']            = "Permiso";
+$lang['permisos']           = "Permisos";
+$lang['periodo']            = "Periodo";
+$lang['pri_desc']           = "Descripción";
+$lang['path_email']         = "Path email";
+$lang['programa']           = "Programa";
 
-//M
+/*--------------------------------------------------------------------------------  
+    R
+ --------------------------------------------------------------------------------*/ 
 
-$lang['menu'] 				= "Menú";
-$lang['minimo'] 			= "Minimo";
-$lang['minima'] 			= "Minima";
-$lang['mensaje'] 			= "Mensaje";
-$lang['modificacion'] 		= "Modificación";
-$lang['monto'] 				= "Monto";
-$lang['modificar'] 			= "Modificar";
+$lang['recargas']           = "Recargas";
+$lang['responsable']        = "Responsable";
+$lang['responsab']          = "Responsable";
+$lang['regs']               = "Regs";
+$lang['rol']                = "Rol";
+$lang['reparticion']        = "Reparticion";
+$lang['registro']           = "Registro";
 
-//N
+/*--------------------------------------------------------------------------------  
+    S
+ --------------------------------------------------------------------------------*/ 
 
-$lang['navegador'] 			= "Navegador";
-$lang['necesita'] 			= "Necesita";
-$lang['no'] 				= "no";
-$lang['no_pago'] 			= "No se han realizado pagos de la boleta";
-$lang['no_registro']		= "No existe registro";
-$lang['nro'] 				= "Nro";
-$lang['nro_cuota'] 			= "Nro de cuota";
-$lang['nombre'] 			= "Nombre";
-$lang['nombre_fantasia']	= "Alias";
-$lang['nueva'] 				= "Nueva";
-$lang['nuevas'] 			= "Nuevas";
-$lang['nuevo'] 				= "Nuevo";
-$lang['nuevos'] 			= "Nuevos";
-$lang['novedades'] 			= "Novedades";
-$lang['numero'] 			= "Número";
-$lang['notas'] 				= "Notas";
-$lang['nro_transaccion'] 	= "Número de transacción";
-	
-//Ñ
+$lang['salir']              = "Salir";
+$lang['sucursal']           = "Sucursal";
+$lang['st_respon']          = "Responsable";
+$lang['st_telef']           = "Telefono";
+$lang['serie']              = "Serie";
+$lang['siguiente']          = "Siguiente";
+$lang['sobregiro']          = "Sobregiro";
+$lang['sobregiros']         = "Sobregiros";
 
+/*--------------------------------------------------------------------------------  
+    T
+ --------------------------------------------------------------------------------*/ 
 
-//O
+$lang['tablas']             = "Tablas";
+$lang['telefono']           = "Telefono";
+$lang['terminal']           = "Terminal";
+$lang['turno']              = "Turno";
+$lang['tipo']               = "Tipo";
+$lang['tip_term']           = "Tipo Term";
+$lang['tecnico']            = "Tecnico";
+$lang['transaccion']        = "Transacción";
+$lang['transacciones']      = "Transacciones";
+$lang['total']              = "Total";
+$lang['totales']            = "Totales";
+$lang['tiempo']             = "Tiempo";
 
-$lang['ordenar'] 			= "Ordenar";
-$lang['origen'] 			= "Origen";
-$lang['opcion'] 			= "Opción";
-$lang['opciones'] 			= "Opciones";
-$lang['olvidaste_pass'] 	= "Olvidaste tu contraseña ?";
-$lang['ok']	 				= "Ok";
+/*--------------------------------------------------------------------------------  
+    U
+ --------------------------------------------------------------------------------*/ 
 
-//P
+$lang['usuario']            = "Usuario";
+$lang['ult_transm']         = "Ult transm";
+$lang['update_ok']          = "Registro modificado";
+$lang['ubicacion']          = "Ubicación";
+$lang['url']                = "URL";
 
-$lang['pago'] 				= "Pago";
-$lang['pagada']				= "Pagada";
-$lang['pagos'] 				= "Pagos";
-$lang['papelera'] 			= "Papelera";
-$lang['perfil'] 			= "Perfil";
-$lang['perfiles'] 			= "Perfiles";
-$lang['pedido'] 			= "Pedido";
-$lang['piso'] 				= "Piso";
-$lang['precio'] 			= "Precio";
-$lang['precios'] 			= "Precios";
-$lang['principal'] 			= "Principal";
-$lang['provincia'] 			= "Provincia";
-$lang['pais'] 				= "País";
-$lang['precio'] 			= "Precio";
-$lang['provincia'] 			= "Provincia";
-$lang['porcentual'] 		= "Porcentual";
-$lang['peligro'] 			= "Peligro";
+/*--------------------------------------------------------------------------------  
+    V
+ --------------------------------------------------------------------------------*/ 
 
-//Q
+$lang['valor']              = "Valor";
+$lang['ver']                = "Ver";
+$lang['version']            = "Versión";
 
+/*--------------------------------------------------------------------------------  
+    W
+ --------------------------------------------------------------------------------*/ 
 
-//R
+$lang['warning']            = "Aviso";
 
-$lang['recibidos'] 			= "Recibidos";
-$lang['redactar'] 			= "Redactar";
-$lang['resetear'] 			= "Resetear";
-$lang['registros'] 			= "Registros";
-$lang['restaurar'] 			= "Restaurar";
-$lang['regla'] 				= "Regla";
-$lang['registro']			= "Registro";
-$lang['reglas'] 			= "Reglas";
-$lang['razon_social'] 		= "Razon Social";
-$lang['reglas_descuento']	= "Reglas de Descuento";
+/*--------------------------------------------------------------------------------  
+    Y
+ --------------------------------------------------------------------------------*/ 
 
-//S
-
-$lang['settings'] 			= "Settings";
-$lang['sacar'] 				= "Sacar";
-$lang['salir'] 				= "Salir";
-$lang['subtotal'] 			= "Subtotal";
-$lang['sincronizacion']		= "Sincronización";
-$lang['simbolo'] 			= "Símbolo";
-$lang['seleccione'] 		= "Seleccione";
-$lang['sistema'] 			= "Sistema";
-$lang['size']	 			= "Tamaño";
-$lang['size_x']	 			= "Tamaño x";
-$lang['size_y']	 			= "Tamaño y";
-
-
-//T
-
-$lang['telefono'] 			= "Teléfono";
-$lang['telefonos'] 			= "Teléfonos";
-$lang['tiempo'] 			= "Tiempo";
-$lang['tiempos'] 			= "Tiempos";
-$lang['tipo'] 				= "Tipo";
-$lang['tipos'] 				= "Tipos";
-$lang['total'] 				= "Total";
-$lang['total_archivos']		= "Total espacio en memoria de los archivos : ";
-$lang['totales'] 			= "Totales";
-$lang['terminal'] 			= "Terminal";
-
-//U
-
-$lang['usuario']			= "Usuario";
-$lang['usuarios']			= "Usuarios";
-$lang['upload']				= "Upload";
-$lang['update_ok']			= "Update realizado con éxito";
-
-//V
-
-$lang['valoracion'] 		= "Valoración";
-$lang['valor'] 				= "Valor";
-$lang['vencimiento_1'] 		= "Primer vencimiento";
-$lang['vencimiento_2'] 		= "Segundo vencimiento";
-$lang['ver'] 				= "Ver";
-$lang['version'] 			= "Versión";
-$lang['visto'] 				= "Visto";
-$lang['volver'] 			= "Volver";
-
-//W
-
-$lang['width'] 				= "Ancho";
-
-
-//X
-
-$lang['x_hoja'] 			= "Por hoja";
-
-//Y
-$lang['y'] 					= "y ";
-
-//Z
-
+$lang['y']                  = "y";
 ?>

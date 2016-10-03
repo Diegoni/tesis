@@ -13,11 +13,19 @@ $(document).ready(function() {
     	if (!$group.data('validate')) {
 			state = $(this).val() ? true : false;
 		}else if ($group.data('validate') == "email") {
-			state = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test($(this).val())
+			state = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test($(this).val());
 		}else if($group.data('validate') == 'phone') {
-			state = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/.test($(this).val())
+			state = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/.test($(this).val());
 		}else if($group.data('validate') == 'cuit') {
-			state = /^\d{2}\-\d{8}\-\d{1}$/.test($(this).val())
+			state = /^\d{2}\-\d{8}\-\d{1}$/.test($(this).val());
+		}else if($group.data('validate') == 'transaccion') {
+			state = /^\d{5}\-\d{5}$/.test($(this).val());	
+		}else if($group.data('validate') == 'unique') {
+			if($('#mensaje_error').html() != ""){
+				state = false;	
+			} else {
+				state = true;
+			}
 		}else if ($group.data('validate') == "length") {
 			state = $(this).val().length >= $group.data('length') ? true : false;
 		}else if ($group.data('validate') == "number") {
@@ -165,7 +173,7 @@ $(document).ready(function() {
 		dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
 		dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
 		weekHeader: 'Sm',
-		dateFormat: 'dd/mm/yy',
+		dateFormat: 'dd-mm-yy',
 		firstDay: 1,
 		isRTL: false,
 		showMonthAfterYear: false,
@@ -207,6 +215,54 @@ $(function() {
             $('.archivos').each(function() { 
                 this.checked = false;                  
             });         
+        }
+    });
+});
+
+
+
+/*--------------------------------------------------------------------------------	
+ 			Para dar efectos a los elementos del dom
+ --------------------------------------------------------------------------------*/	
+
+$(function() {
+	wow = new WOW(
+      {
+        animateClass: 'animated',
+        offset:       100,
+        callback:     function(box) {
+          console.log("WOW: animating <" + box.tagName.toLowerCase() + ">");
+        }
+      }
+    );
+    wow.init();   
+});
+
+/*--------------------------------------------------------------------------------	
+ 			Inicio de los datapicker
+ --------------------------------------------------------------------------------*/	
+
+$(function() {
+	 $( ".datepicker" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        onClose: function( selectedDate ) {
+            $( "#final" ).datepicker( "option", "minDate", selectedDate );
+        }
+    });
+	
+    $( ".datepicker_start" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        onClose: function( selectedDate ) {
+            $( ".datepicker_end" ).datepicker( "option", "minDate", selectedDate );
+        }
+    });
+    $( ".datepicker_end" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        onClose: function( selectedDate ) {
+            $( ".datepicker_start" ).datepicker( "option", "maxDate", selectedDate );
         }
     });
 });

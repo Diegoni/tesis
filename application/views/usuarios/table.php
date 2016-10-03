@@ -1,49 +1,52 @@
 <?php
+/*--------------------------------------------------------------------------------  
+            Comienzo del contenido
+ --------------------------------------------------------------------------------*/
+ 
 $cabeceras = array(
-	$this->lang->line('usuario'),
-	$this->lang->line('perfil'),
-	$this->lang->line('last_login'),
-	$this->lang->line('opciones'),
+    lang('usuario'),
+    lang('rol'),
+    lang('opciones'),
 );
 
-$html = start_content();
+$html = startContent();
 
 if(isset($mensaje)){
-	$html .= setMensaje($mensaje);
+    $html .= setMensaje($mensaje);
 }
 
-if($permisos['agregar'] == 1){
-	$html .= getExportsButtons($cabeceras, table_add($subjet));
+/*--------------------------------------------------------------------------------  
+            Tabla
+ --------------------------------------------------------------------------------*/
+ 
+if($permiso_editar == 1){
+    $html .= getExportsButtons($cabeceras, tableAdd($subjet));    
 }else{
-	$html .= getExportsButtons($cabeceras);
+    $html .= getExportsButtons($cabeceras);
 }
 
-$html .= start_table($cabeceras);
+$html .= startTable($cabeceras);
 
 if($registros){
-	$hoy = date('Y-m-d H:i:s');
-	foreach ($registros as $row) {
-		if($row->id_perfil == 2){
-			$perfil = setSpan($row->perfil, 'default');
-		} else {
-			$perfil = setSpan($row->perfil, 'primary');
-		}
-		
-		$registro = array(
-			$row->usuario,
-			$perfil,
-			formatDatetime($row->last_login).dias_transcurridos($row->last_login, $hoy, TRUE),
-			table_upd($subjet, $row->id_usuario).' <a class="btn btn-default" href="'.base_url().'index.php/usuarios/logs/'.$row->id_usuario.'" title="logs""><i class="fa fa-sign-in"></i></a>',
-		);
-		
-		$html .= setTableContent($registro);	
-	}
+    foreach ($registros as $row) {
+        $registro = array(
+            $row->usuario,
+            $row->rol,
+            tableUpd($subjet, $row->id_usuario),
+        );
+        
+        $html .= setTableContent($registro);    
+    }
 }
-			
-$html .= end_table($cabeceras);			
-			
-$html .= end_content();
-$html .= setDatatables();
+            
+$html .= endTable($cabeceras);         
+$html .= setDatatables();           
+
+/*--------------------------------------------------------------------------------  
+            Fin del contenido
+ --------------------------------------------------------------------------------*/
+ 
+$html .= endContent();
 
 echo $html;
 ?>

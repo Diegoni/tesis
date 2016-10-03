@@ -155,7 +155,7 @@ class Graficos {
 		
 		$categories = array();
 		foreach ($datos as $name => $valores) {
-			foreach ($valores as $categoria => $value) {
+		    foreach ($valores as $categoria => $value) {
 				if(!in_array($categoria, $categories)){
 					$categories[] = $categoria;	
 				}	 

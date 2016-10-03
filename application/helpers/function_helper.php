@@ -10,13 +10,14 @@ INDICE
 - formatImporte 		Unifica el formato de los importes
 - formatFloat 			Unifica el formato de los float
 - formatBites 			Unifica el formato de los bites
-- dias_transcurridos 	Cantidad de dias transcurridos entre dos fechas
-- dates_between 		Devuelve array de fechas entre dos fechas
+- diasTranscurridos 	Cantidad de dias transcurridos entre dos fechas
+- datesBetween 		    Devuelve array de fechas entre dos fechas
 - encrypt				Encripta la cadena
 - decrypt				Desencripta la cadena
 - modulo11				para validar cuit
 - validarCUIT			valida cuit
-- random_string 		Devuelve cadenas aleatorias
+- randomString 		    Devuelve cadenas aleatorias
+- digitoVerificador     Devuelve el digito verificador  
 
   -------------------------------------------------------------------------------*/
   
@@ -83,7 +84,7 @@ function formatBites($size, $multiplicar = NULL) {
 
 
 
-function dias_transcurridos($fecha_i, $fecha_f, $badle = NULL){
+function diasTranscurridos($fecha_i, $fecha_f, $badle = NULL){
 	if(($fecha_i == '0000-00-00' || $fecha_f == '0000-00-00') ||
 	   ($fecha_i == '0000-00-00 00:00:00' || $fecha_f == '0000-00-00 00:00:00') ){
 		$dias = '-';
@@ -104,7 +105,7 @@ function dias_transcurridos($fecha_i, $fecha_f, $badle = NULL){
 
 
 
-function dates_between($startdate, $enddate, $format = null){
+function datesBetween($startdate, $enddate, $format = null){
  
     (is_int($startdate)) ? 1 : $startdate = strtotime($startdate);
     (is_int($enddate)) ? 1 : $enddate = strtotime($enddate);
@@ -156,7 +157,8 @@ function decrypt($string){
 
 
 
-function modulo11($cuit){
+function modulo11($cuit)
+{
 	$digitos = array(
 		array('value' => substr($cuit, 0, 1), 	'multiplo' => 5),
 		array('value' => substr($cuit, 1, 1), 	'multiplo' => 4),
@@ -186,7 +188,8 @@ function modulo11($cuit){
 
 
 
-function validarCUIT($cuit){
+function validarCUIT($cuit)
+{
 	$comienzo	= substr($cuit, 0, 2);
 	$comienzos	= array(
 		20,
@@ -218,7 +221,8 @@ function validarCUIT($cuit){
 
 
 
-function random_string($length) {
+function randomString($length) 
+{
     $key = '';
     $keys = array_merge(range(0, 9), range('a', 'z'));
 
@@ -227,4 +231,60 @@ function random_string($length) {
     }
 
     return $key;
+}
+
+
+
+ function nameCmp($a, $b)
+ {
+    if($a[3]){
+        return strcmp($a[0], $b[0]);     // directorios por NOMBRE
+    } else {
+        return ($a[1] < $b[1]) ? 1 : 0;  // archivos por FECHA
+    }
+}
+ 
+ 
+ 
+function digitoVerificador($codigo)
+{
+    $cantidad   = strlen($codigo);
+        
+    $suma_producto = 0;
+    for ($i = 0; $i < $cantidad; $i++) {
+        $elemento = $codigo[$i];
+            
+        if ($i%2==0){
+            $multipo = 3;
+        }else{
+            $multipo = 1;
+        } 
+            
+        $suma_producto = $suma_producto + $elemento * $multipo;
+    }
+        
+    $resto = $suma_producto % 10;
+        
+    if($resto == 0){
+        $dv = 0;
+    }else{
+        $dv = 10 - $resto;
+    }
+        
+    $elemento_2 = '';
+        
+    for ($i = 0; $i < $cantidad; $i++) {
+        $elemento_2 .= $codigo[$i].',';
+    }
+        
+    $codigo = $codigo.$dv;
+        
+    return $codigo; 
+}   
+
+
+function getUltimoDiaMes($date){
+  $mes  = date('m', strtotime($date));
+  $anio = date('Y', strtotime($date));  
+  return date("d",(mktime(0,0,0,$mes+1,1,$anio)-1));
 }
