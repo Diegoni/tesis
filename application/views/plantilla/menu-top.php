@@ -10,7 +10,7 @@
 				$font_size = 14;
 				echo '<span class="logo-lg" style="font-size: '.$font_size.'px">
 				<center>
-				<img src="'.base_url().'uploads/img/xnativa_logo.png" class="img-responsive" alt="User Image" width="125">
+				<img src="'.base_url().'assets/uploads/img/xnativa_logo.png" class="img-responsive" alt="User Image" width="125">
 				</center>
 				</span>';
 				?>
@@ -27,7 +27,7 @@
 							</a>
 							<ul class="dropdown-menu bounceInRight wow" data-wow-duration="2s">
 								<li class="user-header">
-									<img src="<?php echo base_url().'uploads/img/user.png' ?>" class="img-circle" alt="User Image">
+									<img src="<?php echo base_url().'assets/uploads/img/user.png' ?>" class="img-circle" alt="User Image">
 									<p>
 										<?php echo $session['usuario'] ?>
 										<small><?php echo $session['nombre'].' '.$session['apellido'] ?></small>

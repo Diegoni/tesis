@@ -1,17 +1,17 @@
 <?php 
-class m_roles_permisos extends MY_Model 
+class m_usuarios_permisos extends MY_Model 
 {		
-	protected $_tablename	= 'roles_permisos';
-	protected $_id_table	= 'id_rol_permiso';
-	protected $_order		= 'id_rol_permiso';
+	protected $_tablename	= 'usuarios_permisos';
+	protected $_id_table	= 'id_permiso';
+	protected $_order		= 'id_permiso';
 	protected $_relation	= array(
-        'id_permiso' => array(
-            'table'     => 'permisos',
+        'id_menu' => array(
+            'table'     => 'menus',
             'subjet'    => array('menu', 'id_padre'),
         ),
-        'id_rol' => array(
-            'table'     => 'roles',
-            'subjet'    => 'rol'
+        'id_perfil' => array(
+            'table'     => 'usuarios_perfiles',
+            'subjet'    => 'perfil'
         ),
     );
     
@@ -35,7 +35,7 @@ class m_roles_permisos extends MY_Model
 ---------------------------------------------------------------------------------*/ 
    
     
-    function getMenu($id_rol)
+    function getMenu($id_perfil)
     {
         $sql = "
         SELECT 
@@ -43,9 +43,9 @@ class m_roles_permisos extends MY_Model
         FROM 
             $this->_tablename 
         INNER JOIN 
-            permisos ON($this->_tablename.id_permiso = permisos.id_permiso) 
+            usuarios_perfiles ON($this->_tablename.id_perfil = usuarios_perfiles.id_perfil) 
         WHERE 
-            ($this->_tablename.id_rol = '$id_rol' AND
+            ($this->_tablename.id_perfil = '$id_perfil' AND
             $this->_tablename.eliminado = '0')";
             
         return $this->getQuery($sql);

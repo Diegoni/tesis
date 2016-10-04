@@ -7,7 +7,7 @@ class Login extends CI_Controller
 		parent::__construct();
 		$this->load->helper('url');
 		$this->load->model('m_usuarios');
-        $this->load->model('m_roles_permisos');   	
+        $this->load->model('m_usuarios_permisos');   	
         $this->load->model('m_logs_usuarios');
 	}
 
@@ -118,11 +118,7 @@ class Login extends CI_Controller
             
 			$this->m_logs_usuarios->insert($registro);
             
-            if($session_data['id_rol'] == 3){
-                redirect('/transacciones/conciliacion/','refresh');
-            }else{
-                redirect('/transacciones/table/','refresh');    
-            }
+            redirect('/home/','refresh');    
 	  	}
 	}
     
@@ -145,7 +141,7 @@ class Login extends CI_Controller
 				$sess_array = array(
 				    'id_usuario'   => $row->id_usuario,
 				    'usuario' 	   => $row->usuario,
-					'id_rol'	   => $row->id_rol,
+					'id_rol'	   => $row->id_perfil,
 					'last_login'   => $row->last_login,
 					'nombre'       => $row->nombre,
 					'apellido'     => $row->apellido,
@@ -154,21 +150,26 @@ class Login extends CI_Controller
 			}
             
             if($sess_array['eliminado'] == 0){
-                $menu = $this->m_roles_permisos->getMenu($sess_array['id_rol']);
+                $menu = $this->m_usuarios_permisos->getMenu($sess_array['id_rol']);
                 
-                foreach ($menu as $row_menu) {
-                    $permisos[] = array(
-                        'menu'      => $row_menu->menu,
-                        'url'       => $row_menu->url,
-                        'ver'       => $row_menu->ver,
-                        'editar'    => $row_menu->editar,
-                        'icon'      => $row_menu->icon,
-                        'id_padre'  => $row_menu->id_padre,
-                        'id_permiso'=> $row_menu->id_permiso,
-                    );
+                if($menu){
+                    foreach ($menu as $row_menu) {
+                        $permisos[] = array(
+                            'menu'      => $row_menu->menu,
+                            'url'       => $row_menu->url,
+                            'ver'       => $row_menu->ver,
+                            'editar'    => $row_menu->editar,
+                            'icon'      => $row_menu->icon,
+                            'id_padre'  => $row_menu->id_padre,
+                            'id_permiso'=> $row_menu->id_permiso,
+                        );
+                    }   
+                    
+                     $sess_array['permisos'] = $permisos; 
                 }
                 
-                $sess_array['permisos'] = $permisos;
+                
+               
                 
 				$ci = & get_instance(); 
 				$this->session->unset_userdata('logged_in');

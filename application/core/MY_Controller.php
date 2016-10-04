@@ -29,7 +29,7 @@ class MY_Controller extends CI_Controller
             $this->load->model($this->_model, 'model');    
         }
         
-        $this->load->model('m_roles_permisos');
+        $this->load->model('m_usuarios_permisos');
         $this->load->model('m_logs_usuarios');
     }
     
@@ -275,15 +275,17 @@ class MY_Controller extends CI_Controller
             
             $db['permiso_editar'] = 0;
             
-            foreach ($db['session']['permisos'] as $key => $value) 
+            if(isset($db['session']['permisos']))
             {
-                if(strtolower($this->_subject.'/'.$_vista.'/') == strtolower($value['url']) && $value['ver'] == 1)
+                foreach ($db['session']['permisos'] as $key => $value) 
                 {
-                    $permiso = 1;  
-                    $db['permiso_editar'] =  $value['editar'];
-                } 
+                    if(strtolower($this->_subject.'/'.$_vista.'/') == strtolower($value['url']) && $value['ver'] == 1)
+                    {
+                        $permiso = 1;  
+                        $db['permiso_editar'] =  $value['editar'];
+                    } 
+                }    
             }
-            
             
             if($permiso == 1)
             {

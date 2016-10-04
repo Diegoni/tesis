@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'		=> '',
-	'hostname'	=> '192.168.100.12',
+	'hostname'	=> 'localhost',
 	'username'	=> 'root',
-	'password'	=> 'z66831',
-	'database'	=> 'colegio-notarial',
+	'password'	=> '',
+	'database'	=> 'tesis',
 	'dbdriver'	=> 'mysqli',
 	'dbprefix'	=> '',
 	'pconnect'	=> FALSE,
