@@ -118,7 +118,7 @@ class Login extends CI_Controller
             
 			$this->m_logs_usuarios->insert($registro);
             
-            redirect('/home/','refresh');    
+            redirect('/animales/table/','refresh');    
 	  	}
 	}
     
@@ -167,10 +167,7 @@ class Login extends CI_Controller
                     
                      $sess_array['permisos'] = $permisos; 
                 }
-                
-                
-               
-                
+
 				$ci = & get_instance(); 
 				$this->session->unset_userdata('logged_in');
 				$this->session->set_userdata('logged_in', $sess_array);

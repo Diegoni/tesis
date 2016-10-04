@@ -35,7 +35,7 @@ class m_usuarios_permisos extends MY_Model
 ---------------------------------------------------------------------------------*/ 
    
     
-    function getMenu($id_perfil)
+    function getMenu($id_menu)
     {
         $sql = "
         SELECT 
@@ -43,9 +43,9 @@ class m_usuarios_permisos extends MY_Model
         FROM 
             $this->_tablename 
         INNER JOIN 
-            usuarios_perfiles ON($this->_tablename.id_perfil = usuarios_perfiles.id_perfil) 
+            menus ON($this->_tablename.id_menu = menus.id_menu) 
         WHERE 
-            ($this->_tablename.id_perfil = '$id_perfil' AND
+            ($this->_tablename.id_menu = '$id_menu' AND
             $this->_tablename.eliminado = '0')";
             
         return $this->getQuery($sql);

@@ -4,11 +4,8 @@
  --------------------------------------------------------------------------------*/
  
 $cabeceras = array(
-    lang('barra'),
-    lang('transaccion'),
-    lang('importe'),
-    lang('estado'),
-    lang('opciones'),
+    lang('id_animal'),
+    lang('opciones'), 
 );
 
 $html = startContent();
@@ -20,13 +17,28 @@ if(isset($mensaje)){
 /*--------------------------------------------------------------------------------  
             Tabla
  --------------------------------------------------------------------------------*/
- 
-$html .= getExportsButtons($cabeceras);
 
-$html .= startTable($cabeceras);        
-$html .= endTable($cabeceras);  
+if($permiso_editar == 1){
+    $html .= getExportsButtons($cabeceras, tableAdd($subjet));    
+}else{
+    $html .= getExportsButtons($cabeceras);
+}
+
+$html .= startTable($cabeceras);
+
+if($registros){
+    foreach ($registros as $row) {
+        $registro = array(
+            $row->id_animal,
+            tableUpd($subjet, $row->id_animal),
+        );
+        
+        $html .= setTableContent($registro);    
+    }
+}
             
-$html .= setDatatables(NULL, 0, base_url().'index.php/'.$subjet.'/ajax');   
+$html .= endTable($cabeceras);         
+$html .= setDatatables();           
 
 /*--------------------------------------------------------------------------------  
             Fin del contenido
