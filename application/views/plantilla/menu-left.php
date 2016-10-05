@@ -11,8 +11,10 @@
                 $url = $this->uri->segment(1).'/'.$this->uri->segment(2).'/';
                 $active = 0;
                 
-                if($session['permisos']){
-                    foreach ($session['permisos'] as $row) {
+                if($session['permisos'])
+                {
+                    foreach ($session['permisos'] as $row) 
+                    {
                         if($row['ver'] == 1){
                             if($row['id_padre'] != 0){
                                 if($row['url'] == $url){

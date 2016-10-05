@@ -4,7 +4,7 @@
  --------------------------------------------------------------------------------*/
  
 $cabeceras = array(
-    lang('rol'),
+    lang('perfil'),
     lang('opciones'), 
 );
 
@@ -29,8 +29,8 @@ $html .= startTable($cabeceras);
 if($registros){
     foreach ($registros as $row) {
         $registro = array(
-            $row->rol,
-            tableUpd($subjet, $row->id_rol),
+            $row->perfil,
+            tableUpd($subjet, $row->id_perfil),
         );
         
         $html .= setTableContent($registro);    

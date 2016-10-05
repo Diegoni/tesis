@@ -13,7 +13,7 @@ class Usuarios extends MY_Controller
         );
         
         $this->load->model($this->_model, 'model');  
-        $this->load->model('m_roles');
+        $this->load->model('m_usuarios_perfiles');
     } 
     
     

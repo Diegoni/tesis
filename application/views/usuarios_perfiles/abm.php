@@ -60,27 +60,33 @@ $html .= '</div>';
 
 $html .= '<div class="tab-pane" id="2_nav">'; 
 
-foreach ($roles_permisos as $row) {
-    if($row->id_padre == 0){
-        $categorias [] = array(
-            'id_categoria'      => $row->id_permiso,
-            'menu'              => $row->menu,
-            'id_rol_permiso'    => $row->id_rol_permiso,
-            'ver'               => $row->ver,
-            'editar'            => $row->editar,
-        ); 
-         
-    }else{
-        $menus[$row->id_padre][] = array(
-            'id'                => $row->id_permiso,
-            'menu'              => $row->menu,
-            'id_rol_permiso'    => $row->id_rol_permiso,
-            'ver'               => $row->ver,
-            'editar'            => $row->editar,
-        ); 
-            
-    }
+if($usuarios_permisos)
+{
+    foreach ($usuarios_permisos as $row) {
+        if($row->id_padre == 0)
+        {
+            $categorias [] = array(
+                'id_categoria'      => $row->id_permiso,
+                'menu'              => $row->menu,
+                'id_permiso'        => $row->id_permiso,
+                'ver'               => $row->ver,
+                'editar'            => $row->editar,
+            ); 
+             
+        }else
+        {
+            $menus[$row->id_padre][] = array(
+                'id'                => $row->id_permiso,
+                'menu'              => $row->menu,
+                'id_permiso'        => $row->id_permiso,
+                'ver'               => $row->ver,
+                'editar'            => $row->editar,
+            ); 
+                
+        }
+    }    
 }
+
 
 $registro = array(
     lang('categoria'),
@@ -91,23 +97,26 @@ $registro = array(
 
 $html .= startTable($registro);
 
-foreach ($categorias as $valores) {
+foreach ($categorias as $valores) 
+{
     $registro = array(
         $valores['menu'],
         '',
-        getBootstrapSwitch($valores['ver'], $valores['id_rol_permiso'], 'cambiarPermisoVer', $permiso_editar),
-        getBootstrapSwitch($valores['editar'], $valores['id_rol_permiso'],  'cambiarPermisoEditar', $permiso_editar),
+        getBootstrapSwitch($valores['ver'], $valores['id_permiso'], 'cambiarPermisoVer', $permiso_editar),
+        getBootstrapSwitch($valores['editar'], $valores['id_permiso'],  'cambiarPermisoEditar', $permiso_editar),
     );
     
     $html .= setTableContent($registro);
     
-    if(isset($menus[$valores['id_categoria']])){
-        foreach ($menus[$valores['id_categoria']] as $menu) {
+    if(isset($menus[$valores['id_categoria']]))
+    {
+        foreach ($menus[$valores['id_categoria']] as $menu) 
+        {
             $registro = array(
                 '',
                 $menu['menu'],
-                getBootstrapSwitch($menu['ver'], $menu['id_rol_permiso'],  'cambiarPermisoVer', $editar),
-                getBootstrapSwitch($menu['editar'], $menu['id_rol_permiso'], 'cambiarPermisoEditar', $editar),
+                getBootstrapSwitch($menu['ver'], $menu['id_permiso'],  'cambiarPermisoVer', $permiso_editar),
+                getBootstrapSwitch($menu['editar'], $menu['id_permiso'], 'cambiarPermisoEditar', $permiso_editar),
             );
             
             $html .= setTableContent($registro);

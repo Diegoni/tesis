@@ -52,15 +52,19 @@ $html .= '<label class="col-sm-2 control-label">'.lang('categoria').' '.lang('pa
 $html .= '<div class="col-sm-8">';
 $html .= '<select name="id_padre" id="id_padre" class="form-control" onchange="controlPadre(this.value)">';
 $html .= '<option value="0"></option>';
-if($permisos){
-    foreach ($permisos as $row_permisos) {
-        if($row_permisos->id_permiso == $registro_values['id_padre']){
+
+if($menus)
+{
+    foreach ($menus as $row_menu) 
+    {
+        if($row_menu->id_menu == $registro_values['id_padre'])
+        {
             $selected = 'selected';
         } else {
             $selected = '';
         }
         
-        $html .= '<option value="'.$row_permisos->id_permiso.'" '.$selected.'>'.$row_permisos->menu.'</option>';    
+        $html .= '<option value="'.$row_menu->id_menu.'" '.$selected.'>'.$row_menu->menu.'</option>';    
     }    
 }
 $html .= '</select>';
@@ -84,13 +88,16 @@ $cabeceras = array(
 $html .= '<h4>'.lang('menu').' '.$registro_values['menu'].'</h4>';
 $html .= startTable($cabeceras);
 
-if($roles_permisos){
-    foreach ($roles_permisos as $row) {
-        $ver    = getBootstrapSwitch($row->ver, $row->id_rol_permiso, 'cambiarPermisoVer', $permiso_editar);
-        $editar = getBootstrapSwitch($row->editar, $row->id_rol_permiso, 'cambiarPermisoEditar', $permiso_editar);
+if($usuarios_permisos)
+{
+    foreach ($usuarios_permisos as $row) 
+    {
+        $ver    = getBootstrapSwitch($row->ver, $row->id_permiso, 'cambiarPermisoVer', $permiso_editar);
+        $editar = getBootstrapSwitch($row->editar, $row->id_permiso, 'cambiarPermisoEditar', $permiso_editar);
         
-        $registro = array(
-            $row->rol,
+        $registro = array
+        (
+            $row->id_perfil,
             $ver,
             $editar,
         );
@@ -129,7 +136,7 @@ function cambiarPermisoVer(id_rol_permiso)
      
      $.ajax({
         type: 'POST',
-        url: '<?php echo base_url(); ?>index.php/Permisos/cambiarPermiso/',
+        url: '<?php echo base_url(); ?>index.php/<?php echo $subjet; ?>/cambiarPermiso/',
         data: { id_rol_permiso: id_rol_permiso, valor: valor, campo: campo},
         success: function(resp) { 
 

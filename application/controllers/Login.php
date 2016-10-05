@@ -149,11 +149,14 @@ class Login extends CI_Controller
 		    	);
 			}
             
-            if($sess_array['eliminado'] == 0){
+            if($sess_array['eliminado'] == 0)
+            {
                 $menu = $this->m_usuarios_permisos->getMenu($sess_array['id_rol']);
                 
-                if($menu){
-                    foreach ($menu as $row_menu) {
+                if($menu)
+                {
+                    foreach ($menu as $row_menu) 
+                    {
                         $permisos[] = array(
                             'menu'      => $row_menu->menu,
                             'url'       => $row_menu->url,

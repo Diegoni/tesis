@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-10-2016 a las 21:41:48
+-- Tiempo de generación: 05-10-2016 a las 15:37:26
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.6.15
 
@@ -23002,7 +23002,140 @@ INSERT INTO `logs_usuarios` (`id_log`, `id_nivel`, `log`, `accion`, `tabla`, `re
 (108, 4, 'animales/abm', 'access', '', '', '1', '2016-10-04 21:41:06', 'colegio-notarial', 0),
 (109, 3, 'logout', 'logout', '', '', '1', '2016-10-04 21:41:19', 'colegio-notarial', 0),
 (110, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-04 21:41:24', 'colegio-notarial', 0),
-(111, 4, 'animales/table', 'access', '', '', '1', '2016-10-04 21:41:24', 'colegio-notarial', 0);
+(111, 4, 'animales/table', 'access', '', '', '1', '2016-10-04 21:41:24', 'colegio-notarial', 0),
+(112, 4, 'animales/abm', 'access', '', '', '1', '2016-10-04 21:42:57', 'colegio-notarial', 0),
+(113, 3, 'logout', 'logout', '', '', '1', '2016-10-04 21:44:28', 'colegio-notarial', 0),
+(114, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-04 21:44:31', 'colegio-notarial', 0),
+(115, 4, 'animales/table', 'access', '', '', '1', '2016-10-04 21:44:32', 'colegio-notarial', 0),
+(116, 3, 'logout', 'logout', '', '', '1', '2016-10-04 21:44:49', 'colegio-notarial', 0),
+(117, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-04 21:44:54', 'colegio-notarial', 0),
+(118, 4, 'animales/table', 'access', '', '', '1', '2016-10-04 21:44:54', 'colegio-notarial', 0),
+(119, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-05 14:30:52', 'colegio-notarial', 0),
+(120, 4, 'animales/table', 'access', '', '', '1', '2016-10-05 14:30:52', 'colegio-notarial', 0),
+(121, 4, 'animales/abm', 'access', '', '', '1', '2016-10-05 14:31:36', 'colegio-notarial', 0),
+(122, 4, 'animales/abm', 'access', '', '', '1', '2016-10-05 14:32:13', 'colegio-notarial', 0),
+(123, 4, 'animales/abm', 'access', '', '', '1', '2016-10-05 14:32:53', 'colegio-notarial', 0),
+(124, 4, 'animales/abm', 'access', '', '', '1', '2016-10-05 14:33:08', 'colegio-notarial', 0),
+(125, 4, 'animales/abm', 'access', '', '', '1', '2016-10-05 14:33:53', 'colegio-notarial', 0),
+(126, 4, 'animales/abm', 'access', '', '', '1', '2016-10-05 14:34:53', 'colegio-notarial', 0),
+(127, 3, 'logout', 'logout', '', '', '1', '2016-10-05 14:36:32', 'colegio-notarial', 0),
+(128, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-05 14:36:38', 'colegio-notarial', 0),
+(129, 4, 'animales/table', 'access', '', '', '1', '2016-10-05 14:36:38', 'colegio-notarial', 0),
+(130, 3, 'logout', 'logout', '', '', '1', '2016-10-05 14:36:45', 'colegio-notarial', 0),
+(131, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-05 14:36:50', 'colegio-notarial', 0),
+(132, 4, 'animales/table', 'access', '', '', '1', '2016-10-05 14:36:50', 'colegio-notarial', 0),
+(133, 3, 'logout', 'logout', '', '', '1', '2016-10-05 14:40:46', 'colegio-notarial', 0),
+(134, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-05 14:40:48', 'colegio-notarial', 0),
+(135, 4, 'animales/table', 'access', '', '', '1', '2016-10-05 14:40:48', 'colegio-notarial', 0),
+(136, 4, 'menus/table/', 'denied_access', '', '', '1', '2016-10-05 14:47:27', 'colegio-notarial', 0),
+(137, 3, 'logout', 'logout', '', '', '1', '2016-10-05 14:47:27', 'colegio-notarial', 0),
+(138, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-05 14:47:32', 'colegio-notarial', 0),
+(139, 4, 'animales/table', 'access', '', '', '1', '2016-10-05 14:47:32', 'colegio-notarial', 0),
+(140, 4, 'menus/table/', 'denied_access', '', '', '1', '2016-10-05 14:48:03', 'colegio-notarial', 0),
+(141, 3, 'logout', 'logout', '', '', '1', '2016-10-05 14:48:03', 'colegio-notarial', 0),
+(142, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-05 14:48:05', 'colegio-notarial', 0),
+(143, 4, 'animales/table', 'access', '', '', '1', '2016-10-05 14:48:06', 'colegio-notarial', 0),
+(144, 4, 'menus/table', 'access', '', '', '1', '2016-10-05 14:48:10', 'colegio-notarial', 0),
+(145, 4, 'menus/table', 'access', '', '', '1', '2016-10-05 14:48:25', 'colegio-notarial', 0),
+(146, 4, 'menus/table', 'access', '', '', '1', '2016-10-05 14:49:51', 'colegio-notarial', 0),
+(147, 4, 'menus/table', 'access', '', '', '1', '2016-10-05 14:50:03', 'colegio-notarial', 0),
+(148, 4, 'menus/table', 'access', '', '', '1', '2016-10-05 14:50:49', 'colegio-notarial', 0),
+(149, 4, 'menus/table', 'access', '', '', '1', '2016-10-05 14:55:57', 'colegio-notarial', 0),
+(150, 4, 'menus/table', 'access', '', '', '1', '2016-10-05 14:56:23', 'colegio-notarial', 0),
+(151, 4, 'menus/abm', 'access', '', '', '1', '2016-10-05 14:57:45', 'colegio-notarial', 0),
+(152, 4, 'menus/abm', 'access', '', '', '1', '2016-10-05 14:58:05', 'colegio-notarial', 0),
+(153, 4, 'menus/abm', 'access', '', '', '1', '2016-10-05 14:59:27', 'colegio-notarial', 0),
+(154, 4, 'menus/abm', 'access', '', '', '1', '2016-10-05 15:00:33', 'colegio-notarial', 0),
+(155, 4, 'menus/abm', 'access', '', '', '1', '2016-10-05 15:01:35', 'colegio-notarial', 0),
+(156, 4, 'menus/abm', 'access', '', '', '1', '2016-10-05 15:01:48', 'colegio-notarial', 0),
+(157, 4, 'menus/abm', 'access', '', '', '1', '2016-10-05 15:03:25', 'colegio-notarial', 0),
+(158, 4, '{"id_menu":"0","url":"animales\\/table","menu":"Animales","icon":"","id_padre":"1","date_add":"2016-10-05 15:05:50","date_upd":"2016-10-05 15:05:50","user_add":"1","user_upd":"1"}', 'insert', 'menus', '3', '1', '2016-10-05 15:05:50', 'colegio-notarial', 0),
+(159, 4, '{"id_menu":"0","url":"animales\\/table","menu":"Animales","icon":"","id_padre":"1","date_add":"2016-10-05 15:06:36","date_upd":"2016-10-05 15:06:36","user_add":"1","user_upd":"1"}', 'insert', 'menus', '4', '1', '2016-10-05 15:06:36', 'colegio-notarial', 0),
+(160, 4, '{"id_perfil":"1","id_menu":4,"ver":1,"editar":1,"date_add":"2016-10-05 15:06:36","date_upd":"2016-10-05 15:06:36","user_add":"1","user_upd":"1"}', 'insert', 'usuarios_permisos', '3', '1', '2016-10-05 15:06:36', 'colegio-notarial', 0),
+(161, 4, 'menus/table', 'access', '', '', '1', '2016-10-05 15:06:36', 'colegio-notarial', 0),
+(162, 4, 'menus/abm', 'access', '', '', '1', '2016-10-05 15:06:46', 'colegio-notarial', 0),
+(163, 3, 'logout', 'logout', '', '', '1', '2016-10-05 15:08:30', 'colegio-notarial', 0),
+(164, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-05 15:09:14', 'colegio-notarial', 0),
+(165, 4, 'animales/table', 'access', '', '', '1', '2016-10-05 15:09:14', 'colegio-notarial', 0),
+(166, 4, 'animales/table', 'access', '', '', '1', '2016-10-05 15:09:18', 'colegio-notarial', 0),
+(167, 4, 'menus/table', 'access', '', '', '1', '2016-10-05 15:09:28', 'colegio-notarial', 0),
+(168, 4, 'menus/abm', 'access', '', '', '1', '2016-10-05 15:09:30', 'colegio-notarial', 0),
+(169, 4, '{"id_menu":"0","url":"menus\\/table","menu":"menu","icon":"","id_padre":"2","date_add":"2016-10-05 15:09:42","date_upd":"2016-10-05 15:09:42","user_add":"1","user_upd":"1"}', 'insert', 'menus', '4', '1', '2016-10-05 15:09:42', 'colegio-notarial', 0),
+(170, 4, '{"id_perfil":"1","id_menu":4,"ver":1,"editar":1,"date_add":"2016-10-05 15:09:42","date_upd":"2016-10-05 15:09:42","user_add":"1","user_upd":"1"}', 'insert', 'usuarios_permisos', '4', '1', '2016-10-05 15:09:42', 'colegio-notarial', 0),
+(171, 4, 'menus/table', 'access', '', '', '1', '2016-10-05 15:09:43', 'colegio-notarial', 0),
+(172, 4, 'menus/abm', 'access', '', '', '1', '2016-10-05 15:09:49', 'colegio-notarial', 0),
+(173, 3, 'logout', 'logout', '', '', '1', '2016-10-05 15:09:55', 'colegio-notarial', 0),
+(174, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-05 15:09:57', 'colegio-notarial', 0),
+(175, 4, 'animales/table', 'access', '', '', '1', '2016-10-05 15:09:57', 'colegio-notarial', 0),
+(176, 4, 'menus/table', 'access', '', '', '1', '2016-10-05 15:09:59', 'colegio-notarial', 0),
+(177, 4, 'menus/table', 'access', '', '', '1', '2016-10-05 15:11:11', 'colegio-notarial', 0),
+(178, 4, 'menus/table', 'access', '', '', '1', '2016-10-05 15:11:15', 'colegio-notarial', 0),
+(179, 4, 'menus/table', 'access', '', '', '1', '2016-10-05 15:11:16', 'colegio-notarial', 0),
+(180, 4, 'menus/table', 'access', '', '', '1', '2016-10-05 15:11:34', 'colegio-notarial', 0),
+(181, 4, 'menus/abm', 'access', '', '', '1', '2016-10-05 15:11:36', 'colegio-notarial', 0),
+(182, 4, '{"id_menu":"2","menu":"Menus","icon":"","id_padre":"0","date_upd":"2016-10-05 15:11:42","user_upd":"1"}', 'update', 'menus', '2', '1', '2016-10-05 15:11:42', 'colegio-notarial', 0),
+(183, 4, 'menus/table', 'access', '', '', '1', '2016-10-05 15:11:42', 'colegio-notarial', 0),
+(184, 4, 'menus/abm', 'access', '', '', '1', '2016-10-05 15:11:46', 'colegio-notarial', 0),
+(185, 4, '{"id_menu":"4","url":"menus\\/table","menu":"Menu","icon":"","id_padre":"2","date_upd":"2016-10-05 15:11:51","user_upd":"1"}', 'update', 'menus', '4', '1', '2016-10-05 15:11:52', 'colegio-notarial', 0),
+(186, 4, 'menus/table', 'access', '', '', '1', '2016-10-05 15:11:52', 'colegio-notarial', 0),
+(187, 4, 'menus/abm', 'access', '', '', '1', '2016-10-05 15:11:56', 'colegio-notarial', 0),
+(188, 4, '{"id_menu":"2","menu":"Usuarios","icon":"","id_padre":"0","date_upd":"2016-10-05 15:12:02","user_upd":"1"}', 'update', 'menus', '2', '1', '2016-10-05 15:12:02', 'colegio-notarial', 0),
+(189, 4, 'menus/table', 'access', '', '', '1', '2016-10-05 15:12:02', 'colegio-notarial', 0),
+(190, 4, 'menus/abm', 'access', '', '', '1', '2016-10-05 15:12:06', 'colegio-notarial', 0),
+(191, 4, '{"id_menu":"0","url":"usuarios\\/table","menu":"Usuarios","icon":"","id_padre":"2","date_add":"2016-10-05 15:12:20","date_upd":"2016-10-05 15:12:20","user_add":"1","user_upd":"1"}', 'insert', 'menus', '5', '1', '2016-10-05 15:12:20', 'colegio-notarial', 0),
+(192, 4, '{"id_perfil":"1","id_menu":5,"ver":1,"editar":1,"date_add":"2016-10-05 15:12:20","date_upd":"2016-10-05 15:12:20","user_add":"1","user_upd":"1"}', 'insert', 'usuarios_permisos', '5', '1', '2016-10-05 15:12:20', 'colegio-notarial', 0),
+(193, 4, 'menus/table', 'access', '', '', '1', '2016-10-05 15:12:20', 'colegio-notarial', 0),
+(194, 3, 'logout', 'logout', '', '', '1', '2016-10-05 15:12:27', 'colegio-notarial', 0),
+(195, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-05 15:12:28', 'colegio-notarial', 0),
+(196, 4, 'animales/table', 'access', '', '', '1', '2016-10-05 15:12:28', 'colegio-notarial', 0),
+(197, 4, 'usuarios/table/', 'denied_access', '', '', '1', '2016-10-05 15:13:54', 'colegio-notarial', 0),
+(198, 3, 'logout', 'logout', '', '', '1', '2016-10-05 15:13:54', 'colegio-notarial', 0),
+(199, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-05 15:13:56', 'colegio-notarial', 0),
+(200, 4, 'animales/table', 'access', '', '', '1', '2016-10-05 15:13:57', 'colegio-notarial', 0),
+(201, 4, 'usuarios/table/', 'denied_access', '', '', '1', '2016-10-05 15:13:59', 'colegio-notarial', 0),
+(202, 3, 'logout', 'logout', '', '', '1', '2016-10-05 15:13:59', 'colegio-notarial', 0),
+(203, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-05 15:14:55', 'colegio-notarial', 0),
+(204, 4, 'animales/table', 'access', '', '', '1', '2016-10-05 15:14:55', 'colegio-notarial', 0),
+(205, 4, 'usuarios/table/', 'denied_access', '', '', '1', '2016-10-05 15:15:01', 'colegio-notarial', 0),
+(206, 3, 'logout', 'logout', '', '', '1', '2016-10-05 15:15:02', 'colegio-notarial', 0),
+(207, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-05 15:15:49', 'colegio-notarial', 0),
+(208, 4, 'animales/table/', 'denied_access', '', '', '1', '2016-10-05 15:15:49', 'colegio-notarial', 0),
+(209, 3, 'logout', 'logout', '', '', '1', '2016-10-05 15:15:49', 'colegio-notarial', 0),
+(210, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-05 15:15:53', 'colegio-notarial', 0),
+(211, 4, 'animales/table/', 'denied_access', '', '', '1', '2016-10-05 15:15:54', 'colegio-notarial', 0),
+(212, 3, 'logout', 'logout', '', '', '1', '2016-10-05 15:15:54', 'colegio-notarial', 0),
+(213, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-05 15:16:08', 'colegio-notarial', 0),
+(214, 4, 'animales/table', 'access', '', '', '1', '2016-10-05 15:16:08', 'colegio-notarial', 0),
+(215, 4, 'usuarios/table/', 'denied_access', '', '', '1', '2016-10-05 15:16:26', 'colegio-notarial', 0),
+(216, 3, 'logout', 'logout', '', '', '1', '2016-10-05 15:16:27', 'colegio-notarial', 0),
+(217, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-05 15:16:29', 'colegio-notarial', 0),
+(218, 4, 'animales/table', 'access', '', '', '1', '2016-10-05 15:16:29', 'colegio-notarial', 0),
+(219, 4, 'usuarios/table', 'access', '', '', '1', '2016-10-05 15:16:35', 'colegio-notarial', 0),
+(220, 4, 'usuarios/table', 'access', '', '', '1', '2016-10-05 15:17:19', 'colegio-notarial', 0),
+(221, 4, 'usuarios/table', 'access', '', '', '1', '2016-10-05 15:17:40', 'colegio-notarial', 0),
+(222, 4, 'usuarios/table', 'access', '', '', '1', '2016-10-05 15:17:42', 'colegio-notarial', 0),
+(223, 4, 'menus/table', 'access', '', '', '1', '2016-10-05 15:17:47', 'colegio-notarial', 0),
+(224, 4, 'usuarios/table', 'access', '', '', '1', '2016-10-05 15:17:48', 'colegio-notarial', 0),
+(225, 4, 'menus/table', 'access', '', '', '1', '2016-10-05 15:20:50', 'colegio-notarial', 0),
+(226, 4, 'menus/abm', 'access', '', '', '1', '2016-10-05 15:20:52', 'colegio-notarial', 0),
+(227, 4, '{"id_menu":"0","url":"usuarios_perfiles\\/table\\/","menu":"Perfiles","icon":"","id_padre":"2","date_add":"2016-10-05 15:21:19","date_upd":"2016-10-05 15:21:19","user_add":"1","user_upd":"1"}', 'insert', 'menus', '6', '1', '2016-10-05 15:21:19', 'colegio-notarial', 0),
+(228, 4, '{"id_perfil":"1","id_menu":6,"ver":1,"editar":1,"date_add":"2016-10-05 15:21:19","date_upd":"2016-10-05 15:21:19","user_add":"1","user_upd":"1"}', 'insert', 'usuarios_permisos', '6', '1', '2016-10-05 15:21:19', 'colegio-notarial', 0),
+(229, 4, 'menus/table', 'access', '', '', '1', '2016-10-05 15:21:19', 'colegio-notarial', 0),
+(230, 3, 'logout', 'logout', '', '', '1', '2016-10-05 15:21:23', 'colegio-notarial', 0),
+(231, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-05 15:21:27', 'colegio-notarial', 0),
+(232, 4, 'animales/table', 'access', '', '', '1', '2016-10-05 15:21:27', 'colegio-notarial', 0),
+(233, 4, 'usuarios_perfiles/table', 'access', '', '', '1', '2016-10-05 15:21:30', 'colegio-notarial', 0),
+(234, 4, 'usuarios_perfiles/table', 'access', '', '', '1', '2016-10-05 15:22:02', 'colegio-notarial', 0),
+(235, 4, 'usuarios_perfiles/abm', 'access', '', '', '1', '2016-10-05 15:22:28', 'colegio-notarial', 0),
+(236, 4, 'usuarios_perfiles/abm', 'access', '', '', '1', '2016-10-05 15:24:01', 'colegio-notarial', 0),
+(237, 4, 'usuarios_perfiles/abm', 'access', '', '', '1', '2016-10-05 15:24:21', 'colegio-notarial', 0),
+(238, 4, 'usuarios_perfiles/abm', 'access', '', '', '1', '2016-10-05 15:24:52', 'colegio-notarial', 0),
+(239, 4, 'usuarios_perfiles/abm', 'access', '', '', '1', '2016-10-05 15:25:08', 'colegio-notarial', 0),
+(240, 4, 'usuarios_perfiles/abm', 'access', '', '', '1', '2016-10-05 15:26:31', 'colegio-notarial', 0),
+(241, 4, 'usuarios_perfiles/abm', 'access', '', '', '1', '2016-10-05 15:27:00', 'colegio-notarial', 0),
+(242, 4, 'usuarios_perfiles/abm', 'access', '', '', '1', '2016-10-05 15:27:18', 'colegio-notarial', 0),
+(243, 4, 'usuarios_perfiles/abm', 'access', '', '', '1', '2016-10-05 15:29:18', 'colegio-notarial', 0),
+(244, 4, 'usuarios_perfiles/abm', 'access', '', '', '1', '2016-10-05 15:29:29', 'colegio-notarial', 0);
 
 -- --------------------------------------------------------
 
@@ -23016,10 +23149,10 @@ CREATE TABLE `menus` (
   `menu` varchar(128) NOT NULL,
   `icon` varchar(255) NOT NULL,
   `id_padre` int(11) NOT NULL,
-  `date_add` int(11) NOT NULL,
-  `date_upd` int(11) NOT NULL,
-  `user_add` datetime NOT NULL,
-  `user_upd` datetime NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
   `eliminado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -23028,8 +23161,12 @@ CREATE TABLE `menus` (
 --
 
 INSERT INTO `menus` (`id_menu`, `url`, `menu`, `icon`, `id_padre`, `date_add`, `date_upd`, `user_add`, `user_upd`, `eliminado`) VALUES
-(1, 'animales/table/', 'Animales', '', 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0),
-(2, 'animales/table/', 'Animales', '', 1, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0);
+(1, '', 'Animales', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0, 0),
+(2, '', 'Usuarios', '', 0, '0000-00-00 00:00:00', '2016-10-05 15:12:02', 0, 1, 0),
+(3, 'animales/table/', 'Animales', '', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0, 0),
+(4, 'menus/table/', 'Menu', '', 2, '2016-10-05 15:09:42', '2016-10-05 15:11:51', 1, 1, 0),
+(5, 'usuarios/table/', 'Usuarios', '', 2, '2016-10-05 15:12:20', '2016-10-05 15:12:20', 1, 1, 0),
+(6, 'usuarios_perfiles/table/', 'Perfiles', '', 2, '2016-10-05 15:21:19', '2016-10-05 15:21:19', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -23277,7 +23414,12 @@ CREATE TABLE `usuarios_permisos` (
 --
 
 INSERT INTO `usuarios_permisos` (`id_permiso`, `id_perfil`, `id_menu`, `ver`, `editar`, `date_add`, `date_upd`, `user_add`, `user_upd`, `eliminado`) VALUES
-(1, 1, 1, 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0, 0);
+(1, 1, 1, 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0, 0),
+(2, 1, 2, 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0, 0),
+(3, 1, 3, 1, 1, '2016-10-05 15:06:36', '2016-10-05 15:06:36', 1, 1, 0),
+(4, 1, 4, 1, 1, '2016-10-05 15:09:42', '2016-10-05 15:09:42', 1, 1, 0),
+(5, 1, 5, 1, 1, '2016-10-05 15:12:20', '2016-10-05 15:12:20', 1, 1, 0),
+(6, 1, 6, 1, 1, '2016-10-05 15:21:19', '2016-10-05 15:21:19', 1, 1, 0);
 
 --
 -- Índices para tablas volcadas
@@ -23492,12 +23634,12 @@ ALTER TABLE `ingresos`
 -- AUTO_INCREMENT de la tabla `logs_usuarios`
 --
 ALTER TABLE `logs_usuarios`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=245;
 --
 -- AUTO_INCREMENT de la tabla `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `proveedores`
 --
@@ -23547,7 +23689,7 @@ ALTER TABLE `usuarios_perfiles`
 -- AUTO_INCREMENT de la tabla `usuarios_permisos`
 --
 ALTER TABLE `usuarios_permisos`
-  MODIFY `id_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

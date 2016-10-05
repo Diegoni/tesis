@@ -61,6 +61,7 @@ $lang['empresa']            = "Empresa";
 $lang['empresas']           = "Empresas";
 $lang['email_salida']       = "Email salida";
 $lang['eliminar']           = "Eliminar";
+$lang['esquema']            = "Esquema";
 
 /*--------------------------------------------------------------------------------  
     F
@@ -144,6 +145,7 @@ $lang['pri_desc']           = "Descripción";
 $lang['programa']           = "Programa";
 $lang['peso']               = "Peso";
 $lang['proveedor']          = "Proveedor";
+$lang['perfil']             = "Perfil";
 
 /*--------------------------------------------------------------------------------  
     R

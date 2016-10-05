@@ -5,9 +5,9 @@ class m_usuarios extends MY_Model
 	protected $_id_table	= 'id_usuario';
 	protected $_order		= 'usuario';
 	protected $_relation	= array(
-		'id_rol' => array(
-			'table'		=> 'roles',
-			'subjet'	=> 'rol'
+		'id_perfil' => array(
+			'table'		=> 'usuarios_perfiles',
+			'subjet'	=> 'perfil'
 		),
 	);
 		

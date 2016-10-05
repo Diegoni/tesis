@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Permisos extends MY_Controller 
+class Menus extends MY_Controller 
 {
-	protected $_subject = 'permisos'; 
-    protected $_model   = 'm_permisos';
+	protected $_subject = 'menus'; 
+    protected $_model   = 'm_menus';
     
     function __construct(){
         parent::__construct(
@@ -12,9 +12,9 @@ class Permisos extends MY_Controller
         );
         
         $this->load->model($this->_model, 'model');  
-        $this->load->model('m_roles');
         $this->load->model('m_usuarios');
-        $this->load->model('m_roles_permisos');
+        $this->load->model('m_usuarios_perfiles');
+        $this->load->model('m_usuarios_permisos');
     } 
     
 
@@ -42,8 +42,8 @@ class Permisos extends MY_Controller
             array('url',    '', 'disabled'),
         );
         
-        $db['roles_permisos'] = $this->m_roles_permisos->getRegistros($id, 'id_permiso');
-        $db['permisos']    = $this->model->getRegistros('0', 'id_padre');
+        $db['usuarios_permisos'] = $this->m_usuarios_permisos->getRegistros($id, 'id_perfil');
+        $db['menus']    = $this->model->getRegistros('0', 'id_padre');
         
         $this->armarAbm($id, $db);
     }  
@@ -60,18 +60,18 @@ class Permisos extends MY_Controller
     
     function afterInsert($registro, $id)
     {
-        $roles = $this->m_roles->getRegistros();
+        $perfiles = $this->m_usuarios_perfiles->getRegistros();
         
-        foreach ($roles as $row_rol) 
+        foreach ($perfiles as $row_perfil) 
         {
             $registro = array(
-                'id_rol'    => $row_rol->id_rol,
-                'id_permiso'=> $id,
+                'id_perfil' => $row_perfil->id_perfil,
+                'id_menu'   => $id,
                 'ver'       => 1,
                 'editar'    => 1,
             );
             
-            $this->m_roles_permisos->insert($registro);
+            $this->m_usuarios_permisos->insert($registro);
         }
     }
     

@@ -1,9 +1,9 @@
 <?php 
-class m_permisos extends MY_Model 
+class m_usuarios_perfiles extends MY_Model 
 {		
-	protected $_tablename	= 'permisos';
-	protected $_id_table	= 'id_permiso';
-	protected $_order		= 'id_permiso';
+	protected $_tablename	= 'usuarios_perfiles';
+	protected $_id_table	= 'id_perfil';
+	protected $_order		= 'id_perfil';
 	protected $_relation    =  '';
 		
 	function __construct()

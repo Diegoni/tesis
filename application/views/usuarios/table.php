@@ -5,7 +5,7 @@
  
 $cabeceras = array(
     lang('usuario'),
-    lang('rol'),
+    lang('perfil'),
     lang('opciones'),
 );
 
@@ -31,7 +31,7 @@ if($registros){
     foreach ($registros as $row) {
         $registro = array(
             $row->usuario,
-            $row->rol,
+            $row->perfil,
             tableUpd($subjet, $row->id_usuario),
         );
         
