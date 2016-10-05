@@ -17,7 +17,8 @@ $lang['asunto_warning']     = "Asunto warning";
 $lang['asunto_danger']      = "Asunto danger";
 $lang['archivo']            = "Archivo";
 $lang['animales']           = "Animales";
-$lang['altura']           = "Altura";
+$lang['altura']             = "Altura";
+$lang['apellidos']          = "Apellidos";
 
 /*--------------------------------------------------------------------------------  
     B
@@ -39,12 +40,15 @@ $lang['comentario']         = "Comentario";
 $lang['cod_post']           = "Codigo Postal";
 $lang['cuit']               = "Cuit";
 $lang['cargando']           = "Cargando";
+$lang['calle']              = "Calle";
+$lang['calle_numero']       = "Calle nro";
 
 /*--------------------------------------------------------------------------------  
     D
  --------------------------------------------------------------------------------*/ 
 
 $lang['datos']              = "Datos";
+$lang['dni']                = "DNI";
 $lang['detalle']            = "Detalle";
 $lang['domicilio']          = "Domicilio";
 $lang['date_add']           = "Fecha alta";
@@ -163,16 +167,17 @@ $lang['registro']           = "Registro";
  --------------------------------------------------------------------------------*/ 
 
 $lang['salir']              = "Salir";
-$lang['st_respon']          = "Responsable";
-$lang['st_telef']           = "Telefono";
 $lang['siguiente']          = "Siguiente";
+$lang['sector']             = "Sector";
 
 /*--------------------------------------------------------------------------------  
     T
  --------------------------------------------------------------------------------*/ 
 
 $lang['tablas']             = "Tablas";
+$lang['tambo']              = "Tambo";
 $lang['telefono']           = "Telefono";
+$lang['telefono_alternativo'] = "Telefono alternativo";
 $lang['turno']              = "Turno";
 $lang['tipo']               = "Tipo";
 $lang['total']              = "Total";
@@ -201,6 +206,7 @@ $lang['version']            = "Versión";
  --------------------------------------------------------------------------------*/ 
 
 $lang['warning']            = "Aviso";
+$lang['web']                = "Web";
 
 /*--------------------------------------------------------------------------------  
     Y

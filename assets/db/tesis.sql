@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-10-2016 a las 18:05:46
+-- Tiempo de generación: 05-10-2016 a las 21:06:33
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.6.15
 
@@ -140,6 +140,13 @@ CREATE TABLE `empleados` (
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `empleados`
+--
+
+INSERT INTO `empleados` (`id_empleado`, `id_puesto`, `id_encargado`, `nombres`, `apellidos`, `dni`, `fecha_ingreso`, `telefono`, `telefono_alternativo`, `email`, `id_provincia`, `id_localidad`, `calle`, `calle_numero`, `date_add`, `date_upd`, `user_add`, `user_upd`, `eliminado`) VALUES
+(1, 1, 0, 'Diego', 'Nieto ', '31246501', '0000-00-00', '', '', '', 0, 0, '', 0, '2016-10-05 19:17:43', '2016-10-05 19:17:43', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -23260,7 +23267,58 @@ INSERT INTO `logs_usuarios` (`id_log`, `id_nivel`, `log`, `accion`, `tabla`, `re
 (359, 3, 'logout', 'logout', '', '', '1', '2016-10-05 18:04:15', 'colegio-notarial', 0),
 (360, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-05 18:04:17', 'colegio-notarial', 0),
 (361, 4, 'animales/table', 'access', '', '', '1', '2016-10-05 18:04:17', 'colegio-notarial', 0),
-(362, 4, 'seguimientos_estados/table', 'access', '', '', '1', '2016-10-05 18:04:37', 'colegio-notarial', 0);
+(362, 4, 'seguimientos_estados/table', 'access', '', '', '1', '2016-10-05 18:04:37', 'colegio-notarial', 0),
+(363, 4, 'animales/table', 'access', '', '', '1', '2016-10-05 18:07:06', 'colegio-notarial', 0),
+(364, 4, 'animales/table', 'access', '', '', '1', '2016-10-05 18:07:14', 'colegio-notarial', 0),
+(365, 4, 'empleados/table', 'access', '', '', '1', '2016-10-05 19:09:44', 'colegio-notarial', 0),
+(366, 4, 'empleados/abm', 'access', '', '', '1', '2016-10-05 19:09:48', 'colegio-notarial', 0),
+(367, 4, 'empleados/abm', 'access', '', '', '1', '2016-10-05 19:10:20', 'colegio-notarial', 0),
+(368, 4, 'empleados/abm', 'access', '', '', '1', '2016-10-05 19:10:36', 'colegio-notarial', 0),
+(369, 4, 'empleados/abm', 'access', '', '', '1', '2016-10-05 19:12:12', 'colegio-notarial', 0),
+(370, 4, 'empleados/abm', 'access', '', '', '1', '2016-10-05 19:15:02', 'colegio-notarial', 0),
+(371, 4, 'empleados/abm', 'access', '', '', '1', '2016-10-05 19:15:44', 'colegio-notarial', 0),
+(372, 4, 'empleados/abm', 'access', '', '', '1', '2016-10-05 19:16:22', 'colegio-notarial', 0),
+(373, 4, 'empleados/abm', 'access', '', '', '1', '2016-10-05 19:16:50', 'colegio-notarial', 0),
+(374, 4, 'empleados/abm', 'access', '', '', '1', '2016-10-05 19:17:15', 'colegio-notarial', 0),
+(375, 4, '{"id_empleado":"0","id_puesto":"1","nombres":"Diego","apellidos":"Nieto ","dni":"31246501","telefono":"","telefono_alternativo":"","email":"","id_provincia":"","id_localidad":"","calle":"","calle_numero":"","date_add":"2016-10-05 19:17:43","date_upd":"2016-10-05 19:17:43","user_add":"1","user_upd":"1"}', 'insert', 'empleados', '1', '1', '2016-10-05 19:17:43', 'colegio-notarial', 0),
+(376, 4, 'empleados/table', 'access', '', '', '1', '2016-10-05 19:17:43', 'colegio-notarial', 0),
+(377, 4, 'empleados/abm', 'access', '', '', '1', '2016-10-05 19:19:13', 'colegio-notarial', 0),
+(378, 4, 'empleados/abm', 'access', '', '', '1', '2016-10-05 19:19:36', 'colegio-notarial', 0),
+(379, 4, 'empleados/abm', 'access', '', '', '1', '2016-10-05 19:19:46', 'colegio-notarial', 0),
+(380, 4, 'empleados/abm', 'access', '', '', '1', '2016-10-05 19:19:57', 'colegio-notarial', 0),
+(381, 4, 'empleados/abm', 'access', '', '', '1', '2016-10-05 19:20:13', 'colegio-notarial', 0),
+(382, 4, 'empleados/abm', 'access', '', '', '1', '2016-10-05 19:20:37', 'colegio-notarial', 0),
+(383, 4, 'empleados/abm', 'access', '', '', '1', '2016-10-05 19:22:16', 'colegio-notarial', 0),
+(384, 4, 'tambos/table', 'access', '', '', '1', '2016-10-05 19:37:08', 'colegio-notarial', 0),
+(385, 4, 'tambos/abm', 'access', '', '', '1', '2016-10-05 19:37:11', 'colegio-notarial', 0),
+(386, 4, 'tambos/table', 'access', '', '', '1', '2016-10-05 19:38:01', 'colegio-notarial', 0),
+(387, 4, 'tambos/abm', 'access', '', '', '1', '2016-10-05 19:38:04', 'colegio-notarial', 0),
+(388, 4, 'tambos/abm', 'access', '', '', '1', '2016-10-05 19:39:03', 'colegio-notarial', 0),
+(389, 4, 'tambos/abm', 'access', '', '', '1', '2016-10-05 19:39:23', 'colegio-notarial', 0),
+(390, 4, 'tambos_sectores/table', 'access', '', '', '1', '2016-10-05 19:46:16', 'colegio-notarial', 0),
+(391, 4, 'tambos_sectores/table', 'access', '', '', '1', '2016-10-05 19:46:50', 'colegio-notarial', 0),
+(392, 4, 'tambos_sectores/abm', 'access', '', '', '1', '2016-10-05 19:47:13', 'colegio-notarial', 0),
+(393, 4, 'tambos_sectores_tipos/table', 'access', '', '', '1', '2016-10-05 21:04:07', 'colegio-notarial', 0),
+(394, 4, 'empleados/table', 'access', '', '', '1', '2016-10-05 21:04:18', 'colegio-notarial', 0),
+(395, 4, 'empleados/table', 'access', '', '', '1', '2016-10-05 21:04:22', 'colegio-notarial', 0),
+(396, 4, 'tambos_sectores/table', 'access', '', '', '1', '2016-10-05 21:04:29', 'colegio-notarial', 0),
+(397, 4, 'tambos_sectores/table', 'access', '', '', '1', '2016-10-05 21:04:31', 'colegio-notarial', 0);
+INSERT INTO `logs_usuarios` (`id_log`, `id_nivel`, `log`, `accion`, `tabla`, `registro`, `user_add`, `date_add`, `programa`, `eliminado`) VALUES
+(398, 4, 'animales_estados/table', 'access', '', '', '1', '2016-10-05 21:04:36', 'colegio-notarial', 0),
+(399, 4, 'animales_tipos/table', 'access', '', '', '1', '2016-10-05 21:04:37', 'colegio-notarial', 0),
+(400, 4, 'empleados_puestos/table', 'access', '', '', '1', '2016-10-05 21:04:39', 'colegio-notarial', 0),
+(401, 4, 'Localidades/table', 'access', '', '', '1', '2016-10-05 21:04:42', 'colegio-notarial', 0),
+(402, 4, 'Localidades/table', 'access', '', '', '1', '2016-10-05 21:04:43', 'colegio-notarial', 0),
+(403, 4, 'provincias/table', 'access', '', '', '1', '2016-10-05 21:04:45', 'colegio-notarial', 0),
+(404, 4, 'seguimientos_estados/table', 'access', '', '', '1', '2016-10-05 21:04:47', 'colegio-notarial', 0),
+(405, 4, 'tambos_sectores_tipos/table', 'access', '', '', '1', '2016-10-05 21:04:48', 'colegio-notarial', 0),
+(406, 4, 'empleados/table', 'access', '', '', '1', '2016-10-05 21:04:51', 'colegio-notarial', 0),
+(407, 4, 'empleados/abm', 'access', '', '', '1', '2016-10-05 21:04:53', 'colegio-notarial', 0),
+(408, 4, 'tambos/table', 'access', '', '', '1', '2016-10-05 21:05:04', 'colegio-notarial', 0),
+(409, 4, 'tambos/abm', 'access', '', '', '1', '2016-10-05 21:05:06', 'colegio-notarial', 0),
+(410, 4, 'tambos/abm', 'access', '', '', '1', '2016-10-05 21:05:18', 'colegio-notarial', 0),
+(411, 4, 'animales/table', 'access', '', '', '1', '2016-10-05 21:06:08', 'colegio-notarial', 0),
+(412, 4, 'animales/table', 'access', '', '', '1', '2016-10-05 21:06:12', 'colegio-notarial', 0);
 
 -- --------------------------------------------------------
 
@@ -23432,9 +23490,8 @@ CREATE TABLE `tambos` (
   `id_localidad` int(11) NOT NULL,
   `calle` varchar(128) NOT NULL,
   `calle_numero` int(11) NOT NULL,
-  `telefono_1` varchar(64) NOT NULL,
-  `telefono_2` varchar(64) NOT NULL,
-  `telefono_3` varchar(64) NOT NULL,
+  `telefono` varchar(64) NOT NULL,
+  `telefono_alternativo` varchar(64) NOT NULL,
   `web` varchar(128) NOT NULL,
   `id_encargado` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
@@ -23452,7 +23509,8 @@ CREATE TABLE `tambos` (
 
 CREATE TABLE `tambos_sectores` (
   `id_sector` int(11) NOT NULL,
-  `id_tipo_sector` int(11) NOT NULL,
+  `id_tambo` int(11) NOT NULL,
+  `id_tipo` int(11) NOT NULL,
   `sector` varchar(64) NOT NULL,
   `id_encargado` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
@@ -23768,7 +23826,7 @@ ALTER TABLE `animales_tipos`
 -- AUTO_INCREMENT de la tabla `empleados`
 --
 ALTER TABLE `empleados`
-  MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `empleados_puestos`
 --
@@ -23793,7 +23851,7 @@ ALTER TABLE `ingresos`
 -- AUTO_INCREMENT de la tabla `logs_usuarios`
 --
 ALTER TABLE `logs_usuarios`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=363;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=413;
 --
 -- AUTO_INCREMENT de la tabla `menus`
 --
