@@ -46,7 +46,9 @@ class m_usuarios_permisos extends MY_Model
             menus ON($this->_tablename.id_menu = menus.id_menu) 
         WHERE 
             ($this->_tablename.id_perfil = '$id_perfil' AND
-            $this->_tablename.eliminado = '0')";
+            $this->_tablename.eliminado = '0')
+        ORDER BY
+            menus.menu";
 
         return $this->getQuery($sql);
     }

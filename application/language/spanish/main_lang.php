@@ -146,6 +146,7 @@ $lang['programa']           = "Programa";
 $lang['peso']               = "Peso";
 $lang['proveedor']          = "Proveedor";
 $lang['perfil']             = "Perfil";
+$lang['puesto']             = "Puesto";
 
 /*--------------------------------------------------------------------------------  
     R

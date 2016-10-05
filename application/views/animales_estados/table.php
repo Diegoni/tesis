@@ -4,11 +4,8 @@
  --------------------------------------------------------------------------------*/
  
 $cabeceras = array(
-    /*      ---- cabecera de la tabla
-    lang('nombre'),
-    lang('apellido'),
+    lang('estado'),
     lang('opciones'),
-    */ 
 );
 
 $html = startContent();
@@ -36,11 +33,8 @@ if($registros)
     foreach ($registros as $row) 
     {
         $registro = array(
-            /*          ---- Array con los valores de la fila
-            $row->nombre,
-            $row->apellido,
-            tableUpd($subjet, $row->id_usuario),
-            */
+            $row->estado,
+            tableUpd($subjet, $row->id_estado),
         );
         
         $html .= setTableContent($registro);    

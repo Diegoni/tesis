@@ -25,11 +25,13 @@ if($registro){
 
 $html .= startContent();
 
-if(isset($mensaje)){
+if(isset($mensaje))
+{
     $html .= setMensaje($mensaje);
 }
 
-if($registro){
+if($registro)
+{
     $html .= '<ul class="nav nav-tabs">';
     $html .= '<li class="active">';
     $html .= '<a  href="#1_nav" data-toggle="tab">'.lang('datos').'</a>';
@@ -62,7 +64,8 @@ $html .= '<div class="tab-pane" id="2_nav">';
 
 if($usuarios_permisos)
 {
-    foreach ($usuarios_permisos as $row) {
+    foreach ($usuarios_permisos as $row) 
+    {
         if($row->id_padre == 0)
         {
             $categorias [] = array(
@@ -144,9 +147,11 @@ $(".checkbox").bootstrapSwitch();
     
 function cambiarPermisoVer(id_rol_permiso)
 {
-     if($("[id='"+id_rol_permiso+"cambiarPermisoVer']").bootstrapSwitch('state')){
+     if($("[id='"+id_rol_permiso+"cambiarPermisoVer']").bootstrapSwitch('state'))
+     {
          valor = 1
-     }else{
+     }else
+     {
          valor = 0;
      }
      
@@ -166,9 +171,11 @@ function cambiarPermisoVer(id_rol_permiso)
 
 function cambiarPermisoEditar(id_rol_permiso)
 {
-     if($("[id='"+id_rol_permiso+"cambiarPermisoEditar']").bootstrapSwitch('state')){
+     if($("[id='"+id_rol_permiso+"cambiarPermisoEditar']").bootstrapSwitch('state'))
+     {
          valor = 1
-     }else{
+     }else
+     {
          valor = 0;
      }
      
