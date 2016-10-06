@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Tambos_sectores extends MY_Controller 
+class Ordenes extends MY_Controller 
 {
-	protected $_subject = 'tambos_sectores';
-    protected $_model   = 'm_tambos_sectores';
+	protected $_subject = 'ordenes';
+    protected $_model   = 'm_ordenes';
     
     function __construct()
     {
@@ -12,10 +12,9 @@ class Tambos_sectores extends MY_Controller
             $model      = $this->_model 
         );
         
-        $this->load->model($this->_model, 'model');
-        $this->load->model('m_tambos');    
-        $this->load->model('m_tambos_sectores_tipos');
-        $this->load->model('m_empleados');
+        $this->load->model($this->_model, 'model');  
+        $this->load->model('m_animales');
+        $this->load->model('m_tambos_sectores');
     } 
     
     
@@ -30,15 +29,13 @@ class Tambos_sectores extends MY_Controller
     
     function abm($id = NULL)
     {                           
-        $db['tambos']    = $this->m_tambos->getRegistros();
-        $db['tipos']     = $this->m_tambos_sectores_tipos->getRegistros();
-        $db['empleados']    = $this->m_empleados->getRegistros();
+        $db['animales']    = $this->m_animales->getRegistros();
+        $db['sectores']    = $this->m_tambos_sectores->getRegistros();
         
         $db['campos']   = array(
-            array('select',   'id_tambo',  'tambo', $db['tambos']),
-            array('select',   'id_tipo',  'tipo', $db['tipos']),
-            array('sector',    '', 'required'),
-            array('select',   'id_empleado',  array('apellidos', 'nombres'), $db['empleados']),
+            array('select',   'id_sector',  'sector', $db['sectores']),
+            array('select',   'id_animal',  'id_animal', $db['animales']),
+            array('cantidad',    '', 'required'),
         );
         
         $this->armarAbm($id, $db);

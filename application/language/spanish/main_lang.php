@@ -32,6 +32,7 @@ $lang['apellidos']          = "Apellidos";
     C
  --------------------------------------------------------------------------------*/ 
 
+$lang['cantidad']           = "Cantidad";
 $lang['carga']              = "Carga";
 $lang['categoria']          = "Categoria";
 $lang['codigo']             = "Codigo";
@@ -134,6 +135,7 @@ $lang['no_encontrada']      = "no encontrada";
 $lang['olvidaste_pass']     = "Olvidaste tu pass?";
 $lang['opciones']           = "Opciones";
 $lang['orden']              = "Orden";
+$lang['ordene']             = "Ordeñe";
 
 /*--------------------------------------------------------------------------------  
     P
