@@ -16,6 +16,7 @@ $lang['advertencia']        = "Advertencia";
 $lang['asunto_warning']     = "Asunto warning";
 $lang['asunto_danger']      = "Asunto danger";
 $lang['archivo']            = "Archivo";
+$lang['animal']             = "Animal";
 $lang['animales']           = "Animales";
 $lang['altura']             = "Altura";
 $lang['apellidos']          = "Apellidos";
@@ -183,6 +184,7 @@ $lang['tipo']               = "Tipo";
 $lang['total']              = "Total";
 $lang['totales']            = "Totales";
 $lang['tiempo']             = "Tiempo";
+$lang['titulo']             = "Título";
 
 /*--------------------------------------------------------------------------------  
     U

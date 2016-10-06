@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-10-2016 a las 21:06:33
+-- Tiempo de generación: 06-10-2016 a las 16:03:57
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.6.15
 
@@ -23318,7 +23318,41 @@ INSERT INTO `logs_usuarios` (`id_log`, `id_nivel`, `log`, `accion`, `tabla`, `re
 (409, 4, 'tambos/abm', 'access', '', '', '1', '2016-10-05 21:05:06', 'colegio-notarial', 0),
 (410, 4, 'tambos/abm', 'access', '', '', '1', '2016-10-05 21:05:18', 'colegio-notarial', 0),
 (411, 4, 'animales/table', 'access', '', '', '1', '2016-10-05 21:06:08', 'colegio-notarial', 0),
-(412, 4, 'animales/table', 'access', '', '', '1', '2016-10-05 21:06:12', 'colegio-notarial', 0);
+(412, 4, 'animales/table', 'access', '', '', '1', '2016-10-05 21:06:12', 'colegio-notarial', 0),
+(413, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-06 15:40:02', 'colegio-notarial', 0),
+(414, 4, 'animales/table', 'access', '', '', '1', '2016-10-06 15:40:03', 'colegio-notarial', 0),
+(415, 4, 'animales/table', 'access', '', '', '1', '2016-10-06 15:40:07', 'colegio-notarial', 0),
+(416, 4, 'animales/table', 'access', '', '', '1', '2016-10-06 15:40:22', 'colegio-notarial', 0),
+(417, 4, 'animales_estados/table', 'access', '', '', '1', '2016-10-06 15:40:25', 'colegio-notarial', 0),
+(418, 4, 'animales_tipos/table', 'access', '', '', '1', '2016-10-06 15:40:27', 'colegio-notarial', 0),
+(419, 4, 'empleados_puestos/table', 'access', '', '', '1', '2016-10-06 15:40:28', 'colegio-notarial', 0),
+(420, 4, 'Localidades/table', 'access', '', '', '1', '2016-10-06 15:40:30', 'colegio-notarial', 0),
+(421, 4, 'provincias/table', 'access', '', '', '1', '2016-10-06 15:40:33', 'colegio-notarial', 0),
+(422, 4, 'seguimientos_estados/table', 'access', '', '', '1', '2016-10-06 15:40:35', 'colegio-notarial', 0),
+(423, 4, 'tambos_sectores_tipos/table', 'access', '', '', '1', '2016-10-06 15:40:37', 'colegio-notarial', 0),
+(424, 4, 'empleados/table', 'access', '', '', '1', '2016-10-06 15:40:39', 'colegio-notarial', 0),
+(425, 4, 'empleados/table', 'access', '', '', '1', '2016-10-06 15:40:45', 'colegio-notarial', 0),
+(426, 4, 'tambos/table', 'access', '', '', '1', '2016-10-06 15:40:47', 'colegio-notarial', 0),
+(427, 4, 'tambos_sectores/table', 'access', '', '', '1', '2016-10-06 15:40:49', 'colegio-notarial', 0),
+(428, 4, 'logs_usuarios/table', 'access', '', '', '1', '2016-10-06 15:40:52', 'colegio-notarial', 0),
+(429, 4, 'menus/table', 'access', '', '', '1', '2016-10-06 15:40:54', 'colegio-notarial', 0),
+(430, 4, 'usuarios_perfiles/table', 'access', '', '', '1', '2016-10-06 15:40:55', 'colegio-notarial', 0),
+(431, 4, 'usuarios/table', 'access', '', '', '1', '2016-10-06 15:40:57', 'colegio-notarial', 0),
+(432, 4, 'ingresos/table', 'access', '', '', '1', '2016-10-06 15:51:18', 'colegio-notarial', 0),
+(433, 4, 'ingresos/table', 'access', '', '', '1', '2016-10-06 15:52:20', 'colegio-notarial', 0),
+(434, 4, 'ingresos/abm', 'access', '', '', '1', '2016-10-06 15:53:41', 'colegio-notarial', 0),
+(435, 4, 'ingresos/abm', 'access', '', '', '1', '2016-10-06 15:54:16', 'colegio-notarial', 0),
+(436, 4, 'ingresos/abm', 'access', '', '', '1', '2016-10-06 15:54:21', 'colegio-notarial', 0),
+(437, 4, 'animales_estados/table', 'access', '', '', '1', '2016-10-06 15:54:24', 'colegio-notarial', 0),
+(438, 4, 'animales/table', 'access', '', '', '1', '2016-10-06 15:54:31', 'colegio-notarial', 0),
+(439, 4, 'ingresos/table', 'access', '', '', '1', '2016-10-06 15:54:52', 'colegio-notarial', 0),
+(440, 4, 'seguimientos/table', 'access', '', '', '1', '2016-10-06 16:00:02', 'colegio-notarial', 0),
+(441, 4, 'seguimientos/table', 'access', '', '', '1', '2016-10-06 16:00:27', 'colegio-notarial', 0),
+(442, 4, 'seguimientos/abm', 'access', '', '', '1', '2016-10-06 16:00:28', 'colegio-notarial', 0),
+(443, 4, 'seguimientos/table', 'access', '', '', '1', '2016-10-06 16:00:45', 'colegio-notarial', 0),
+(444, 4, 'seguimientos/table', 'access', '', '', '1', '2016-10-06 16:01:52', 'colegio-notarial', 0),
+(445, 4, 'seguimientos/table', 'access', '', '', '1', '2016-10-06 16:02:33', 'colegio-notarial', 0),
+(446, 3, 'logout', 'logout', '', '', '1', '2016-10-06 16:03:44', 'colegio-notarial', 0);
 
 -- --------------------------------------------------------
 
@@ -23435,6 +23469,7 @@ INSERT INTO `provincias` (`id_provincia`, `provincia`, `eliminado`) VALUES
 CREATE TABLE `seguimientos` (
   `id_seguimiento` int(11) NOT NULL,
   `id_animal` int(11) NOT NULL,
+  `titulo` varchar(128) NOT NULL,
   `descripcion` text NOT NULL,
   `id_estado` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
@@ -23851,7 +23886,7 @@ ALTER TABLE `ingresos`
 -- AUTO_INCREMENT de la tabla `logs_usuarios`
 --
 ALTER TABLE `logs_usuarios`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=413;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=447;
 --
 -- AUTO_INCREMENT de la tabla `menus`
 --
