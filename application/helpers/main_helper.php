@@ -1227,9 +1227,20 @@ function setForm($campos, $registro_values, $registro, $id_table)
                     
                     $tags = $campo[4];
                 }        
-            }   
-            
-            $return .= setLabel(lang($campo[2]), 2, NULL, $campo[1]);
+            }
+   
+            if(is_array($campo[2]))
+            {
+                $_nombre = '';
+                foreach ($campo[2] as $_campo_nombre) 
+                {
+                    $_nombre .= lang($_campo_nombre).' ';
+                }
+            }else
+            {
+                $_nombre = lang($campo[2]);
+            }           
+            $return .= setLabel($_nombre, 2, NULL, $campo[1]);
             $return .= '<div class="col-sm-8">';
             
             if($required == 1){

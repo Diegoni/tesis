@@ -67,6 +67,7 @@ $lang['empresas']           = "Empresas";
 $lang['email_salida']       = "Email salida";
 $lang['eliminar']           = "Eliminar";
 $lang['esquema']            = "Esquema";
+$lang['encargado']          = "Encargado";
 
 /*--------------------------------------------------------------------------------  
     F

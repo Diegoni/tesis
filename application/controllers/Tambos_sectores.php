@@ -38,7 +38,7 @@ class Tambos_sectores extends MY_Controller
             array('select',   'id_tambo',  'tambo', $db['tambos']),
             array('select',   'id_tipo',  'tipo', $db['tipos']),
             array('sector',    '', 'required'),
-            array('select',   'id_encargado',  'apellidos', $db['empleados']),
+            array('select',   'id_empleado',  array('apellidos', 'nombres'), $db['empleados']),
         );
         
         $this->armarAbm($id, $db);                     // Envia todo a la plantilla de la pagina

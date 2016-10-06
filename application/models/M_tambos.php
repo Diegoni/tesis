@@ -2,12 +2,12 @@
 class m_tambos extends MY_Model 
 {		
 	protected $_tablename	= 'tambos';
-	protected $_id_table	= 'id_tambos';
+	protected $_id_table	= 'id_tambo';
 	protected $_order		= 'tambo';
 	protected $_relation    =  array(
-        'id_encargado' => array(
+        'id_empleado' => array(
             'table'     => 'empleados',
-            'subjet'    => 'apellidos'
+            'subjet'    => array('apellidos', 'nombres')
         ),
         'id_localidad' => array(
             'table'     => 'localidades',

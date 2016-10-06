@@ -7,6 +7,7 @@ $cabeceras = array(
     lang('tambo'),
     lang('tipo'),
     lang('sector'),
+    lang('encargado'),
     lang('opciones'),
 );
 
@@ -38,6 +39,7 @@ if($registros)
             $row->tambo,
             $row->tipo,
             $row->sector,
+            $row->apellidos.' '.$row->nombres,
             tableUpd($subjet, $row->id_sector),
         );
         

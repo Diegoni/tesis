@@ -43,7 +43,7 @@ class Tambos extends MY_Controller
             array('telefono',    '', ''),
             array('telefono_alternativo',    '', ''),
             array('web',    '', ''),
-            array('select',   'id_encargado',  'apellidos', $db['empleados']),
+            array('select',   'id_empleado',  array('apellidos', 'nombres'), $db['empleados']),
         );
         
         $this->armarAbm($id, $db);                     // Envia todo a la plantilla de la pagina
