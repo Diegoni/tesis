@@ -54,6 +54,7 @@ $lang['dni']                = "DNI";
 $lang['detalle']            = "Detalle";
 $lang['domicilio']          = "Domicilio";
 $lang['date_add']           = "Fecha alta";
+$lang['dia']                = "Día";
 
 /*--------------------------------------------------------------------------------  
     E
@@ -69,6 +70,7 @@ $lang['email_salida']       = "Email salida";
 $lang['eliminar']           = "Eliminar";
 $lang['esquema']            = "Esquema";
 $lang['encargado']          = "Encargado";
+$lang['egreso']             = "Egreso";
 
 /*--------------------------------------------------------------------------------  
     F
@@ -76,6 +78,7 @@ $lang['encargado']          = "Encargado";
 
 $lang['fec_alta']           = "Fecha Alta";
 $lang['fecha_ingreso']      = "Fecha ingreso";
+$lang['fecha_egreso']       = "Fecha egreso";
 $lang['fecha_nacimiento']   = "Fecha nacimiento";
 $lang['fecha']              = "Fecha";
 $lang['final']              = "Final";
@@ -95,6 +98,7 @@ $lang['icono']              = "Icono";
 $lang['icon']               = "Icono";
 $lang['id']                 = "ID";
 $lang['ingrese']            = "Ingrese";
+$lang['ingreso']            = "Ingreso";
 $lang['inicio']             = "Inicio";
 $lang['insert_ok']          = "Registro se agrego";
 $lang['informacion']        = "Información";
