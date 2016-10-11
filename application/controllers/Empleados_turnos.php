@@ -40,7 +40,7 @@ class Empleados_turnos extends MY_Controller
             array('select',   'id_dia',  'dia', $db['dias']),
             array('ingreso',    '', 'required'),
             array('egreso',    '', 'required'),
-            array('comentario',    '', 'required'),
+            array('comentario',    '', ''),
         );
         
         $this->armarAbm($id, $db);    

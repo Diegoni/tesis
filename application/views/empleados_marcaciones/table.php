@@ -40,7 +40,7 @@ if($registros)
             $row->sector,
             $row->marcacion,
             $row->tipo,
-            tableUpd($subjet, $row->id_turno),
+            tableUpd($subjet, $row->id_marcacion),
         );
         
         $html .= setTableContent($registro);    

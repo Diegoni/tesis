@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-10-2016 a las 17:38:00
+-- Tiempo de generación: 11-10-2016 a las 17:44:55
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.6.15
 
@@ -201,6 +201,13 @@ CREATE TABLE `empleados_marcaciones` (
   `eliminado` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `empleados_marcaciones`
+--
+
+INSERT INTO `empleados_marcaciones` (`id_marcacion`, `id_empleado`, `id_sector`, `marcacion`, `id_tipo`, `comentario`, `date_add`, `date_upd`, `user_add`, `user_upd`, `eliminado`) VALUES
+(1, 2, 3, '2016-10-11 04:19:24', 1, '', '2016-10-11 17:42:56', '2016-10-11 17:42:56', 1, 1, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -258,7 +265,7 @@ CREATE TABLE `empleados_turnos` (
   `id_sector` int(11) NOT NULL,
   `id_dia` tinyint(4) NOT NULL,
   `ingreso` time NOT NULL,
-  `egreso` datetime NOT NULL,
+  `egreso` time NOT NULL,
   `comentario` text NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
@@ -266,6 +273,13 @@ CREATE TABLE `empleados_turnos` (
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `empleados_turnos`
+--
+
+INSERT INTO `empleados_turnos` (`id_turno`, `id_puesto`, `id_sector`, `id_dia`, `ingreso`, `egreso`, `comentario`, `date_add`, `date_upd`, `user_add`, `user_upd`, `eliminado`) VALUES
+(1, 2, 3, 1, '08:00:00', '13:00:00', '', '2016-10-11 17:39:42', '2016-10-11 17:39:42', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -23087,7 +23101,30 @@ INSERT INTO `logs_usuarios` (`id_log`, `id_nivel`, `log`, `accion`, `tabla`, `re
 (121, 4, 'empleados_marcaciones/table', 'access', '', '', '1', '2016-10-11 17:36:39', 'colegio-notarial', 0),
 (122, 4, 'empleados_marcaciones/abm', 'access', '', '', '1', '2016-10-11 17:36:45', 'colegio-notarial', 0),
 (123, 4, 'empleados_marcaciones/abm', 'access', '', '', '1', '2016-10-11 17:37:19', 'colegio-notarial', 0),
-(124, 4, 'empleados_marcaciones/abm', 'access', '', '', '1', '2016-10-11 17:37:30', 'colegio-notarial', 0);
+(124, 4, 'empleados_marcaciones/abm', 'access', '', '', '1', '2016-10-11 17:37:30', 'colegio-notarial', 0),
+(125, 4, 'empleados_turnos/table', 'access', '', '', '1', '2016-10-11 17:38:59', 'colegio-notarial', 0),
+(126, 4, 'empleados/table', 'access', '', '', '1', '2016-10-11 17:39:04', 'colegio-notarial', 0),
+(127, 4, 'empleados_turnos/table', 'access', '', '', '1', '2016-10-11 17:39:06', 'colegio-notarial', 0),
+(128, 4, 'empleados_turnos/abm', 'access', '', '', '1', '2016-10-11 17:39:08', 'colegio-notarial', 0),
+(129, 4, 'empleados_turnos/abm', 'access', '', '', '1', '2016-10-11 17:39:32', 'colegio-notarial', 0),
+(130, 4, '{"id_turno":"0","id_puesto":"2","id_sector":"3","id_dia":"1","ingreso":"08","egreso":"13","comentario":"","date_add":"2016-10-11 17:39:42","date_upd":"2016-10-11 17:39:42","user_add":"1","user_upd":"1"}', 'insert', 'empleados_turnos', '1', '1', '2016-10-11 17:39:42', 'colegio-notarial', 0),
+(131, 4, 'empleados_turnos/table', 'access', '', '', '1', '2016-10-11 17:39:42', 'colegio-notarial', 0),
+(132, 4, '{"id_turno":"0","id_puesto":"2","id_sector":"3","id_dia":"1","ingreso":"08","egreso":"13","comentario":"","date_add":"2016-10-11 17:40:09","date_upd":"2016-10-11 17:40:09","user_add":"1","user_upd":"1"}', 'insert', 'empleados_turnos', '2', '1', '2016-10-11 17:40:09', 'colegio-notarial', 0),
+(133, 4, 'empleados_turnos/table', 'access', '', '', '1', '2016-10-11 17:40:09', 'colegio-notarial', 0),
+(134, 4, '{"id_turno":"0","id_puesto":"2","id_sector":"3","id_dia":"1","ingreso":"08","egreso":"13","comentario":"","date_add":"2016-10-11 17:40:45","date_upd":"2016-10-11 17:40:45","user_add":"1","user_upd":"1"}', 'insert', 'empleados_turnos', '3', '1', '2016-10-11 17:40:45', 'colegio-notarial', 0),
+(135, 4, 'empleados_turnos/table', 'access', '', '', '1', '2016-10-11 17:40:46', 'colegio-notarial', 0),
+(136, 4, 'empleados_turnos/table', 'access', '', '', '1', '2016-10-11 17:41:50', 'colegio-notarial', 0),
+(137, 4, 'empleados_turnos/table', 'access', '', '', '1', '2016-10-11 17:42:04', 'colegio-notarial', 0),
+(138, 4, 'empleados_turnos/table', 'access', '', '', '1', '2016-10-11 17:42:24', 'colegio-notarial', 0),
+(139, 4, 'empleados_turnos/table', 'access', '', '', '1', '2016-10-11 17:42:32', 'colegio-notarial', 0),
+(140, 4, 'empleados_marcaciones/table', 'access', '', '', '1', '2016-10-11 17:42:42', 'colegio-notarial', 0),
+(141, 4, 'empleados_marcaciones/abm', 'access', '', '', '1', '2016-10-11 17:42:44', 'colegio-notarial', 0),
+(142, 4, '{"id_marcacion":"0","id_empleado":"2","id_sector":"3","marcacion":"08","id_tipo":"1","comentario":"","date_add":"2016-10-11 17:42:56","date_upd":"2016-10-11 17:42:56","user_add":"1","user_upd":"1"}', 'insert', 'empleados_marcaciones', '1', '1', '2016-10-11 17:42:56', 'colegio-notarial', 0),
+(143, 4, 'empleados_marcaciones/table', 'access', '', '', '1', '2016-10-11 17:42:56', 'colegio-notarial', 0),
+(144, 4, '{"id_marcacion":"0","id_empleado":"2","id_sector":"3","marcacion":"08","id_tipo":"1","comentario":"","date_add":"2016-10-11 17:43:24","date_upd":"2016-10-11 17:43:24","user_add":"1","user_upd":"1"}', 'insert', 'empleados_marcaciones', '2', '1', '2016-10-11 17:43:24', 'colegio-notarial', 0),
+(145, 4, 'empleados_marcaciones/table', 'access', '', '', '1', '2016-10-11 17:43:24', 'colegio-notarial', 0),
+(146, 4, 'empleados_marcaciones/table', 'access', '', '', '1', '2016-10-11 17:44:16', 'colegio-notarial', 0),
+(147, 4, 'empleados_turnos/table', 'access', '', '', '1', '2016-10-11 17:44:27', 'colegio-notarial', 0);
 
 -- --------------------------------------------------------
 
@@ -23674,7 +23711,7 @@ ALTER TABLE `empleados`
 -- AUTO_INCREMENT de la tabla `empleados_marcaciones`
 --
 ALTER TABLE `empleados_marcaciones`
-  MODIFY `id_marcacion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_marcacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `empleados_marcaciones_tipos`
 --
@@ -23689,7 +23726,7 @@ ALTER TABLE `empleados_puestos`
 -- AUTO_INCREMENT de la tabla `empleados_turnos`
 --
 ALTER TABLE `empleados_turnos`
-  MODIFY `id_turno` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_turno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `ingresos`
 --
@@ -23699,7 +23736,7 @@ ALTER TABLE `ingresos`
 -- AUTO_INCREMENT de la tabla `logs_usuarios`
 --
 ALTER TABLE `logs_usuarios`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
 --
 -- AUTO_INCREMENT de la tabla `menus`
 --

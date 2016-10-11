@@ -4,10 +4,11 @@
  --------------------------------------------------------------------------------*/
  
 $cabeceras = array(
-    lang('nombre'),
+    lang('puesto'),
     lang('sector'),
-    lang('fecha_ingreso'),
-    lang('fecha_egreso'),    
+    lang('dia'),
+    lang('ingreso'),
+    lang('egreso'),    
     lang('opciones'),
 );
 
@@ -36,10 +37,11 @@ if($registros)
     foreach ($registros as $row) 
     {
         $registro = array(
-            $row->apellidos.' '.$row->nombres,
+            $row->puesto,
             $row->sector,
-            $row->fecha_ingreso,
-            $row->fecha_egreso,
+            $row->dia,
+            $row->ingreso,
+            $row->egreso,
             tableUpd($subjet, $row->id_turno),
         );
         
