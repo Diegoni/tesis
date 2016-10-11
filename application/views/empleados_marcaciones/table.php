@@ -6,8 +6,8 @@
 $cabeceras = array(
     lang('nombre'),
     lang('sector'),
-    lang('fecha_ingreso'),
-    lang('fecha_egreso'),    
+    lang('marcacion'),
+    lang('tipo'),        
     lang('opciones'),
 );
 
@@ -38,8 +38,8 @@ if($registros)
         $registro = array(
             $row->apellidos.' '.$row->nombres,
             $row->sector,
-            $row->fecha_ingreso,
-            $row->fecha_egreso,
+            $row->marcacion,
+            $row->tipo,
             tableUpd($subjet, $row->id_turno),
         );
         

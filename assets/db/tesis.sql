@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-10-2016 a las 17:19:16
+-- Tiempo de generación: 11-10-2016 a las 17:38:00
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.6.15
 
@@ -191,8 +191,8 @@ CREATE TABLE `empleados_marcaciones` (
   `id_marcacion` int(11) NOT NULL,
   `id_empleado` int(11) NOT NULL,
   `id_sector` int(11) NOT NULL,
-  `fecha_ingreso` datetime NOT NULL,
-  `fecha_egreso` datetime NOT NULL,
+  `marcacion` datetime NOT NULL,
+  `id_tipo` tinyint(4) NOT NULL,
   `comentario` text NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
@@ -200,6 +200,26 @@ CREATE TABLE `empleados_marcaciones` (
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `empleados_marcaciones_tipos`
+--
+
+CREATE TABLE `empleados_marcaciones_tipos` (
+  `id_tipo` int(11) NOT NULL,
+  `tipo` varchar(64) NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `empleados_marcaciones_tipos`
+--
+
+INSERT INTO `empleados_marcaciones_tipos` (`id_tipo`, `tipo`, `eliminado`) VALUES
+(1, 'Entrada', 0),
+(2, 'Salida', 0);
 
 -- --------------------------------------------------------
 
@@ -23049,7 +23069,25 @@ INSERT INTO `logs_usuarios` (`id_log`, `id_nivel`, `log`, `accion`, `tabla`, `re
 (103, 4, 'animales/table', 'access', '', '', '1', '2016-10-11 17:14:22', 'colegio-notarial', 0),
 (104, 4, 'empleados_marcaciones/table', 'access', '', '', '1', '2016-10-11 17:14:25', 'colegio-notarial', 0),
 (105, 4, 'empleados_marcaciones/abm', 'access', '', '', '1', '2016-10-11 17:14:29', 'colegio-notarial', 0),
-(106, 4, 'empleados/table', 'access', '', '', '1', '2016-10-11 17:14:40', 'colegio-notarial', 0);
+(106, 4, 'empleados/table', 'access', '', '', '1', '2016-10-11 17:14:40', 'colegio-notarial', 0),
+(107, 4, 'empleados_marcaciones/table', 'access', '', '', '1', '2016-10-11 17:20:59', 'colegio-notarial', 0),
+(108, 4, 'empleados_turnos/table', 'access', '', '', '1', '2016-10-11 17:23:26', 'colegio-notarial', 0),
+(109, 4, 'tambos/table', 'access', '', '', '1', '2016-10-11 17:23:29', 'colegio-notarial', 0),
+(110, 4, 'tambos_sectores/table', 'access', '', '', '1', '2016-10-11 17:23:30', 'colegio-notarial', 0),
+(111, 4, 'logs_usuarios/table', 'access', '', '', '1', '2016-10-11 17:23:32', 'colegio-notarial', 0),
+(112, 4, 'menus/table', 'access', '', '', '1', '2016-10-11 17:23:34', 'colegio-notarial', 0),
+(113, 4, 'usuarios_perfiles/table', 'access', '', '', '1', '2016-10-11 17:23:36', 'colegio-notarial', 0),
+(114, 4, 'usuarios/table', 'access', '', '', '1', '2016-10-11 17:23:37', 'colegio-notarial', 0),
+(115, 4, 'seguimientos/table', 'access', '', '', '1', '2016-10-11 17:23:42', 'colegio-notarial', 0),
+(116, 4, 'ordenes/table', 'access', '', '', '1', '2016-10-11 17:23:43', 'colegio-notarial', 0),
+(117, 4, 'ingresos/table', 'access', '', '', '1', '2016-10-11 17:23:44', 'colegio-notarial', 0),
+(118, 4, 'animales/table', 'access', '', '', '1', '2016-10-11 17:23:46', 'colegio-notarial', 0),
+(119, 4, 'empleados_marcaciones/table', 'access', '', '', '1', '2016-10-11 17:30:29', 'colegio-notarial', 0),
+(120, 4, 'empleados_marcaciones/table', 'access', '', '', '1', '2016-10-11 17:35:52', 'colegio-notarial', 0),
+(121, 4, 'empleados_marcaciones/table', 'access', '', '', '1', '2016-10-11 17:36:39', 'colegio-notarial', 0),
+(122, 4, 'empleados_marcaciones/abm', 'access', '', '', '1', '2016-10-11 17:36:45', 'colegio-notarial', 0),
+(123, 4, 'empleados_marcaciones/abm', 'access', '', '', '1', '2016-10-11 17:37:19', 'colegio-notarial', 0),
+(124, 4, 'empleados_marcaciones/abm', 'access', '', '', '1', '2016-10-11 17:37:30', 'colegio-notarial', 0);
 
 -- --------------------------------------------------------
 
@@ -23473,6 +23511,12 @@ ALTER TABLE `empleados_marcaciones`
   ADD PRIMARY KEY (`id_marcacion`);
 
 --
+-- Indices de la tabla `empleados_marcaciones_tipos`
+--
+ALTER TABLE `empleados_marcaciones_tipos`
+  ADD PRIMARY KEY (`id_tipo`);
+
+--
 -- Indices de la tabla `empleados_puestos`
 --
 ALTER TABLE `empleados_puestos`
@@ -23632,6 +23676,11 @@ ALTER TABLE `empleados`
 ALTER TABLE `empleados_marcaciones`
   MODIFY `id_marcacion` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT de la tabla `empleados_marcaciones_tipos`
+--
+ALTER TABLE `empleados_marcaciones_tipos`
+  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT de la tabla `empleados_puestos`
 --
 ALTER TABLE `empleados_puestos`
@@ -23650,7 +23699,7 @@ ALTER TABLE `ingresos`
 -- AUTO_INCREMENT de la tabla `logs_usuarios`
 --
 ALTER TABLE `logs_usuarios`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 --
 -- AUTO_INCREMENT de la tabla `menus`
 --

@@ -15,6 +15,7 @@ class Empleados_marcaciones extends MY_Controller
         $this->load->model($this->_model, 'model');  
         $this->load->model('m_empleados');
         $this->load->model('m_tambos_sectores');
+        $this->load->model('m_empleados_marcaciones_tipos');
     } 
     
     
@@ -31,13 +32,14 @@ class Empleados_marcaciones extends MY_Controller
     {                           
         $db['empleados']    = $this->m_empleados->getRegistros();
         $db['sectores']     = $this->m_tambos_sectores->getRegistros();
+        $db['tipos']        = $this->m_empleados_marcaciones_tipos->getRegistros();
         
         $db['campos']   = array(
             array('select',   'id_empleado',  array('apellidos', 'nombres'), $db['empleados']),
             array('select',   'id_sector',  'sector', $db['sectores']),
-            array('fecha_ingreso',    '', 'required'),
-            array('fecha_egreso',    '', 'required'),
-            array('comentario',    '', 'required'),
+            array('marcacion',    '', 'required'),
+            array('select',   'id_tipo',  'tipo', $db['tipos']),
+            array('comentario',    '', ''),
         );
         
         $this->armarAbm($id, $db);    

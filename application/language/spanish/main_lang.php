@@ -120,6 +120,7 @@ $lang['log']                = "Log";
 $lang['modificar']          = "Modificar";
 $lang['monto']              = "Monto";
 $lang['menu']               = "Menu";
+$lang['marcacion']          = "Marcación";
 
 /*--------------------------------------------------------------------------------  
     N

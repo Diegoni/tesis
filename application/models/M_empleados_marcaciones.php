@@ -13,6 +13,10 @@ class m_empleados_marcaciones extends MY_Model
             'table'     => 'tambos_sectores',
             'subjet'    => 'sector'
         ),
+        'id_tipo' => array(
+            'table'     => 'empleados_marcaciones_tipos',
+            'subjet'    => 'tipo'
+        ),
     );
 		
 	function __construct()
