@@ -41,10 +41,10 @@ class Animales extends MY_Controller
             array('select',   'id_madre',  'id_animal', $db['animales']),
             array('select',   'id_proveedor',  'proveedor', $db['proveedores']),
             array('fecha_ingreso',    '', 'required'),
-            array('fecha_nacimiento',    '', 'required'),
-            array('peso',    '', 'required'),
-            array('altura',    '', 'required'),
-            array('comentario',    '', 'required'),
+            array('fecha_nacimiento',    '', ''),
+            array('peso',      'onlyFloat', 'required'),
+            array('altura',    'onlyFloat', 'required'),
+            array('comentario',    '', ''),
             array('select',   'id_estado',  'estado', $db['animales_estados']),
         );
         

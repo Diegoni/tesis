@@ -970,7 +970,8 @@ function completarTag($campo, $value = NULL, $limit = NULL, $class = NULL)
 	$input = 'name="'.$campo.'" ';
 	$input .= 'id="'.$campo.'" '; 
 	//$input .= 'type="text" ';
-	if($class == NULL){
+	if($class == NULL)
+	{
 		$input .= 'class="form-control"  ';	
 	}else{
 		$input .= 'class="form-control '.$class.'"  ';
@@ -1170,7 +1171,10 @@ function setForm($campos, $registro_values, $registro, $id_table)
     $session        = $ci->session->userdata('logged_in');
     
     $fields_s = array(
-        'date'
+        'date',
+        'datetime',
+        'time',
+        'text'
     );
     $return = '';
     
@@ -1247,7 +1251,7 @@ function setForm($campos, $registro_values, $registro, $id_table)
                  $return .= '<div class="input-group">';                
             }
             
-            $return .= '<select name="'.$campo[1].'" id="'.$campo[1].'" class="form-control" '.$tags.'>';
+            $return .= '<select name="'.$campo[1].'" id="'.$campo[1].'" class="select2 form-control" '.$tags.'>';
             $return .= $$campo[1];
             $return .= '</select>';
             
@@ -1329,7 +1333,7 @@ function setForm($campos, $registro_values, $registro, $id_table)
                 {
                     if(in_array($fdata->type, $fields_s))
                     {
-                        $class_input = $fdata->type;
+                        $class_input = $fdata->type;   
                     }
                 }
             }
@@ -1345,7 +1349,26 @@ function setForm($campos, $registro_values, $registro, $id_table)
                 $valor_input =  $registro_values[$campo[0]];
             }
             
-            $return .= '<input '.completarTag($campo[0], $valor_input, $campo[1], $class_input).' '.$tags.'>';    
+            if($valor_input != '')
+            {
+               switch ($class_input) 
+                {
+                    case 'date':
+                        $valor_input = date('d-m-Y', strtotime($valor_input));
+                        break;
+                    case 'datetime':
+                        $valor_input = date('d-m-Y H:i:s', strtotime($valor_input));
+                        break;
+                } 
+            }
+            
+            if($class_input == 'text')
+            {
+                $return .= '<textarea '.completarTag($campo[0], $valor_input, $campo[1], $class_input).' '.$tags.' rows="5"></textarea>';
+            }else
+            {
+                $return .= '<input '.completarTag($campo[0], $valor_input, $campo[1], $class_input).' '.$tags.'>';    
+            }
             
             if($required == 1)
             {

@@ -36,6 +36,8 @@
  -------------------------------------------------------------------------------->
 
 <script>
+
+
 function getUnique(campo, valor, base)
 {
     if($("#agregar").length != 0) {
@@ -64,4 +66,12 @@ function getUnique(campo, valor, base)
         }
     });
 }
+$( function() {
+    $(".date").datepicker();
+    $(".datetime").datetimepicker();
+    $(".select2").select2();
+    $(".time").timepicker();
+    
+    CKEDITOR.replace('comentario');
+});
 </script>
