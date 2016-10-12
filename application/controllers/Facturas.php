@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Pedidos extends MY_Controller 
+class Facturas extends MY_Controller 
 {
-	protected $_subject = 'pedidos';
-    protected $_model   = 'm_pedidos';
+	protected $_subject = 'facturas';
+    protected $_model   = 'm_facturas';
     
     function __construct()
     {
@@ -14,12 +14,12 @@ class Pedidos extends MY_Controller
         
         $this->load->model($this->_model, 'model');  
         $this->load->model('m_clientes');
-        $this->load->model('m_empleados');
+        $this->load->model('m_pedidos');
         $this->load->model('m_condiciones_pagos');
         $this->load->model('m_formas_pagos');
         $this->load->model('m_origenes');
         $this->load->model('m_envios');
-        $this->load->model('m_pedidos_estados');
+        $this->load->model('m_facturas_estados');
     } 
     
     
@@ -35,18 +35,17 @@ class Pedidos extends MY_Controller
     function abm($id = NULL)
     {                           
         $db['clientes']         = $this->m_clientes->getRegistros();
-        $db['empleados']        = $this->m_empleados->getRegistros();
+        $db['pedidos']          = $this->m_pedidos->getRegistros();
         $db['condiciones']      = $this->m_condiciones_pagos->getRegistros();
         $db['formas']           = $this->m_formas_pagos->getRegistros();
         $db['origenes']         = $this->m_origenes->getRegistros();
         $db['envios']           = $this->m_envios->getRegistros();
-        $db['estados']          = $this->m_pedidos_estados->getRegistros();
+        $db['estados']          = $this->m_facturas_estados->getRegistros();
         
         $db['campos']   = array(
             array('select',   'id_cliente',  'cliente', $db['clientes']),
-            array('select',   'id_empleado',  'empleado', $db['empleados']),
+            array('select',   'id_pedido',   'id_pedido', $db['pedidos']),
             array('fecha_entrega',   '',  ''),
-            array('validez',   '',  ''),
             array('select',   'id_condicion_pago',  'condicion_pago', $db['condiciones']),
             array('select',   'id_forma_pago',  'forma_pago', $db['formas']),
             array('select',   'id_origen',  'origen', $db['origenes']),

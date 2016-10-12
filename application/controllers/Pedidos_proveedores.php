@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Pedidos extends MY_Controller 
+class Pedidos_proveedores extends MY_Controller 
 {
-	protected $_subject = 'pedidos';
-    protected $_model   = 'm_pedidos';
+	protected $_subject = 'pedidos_proveedores';
+    protected $_model   = 'm_pedidos_proveedores';
     
     function __construct()
     {
@@ -13,8 +13,7 @@ class Pedidos extends MY_Controller
         );
         
         $this->load->model($this->_model, 'model');  
-        $this->load->model('m_clientes');
-        $this->load->model('m_empleados');
+        $this->load->model('m_proveedores');
         $this->load->model('m_condiciones_pagos');
         $this->load->model('m_formas_pagos');
         $this->load->model('m_origenes');
@@ -34,8 +33,7 @@ class Pedidos extends MY_Controller
     
     function abm($id = NULL)
     {                           
-        $db['clientes']         = $this->m_clientes->getRegistros();
-        $db['empleados']        = $this->m_empleados->getRegistros();
+        $db['proveedores']      = $this->m_proveedores->getRegistros();
         $db['condiciones']      = $this->m_condiciones_pagos->getRegistros();
         $db['formas']           = $this->m_formas_pagos->getRegistros();
         $db['origenes']         = $this->m_origenes->getRegistros();
@@ -43,16 +41,15 @@ class Pedidos extends MY_Controller
         $db['estados']          = $this->m_pedidos_estados->getRegistros();
         
         $db['campos']   = array(
-            array('select',   'id_cliente',  'cliente', $db['clientes']),
-            array('select',   'id_empleado',  'empleado', $db['empleados']),
+            array('select',   'id_proveedor',  'proveedor', $db['proveedores']),
+            array('nro_proveedor',   '',  'required'),
             array('fecha_entrega',   '',  ''),
             array('validez',   '',  ''),
             array('select',   'id_condicion_pago',  'condicion_pago', $db['condiciones']),
             array('select',   'id_forma_pago',  'forma_pago', $db['formas']),
             array('select',   'id_origen',  'origen', $db['origenes']),
             array('select',   'id_envio',  'envio', $db['envios']),
-            array('comentario_publico',   '',  ''),
-            array('comentario_privado',   '',  ''),
+            array('comentario',   '',  ''),
         );
         
         $this->armarAbm($id, $db);

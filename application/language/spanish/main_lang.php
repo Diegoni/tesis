@@ -59,6 +59,7 @@ $lang['detalle']            = "Detalle";
 $lang['domicilio']          = "Domicilio";
 $lang['date_add']           = "Fecha alta";
 $lang['dia']                = "Día";
+$lang['dias']               = "Días";
 
 /*--------------------------------------------------------------------------------  
     E
@@ -92,6 +93,7 @@ $lang['final']              = "Final";
 $lang['formato']            = "Formato";
 $lang['forma_juridica']     = "Forma juridica";
 $lang['forma_pago']         = "Forma pago";
+$lang['factura']            = "Factura";
 
 /*--------------------------------------------------------------------------------  
     G
@@ -112,6 +114,8 @@ $lang['inicio']             = "Inicio";
 $lang['insert_ok']          = "Registro se agrego";
 $lang['informacion']        = "Información";
 $lang['id_animal']          = "ID Animal";
+$lang['id_pedido']          = "ID Pedido";
+$lang['id_factura']         = "ID Factura";
 
 /*--------------------------------------------------------------------------------  
     L
@@ -141,6 +145,7 @@ $lang['nuevo']              = "Nuevo";
 $lang['ok']                 = "OK";
 $lang['new_password']       = "Nueva Password";
 $lang['no_encontrada']      = "no encontrada";
+$lang['nro_proveedor']      = "Nro pedido proveedor";
 
 /*--------------------------------------------------------------------------------  
     O

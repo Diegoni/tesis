@@ -1,7 +1,7 @@
 <?php 
-class m_seguimientos_estados extends MY_Model 
+class m_facturas_estados extends MY_Model 
 {		
-	protected $_tablename	= 'seguimientos_estados';
+	protected $_tablename	= 'facturas_estados';
 	protected $_id_table	= 'id_estado';
 	protected $_order		= 'estado';
 	protected $_relation    =  '';
