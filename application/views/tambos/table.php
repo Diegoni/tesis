@@ -35,7 +35,7 @@ if($registros)
     {
         $registro = array(
             $row->tambo,
-            $row->apellidos.' '.$row->nombres,
+            $row->empleado,
             tableUpd($subjet, $row->id_tambo),
         );
         

@@ -4,8 +4,7 @@
  --------------------------------------------------------------------------------*/
  
 $cabeceras = array(
-    lang('apellido'),
-    lang('nombre'),
+    lang('empleado'),
     lang('puesto'),
     lang('opciones'),
 );
@@ -35,8 +34,7 @@ if($registros)
     foreach ($registros as $row) 
     {
         $registro = array(
-            $row->apellidos,
-            $row->nombres,
+            $row->empleado,
             $row->puesto,
             tableUpd($subjet, $row->id_empleado),
         );

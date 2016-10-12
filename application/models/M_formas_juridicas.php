@@ -1,9 +1,9 @@
 <?php 
-class m_empleados_marcaciones_tipos extends MY_Model 
+class m_formas_juridicas extends MY_Model 
 {		
-	protected $_tablename	= 'empleados_marcaciones_tipos';
-	protected $_id_table	= 'id_tipo';
-	protected $_order		= 'tipo';
+	protected $_tablename	= 'formas_juridicas';
+	protected $_id_table	= 'id_forma_juridica';
+	protected $_order		= 'forma_juridica';
 	protected $_relation    =  '';
 		
 	function __construct()

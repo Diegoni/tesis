@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Tambos extends MY_Controller 
+class Proveedores extends MY_Controller 
 {
-	protected $_subject = 'tambos';
-    protected $_model   = 'm_tambos';
+	protected $_subject = 'proveedores';
+    protected $_model   = 'm_proveedores';
     
     function __construct()
     {
@@ -12,10 +12,12 @@ class Tambos extends MY_Controller
             $model      = $this->_model 
         );
         
-        $this->load->model($this->_model, 'model');
-        $this->load->model('m_localidades');    
-        $this->load->model('m_provincias');
+        $this->load->model($this->_model, 'model');  
+        $this->load->model('m_proveedores_tipos');
+        $this->load->model('m_formas_juridicas');
         $this->load->model('m_empleados');
+        $this->load->model('m_localidades');
+        $this->load->model('m_provincias');
     } 
     
     
@@ -30,23 +32,28 @@ class Tambos extends MY_Controller
     
     function abm($id = NULL)
     {                           
+        $db['tipos']        = $this->m_proveedores_tipos->getRegistros();
+        $db['formas']       = $this->m_formas_juridicas->getRegistros();
+        $db['empleados']    = $this->m_empleados->getRegistros();
         $db['localidades']  = $this->m_localidades->getRegistros();
         $db['provincias']   = $this->m_provincias->getRegistros();
-        $db['empleados']    = $this->m_empleados->getRegistros();
         
         $db['campos']   = array(
-            array('tambo',    'onlyChar', 'required'),
-            //array('select',   'id_localidades',  'localidad', $db['localidades']),
-            array('select',   'id_provincia',  'provincia', $db['provincias']),
-            array('calle',    '', ''),
-            array('calle_numero',    '', ''),
+            array('proveedor',    '', 'required'),
+            array('select',   'id_tipo',  'tipo', $db['tipos']),
+            array('email',    '', ''),
             array('telefono',    '', ''),
             array('telefono_alternativo',    '', ''),
             array('web',    '', ''),
+            array('select',   'id_forma_juridica',  'forma_juridica', $db['formas']),
             array('select',   'id_empleado',  'empleado', $db['empleados']),
+            array('calle',    '', ''),
+            array('calle_numero',    '', ''),
+            array('select',   'id_provincia',  'provincia', $db['provincias']),
+            array('comentario',    '', ''),
         );
         
-        $this->armarAbm($id, $db);                     // Envia todo a la plantilla de la pagina
+        $this->armarAbm($id, $db);
     }
 }
 ?>

@@ -7,7 +7,7 @@ class m_tambos extends MY_Model
 	protected $_relation    =  array(
         'id_empleado' => array(
             'table'     => 'empleados',
-            'subjet'    => array('apellidos', 'nombres')
+            'subjet'    => 'empleado'
         ),
         'id_localidad' => array(
             'table'     => 'localidades',

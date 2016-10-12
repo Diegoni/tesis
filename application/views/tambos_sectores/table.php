@@ -39,7 +39,7 @@ if($registros)
             $row->tambo,
             $row->tipo,
             $row->sector,
-            $row->apellidos.' '.$row->nombres,
+            $row->empleado,
             tableUpd($subjet, $row->id_sector),
         );
         

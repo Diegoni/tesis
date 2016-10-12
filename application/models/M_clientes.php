@@ -1,12 +1,12 @@
 <?php 
-class m_proveedores extends MY_Model 
+class m_clientes extends MY_Model 
 {		
-	protected $_tablename	= 'proveedores';
-	protected $_id_table	= 'id_proveedor';
-	protected $_order		= 'id_proveedor';
+	protected $_tablename	= 'clientes';
+	protected $_id_table	= 'id_cliente';
+	protected $_order		= 'cliente';
 	protected $_relation    =  array(
         'id_tipo' => array(
-            'table'     => 'proveedores_tipos',
+            'table'     => 'clientes_tipos',
             'subjet'    => 'tipo'
         ),
         'id_forma_juridica' => array(

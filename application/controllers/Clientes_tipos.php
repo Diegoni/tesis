@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Tambos_sectores extends MY_Controller 
+class Clientes_tipos extends MY_Controller 
 {
-	protected $_subject = 'tambos_sectores';
-    protected $_model   = 'm_tambos_sectores';
+	protected $_subject = 'clientes_tipos';
+    protected $_model   = 'm_clientes_tipos';
     
     function __construct()
     {
@@ -12,10 +12,7 @@ class Tambos_sectores extends MY_Controller
             $model      = $this->_model 
         );
         
-        $this->load->model($this->_model, 'model');
-        $this->load->model('m_tambos');    
-        $this->load->model('m_tambos_sectores_tipos');
-        $this->load->model('m_empleados');
+        $this->load->model($this->_model, 'model');  
     } 
     
     
@@ -30,15 +27,8 @@ class Tambos_sectores extends MY_Controller
     
     function abm($id = NULL)
     {                           
-        $db['tambos']    = $this->m_tambos->getRegistros();
-        $db['tipos']     = $this->m_tambos_sectores_tipos->getRegistros();
-        $db['empleados']    = $this->m_empleados->getRegistros();
-        
         $db['campos']   = array(
-            array('select',   'id_tambo',  'tambo', $db['tambos']),
-            array('select',   'id_tipo',  'tipo', $db['tipos']),
-            array('sector',    '', 'required'),
-            array('select',   'id_empleado',  'empleado', $db['empleados']),
+            array('tipo',    'onlyChar', 'required'),
         );
         
         $this->armarAbm($id, $db);

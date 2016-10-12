@@ -1,7 +1,7 @@
 <?php 
-class m_empleados_marcaciones_tipos extends MY_Model 
+class m_clientes_tipos extends MY_Model 
 {		
-	protected $_tablename	= 'empleados_marcaciones_tipos';
+	protected $_tablename	= 'clientes_tipos';
 	protected $_id_table	= 'id_tipo';
 	protected $_order		= 'tipo';
 	protected $_relation    =  '';

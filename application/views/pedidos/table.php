@@ -4,10 +4,10 @@
  --------------------------------------------------------------------------------*/
  
 $cabeceras = array(
-    lang('nombre'),
-    lang('sector'),
-    lang('marcacion'),
-    lang('tipo'),        
+    lang('pedido'),
+    lang('cliente'),
+    lang('estado'),
+    lang('total'),
     lang('opciones'),
 );
 
@@ -36,11 +36,11 @@ if($registros)
     foreach ($registros as $row) 
     {
         $registro = array(
-            $row->empleado,
-            $row->sector,
-            $row->marcacion,
-            $row->tipo,
-            tableUpd($subjet, $row->id_marcacion),
+            $row->id_pedido,
+            $row->cliente,
+            $row->estado,
+            $row->total,
+            tableUpd($subjet, $row->id_pedido),
         );
         
         $html .= setTableContent($registro);    

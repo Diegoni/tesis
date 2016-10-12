@@ -35,7 +35,7 @@ class Empleados_marcaciones extends MY_Controller
         $db['tipos']        = $this->m_empleados_marcaciones_tipos->getRegistros();
         
         $db['campos']   = array(
-            array('select',   'id_empleado',  array('apellidos', 'nombres'), $db['empleados']),
+            array('select',   'id_empleado',  'empleado', $db['empleados']),
             array('select',   'id_sector',  'sector', $db['sectores']),
             array('marcacion',    '', 'required'),
             array('select',   'id_tipo',  'tipo', $db['tipos']),

@@ -3,7 +3,7 @@ class m_empleados extends MY_Model
 {		
 	protected $_tablename	= 'empleados';
 	protected $_id_table	= 'id_empleado';
-	protected $_order		= array('apellidos', 'nombres');
+	protected $_order		= 'empleado';
 	protected $_relation    = array(
         'id_puesto' => array(
             'table'     => 'empleados_puestos',

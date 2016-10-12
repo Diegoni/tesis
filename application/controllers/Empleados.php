@@ -38,8 +38,7 @@ class Empleados extends MY_Controller
         $db['campos']   = array(
             //array('select',     'id_encargado',  'apellidos', $db['empleados']),
             array('select',     'id_puesto',  'puesto', $db['puestos']),
-            array('apellidos',  'onlyChar', 'required'),
-            array('nombres',    'onlyChar', 'required'),
+            array('empleado',  'onlyChar', 'required'),
             array('dni',    'onlyInt', 'required'),
             array('telefono',    '', ''),
             array('telefono_alternativo', '', ''),

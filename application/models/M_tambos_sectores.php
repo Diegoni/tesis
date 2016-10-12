@@ -7,7 +7,7 @@ class m_tambos_sectores extends MY_Model
 	protected $_relation    =  array(
         'id_empleado' => array(
             'table'     => 'empleados',
-            'subjet'    => array('apellidos', 'nombres')
+            'subjet'    => 'empleado'
         ),
         'id_tambo' => array(
             'table'     => 'tambos',

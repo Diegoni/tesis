@@ -1,9 +1,9 @@
 <?php 
-class m_empleados_marcaciones_tipos extends MY_Model 
+class m_envios extends MY_Model 
 {		
-	protected $_tablename	= 'empleados_marcaciones_tipos';
-	protected $_id_table	= 'id_tipo';
-	protected $_order		= 'tipo';
+	protected $_tablename	= 'envios';
+	protected $_id_table	= 'id_envio';
+	protected $_order		= 'envio';
 	protected $_relation    =  '';
 		
 	function __construct()

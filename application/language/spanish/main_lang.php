@@ -39,11 +39,15 @@ $lang['codigo']             = "Codigo";
 $lang['contraseña']         = "Contraseña";
 $lang['confirm_pass']       = "Confirmar Password";
 $lang['comentario']         = "Comentario";
+$lang['comentario_publico'] = "Comentario público";
+$lang['comentario_privado'] = "Comentario privado";
 $lang['cod_post']           = "Codigo Postal";
 $lang['cuit']               = "Cuit";
 $lang['cargando']           = "Cargando";
 $lang['calle']              = "Calle";
 $lang['calle_numero']       = "Calle nro";
+$lang['cliente']            = "Cliente";
+$lang['condicion_pago']     = "Condición pago";
 
 /*--------------------------------------------------------------------------------  
     D
@@ -71,6 +75,8 @@ $lang['eliminar']           = "Eliminar";
 $lang['esquema']            = "Esquema";
 $lang['encargado']          = "Encargado";
 $lang['egreso']             = "Egreso";
+$lang['empleado']           = "Empleado";
+$lang['envio']              = "Envio";
 
 /*--------------------------------------------------------------------------------  
     F
@@ -80,9 +86,12 @@ $lang['fec_alta']           = "Fecha Alta";
 $lang['fecha_ingreso']      = "Fecha ingreso";
 $lang['fecha_egreso']       = "Fecha egreso";
 $lang['fecha_nacimiento']   = "Fecha nacimiento";
+$lang['fecha_entrega']      = "Fecha entrega";
 $lang['fecha']              = "Fecha";
 $lang['final']              = "Final";
 $lang['formato']            = "Formato";
+$lang['forma_juridica']     = "Forma juridica";
+$lang['forma_pago']         = "Forma pago";
 
 /*--------------------------------------------------------------------------------  
     G
@@ -141,6 +150,7 @@ $lang['olvidaste_pass']     = "Olvidaste tu pass?";
 $lang['opciones']           = "Opciones";
 $lang['orden']              = "Orden";
 $lang['ordene']             = "Ordeñe";
+$lang['origen']             = "Origen";
 
 /*--------------------------------------------------------------------------------  
     P
@@ -160,6 +170,7 @@ $lang['peso']               = "Peso";
 $lang['proveedor']          = "Proveedor";
 $lang['perfil']             = "Perfil";
 $lang['puesto']             = "Puesto";
+$lang['pedido']             = "Pedido";
 
 /*--------------------------------------------------------------------------------  
     R
@@ -210,6 +221,7 @@ $lang['url']                = "URL";
 $lang['valor']              = "Valor";
 $lang['ver']                = "Ver";
 $lang['version']            = "Versión";
+$lang['validez']            = "Validez";
 
 /*--------------------------------------------------------------------------------  
     W
