@@ -28,14 +28,13 @@ class Usuarios extends MY_Controller
     
     function abm($id = NULL)                             
     {
-        $db['roles']    = $this->m_roles->getRegistros();
+        $db['perfiles']    = $this->m_usuarios_perfiles->getRegistros();
                                    
         $db['campos']   = array(
             array('usuario',  'onlyChar', 'required'),
             array('nombre',   'onlyChar', ''),
             array('apellido', 'onlyChar', ''), 
-            array('select',   'id_rol',  'rol', $db['roles']), 
-            array('email',    '', ''), 
+            array('select',   'id_perfil',  'perfil', $db['perfiles'], 'required'),  
         );
         
         $this->armarAbm($id, $db);                     // Envia todo a la plantilla de la pagina

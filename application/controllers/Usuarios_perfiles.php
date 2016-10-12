@@ -32,8 +32,8 @@ class Usuarios_perfiles extends MY_Controller
             array('perfil',  array('unique', 'onlyChar'), 'required'),
         );
         
-        $db['usuarios_permisos']  = $this->m_usuarios_permisos->getRegistros($id, 'id_perfil');
-        $db['registros']       = $this->m_usuarios_permisos->getRegistros();
+        $db['usuarios_permisos']    = $this->m_usuarios_permisos->getRegistros($id, 'id_perfil');
+        $db['registros']            = $this->m_usuarios_permisos->getRegistros();
         
         $this->armarAbm($id, $db);
     }

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-10-2016 a las 21:28:44
+-- Tiempo de generación: 12-10-2016 a las 16:15:31
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.6.15
 
@@ -128,6 +128,75 @@ CREATE TABLE `animales_tipos` (
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `clientes`
+--
+
+CREATE TABLE `clientes` (
+  `id_cliente` int(11) NOT NULL,
+  `cliente` varchar(128) NOT NULL,
+  `id_tipo` int(11) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `telefono` varchar(64) NOT NULL,
+  `telefono_alternativo` varchar(64) NOT NULL,
+  `web` varchar(128) NOT NULL,
+  `id_forma_juridica` int(11) NOT NULL,
+  `id_empleado` int(11) NOT NULL,
+  `calle` varchar(64) NOT NULL,
+  `calle_nro` int(11) NOT NULL,
+  `id_localidad` int(11) NOT NULL,
+  `id_provincia` int(11) NOT NULL,
+  `comentario` text NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `clientes_tipos`
+--
+
+CREATE TABLE `clientes_tipos` (
+  `id_tipo` int(11) NOT NULL,
+  `tipo` varchar(64) NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `condiciones_pago`
+--
+
+CREATE TABLE `condiciones_pago` (
+  `id_condicion` int(11) NOT NULL,
+  `condicion` varchar(128) NOT NULL,
+  `dias` int(11) NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `condiciones_pago`
+--
+
+INSERT INTO `condiciones_pago` (`id_condicion`, `condicion`, `dias`, `user_add`, `user_upd`, `date_add`, `date_upd`, `eliminado`) VALUES
+(1, 'A la recepción de la factura', 0, 1, 1, '2016-10-12 00:00:00', '2016-10-12 00:00:00', 0),
+(2, 'Pago a 30 días', 30, 1, 1, '2016-10-12 00:00:00', '2016-10-12 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -293,6 +362,173 @@ INSERT INTO `empleados_turnos` (`id_turno`, `id_puesto`, `id_sector`, `id_dia`, 
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `envios`
+--
+
+CREATE TABLE `envios` (
+  `id_envio` int(11) NOT NULL,
+  `envio` varchar(64) NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `facturas`
+--
+
+CREATE TABLE `facturas` (
+  `id_factura` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL,
+  `id_pedido` int(11) NOT NULL,
+  `fecha_entrega` date NOT NULL,
+  `id_condicion_pago` int(11) NOT NULL,
+  `id_forma_pago` int(11) NOT NULL,
+  `id_origen` int(11) NOT NULL,
+  `id_envio` int(11) NOT NULL,
+  `comentario_publico` text NOT NULL,
+  `comentario_privado` text NOT NULL,
+  `id_estado` int(11) NOT NULL,
+  `total` decimal(10,2) NOT NULL,
+  `total_sin_iva` decimal(10,2) NOT NULL,
+  `total_iva` decimal(10,2) NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `facturas_estados`
+--
+
+CREATE TABLE `facturas_estados` (
+  `id_estado` int(11) NOT NULL,
+  `estado` varchar(64) NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `facturas_lineas`
+--
+
+CREATE TABLE `facturas_lineas` (
+  `id_linea` int(11) NOT NULL,
+  `id_producto` int(11) NOT NULL,
+  `cantidad` decimal(10,2) NOT NULL,
+  `precio` decimal(10,2) NOT NULL,
+  `iva` decimal(10,2) NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `facturas_lineas_estados`
+--
+
+CREATE TABLE `facturas_lineas_estados` (
+  `id_estado` int(11) NOT NULL,
+  `estado` varchar(64) NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `facturas_proveedores`
+--
+
+CREATE TABLE `facturas_proveedores` (
+  `id_factura` int(11) NOT NULL,
+  `id_proveedor` int(11) NOT NULL,
+  `id_pedido` int(11) NOT NULL,
+  `nro_factura` int(11) NOT NULL,
+  `fecha_entrega` date NOT NULL,
+  `id_condicion_pago` int(11) NOT NULL,
+  `id_forma_pago` int(11) NOT NULL,
+  `id_origen` int(11) NOT NULL,
+  `id_envio` int(11) NOT NULL,
+  `comentario_publico` text NOT NULL,
+  `comentario_privado` text NOT NULL,
+  `id_estado` int(11) NOT NULL,
+  `total` decimal(10,2) NOT NULL,
+  `total_sin_iva` decimal(10,2) NOT NULL,
+  `total_iva` decimal(10,2) NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `facturas_proveedores_lineas`
+--
+
+CREATE TABLE `facturas_proveedores_lineas` (
+  `id_linea` int(11) NOT NULL,
+  `id_producto` int(11) NOT NULL,
+  `cantidad` decimal(10,2) NOT NULL,
+  `precio` decimal(10,2) NOT NULL,
+  `iva` decimal(10,2) NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `formas_pagos`
+--
+
+CREATE TABLE `formas_pagos` (
+  `id_forma` int(11) NOT NULL,
+  `forma` varchar(64) NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `formas_pagos`
+--
+
+INSERT INTO `formas_pagos` (`id_forma`, `forma`, `user_add`, `user_upd`, `date_add`, `date_upd`, `eliminado`) VALUES
+(1, 'Cheque', 1, 1, '2016-10-12 00:00:00', '2016-10-12 00:00:00', 0),
+(2, 'Efectivo', 1, 1, '2016-10-12 00:00:00', '2016-10-12 00:00:00', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `ingresos`
 --
 
@@ -302,6 +538,23 @@ CREATE TABLE `ingresos` (
   `id_sector` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
   `eliminado` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ivas`
+--
+
+CREATE TABLE `ivas` (
+  `id_iva` int(11) NOT NULL,
+  `iva` varchar(64) NOT NULL,
+  `monto` decimal(10,2) NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -23300,7 +23553,20 @@ INSERT INTO `logs_usuarios` (`id_log`, `id_nivel`, `log`, `accion`, `tabla`, `re
 (311, 4, 'menus/table', 'access', '', '', '1', '2016-10-11 21:12:57', 'colegio-notarial', 0),
 (312, 3, 'logout', 'logout', '', '', '1', '2016-10-11 21:13:06', 'colegio-notarial', 0),
 (313, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-11 21:13:10', 'colegio-notarial', 0),
-(314, 4, 'animales/table', 'access', '', '', '1', '2016-10-11 21:13:10', 'colegio-notarial', 0);
+(314, 4, 'animales/table', 'access', '', '', '1', '2016-10-11 21:13:10', 'colegio-notarial', 0),
+(315, 4, 'animales/table', 'access', '', '', '1', '2016-10-11 21:30:33', 'colegio-notarial', 0),
+(316, 4, 'animales/table', 'access', '', '', '1', '2016-10-11 21:30:36', 'colegio-notarial', 0),
+(317, 4, 'animales/abm', 'access', '', '', '1', '2016-10-11 21:30:39', 'colegio-notarial', 0),
+(318, 4, 'animales_tipos/table', 'access', '', '', '1', '2016-10-11 21:31:29', 'colegio-notarial', 0),
+(319, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-12 14:31:22', 'colegio-notarial', 0),
+(320, 4, 'animales/table', 'access', '', '', '1', '2016-10-12 14:31:23', 'colegio-notarial', 0),
+(321, 4, 'usuarios/table', 'access', '', '', '1', '2016-10-12 14:31:30', 'colegio-notarial', 0),
+(322, 4, 'usuarios/abm', 'access', '', '', '1', '2016-10-12 14:34:10', 'colegio-notarial', 0),
+(323, 4, 'usuarios/abm', 'access', '', '', '1', '2016-10-12 14:34:29', 'colegio-notarial', 0),
+(324, 4, 'usuarios/abm', 'access', '', '', '1', '2016-10-12 14:34:44', 'colegio-notarial', 0),
+(325, 4, 'usuarios/table', 'access', '', '', '1', '2016-10-12 14:34:55', 'colegio-notarial', 0),
+(326, 4, 'usuarios_perfiles/table', 'access', '', '', '1', '2016-10-12 14:34:56', 'colegio-notarial', 0),
+(327, 4, 'usuarios_perfiles/abm', 'access', '', '', '1', '2016-10-12 14:34:59', 'colegio-notarial', 0);
 
 -- --------------------------------------------------------
 
@@ -23383,16 +23649,275 @@ CREATE TABLE `ordenes` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `origenes`
+--
+
+CREATE TABLE `origenes` (
+  `id_origen` int(11) NOT NULL,
+  `origen` varchar(64) NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pagos_clientes`
+--
+
+CREATE TABLE `pagos_clientes` (
+  `id_pago` int(11) NOT NULL,
+  `id_factura` int(11) NOT NULL,
+  `id_forma_pago` int(11) NOT NULL,
+  `total` decimal(10,2) NOT NULL,
+  `comentario` text NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pagos_proveedores`
+--
+
+CREATE TABLE `pagos_proveedores` (
+  `id_pago` int(11) NOT NULL,
+  `id_factura` int(11) NOT NULL,
+  `id_forma_pago` int(11) NOT NULL,
+  `total` decimal(10,2) NOT NULL,
+  `comentario` text NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pedidos`
+--
+
+CREATE TABLE `pedidos` (
+  `id_pedido` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL,
+  `fecha_entrega` date NOT NULL,
+  `validez` date NOT NULL,
+  `id_condicion_pago` int(11) NOT NULL,
+  `id_forma_pago` int(11) NOT NULL,
+  `id_origen` int(11) NOT NULL,
+  `id_envio` int(11) NOT NULL,
+  `comentario_publico` text NOT NULL,
+  `comentario_privado` text NOT NULL,
+  `id_estado` int(11) NOT NULL,
+  `total` decimal(10,2) NOT NULL,
+  `total_sin_iva` decimal(10,2) NOT NULL,
+  `total_iva` decimal(10,2) NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pedidos_estados`
+--
+
+CREATE TABLE `pedidos_estados` (
+  `id_estado` int(11) NOT NULL,
+  `estado` varchar(64) NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pedidos_lineas`
+--
+
+CREATE TABLE `pedidos_lineas` (
+  `id_linea` int(11) NOT NULL,
+  `id_producto` int(11) NOT NULL,
+  `cantidad` decimal(10,2) NOT NULL,
+  `descuento` decimal(10,2) NOT NULL,
+  `precio` decimal(10,2) NOT NULL,
+  `iva` decimal(10,2) NOT NULL,
+  `id_estado` int(11) NOT NULL,
+  `comentario` text NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pedidos_lineas_estados`
+--
+
+CREATE TABLE `pedidos_lineas_estados` (
+  `id_estado` int(11) NOT NULL,
+  `estado` varchar(64) NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pedidos_proveedores`
+--
+
+CREATE TABLE `pedidos_proveedores` (
+  `id_pedido` int(11) NOT NULL,
+  `id_proveedor` int(11) NOT NULL,
+  `nro_proveedor` varchar(64) NOT NULL,
+  `fecha_entrega` date NOT NULL,
+  `validez` date NOT NULL,
+  `id_condicion_pago` int(11) NOT NULL,
+  `id_forma_pago` int(11) NOT NULL,
+  `id_origen` int(11) NOT NULL,
+  `id_envio` int(11) NOT NULL,
+  `comentario` text NOT NULL,
+  `id_estado` int(11) NOT NULL,
+  `total` decimal(10,2) NOT NULL,
+  `total_sin_iva` decimal(10,2) NOT NULL,
+  `total_iva` decimal(10,2) NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pedidos_proveedores_lineas`
+--
+
+CREATE TABLE `pedidos_proveedores_lineas` (
+  `id_linea` int(11) NOT NULL,
+  `id_producto` int(11) NOT NULL,
+  `cantidad` decimal(10,2) NOT NULL,
+  `descuento` decimal(10,2) NOT NULL,
+  `precio` decimal(10,2) NOT NULL,
+  `iva` decimal(10,2) NOT NULL,
+  `id_estado` int(11) NOT NULL,
+  `comentario` text NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `productos`
+--
+
+CREATE TABLE `productos` (
+  `id_producto` int(11) NOT NULL,
+  `producto` varchar(128) NOT NULL,
+  `codigo_barra` varchar(128) NOT NULL,
+  `comentario` text NOT NULL,
+  `stock` decimal(10,2) NOT NULL,
+  `stock_minimo` decimal(10,2) NOT NULL,
+  `stock_deseado` decimal(10,2) NOT NULL,
+  `id_tipo` int(11) NOT NULL,
+  `peso` decimal(10,2) NOT NULL,
+  `longitud` decimal(10,2) NOT NULL,
+  `superficie` decimal(10,2) NOT NULL,
+  `volumen` decimal(10,2) NOT NULL,
+  `precio_venta` decimal(10,2) NOT NULL,
+  `precio_compra` decimal(10,2) NOT NULL,
+  `id_iva` int(11) NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `productos_tipos`
+--
+
+CREATE TABLE `productos_tipos` (
+  `id_tipo` int(11) NOT NULL,
+  `tipo` varchar(64) NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `proveedores`
 --
 
 CREATE TABLE `proveedores` (
   `id_proveedor` int(11) NOT NULL,
   `proveedor` varchar(128) NOT NULL,
-  `date_add` datetime NOT NULL,
-  `date_upd` datetime NOT NULL,
+  `id_tipo` int(11) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `telefono` varchar(64) NOT NULL,
+  `telefono_alternativo` varchar(64) NOT NULL,
+  `web` varchar(128) NOT NULL,
+  `id_forma_juridica` int(11) NOT NULL,
+  `id_empleado` int(11) NOT NULL,
+  `calle` varchar(64) NOT NULL,
+  `calle_nro` int(11) NOT NULL,
+  `id_localidad` int(11) NOT NULL,
+  `id_provincia` int(11) NOT NULL,
+  `comentario` text NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `proveedores_tipos`
+--
+
+CREATE TABLE `proveedores_tipos` (
+  `id_tipo` int(11) NOT NULL,
+  `tipo` varchar(64) NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -23726,6 +24251,24 @@ ALTER TABLE `animales_tipos`
   ADD PRIMARY KEY (`id_tipo`);
 
 --
+-- Indices de la tabla `clientes`
+--
+ALTER TABLE `clientes`
+  ADD PRIMARY KEY (`id_cliente`);
+
+--
+-- Indices de la tabla `clientes_tipos`
+--
+ALTER TABLE `clientes_tipos`
+  ADD PRIMARY KEY (`id_tipo`);
+
+--
+-- Indices de la tabla `condiciones_pago`
+--
+ALTER TABLE `condiciones_pago`
+  ADD PRIMARY KEY (`id_condicion`);
+
+--
 -- Indices de la tabla `dias`
 --
 ALTER TABLE `dias`
@@ -23762,10 +24305,64 @@ ALTER TABLE `empleados_turnos`
   ADD PRIMARY KEY (`id_turno`);
 
 --
+-- Indices de la tabla `envios`
+--
+ALTER TABLE `envios`
+  ADD PRIMARY KEY (`id_envio`);
+
+--
+-- Indices de la tabla `facturas`
+--
+ALTER TABLE `facturas`
+  ADD PRIMARY KEY (`id_factura`);
+
+--
+-- Indices de la tabla `facturas_estados`
+--
+ALTER TABLE `facturas_estados`
+  ADD PRIMARY KEY (`id_estado`);
+
+--
+-- Indices de la tabla `facturas_lineas`
+--
+ALTER TABLE `facturas_lineas`
+  ADD PRIMARY KEY (`id_linea`);
+
+--
+-- Indices de la tabla `facturas_lineas_estados`
+--
+ALTER TABLE `facturas_lineas_estados`
+  ADD PRIMARY KEY (`id_estado`);
+
+--
+-- Indices de la tabla `facturas_proveedores`
+--
+ALTER TABLE `facturas_proveedores`
+  ADD PRIMARY KEY (`id_factura`);
+
+--
+-- Indices de la tabla `facturas_proveedores_lineas`
+--
+ALTER TABLE `facturas_proveedores_lineas`
+  ADD PRIMARY KEY (`id_linea`);
+
+--
+-- Indices de la tabla `formas_pagos`
+--
+ALTER TABLE `formas_pagos`
+  ADD PRIMARY KEY (`id_forma`);
+
+--
 -- Indices de la tabla `ingresos`
 --
 ALTER TABLE `ingresos`
   ADD PRIMARY KEY (`id_ingreso`);
+
+--
+-- Indices de la tabla `ivas`
+--
+ALTER TABLE `ivas`
+  ADD PRIMARY KEY (`id_iva`);
 
 --
 -- Indices de la tabla `localidades`
@@ -23799,10 +24396,82 @@ ALTER TABLE `ordenes`
   ADD PRIMARY KEY (`id_ordene`);
 
 --
+-- Indices de la tabla `origenes`
+--
+ALTER TABLE `origenes`
+  ADD PRIMARY KEY (`id_origen`);
+
+--
+-- Indices de la tabla `pagos_clientes`
+--
+ALTER TABLE `pagos_clientes`
+  ADD PRIMARY KEY (`id_pago`);
+
+--
+-- Indices de la tabla `pagos_proveedores`
+--
+ALTER TABLE `pagos_proveedores`
+  ADD PRIMARY KEY (`id_pago`);
+
+--
+-- Indices de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD PRIMARY KEY (`id_pedido`);
+
+--
+-- Indices de la tabla `pedidos_estados`
+--
+ALTER TABLE `pedidos_estados`
+  ADD PRIMARY KEY (`id_estado`);
+
+--
+-- Indices de la tabla `pedidos_lineas`
+--
+ALTER TABLE `pedidos_lineas`
+  ADD PRIMARY KEY (`id_linea`);
+
+--
+-- Indices de la tabla `pedidos_lineas_estados`
+--
+ALTER TABLE `pedidos_lineas_estados`
+  ADD PRIMARY KEY (`id_estado`);
+
+--
+-- Indices de la tabla `pedidos_proveedores`
+--
+ALTER TABLE `pedidos_proveedores`
+  ADD PRIMARY KEY (`id_pedido`);
+
+--
+-- Indices de la tabla `pedidos_proveedores_lineas`
+--
+ALTER TABLE `pedidos_proveedores_lineas`
+  ADD PRIMARY KEY (`id_linea`);
+
+--
+-- Indices de la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD PRIMARY KEY (`id_producto`);
+
+--
+-- Indices de la tabla `productos_tipos`
+--
+ALTER TABLE `productos_tipos`
+  ADD PRIMARY KEY (`id_tipo`);
+
+--
 -- Indices de la tabla `proveedores`
 --
 ALTER TABLE `proveedores`
   ADD PRIMARY KEY (`id_proveedor`);
+
+--
+-- Indices de la tabla `proveedores_tipos`
+--
+ALTER TABLE `proveedores_tipos`
+  ADD PRIMARY KEY (`id_tipo`);
 
 --
 -- Indices de la tabla `provincias`
@@ -23894,6 +24563,16 @@ ALTER TABLE `animales_estados`
 ALTER TABLE `animales_tipos`
   MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT de la tabla `clientes`
+--
+ALTER TABLE `clientes`
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `condiciones_pago`
+--
+ALTER TABLE `condiciones_pago`
+  MODIFY `id_condicion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT de la tabla `dias`
 --
 ALTER TABLE `dias`
@@ -23924,6 +24603,16 @@ ALTER TABLE `empleados_puestos`
 ALTER TABLE `empleados_turnos`
   MODIFY `id_turno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT de la tabla `facturas_estados`
+--
+ALTER TABLE `facturas_estados`
+  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `formas_pagos`
+--
+ALTER TABLE `formas_pagos`
+  MODIFY `id_forma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT de la tabla `ingresos`
 --
 ALTER TABLE `ingresos`
@@ -23932,7 +24621,7 @@ ALTER TABLE `ingresos`
 -- AUTO_INCREMENT de la tabla `logs_usuarios`
 --
 ALTER TABLE `logs_usuarios`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=315;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=328;
 --
 -- AUTO_INCREMENT de la tabla `menus`
 --
@@ -23944,10 +24633,25 @@ ALTER TABLE `menus`
 ALTER TABLE `ordenes`
   MODIFY `id_ordene` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `proveedores`
+-- AUTO_INCREMENT de la tabla `pagos_clientes`
 --
-ALTER TABLE `proveedores`
-  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `pagos_clientes`
+  MODIFY `id_pago` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `pedidos_lineas`
+--
+ALTER TABLE `pedidos_lineas`
+  MODIFY `id_linea` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `productos`
+--
+ALTER TABLE `productos`
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `seguimientos`
 --
