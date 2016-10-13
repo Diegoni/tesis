@@ -1354,10 +1354,10 @@ function setForm($campos, $registro_values, $registro, $id_table)
                switch ($class_input) 
                 {
                     case 'date':
-                        $valor_input = date('d-m-Y', strtotime($valor_input));
+                        $valor_input = date('Y-m-d', strtotime($valor_input));
                         break;
                     case 'datetime':
-                        $valor_input = date('d-m-Y H:i:s', strtotime($valor_input));
+                        $valor_input = date('Y-m-d H:i:s', strtotime($valor_input));
                         break;
                 } 
             }

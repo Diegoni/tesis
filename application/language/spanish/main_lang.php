@@ -146,7 +146,7 @@ $lang['ok']                 = "OK";
 $lang['new_password']       = "Nueva Password";
 $lang['no_encontrada']      = "no encontrada";
 $lang['nro_proveedor']      = "Nro pedido proveedor";
-$lang['nro_factura']        = "Nro factura proveedor";
+$lang['nro_factura']        = "Nro factura   proveedor";
 
 
 /*--------------------------------------------------------------------------------  
