@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Seguimientos extends MY_Controller 
+class Animales_permisos extends MY_Controller 
 {
-	protected $_subject = 'seguimientos';
-    protected $_model   = 'm_seguimientos';
+	protected $_subject = 'animales_permisos';
+    protected $_model   = 'm_animales_permisos';
     
     function __construct()
     {
@@ -12,31 +12,30 @@ class Seguimientos extends MY_Controller
             $model      = $this->_model 
         );
         
-        $this->load->model($this->_model, 'model');  
+        $this->load->model($this->_model, 'model');
         $this->load->model('m_animales');
-        $this->load->model('m_seguimientos_estados');
+        $this->load->model('m_tambos_sectores');
     } 
     
     
 /*--------------------------------------------------------------------------------- 
 -----------------------------------------------------------------------------------  
             
-       Ejemplo de abm
+       ABM de animales
   
 ----------------------------------------------------------------------------------- 
 ---------------------------------------------------------------------------------*/   
     
     
     function abm($id = NULL)
-    {                           
-        $db['animales']    = $this->m_animales->getRegistros();
-        $db['estados']    = $this->m_seguimientos_estados->getRegistros();
-        
+    {
+        $db['animales']   = $this->m_animales->getRegistros();
+        $db['sectores']   = $this->m_tambos_sectores->getRegistros();
+                                         
         $db['campos']   = array(
-            array('select',   'id_animal',  'id_animal', $db['animales'], 'required'),
-            array('select',   'id_estado',  'estado', $db['estados'], 'required'),
-            array('titulo', '', 'required'),
-            array('comentario', '', ''),
+            array('select',   'id_animal',  'id_animal', $db['animales']),
+            array('select',   'id_sector',  'sector', $db['sectores']),
+            array('comentario',    '', ''),
         );
         
         $this->armarAbm($id, $db);                     // Envia todo a la plantilla de la pagina

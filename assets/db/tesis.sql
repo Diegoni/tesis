@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-10-2016 a las 17:33:41
+-- Tiempo de generación: 13-10-2016 a las 21:17:09
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.6.15
 
@@ -116,6 +116,60 @@ INSERT INTO `animales_estados` (`id_estado`, `estado`, `date_add`, `date_upd`, `
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `animales_permisos`
+--
+
+CREATE TABLE `animales_permisos` (
+  `id_permiso` int(11) NOT NULL,
+  `id_animal` int(11) NOT NULL,
+  `id_sector` int(11) NOT NULL,
+  `comentario` text NOT NULL,
+  `ingreso` tinyint(4) NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `animales_permisos`
+--
+
+INSERT INTO `animales_permisos` (`id_permiso`, `id_animal`, `id_sector`, `comentario`, `ingreso`, `user_add`, `user_upd`, `date_add`, `date_upd`, `eliminado`) VALUES
+(1, 1, 4, '<p>Aumentar el peso&nbsp;</p>\r\n', 0, 1, 1, '2016-10-13 20:52:55', '2016-10-13 20:52:55', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `animales_rutinas`
+--
+
+CREATE TABLE `animales_rutinas` (
+  `id_rutina` int(11) NOT NULL,
+  `id_tipo` int(11) NOT NULL,
+  `id_sector` int(11) NOT NULL,
+  `id_dia` int(11) NOT NULL,
+  `inicio` time NOT NULL,
+  `final` time NOT NULL,
+  `comentario` text NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `animales_rutinas`
+--
+
+INSERT INTO `animales_rutinas` (`id_rutina`, `id_tipo`, `id_sector`, `id_dia`, `inicio`, `final`, `comentario`, `user_add`, `user_upd`, `date_add`, `date_upd`, `eliminado`) VALUES
+(1, 1, 2, 1, '08:00:00', '10:00:00', '', 1, 1, '2016-10-13 20:50:29', '2016-10-13 20:50:29', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `animales_tipos`
 --
 
@@ -128,6 +182,13 @@ CREATE TABLE `animales_tipos` (
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `animales_tipos`
+--
+
+INSERT INTO `animales_tipos` (`id_tipo`, `tipo`, `date_add`, `date_upd`, `user_add`, `user_upd`, `eliminado`) VALUES
+(1, 'Vacuno criollo', '2016-10-13 20:49:26', '2016-10-13 20:49:26', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -602,6 +663,13 @@ CREATE TABLE `ingresos` (
   `date_add` datetime NOT NULL,
   `eliminado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `ingresos`
+--
+
+INSERT INTO `ingresos` (`id_ingreso`, `id_animal`, `id_sector`, `date_add`, `eliminado`) VALUES
+(1, 1, 1, '2016-10-13 20:28:59', 0);
 
 -- --------------------------------------------------------
 
@@ -23931,7 +23999,125 @@ INSERT INTO `logs_usuarios` (`id_log`, `id_nivel`, `log`, `accion`, `tabla`, `re
 (625, 4, 'pagos_proveedores/table', 'access', '', '', '1', '2016-10-13 17:30:59', 'colegio-notarial', 0),
 (626, 4, 'pagos_proveedores/table', 'access', '', '', '1', '2016-10-13 17:31:21', 'colegio-notarial', 0),
 (627, 4, 'pagos_proveedores/table', 'access', '', '', '1', '2016-10-13 17:32:28', 'colegio-notarial', 0),
-(628, 4, 'pedidos_proveedores/table', 'access', '', '', '1', '2016-10-13 17:33:27', 'colegio-notarial', 0);
+(628, 4, 'pedidos_proveedores/table', 'access', '', '', '1', '2016-10-13 17:33:27', 'colegio-notarial', 0),
+(629, 4, 'pedidos_proveedores/abm', 'access', '', '', '1', '2016-10-13 17:49:29', 'colegio-notarial', 0),
+(630, 4, 'pedidos_proveedores/abm', 'access', '', '', '1', '2016-10-13 17:51:43', 'colegio-notarial', 0),
+(631, 4, '{"id_pedido":"1","id_proveedor":"1","nro_proveedor":"8595","fecha_entrega":"2016-10-13","validez":"2016-10-13","id_condicion_pago":"1","id_forma_pago":"1","id_origen":"3","id_envio":"1","comentario":"","date_upd":"2016-10-13 17:51:50","user_upd":"1"}', 'update', 'pedidos_proveedores', '1', '1', '2016-10-13 17:51:50', 'colegio-notarial', 0),
+(632, 4, 'pedidos_proveedores/table', 'access', '', '', '1', '2016-10-13 17:51:50', 'colegio-notarial', 0),
+(633, 4, 'pedidos_proveedores/abm', 'access', '', '', '1', '2016-10-13 17:51:53', 'colegio-notarial', 0),
+(634, 4, 'pedidos_proveedores/abm', 'access', '', '', '1', '2016-10-13 17:52:36', 'colegio-notarial', 0),
+(635, 4, '{"id_pedido":"1","id_proveedor":"1","nro_proveedor":"8595","fecha_entrega":"2016-10-13","validez":"2016-10-14","id_condicion_pago":"1","id_forma_pago":"1","id_origen":"3","id_envio":"1","comentario":"","date_upd":"2016-10-13 17:53:30","user_upd":"1"}', 'update', 'pedidos_proveedores', '1', '1', '2016-10-13 17:53:30', 'colegio-notarial', 0),
+(636, 4, 'pedidos_proveedores/table', 'access', '', '', '1', '2016-10-13 17:53:30', 'colegio-notarial', 0),
+(637, 4, 'pedidos_proveedores/abm', 'access', '', '', '1', '2016-10-13 17:53:33', 'colegio-notarial', 0),
+(638, 4, 'animales/table', 'access', '', '', '1', '2016-10-13 17:54:01', 'colegio-notarial', 0),
+(639, 4, 'animales/abm', 'access', '', '', '1', '2016-10-13 17:54:03', 'colegio-notarial', 0),
+(640, 4, 'animales/table', 'access', '', '', '1', '2016-10-13 17:54:26', 'colegio-notarial', 0),
+(641, 3, 'logout', 'logout', '', '', 'end_session', '2016-10-13 20:10:58', 'colegio-notarial', 0),
+(642, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-13 20:11:05', 'colegio-notarial', 0),
+(643, 4, 'animales/table', 'access', '', '', '1', '2016-10-13 20:11:06', 'colegio-notarial', 0),
+(644, 4, 'ingresos/table', 'access', '', '', '1', '2016-10-13 20:11:11', 'colegio-notarial', 0),
+(645, 4, 'ordenes/table', 'access', '', '', '1', '2016-10-13 20:13:04', 'colegio-notarial', 0),
+(646, 4, 'seguimientos/table', 'access', '', '', '1', '2016-10-13 20:13:05', 'colegio-notarial', 0),
+(647, 4, 'seguimientos/abm', 'access', '', '', '1', '2016-10-13 20:13:10', 'colegio-notarial', 0),
+(648, 4, 'seguimientos_estados/table', 'access', '', '', '1', '2016-10-13 20:13:23', 'colegio-notarial', 0),
+(649, 4, 'usuarios/table', 'access', '', '', '1', '2016-10-13 20:13:34', 'colegio-notarial', 0),
+(650, 4, 'usuarios/abm', 'access', '', '', '1', '2016-10-13 20:13:35', 'colegio-notarial', 0),
+(651, 4, 'usuarios_perfiles/table', 'access', '', '', '1', '2016-10-13 20:13:46', 'colegio-notarial', 0),
+(652, 4, 'usuarios_perfiles/abm', 'access', '', '', '1', '2016-10-13 20:13:48', 'colegio-notarial', 0),
+(653, 4, 'usuarios_perfiles/abm', 'access', '', '', '1', '2016-10-13 20:15:37', 'colegio-notarial', 0),
+(654, 4, 'usuarios_perfiles/abm', 'access', '', '', '1', '2016-10-13 20:16:15', 'colegio-notarial', 0),
+(655, 4, 'usuarios_perfiles/abm', 'access', '', '', '1', '2016-10-13 20:16:28', 'colegio-notarial', 0),
+(656, 4, 'usuarios_perfiles/abm', 'access', '', '', '1', '2016-10-13 20:16:57', 'colegio-notarial', 0),
+(657, 4, 'usuarios_perfiles/abm', 'access', '', '', '1', '2016-10-13 20:17:20', 'colegio-notarial', 0),
+(658, 4, 'facturas_proveedores/table', 'access', '', '', '1', '2016-10-13 20:17:29', 'colegio-notarial', 0),
+(659, 4, 'facturas_proveedores/abm', 'access', '', '', '1', '2016-10-13 20:17:31', 'colegio-notarial', 0),
+(660, 4, 'seguimientos_estados/table', 'access', '', '', '1', '2016-10-13 20:23:04', 'colegio-notarial', 0),
+(661, 4, 'seguimientos_estados/abm', 'access', '', '', '1', '2016-10-13 20:23:06', 'colegio-notarial', 0),
+(662, 4, '{"id_estado":"0","estado":"Observaci\\u00f3n","date_add":"2016-10-13 20:23:19","date_upd":"2016-10-13 20:23:19","user_add":"1","user_upd":"1"}', 'insert', 'seguimientos_estados', '1', '1', '2016-10-13 20:23:19', 'colegio-notarial', 0),
+(663, 4, 'seguimientos_estados/table', 'access', '', '', '1', '2016-10-13 20:23:19', 'colegio-notarial', 0),
+(664, 4, 'seguimientos_estados/abm', 'access', '', '', '1', '2016-10-13 20:23:23', 'colegio-notarial', 0),
+(665, 4, '{"id_estado":"0","estado":"Medicamento","date_add":"2016-10-13 20:23:30","date_upd":"2016-10-13 20:23:30","user_add":"1","user_upd":"1"}', 'insert', 'seguimientos_estados', '2', '1', '2016-10-13 20:23:30', 'colegio-notarial', 0),
+(666, 4, 'seguimientos_estados/table', 'access', '', '', '1', '2016-10-13 20:23:30', 'colegio-notarial', 0),
+(667, 4, 'seguimientos_estados/abm', 'access', '', '', '1', '2016-10-13 20:23:38', 'colegio-notarial', 0),
+(668, 4, '{"id_estado":"2","estado":"Tratamiento con medicamento","date_upd":"2016-10-13 20:23:46","user_upd":"1"}', 'update', 'seguimientos_estados', '2', '1', '2016-10-13 20:23:46', 'colegio-notarial', 0),
+(669, 4, 'seguimientos_estados/table', 'access', '', '', '1', '2016-10-13 20:23:46', 'colegio-notarial', 0),
+(670, 4, 'seguimientos_estados/abm', 'access', '', '', '1', '2016-10-13 20:23:52', 'colegio-notarial', 0),
+(671, 4, '{"id_estado":"0","estado":"Rehabilitaci\\u00f3n ","date_add":"2016-10-13 20:24:03","date_upd":"2016-10-13 20:24:03","user_add":"1","user_upd":"1"}', 'insert', 'seguimientos_estados', '3', '1', '2016-10-13 20:24:03', 'colegio-notarial', 0),
+(672, 4, 'seguimientos_estados/table', 'access', '', '', '1', '2016-10-13 20:24:03', 'colegio-notarial', 0),
+(673, 4, 'seguimientos/table', 'access', '', '', '1', '2016-10-13 20:24:17', 'colegio-notarial', 0),
+(674, 4, 'seguimientos/abm', 'access', '', '', '1', '2016-10-13 20:24:19', 'colegio-notarial', 0),
+(675, 4, 'seguimientos/abm', 'access', '', '', '1', '2016-10-13 20:25:31', 'colegio-notarial', 0),
+(676, 4, 'seguimientos/abm', 'access', '', '', '1', '2016-10-13 20:25:39', 'colegio-notarial', 0),
+(677, 4, 'seguimientos/abm', 'access', '', '', '1', '2016-10-13 20:26:35', 'colegio-notarial', 0),
+(678, 4, 'seguimientos/abm', 'access', '', '', '1', '2016-10-13 20:26:57', 'colegio-notarial', 0),
+(679, 4, '{"id_seguimiento":"0","id_animal":"1","titulo":"Perdida de peso","comentario":"<p>Se comienza observaci&oacute;n por perdida de peso del animal<\\/p>\\r\\n","id_estado":"1","date_add":"2016-10-13 20:27:27","date_upd":"2016-10-13 20:27:27","user_add":"1","user_upd":"1"}', 'insert', 'seguimientos', '1', '1', '2016-10-13 20:27:27', 'colegio-notarial', 0),
+(680, 4, 'seguimientos/table', 'access', '', '', '1', '2016-10-13 20:27:27', 'colegio-notarial', 0),
+(681, 4, 'seguimientos_estados/table', 'access', '', '', '1', '2016-10-13 20:27:43', 'colegio-notarial', 0),
+(682, 4, 'seguimientos_estados/abm', 'access', '', '', '1', '2016-10-13 20:27:45', 'colegio-notarial', 0),
+(683, 4, '{"id_estado":"0","estado":"Finalizado","date_add":"2016-10-13 20:27:53","date_upd":"2016-10-13 20:27:53","user_add":"1","user_upd":"1"}', 'insert', 'seguimientos_estados', '4', '1', '2016-10-13 20:27:53', 'colegio-notarial', 0),
+(684, 4, 'seguimientos_estados/table', 'access', '', '', '1', '2016-10-13 20:27:53', 'colegio-notarial', 0),
+(685, 4, 'seguimientos/table', 'access', '', '', '1', '2016-10-13 20:28:05', 'colegio-notarial', 0),
+(686, 4, 'ordenes/table', 'access', '', '', '1', '2016-10-13 20:28:15', 'colegio-notarial', 0),
+(687, 4, 'ordenes/abm', 'access', '', '', '1', '2016-10-13 20:28:17', 'colegio-notarial', 0),
+(688, 4, '{"id_ordene":"0","id_sector":"1","id_animal":"1","cantidad":"80","date_add":"2016-10-13 20:28:36","date_upd":"2016-10-13 20:28:36","user_add":"1","user_upd":"1"}', 'insert', 'ordenes', '1', '1', '2016-10-13 20:28:36', 'colegio-notarial', 0),
+(689, 4, 'ordenes/table', 'access', '', '', '1', '2016-10-13 20:28:36', 'colegio-notarial', 0),
+(690, 4, 'ingresos/table', 'access', '', '', '1', '2016-10-13 20:28:48', 'colegio-notarial', 0),
+(691, 4, 'ingresos/abm', 'access', '', '', '1', '2016-10-13 20:28:52', 'colegio-notarial', 0),
+(692, 4, '{"id_ingreso":"0","id_animal":"1","id_sector":"1","date_add":"2016-10-13 20:28:59"}', 'insert', 'ingresos', '1', '1', '2016-10-13 20:28:59', 'colegio-notarial', 0),
+(693, 4, 'ingresos/table', 'access', '', '', '1', '2016-10-13 20:28:59', 'colegio-notarial', 0),
+(694, 4, 'ingresos/table', 'access', '', '', '1', '2016-10-13 20:29:26', 'colegio-notarial', 0),
+(695, 4, 'ingresos/abm', 'access', '', '', '1', '2016-10-13 20:29:28', 'colegio-notarial', 0),
+(696, 4, 'ingresos/table', 'access', '', '', '1', '2016-10-13 20:29:40', 'colegio-notarial', 0),
+(697, 4, 'menus/table', 'access', '', '', '1', '2016-10-13 20:38:40', 'colegio-notarial', 0),
+(698, 4, 'menus/abm', 'access', '', '', '1', '2016-10-13 20:38:43', 'colegio-notarial', 0),
+(699, 4, '{"id_menu":"0","url":"animales_rutinas\\/table\\/","menu":"Rutinas","icon":"","id_padre":"1","date_add":"2016-10-13 20:39:12","date_upd":"2016-10-13 20:39:12","user_add":"1","user_upd":"1"}', 'insert', 'menus', '45', '1', '2016-10-13 20:39:12', 'colegio-notarial', 0),
+(700, 4, '{"id_perfil":"1","id_menu":45,"ver":1,"editar":1,"date_add":"2016-10-13 20:39:12","date_upd":"2016-10-13 20:39:12","user_add":"1","user_upd":"1"}', 'insert', 'usuarios_permisos', '45', '1', '2016-10-13 20:39:12', 'colegio-notarial', 0),
+(701, 4, 'menus/table', 'access', '', '', '1', '2016-10-13 20:39:12', 'colegio-notarial', 0),
+(702, 3, 'logout', 'logout', '', '', '1', '2016-10-13 20:39:18', 'colegio-notarial', 0),
+(703, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-13 20:39:20', 'colegio-notarial', 0),
+(704, 4, 'animales/table', 'access', '', '', '1', '2016-10-13 20:39:20', 'colegio-notarial', 0),
+(705, 4, 'animales_rutinas/table', 'access', '', '', '1', '2016-10-13 20:49:02', 'colegio-notarial', 0),
+(706, 4, 'animales_rutinas/abm', 'access', '', '', '1', '2016-10-13 20:49:05', 'colegio-notarial', 0),
+(707, 4, 'animales_tipos/table', 'access', '', '', '1', '2016-10-13 20:49:11', 'colegio-notarial', 0),
+(708, 4, 'animales_tipos/abm', 'access', '', '', '1', '2016-10-13 20:49:13', 'colegio-notarial', 0),
+(709, 4, '{"id_tipo":"0","tipo":"Vacuno criollo","date_add":"2016-10-13 20:49:26","date_upd":"2016-10-13 20:49:26","user_add":"1","user_upd":"1"}', 'insert', 'animales_tipos', '1', '1', '2016-10-13 20:49:26', 'colegio-notarial', 0),
+(710, 4, 'animales_tipos/table', 'access', '', '', '1', '2016-10-13 20:49:26', 'colegio-notarial', 0),
+(711, 4, 'animales_rutinas/table', 'access', '', '', '1', '2016-10-13 20:49:31', 'colegio-notarial', 0),
+(712, 4, 'animales_rutinas/abm', 'access', '', '', '1', '2016-10-13 20:49:32', 'colegio-notarial', 0),
+(713, 4, 'animales_rutinas/abm', 'access', '', '', '1', '2016-10-13 20:49:59', 'colegio-notarial', 0),
+(714, 4, '{"id_rutina":"0","id_tipo":"1","id_sector":"2","id_dia":"1","inicio":"08:00","final":"10:00","comentario":"","date_add":"2016-10-13 20:50:29","date_upd":"2016-10-13 20:50:29","user_add":"1","user_upd":"1"}', 'insert', 'animales_rutinas', '1', '1', '2016-10-13 20:50:29', 'colegio-notarial', 0),
+(715, 4, 'animales_rutinas/table', 'access', '', '', '1', '2016-10-13 20:50:29', 'colegio-notarial', 0),
+(716, 4, 'animales_rutinas/abm', 'access', '', '', '1', '2016-10-13 20:50:50', 'colegio-notarial', 0),
+(717, 4, 'animales_rutinas/abm', 'access', '', '', '1', '2016-10-13 20:51:31', 'colegio-notarial', 0),
+(718, 4, 'animales_rutinas/table', 'access', '', '', '1', '2016-10-13 20:51:37', 'colegio-notarial', 0),
+(719, 4, 'menus/table', 'access', '', '', '1', '2016-10-13 20:51:49', 'colegio-notarial', 0),
+(720, 4, 'menus/abm', 'access', '', '', '1', '2016-10-13 20:51:51', 'colegio-notarial', 0),
+(721, 4, '{"id_menu":"0","url":"animales_permisos\\/table\\/","menu":"Permisos","icon":"","id_padre":"1","date_add":"2016-10-13 20:52:11","date_upd":"2016-10-13 20:52:11","user_add":"1","user_upd":"1"}', 'insert', 'menus', '46', '1', '2016-10-13 20:52:11', 'colegio-notarial', 0),
+(722, 4, '{"id_perfil":"1","id_menu":46,"ver":1,"editar":1,"date_add":"2016-10-13 20:52:11","date_upd":"2016-10-13 20:52:11","user_add":"1","user_upd":"1"}', 'insert', 'usuarios_permisos', '46', '1', '2016-10-13 20:52:11', 'colegio-notarial', 0),
+(723, 4, 'menus/table', 'access', '', '', '1', '2016-10-13 20:52:11', 'colegio-notarial', 0),
+(724, 3, 'logout', 'logout', '', '', '1', '2016-10-13 20:52:16', 'colegio-notarial', 0),
+(725, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-13 20:52:18', 'colegio-notarial', 0),
+(726, 4, 'animales/table', 'access', '', '', '1', '2016-10-13 20:52:18', 'colegio-notarial', 0),
+(727, 4, 'animales_permisos/table', 'access', '', '', '1', '2016-10-13 20:52:20', 'colegio-notarial', 0),
+(728, 4, 'animales_permisos/abm', 'access', '', '', '1', '2016-10-13 20:52:41', 'colegio-notarial', 0),
+(729, 4, '{"id_permiso":"0","id_animal":"1","id_sector":"4","comentario":"<p>Aumentar el peso&nbsp;<\\/p>\\r\\n","date_add":"2016-10-13 20:52:55","date_upd":"2016-10-13 20:52:55","user_add":"1","user_upd":"1"}', 'insert', 'animales_permisos', '1', '1', '2016-10-13 20:52:55', 'colegio-notarial', 0),
+(730, 4, 'animales_permisos/table', 'access', '', '', '1', '2016-10-13 20:52:56', 'colegio-notarial', 0),
+(731, 4, 'animales_permisos/table', 'access', '', '', '1', '2016-10-13 20:53:12', 'colegio-notarial', 0),
+(732, 4, 'animales_rutinas/table', 'access', '', '', '1', '2016-10-13 20:54:11', 'colegio-notarial', 0),
+(733, 4, 'ingresos/table', 'access', '', '', '1', '2016-10-13 20:54:19', 'colegio-notarial', 0),
+(734, 4, 'animales_rutinas/table', 'access', '', '', '1', '2016-10-13 20:54:32', 'colegio-notarial', 0),
+(735, 4, 'seguimientos/table', 'access', '', '', '1', '2016-10-13 21:00:14', 'colegio-notarial', 0),
+(736, 4, 'seguimientos/abm', 'access', '', '', '1', '2016-10-13 21:00:22', 'colegio-notarial', 0),
+(737, 4, 'seguimientos/abm', 'access', '', '', '1', '2016-10-13 21:01:04', 'colegio-notarial', 0),
+(738, 4, 'seguimientos/abm', 'access', '', '', '1', '2016-10-13 21:01:28', 'colegio-notarial', 0),
+(739, 4, 'seguimientos/abm', 'access', '', '', '1', '2016-10-13 21:02:30', 'colegio-notarial', 0),
+(740, 4, 'seguimientos/abm', 'access', '', '', '1', '2016-10-13 21:02:43', 'colegio-notarial', 0),
+(741, 4, 'seguimientos/abm', 'access', '', '', '1', '2016-10-13 21:02:52', 'colegio-notarial', 0),
+(742, 4, 'seguimientos/abm', 'access', '', '', '1', '2016-10-13 21:03:26', 'colegio-notarial', 0),
+(743, 4, 'seguimientos/table', 'access', '', '', '1', '2016-10-13 21:03:34', 'colegio-notarial', 0),
+(744, 4, 'seguimientos/abm', 'access', '', '', '1', '2016-10-13 21:03:35', 'colegio-notarial', 0),
+(745, 4, 'seguimientos/table', 'access', '', '', '1', '2016-10-13 21:03:41', 'colegio-notarial', 0),
+(746, 4, 'seguimientos/abm', 'access', '', '', '1', '2016-10-13 21:03:44', 'colegio-notarial', 0);
 
 -- --------------------------------------------------------
 
@@ -24000,7 +24186,9 @@ INSERT INTO `menus` (`id_menu`, `url`, `menu`, `icon`, `id_padre`, `date_add`, `
 (41, 'origenes/table/', 'Origenes', '', 13, '2016-10-12 19:49:19', '2016-10-12 19:49:19', 1, 1, 0),
 (42, 'envios/table/', 'Envios', '', 13, '2016-10-12 19:49:34', '2016-10-12 19:49:34', 1, 1, 0),
 (43, 'pedidos_estados/table/', 'Pedidos Estados', '', 13, '2016-10-12 20:09:38', '2016-10-12 20:09:38', 1, 1, 0),
-(44, 'facturas_estados/table/', 'Facturas Estados', '', 13, '2016-10-12 20:13:41', '2016-10-12 20:13:41', 1, 1, 0);
+(44, 'facturas_estados/table/', 'Facturas Estados', '', 13, '2016-10-12 20:13:41', '2016-10-12 20:13:41', 1, 1, 0),
+(45, 'animales_rutinas/table/', 'Rutinas', '', 1, '2016-10-13 20:39:12', '2016-10-13 20:39:12', 1, 1, 0),
+(46, 'animales_permisos/table/', 'Permisos', '', 1, '2016-10-13 20:52:11', '2016-10-13 20:52:11', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -24019,6 +24207,13 @@ CREATE TABLE `ordenes` (
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `ordenes`
+--
+
+INSERT INTO `ordenes` (`id_ordene`, `id_sector`, `id_animal`, `cantidad`, `date_add`, `date_upd`, `user_add`, `user_upd`, `eliminado`) VALUES
+(1, 1, 1, '80.00', '2016-10-13 20:28:36', '2016-10-13 20:28:36', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -24220,7 +24415,7 @@ CREATE TABLE `pedidos_proveedores` (
 --
 
 INSERT INTO `pedidos_proveedores` (`id_pedido`, `id_proveedor`, `nro_proveedor`, `fecha_entrega`, `validez`, `id_condicion_pago`, `id_forma_pago`, `id_origen`, `id_envio`, `comentario`, `id_estado`, `total`, `total_sin_iva`, `total_iva`, `user_add`, `user_upd`, `date_add`, `date_upd`, `eliminado`) VALUES
-(1, 1, '8595', '0000-00-00', '0000-00-00', 1, 1, 3, 1, '', 0, '0.00', '0.00', '0.00', 1, 1, '2016-10-12 20:38:46', '2016-10-12 20:38:46', 0);
+(1, 1, '8595', '2016-10-13', '2016-10-14', 1, 1, 3, 1, '', 0, '0.00', '0.00', '0.00', 1, 1, '2016-10-12 20:38:46', '2016-10-13 17:53:30', 0);
 
 -- --------------------------------------------------------
 
@@ -24400,7 +24595,7 @@ CREATE TABLE `seguimientos` (
   `id_seguimiento` int(11) NOT NULL,
   `id_animal` int(11) NOT NULL,
   `titulo` varchar(128) NOT NULL,
-  `descripcion` text NOT NULL,
+  `comentario` text NOT NULL,
   `id_estado` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
@@ -24408,6 +24603,13 @@ CREATE TABLE `seguimientos` (
   `user_upd` int(11) NOT NULL,
   `eliminado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `seguimientos`
+--
+
+INSERT INTO `seguimientos` (`id_seguimiento`, `id_animal`, `titulo`, `comentario`, `id_estado`, `date_add`, `date_upd`, `user_add`, `user_upd`, `eliminado`) VALUES
+(1, 1, 'Perdida de peso', '<p>Se comienza observaci&oacute;n por perdida de peso del animal</p>\r\n', 1, '2016-10-13 20:27:27', '2016-10-13 20:27:27', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -24441,6 +24643,16 @@ CREATE TABLE `seguimientos_estados` (
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `seguimientos_estados`
+--
+
+INSERT INTO `seguimientos_estados` (`id_estado`, `estado`, `date_add`, `date_upd`, `user_add`, `user_upd`, `eliminado`) VALUES
+(1, 'Observación', '2016-10-13 20:23:19', '2016-10-13 20:23:19', 1, 1, 0),
+(2, 'Tratamiento con medicamento', '2016-10-13 20:23:30', '2016-10-13 20:23:46', 1, 1, 0),
+(3, 'Rehabilitación ', '2016-10-13 20:24:03', '2016-10-13 20:24:03', 1, 1, 0),
+(4, 'Finalizado', '2016-10-13 20:27:53', '2016-10-13 20:27:53', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -24650,7 +24862,9 @@ INSERT INTO `usuarios_permisos` (`id_permiso`, `id_perfil`, `id_menu`, `ver`, `e
 (41, 1, 41, 1, 1, '2016-10-12 19:49:19', '2016-10-12 19:49:19', 1, 1, 0),
 (42, 1, 42, 1, 1, '2016-10-12 19:49:34', '2016-10-12 19:49:34', 1, 1, 0),
 (43, 1, 43, 1, 1, '2016-10-12 20:09:38', '2016-10-12 20:09:38', 1, 1, 0),
-(44, 1, 44, 1, 1, '2016-10-12 20:13:41', '2016-10-12 20:13:41', 1, 1, 0);
+(44, 1, 44, 1, 1, '2016-10-12 20:13:41', '2016-10-12 20:13:41', 1, 1, 0),
+(45, 1, 45, 1, 1, '2016-10-13 20:39:12', '2016-10-13 20:39:12', 1, 1, 0),
+(46, 1, 46, 1, 1, '2016-10-13 20:52:11', '2016-10-13 20:52:11', 1, 1, 0);
 
 --
 -- Índices para tablas volcadas
@@ -24679,6 +24893,18 @@ ALTER TABLE `animales`
 --
 ALTER TABLE `animales_estados`
   ADD PRIMARY KEY (`id_estado`);
+
+--
+-- Indices de la tabla `animales_permisos`
+--
+ALTER TABLE `animales_permisos`
+  ADD PRIMARY KEY (`id_permiso`);
+
+--
+-- Indices de la tabla `animales_rutinas`
+--
+ALTER TABLE `animales_rutinas`
+  ADD PRIMARY KEY (`id_rutina`);
 
 --
 -- Indices de la tabla `animales_tipos`
@@ -25000,10 +25226,20 @@ ALTER TABLE `animales`
 ALTER TABLE `animales_estados`
   MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT de la tabla `animales_permisos`
+--
+ALTER TABLE `animales_permisos`
+  MODIFY `id_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `animales_rutinas`
+--
+ALTER TABLE `animales_rutinas`
+  MODIFY `id_rutina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT de la tabla `animales_tipos`
 --
 ALTER TABLE `animales_tipos`
-  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
@@ -25098,7 +25334,7 @@ ALTER TABLE `formas_pagos`
 -- AUTO_INCREMENT de la tabla `ingresos`
 --
 ALTER TABLE `ingresos`
-  MODIFY `id_ingreso` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_ingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `ivas`
 --
@@ -25108,17 +25344,17 @@ ALTER TABLE `ivas`
 -- AUTO_INCREMENT de la tabla `logs_usuarios`
 --
 ALTER TABLE `logs_usuarios`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=629;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=747;
 --
 -- AUTO_INCREMENT de la tabla `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 --
 -- AUTO_INCREMENT de la tabla `ordenes`
 --
 ALTER TABLE `ordenes`
-  MODIFY `id_ordene` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_ordene` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `origenes`
 --
@@ -25168,7 +25404,7 @@ ALTER TABLE `proveedores_tipos`
 -- AUTO_INCREMENT de la tabla `seguimientos`
 --
 ALTER TABLE `seguimientos`
-  MODIFY `id_seguimiento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_seguimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `seguimientos_controles`
 --
@@ -25178,7 +25414,7 @@ ALTER TABLE `seguimientos_controles`
 -- AUTO_INCREMENT de la tabla `seguimientos_estados`
 --
 ALTER TABLE `seguimientos_estados`
-  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `tambos`
 --
@@ -25208,7 +25444,7 @@ ALTER TABLE `usuarios_perfiles`
 -- AUTO_INCREMENT de la tabla `usuarios_permisos`
 --
 ALTER TABLE `usuarios_permisos`
-  MODIFY `id_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

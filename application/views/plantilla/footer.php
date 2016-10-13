@@ -72,6 +72,9 @@ $( function() {
     $(".select2").select2();
     $(".time").timepicker();
     
-    CKEDITOR.replace('comentario');
+    if ( $( "#comentario" ).length ) 
+    {
+        CKEDITOR.replace('comentario');
+    }        
 });
 </script>

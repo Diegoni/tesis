@@ -1364,12 +1364,12 @@ function setForm($campos, $registro_values, $registro, $id_table)
             
             if($class_input == 'text')
             {
-                $return .= '<textarea '.completarTag($campo[0], $valor_input, $campo[1], $class_input).' '.$tags.' rows="5"></textarea>';
+                $return .= '<textarea '.completarTag($campo[0], $valor_input, $campo[1], $class_input).' '.$tags.' rows="5">'.$valor_input.'</textarea>';
             }else
             {
                 $return .= '<input '.completarTag($campo[0], $valor_input, $campo[1], $class_input).' '.$tags.'>';    
             }
-            
+                        
             if($required == 1)
             {
                 $return .= '<span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>';
