@@ -1,13 +1,13 @@
 <?php 
-class m_facturas extends MY_Model 
+class m_facturas_proveedores extends MY_Model 
 {		
-	protected $_tablename	= 'facturas';
+	protected $_tablename	= 'facturas_proveedores';
 	protected $_id_table	= 'id_factura';
 	protected $_order		= 'id_factura';
 	protected $_relation    =  array(
-        'id_cliente' => array(
-            'table'     => 'clientes',
-            'subjet'    => 'cliente'
+        'id_proveedor' => array(
+            'table'     => 'proveedores',
+            'subjet'    => 'proveedor'
         ),
         'id_condicion_pago' => array(
             'table'     => 'condiciones_pagos',

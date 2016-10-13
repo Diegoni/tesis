@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-10-2016 a las 20:46:41
+-- Tiempo de generación: 13-10-2016 a las 17:33:41
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.6.15
 
@@ -501,8 +501,7 @@ CREATE TABLE `facturas_proveedores` (
   `id_forma_pago` int(11) NOT NULL,
   `id_origen` int(11) NOT NULL,
   `id_envio` int(11) NOT NULL,
-  `comentario_publico` text NOT NULL,
-  `comentario_privado` text NOT NULL,
+  `comentario` text NOT NULL,
   `id_estado` int(11) NOT NULL,
   `total` decimal(10,2) NOT NULL,
   `total_sin_iva` decimal(10,2) NOT NULL,
@@ -513,6 +512,13 @@ CREATE TABLE `facturas_proveedores` (
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `facturas_proveedores`
+--
+
+INSERT INTO `facturas_proveedores` (`id_factura`, `id_proveedor`, `id_pedido`, `nro_factura`, `fecha_entrega`, `id_condicion_pago`, `id_forma_pago`, `id_origen`, `id_envio`, `comentario`, `id_estado`, `total`, `total_sin_iva`, `total_iva`, `user_add`, `user_upd`, `date_add`, `date_upd`, `eliminado`) VALUES
+(1, 1, 1, 89521, '0000-00-00', 1, 1, 3, 1, '', 0, '0.00', '0.00', '0.00', 1, 1, '2016-10-13 17:25:44', '2016-10-13 17:25:44', 0);
 
 -- --------------------------------------------------------
 
@@ -23897,7 +23903,35 @@ INSERT INTO `logs_usuarios` (`id_log`, `id_nivel`, `log`, `accion`, `tabla`, `re
 (597, 4, '{"id_pedido":"0","id_proveedor":"1","nro_proveedor":"8595","fecha_entrega":"12-10-2016","validez":"13-10-2016","id_condicion_pago":"1","id_forma_pago":"1","id_origen":"3","id_envio":"1","comentario":"","date_add":"2016-10-12 20:38:46","date_upd":"2016-10-12 20:38:46","user_add":"1","user_upd":"1"}', 'insert', 'pedidos_proveedores', '0', '1', '2016-10-12 20:38:46', 'colegio-notarial', 0),
 (598, 4, 'pedidos_proveedores/table', 'access', '', '', '1', '2016-10-12 20:38:46', 'colegio-notarial', 0),
 (599, 4, 'pedidos_proveedores/table', 'access', '', '', '1', '2016-10-12 20:39:15', 'colegio-notarial', 0),
-(600, 4, 'pedidos_proveedores/table', 'access', '', '', '1', '2016-10-12 20:39:21', 'colegio-notarial', 0);
+(600, 4, 'pedidos_proveedores/table', 'access', '', '', '1', '2016-10-12 20:39:21', 'colegio-notarial', 0),
+(601, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-10-13 16:58:02', 'colegio-notarial', 0),
+(602, 4, 'animales/table', 'access', '', '', '1', '2016-10-13 16:58:02', 'colegio-notarial', 0),
+(603, 4, 'facturas/table', 'access', '', '', '1', '2016-10-13 17:21:05', 'colegio-notarial', 0),
+(604, 4, 'facturas_proveedores/table', 'access', '', '', '1', '2016-10-13 17:22:15', 'colegio-notarial', 0),
+(605, 4, 'facturas_proveedores/abm', 'access', '', '', '1', '2016-10-13 17:22:20', 'colegio-notarial', 0),
+(606, 4, 'pedidos_proveedores/table', 'access', '', '', '1', '2016-10-13 17:22:41', 'colegio-notarial', 0),
+(607, 4, 'pedidos_proveedores/table', 'access', '', '', '1', '2016-10-13 17:23:18', 'colegio-notarial', 0),
+(608, 4, 'facturas_proveedores/table', 'access', '', '', '1', '2016-10-13 17:23:20', 'colegio-notarial', 0),
+(609, 4, 'facturas_proveedores/abm', 'access', '', '', '1', '2016-10-13 17:23:22', 'colegio-notarial', 0),
+(610, 4, 'facturas_proveedores/abm', 'access', '', '', '1', '2016-10-13 17:23:46', 'colegio-notarial', 0),
+(611, 4, 'facturas_proveedores/abm', 'access', '', '', '1', '2016-10-13 17:24:09', 'colegio-notarial', 0),
+(612, 4, 'facturas_proveedores/abm', 'access', '', '', '1', '2016-10-13 17:24:42', 'colegio-notarial', 0),
+(613, 4, 'facturas_proveedores/abm', 'access', '', '', '1', '2016-10-13 17:25:21', 'colegio-notarial', 0),
+(614, 4, '{"id_factura":"0","id_proveedor":"1","id_pedido":"1","nro_factura":"89521","fecha_entrega":"13-10-2016","id_condicion_pago":"1","id_forma_pago":"1","id_origen":"3","id_envio":"1","comentario":"","date_add":"2016-10-13 17:25:44","date_upd":"2016-10-13 17:25:44","user_add":"1","user_upd":"1"}', 'insert', 'facturas_proveedores', '1', '1', '2016-10-13 17:25:44', 'colegio-notarial', 0),
+(615, 4, 'facturas_proveedores/table', 'access', '', '', '1', '2016-10-13 17:25:44', 'colegio-notarial', 0),
+(616, 4, 'facturas_proveedores/abm', 'access', '', '', '1', '2016-10-13 17:26:13', 'colegio-notarial', 0),
+(617, 4, 'pagos/table', 'access', '', '', '1', '2016-10-13 17:26:16', 'colegio-notarial', 0),
+(618, 4, 'pedidos_proveedores/table', 'access', '', '', '1', '2016-10-13 17:28:35', 'colegio-notarial', 0),
+(619, 4, 'pagos_proveedores/table', 'access', '', '', '1', '2016-10-13 17:28:37', 'colegio-notarial', 0),
+(620, 4, 'pagos_proveedores/abm', 'access', '', '', '1', '2016-10-13 17:28:42', 'colegio-notarial', 0),
+(621, 4, 'pagos_proveedores/abm', 'access', '', '', '1', '2016-10-13 17:29:33', 'colegio-notarial', 0),
+(622, 4, 'pagos_proveedores/abm', 'access', '', '', '1', '2016-10-13 17:29:52', 'colegio-notarial', 0),
+(623, 4, '{"id_pago":"0","id_factura":"1","id_forma_pago":"1","total":"8562","comentario":"","date_add":"2016-10-13 17:30:03","date_upd":"2016-10-13 17:30:03","user_add":"1","user_upd":"1"}', 'insert', 'pagos_proveedores', '0', '1', '2016-10-13 17:30:03', 'colegio-notarial', 0),
+(624, 4, 'pagos_proveedores/table', 'access', '', '', '1', '2016-10-13 17:30:03', 'colegio-notarial', 0),
+(625, 4, 'pagos_proveedores/table', 'access', '', '', '1', '2016-10-13 17:30:59', 'colegio-notarial', 0),
+(626, 4, 'pagos_proveedores/table', 'access', '', '', '1', '2016-10-13 17:31:21', 'colegio-notarial', 0),
+(627, 4, 'pagos_proveedores/table', 'access', '', '', '1', '2016-10-13 17:32:28', 'colegio-notarial', 0),
+(628, 4, 'pedidos_proveedores/table', 'access', '', '', '1', '2016-10-13 17:33:27', 'colegio-notarial', 0);
 
 -- --------------------------------------------------------
 
@@ -24055,6 +24089,13 @@ CREATE TABLE `pagos_proveedores` (
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `pagos_proveedores`
+--
+
+INSERT INTO `pagos_proveedores` (`id_pago`, `id_factura`, `id_forma_pago`, `total`, `comentario`, `user_add`, `user_upd`, `date_add`, `date_upd`, `eliminado`) VALUES
+(1, 1, 1, '8562.00', '', 1, 1, '2016-10-13 17:30:03', '2016-10-13 17:30:03', 0);
 
 -- --------------------------------------------------------
 
@@ -25037,7 +25078,7 @@ ALTER TABLE `facturas_lineas_estados`
 -- AUTO_INCREMENT de la tabla `facturas_proveedores`
 --
 ALTER TABLE `facturas_proveedores`
-  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `facturas_proveedores_lineas`
 --
@@ -25067,7 +25108,7 @@ ALTER TABLE `ivas`
 -- AUTO_INCREMENT de la tabla `logs_usuarios`
 --
 ALTER TABLE `logs_usuarios`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=601;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=629;
 --
 -- AUTO_INCREMENT de la tabla `menus`
 --
@@ -25087,6 +25128,11 @@ ALTER TABLE `origenes`
 -- AUTO_INCREMENT de la tabla `pagos`
 --
 ALTER TABLE `pagos`
+  MODIFY `id_pago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `pagos_proveedores`
+--
+ALTER TABLE `pagos_proveedores`
   MODIFY `id_pago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
