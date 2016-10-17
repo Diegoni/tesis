@@ -29,6 +29,7 @@ class Empleados_puestos extends MY_Controller
     {                           
         $db['campos']   = array(
             array('puesto',    'onlyChar', 'required'),
+            array('comentario','', ''),
         );
         
         $this->armarAbm($id, $db);
