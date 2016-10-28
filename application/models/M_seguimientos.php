@@ -9,6 +9,10 @@ class m_seguimientos extends MY_Model
             'table'     => 'seguimientos_estados',
             'subjet'    => 'estado'
         ),
+		'id_animal' => array(
+            'table'     => 'animales',
+            'subjet'    => 'animal'
+        ),
     );
 		
 	function __construct()

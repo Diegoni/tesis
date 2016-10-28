@@ -35,12 +35,13 @@ $lang['apellidos']          = "Apellidos";
 $lang['cantidad']           = "Cantidad";
 $lang['carga']              = "Carga";
 $lang['categoria']          = "Categoria";
-$lang['codigo']             = "Codigo";
+$lang['codigo']             = "Código";
 $lang['contraseña']         = "Contraseña";
 $lang['confirm_pass']       = "Confirmar Password";
 $lang['comentario']         = "Comentario";
 $lang['comentario_publico'] = "Comentario público";
 $lang['comentario_privado'] = "Comentario privado";
+$lang['compuerta']          = "Compuerta";
 $lang['cod_post']           = "Codigo Postal";
 $lang['cuit']               = "Cuit";
 $lang['cargando']           = "Cargando";
@@ -106,6 +107,7 @@ $lang['factura']            = "Factura";
  --------------------------------------------------------------------------------*/ 
 
 $lang['icono']              = "Icono";
+$lang['in_out']             = "IN OUT";
 $lang['icon']               = "Icono";
 $lang['id']                 = "ID";
 $lang['ingrese']            = "Ingrese";
@@ -121,6 +123,7 @@ $lang['id_factura']         = "ID Factura";
     L
  --------------------------------------------------------------------------------*/ 
 
+$lang['lector']             = "Lector";
 $lang['localidad']          = "Localidad";
 $lang['log_in']             = "Log in";
 $lang['lote']               = "Lote";

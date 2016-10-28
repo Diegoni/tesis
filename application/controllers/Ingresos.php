@@ -33,7 +33,7 @@ class Ingresos extends MY_Controller
         $db['sectores']    = $this->m_tambos_sectores->getRegistros();
         
         $db['campos']   = array(
-            array('select',   'id_animal',  'id_animal', $db['animales']),
+            array('select',   'id_animal',  'animal', $db['animales']),
             array('select',   'id_sector',  'sector', $db['sectores']),
         );
         

@@ -36,7 +36,7 @@ if($registros)
     foreach ($registros as $row) 
     {
         $registro = array(
-            $row->id_animal,
+            $row->animal,
             $row->titulo,
             $row->estado,
             $row->date_add,

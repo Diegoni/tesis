@@ -3,7 +3,7 @@ class m_animales extends MY_Model
 {		
 	protected $_tablename	= 'animales';
 	protected $_id_table	= 'id_animal';
-	protected $_order		= 'id_animal';
+	protected $_order		= 'animal';
 	protected $_relation    =  array(   
         'id_tipo' => array(
             'table'     => 'animales_tipos',

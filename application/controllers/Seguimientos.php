@@ -33,7 +33,7 @@ class Seguimientos extends MY_Controller
         $db['estados']    = $this->m_seguimientos_estados->getRegistros();
         
         $db['campos']   = array(
-            array('select',   'id_animal',  'id_animal', $db['animales'], 'required'),
+            array('select',   'id_animal',  'animal', $db['animales'], 'required'),
             array('select',   'id_estado',  'estado', $db['estados'], 'required'),
             array('titulo', '', 'required'),
             array('comentario', '', ''),

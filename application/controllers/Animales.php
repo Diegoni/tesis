@@ -36,9 +36,10 @@ class Animales extends MY_Controller
         $db['animales_estados'] = $this->m_animales_estados->getRegistros();
                                          
         $db['campos']   = array(
-            array('select',   'id_animal_tipo',  'tipo', $db['animales_tipos']),
-            array('select',   'id_padre',  'id_animal', $db['animales']),
-            array('select',   'id_madre',  'id_animal', $db['animales']),
+        	array('codigo',    '', 'required'),
+            array('select',   'id_tipo',  'tipo', $db['animales_tipos']),
+            array('select',   'id_padre',  'animal', $db['animales']),
+            array('select',   'id_madre',  'animal', $db['animales']),
             array('select',   'id_proveedor',  'proveedor', $db['proveedores']),
             array('fecha_ingreso',    '', 'required'),
             array('fecha_nacimiento',    '', ''),

@@ -9,6 +9,10 @@ class m_ingresos extends MY_Model
             'table'     => 'tambos_sectores',
             'subjet'    => 'sector'
         ),
+		'id_animal' => array(
+            'table'     => 'animales',
+            'subjet'    => 'animal'
+        ),
     );
 		
 	function __construct()

@@ -4,7 +4,7 @@
  --------------------------------------------------------------------------------*/
  
 $cabeceras = array(
-    lang('id_animal'),
+    lang('animal'),
     lang('opciones'), 
 );
 
@@ -29,7 +29,7 @@ $html .= startTable($cabeceras);
 if($registros){
     foreach ($registros as $row) {
         $registro = array(
-            $row->id_animal,
+            $row->animal,
             tableUpd($subjet, $row->id_animal),
         );
         

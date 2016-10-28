@@ -34,7 +34,7 @@ class Ordenes extends MY_Controller
         
         $db['campos']   = array(
             array('select',   'id_sector',  'sector', $db['sectores']),
-            array('select',   'id_animal',  'id_animal', $db['animales']),
+            array('select',   'id_animal',  'animal', $db['animales']),
             array('cantidad',    '', 'required'),
         );
         

@@ -4,10 +4,10 @@
  --------------------------------------------------------------------------------*/
  
 $cabeceras = array(
-    lang('animal'),
-    lang('sector'),
-    lang('date_add'),
-    lang('opciones'),
+    lang('lector'),
+    lang('compuerta'),
+    lang('in_out'),
+    lang('opciones'), 
 );
 
 $html = startContent();
@@ -35,10 +35,10 @@ if($registros)
     foreach ($registros as $row) 
     {
         $registro = array(
-            $row->animal,
-            $row->sector,
-            $row->date_add,
-            tableUpd($subjet, $row->id_ingreso),
+            $row->lector,
+            $row->compuerta,
+            $row->in_out,
+            tableUpd($subjet, $row->id_lector),
         );
         
         $html .= setTableContent($registro);    
