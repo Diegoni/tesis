@@ -106,9 +106,11 @@ include_once('php/search.php');
 										<svg class="icon icon--logo icon--bananas"><use xlink:href="#icon-bananas"></use></svg>
 									</span>
 								</a>
-								<a class="pin pin--1-3" data-category="2" data-space="1.03" href="#" aria-label="Pin for Folding Life">
+								<a class="pin pin--1-3" data-category="4" data-space="1.03" href="#" aria-label="Pin for Folding Life">
 									<span class="pin__icon">
-										<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+										<svg class="icon icon--pin">
+										    <use xlink:href="#icon-pin"></use>
+                                        </svg>
 										<svg class="icon icon--logo icon--origami"><use xlink:href="#icon-origami"></use></svg>
 									</span>
 								</a>
