@@ -38,6 +38,11 @@ class Tambos_sectores extends MY_Controller
             array('select',   'id_tambo',  'tambo', $db['tambos']),
             array('select',   'id_tipo',  'tipo', $db['tipos']),
             array('sector',    '', 'required'),
+            array('x',    '', ''),
+            array('y',    '', ''),
+            array('width',    '', ''),
+            array('height',    '', ''),
+            array('comentario',    '', ''),
             array('select',   'id_empleado',  'empleado', $db['empleados']),
         );
         

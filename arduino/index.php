@@ -1,6 +1,12 @@
 <?php
 include_once('php/svg.php');
 include_once('php/search.php');
+include_once('php/form.php');
+include_once('php/m_tambos_sectores.php');
+
+$m_tambos = new m_tambos_sectores();
+$tambos = $m_tambos->get_registros();
+
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +19,9 @@ include_once('php/search.php');
 		<!--<link rel="shortcut icon" href="favicon.ico">-->
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link href="../librerias/plantilla/plugins/font/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+		<link href="../librerias/plantilla/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+
 		<script src="js/modernizr-custom.js"></script>
 	</head>
 	<body>
@@ -20,9 +29,10 @@ include_once('php/search.php');
 	<?php echo getSvg();?>
 		
 	<div class="container">
+		
 			<div class="main">
 				<header class="codrops-header">
-					<h1>Simulación del sistema de tambos</h1>
+					<h1>Simulación del sistema de tambos </h1>
 				</header>
 				<div class="mall">
 					<div class="surroundings">
@@ -49,37 +59,13 @@ include_once('php/search.php');
 								<ellipse cx="768.46" cy="605.4" rx="13.95" ry="13.8" class="map__tree" />
 								<ellipse cx="744.64" cy="624.92" rx="13.95" ry="13.8" class="map__tree" />
 								
-								<!-- Corral -->
-								<rect data-space="1.04" x="854.08" y="425" width="180" height="360" class="map__space" />
-								
 								<!-- Circulos de abajo -->
 								<polygon points="768.46 722.99 789.65 735.1 789.65 759.31 768.46 771.42 747.27 759.31 747.27 735.1 768.46 722.99" class="map__space" />
 								<rect x="666.88" y="565.62" width="26.26" height="25.99" class="map__space" />
 								
-								<!-- Sala de ordeño 2 -->
-								<rect data-space="1.07" x="600" y="270" width="200" height="230" class="map__space" />
-								
-								<!-- Sala de ordeñe 1 -->
-								<rect data-space="1.05" x="10" y="360" width="500" height="100" class="map__space" />
-								
 								<!-- Cuadrado gris de arriba centro -->
 								<path d="M492.72,123.19c30.57,0,55.36-24.53,55.36-54.78H437.36C437.36,98.67,462.15,123.19,492.72,123.19Z" class="map__space" />
-								
-								<!-- Alimentación -->
-								<rect data-space="1.08" x="600" y="12.59" width="350.14" height="168.14" class="map__space" />
-								
-								<!-- Buscando Vidas -->
-								<rect data-space="1.03" x="991.9" y="12" width="195.4" height="339.1" class="map__space" />
-								
-								<!-- Maternidad -->
-								<rect data-space="1.06" x="49.09" y="12.16" width="334.73" height="94.85" class="map__space" />
-								
-								<!-- Veterinaria -->
-								<rect data-space="1.02" x="49.12" y="175.57" width="180" height="135" class="map__space" />
-								
-								<!-- Oficinas -->
-								<polygon data-space="1.01" points="12.72 685.56 153.78 685.56 153.78 747.64 215.44 747.64 215.44 712.85 263.89 712.85 263.89 787.41 12.72 787.41 12.72 685.56" class="map__space" />
-								
+							
 								<!-- Estacionamiento -->
 								<rect x="48.08" y="501.73" width="35.61" height="35.23" class="map__space" />
 								<rect x="94.01" y="501.73" width="35.61" height="35.23" class="map__space" />
@@ -92,57 +78,35 @@ include_once('php/search.php');
 								<polygon points="218.01 585.07 239.2 597.17 239.2 621.38 218.01 633.49 196.82 621.38 196.82 597.17 218.01 585.07" class="map__space" />
 								<polygon points="410.01 601.42 358.8 778.44 320.06 767.07 372.92 591.6 410.01 601.42" class="map__space" />
 								<polygon points="561.3,603.9 624,777 661.9,763.2 597.7,591.5" class="map__space" />
+							
+								
+								<?php
+								foreach ($tambos as $tambo) 
+								{
+									if($tambo['points'] != '')
+									{
+										echo '<polygon data-space="1.0'.$tambo['id_sector'].'" points="'.$tambo['points'].'" class="map__space" />';
+									}else
+									{
+										echo '<rect data-space="1.0'.$tambo['id_sector'].'" x="'.$tambo['x'].'" y="'.$tambo['y'].'" width="'.$tambo['width'].'" height="'.$tambo['height'].'" class="map__space" />';
+									}
+								}
+								?>
+								
 							</svg>
 							<div class="level__pins">
-								<a class="pin pin--1-1" data-category="1" data-space="1.01" href="#" aria-label="Pin for Apple Heart">
-									<span class="pin__icon">
-										<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
-										<svg class="icon icon--logo icon--appleheart"><use xlink:href="#icon-appleheart"></use></svg>
-									</span>
-								</a>
-								<a class="pin pin--1-2" data-category="1" data-space="1.02" href="#" aria-label="Pin for Crazy Banana">
-									<span class="pin__icon">
-										<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
-										<svg class="icon icon--logo icon--bananas"><use xlink:href="#icon-bananas"></use></svg>
-									</span>
-								</a>
-								<a class="pin pin--1-3" data-category="2" data-space="1.03" href="#" aria-label="Pin for Folding Life">
-									<span class="pin__icon">
-										<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
-										<svg class="icon icon--logo icon--origami"><use xlink:href="#icon-origami"></use></svg>
-									</span>
-								</a>
-								<a class="pin pin--1-4" data-category="3" data-space="1.04" href="#" aria-label="Pin for Dress me not">
-									<span class="pin__icon">
-										<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
-										<svg class="icon icon--logo icon--dress"><use xlink:href="#icon-dress"></use></svg>
-									</span>
-								</a>
-								<a class="pin pin--1-5" data-category="4" data-space="1.05" href="#" aria-label="Pin for Meditation Garden">
-									<span class="pin__icon">
-										<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
-										<svg class="icon icon--logo icon--tree2"><use xlink:href="#icon-tree2"></use></svg>
-									</span>
-								</a>
-								<a class="pin pin--1-6" data-category="1" data-space="1.06" href="#" aria-label="Pin for Seed of Life">
-									<span class="pin__icon">
-										<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
-										<svg class="icon icon--logo icon--avocado"><use xlink:href="#icon-avocado"></use></svg>
-									</span>
-								</a>
-								<a class="pin pin--1-7" data-category="1" data-space="1.07" href="#" aria-label="Pin for Raw Delight">
-									<span class="pin__icon">
-										<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
-										<svg class="icon icon--logo icon--cake"><use xlink:href="#icon-cake"></use></svg>
-									</span>
-								</a>
-								<a class="pin pin--1-8" data-category="1" data-space="1.08" href="#" aria-label="Pin for The Wizard">
-									<span class="pin__icon">
-										<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
-										<svg class="icon icon--logo icon--mushroom"><use xlink:href="#icon-mushroom"></use></svg>
-									</span>
-								</a>
-							
+								<?php
+								foreach ($tambos as $tambo) 
+								{
+									echo '
+									<a class="pin pin--1-'.$tambo['id_sector'].'" data-category="'.$tambo['id_tipo'].'" data-space="1.0'.$tambo['id_sector'].'" href="#">
+										<span class="pin__icon">
+											<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+											<svg class="icon icon--logo"><use xlink:href="#"></use></svg>
+										</span>
+									</a>';
+								}
+								?>
 							</div>
 							<!-- /level__pins -->
 						</div>
@@ -157,96 +121,24 @@ include_once('php/search.php');
 					<button class="boxbutton mallnav__button--down" aria-label="Go down"><svg class="icon icon--angle-down"><use xlink:href="#icon-angle-down"></use></svg></button>
 				</nav>
 				<div class="content">
-					<div class="content__item" data-space="1.01" data-category="1">
-						<h3 class="content__item-title">Oficinas</h3>
-						<div class="content__item-details">
-							<p class="content__meta">
-								<span class="content__meta-item"><strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM</span> 
-								<span class="content__meta-item"><strong>Phone:</strong> (0) 66 5738902</span>
-							</p>
-							<p class="content__desc">Burdock celery - salsify, tomatillo. Bitter gourd horseradish leaves radicchio, celeriac miner's lettuce kurrat arugula fluted pumpkin turnip, arracacha water spinach nopal.</p>
-						</div>
-					</div>
-					<div class="content__item" data-space="1.02" data-category="1">
-						<h3 class="content__item-title">Veterinaria</h3>
-						<div class="content__item-details">
-							<p class="content__meta">
-								<span class="content__meta-item"><strong>Opening Hours:</strong> 7:30AM &mdash; 10:30PM</span> 
-								<span class="content__meta-item"><strong>Phone:</strong> (0) 66 7822786</span>
-							</p>
-							<p class="content__desc">Malva verticillata cichorium intybus zingiber officinale. Capsicum annuum Grossum group amorphophallus_paeoniifolius celosia argentea. Brassica oleracea Acephala group brassica rapa pervidis or komatsuna group plectranthus spp.</p>
-						</div>
-					</div>
-					<div class="content__item" data-space="1.03" data-category="2">
-						<h3 class="content__item-title">Corral 2</h3>
-						<div class="content__item-details">
-							<p class="content__meta">
-								<span class="content__meta-item"><strong>Opening Hours:</strong> 7:30AM &mdash; 10:30PM</span> 
-								<span class="content__meta-item"><strong>Phone:</strong> (0) 66 2385641</span>
-							</p>
-							<p class="content__desc">Brassica rapa Pekinensis group crassocephalum spp ipomoea aquatica. Brassica napus Napobrassica group pachyrhizus ahipa.</p>
-						</div>
-					</div>
-					<div class="content__item" data-space="1.04" data-category="3">
-						<h3 class="content__item-title">Corral</h3>
-						<div class="content__item-details">
-							<p class="content__meta">
-								<span class="content__meta-item"><strong>Opening Hours:</strong> 7:30AM &mdash; 10:30PM</span> 
-								<span class="content__meta-item"><strong>Phone:</strong> (0) 66 7830091</span>
-							</p>
-							<p class="content__desc">Glycine max tarhui, chocho arachis hypogaea. Barbarea verna cucurbita spp, eruca sativa dioscorea spp solanum lycopersicum var telfairia occidentalis.</p>
-						</div>
-					</div>
-					<div class="content__item" data-space="1.05" data-category="4">
-						<h3 class="content__item-title">Sala de ordeñe 1</h3>
-						<div class="content__item-details">
-							<p class="content__meta">
-								<span class="content__meta-item"><strong>Opening Hours:</strong> 7:30AM &mdash; 10:30PM</span> 
-								<span class="content__meta-item"><strong>Phone:</strong> (0) 66 6653929</span>
-							</p>
-							<p class="content__desc">Vernonia calvoana. Talinum fruticosum celosia argentea manihot esculenta beta vulgaris subsp maritima lathyrus tuberosus. Vigna acontifolia amorphophallus_paeoniifolius canna spp valerianella locusta.</p>
-						</div>
-					</div>
-					<div class="content__item" data-space="1.06" data-category="1">
-						<h3 class="content__item-title">Maternidad</h3>
-						<div class="content__item-details">
-							<p class="content__meta">
-								<span class="content__meta-item"><strong>Opening Hours:</strong> 7:30AM &mdash; 10:30PM</span> 
-								<span class="content__meta-item"><strong>Phone:</strong> (0) 66 8988650</span>
-							</p>
-							<p class="content__desc">Ullucus tuberosus psoralea esculenta; brassica rapa chinensis group - cichorium intybus. Pisum sativum inula crithmoides brassica napus napobrassica group brassica oleracea taraxacum officinale.</p>
-						</div>
-					</div>
-					<div class="content__item" data-space="1.07" data-category="1">
-						<h3 class="content__item-title">Sala de ordeñe 2</h3>
-						<div class="content__item-details">
-							<p class="content__meta">
-								<span class="content__meta-item"><strong>Opening Hours:</strong> 6:30AM &mdash; 09:00PM</span> 
-								<span class="content__meta-item"><strong>Phone:</strong> (0) 66 9121341</span>
-							</p>
-							<p class="content__desc">Brassica rapa Chinensis group dioscorea spp brassica rapa pekinensis and chinensis groups brassica oleracea pachyrhizus erosus.</p>
-						</div>
-					</div>
-					<div class="content__item" data-space="1.08" data-category="1">
-						<h3 class="content__item-title">Alimentación</h3>
-						<div class="content__item-details">
-							<p class="content__meta">
-								<span class="content__meta-item"><strong>Opening Hours:</strong> 7:30AM &mdash; 10:30PM</span> 
-								<span class="content__meta-item"><strong>Phone:</strong> (0) 66 8976773</span>
-							</p>
-							<p class="content__desc">Acmella oleracea brassica rapa chinensis group apios americana taraxacum officinale brassica rapa pekinensis group.</p>
-						</div>
-					</div>
-					<div class="content__item" data-space="1.09" data-category="1">
-						<h3 class="content__item-title">Mejor llamemos a saul</h3>
-						<div class="content__item-details">
-							<p class="content__meta">
-								<span class="content__meta-item"><strong>Opening Hours:</strong> 8:30AM &mdash; 10:30PM</span> 
-								<span class="content__meta-item"><strong>Phone:</strong> (0) 66 6577439</span>
-							</p>
-							<p class="content__desc">Broccoli Rabe kale, beetroot lettuce. Daikon chickweed leek tomatillo, beetroot cress west indian gherkin ricebean black-eyed pea fat hen moth bean! Chard lotus root scallion jícama; ulluco. </p>
-						</div>
-					</div>
+					<?php
+					foreach ($tambos as $tambo) 
+					{
+						echo '
+						<div class="content__item" data-space="1.0'.$tambo['id_sector'].'" data-category="'.$tambo['id_tipo'].'">
+							<h3 class="content__item-title">'.$tambo['sector'].'</h3>
+							<div class="content__item-details">
+								<p class="content__meta">
+									'.$tambo['comentario'].'
+								</p>
+								<p class="content__desc">
+									'.getForm().'
+								</p>
+							</div>
+						</div>';
+					}
+					?>
+					
 					
 					<button class="boxbutton boxbutton--dark content__button content__button--hidden" aria-label="Close details"><svg class="icon icon--cross"><use xlink:href="#icon-cross"></use></svg></button>
 				</div>
