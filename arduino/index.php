@@ -132,7 +132,12 @@ $tambos = $m_tambos->get_registros();
 									'.$tambo['comentario'].'
 								</p>
 								<p class="content__desc">
-									'.getForm().'
+									';
+									if($tambo['id_tipo'] != 4)
+									{
+										echo getForm();
+									}
+								echo '
 								</p>
 							</div>
 						</div>';
@@ -153,3 +158,7 @@ $tambos = $m_tambos->get_registros();
 		<script src="js/list.min.js"></script>
 		<script src="js/main.js"></script>
 	</body>
+	
+<script>
+	openContent('1.01');
+</script>

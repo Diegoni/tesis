@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-11-2016 a las 00:27:18
+-- Tiempo de generación: 03-11-2016 a las 23:44:39
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
@@ -24974,14 +24974,14 @@ CREATE TABLE IF NOT EXISTS `tambos_sectores` (
 --
 
 INSERT INTO `tambos_sectores` (`id_sector`, `id_tambo`, `id_tipo`, `sector`, `comentario`, `x`, `y`, `width`, `height`, `points`, `id_empleado`, `date_add`, `date_upd`, `user_add`, `user_upd`, `eliminado`) VALUES
-(1, 1, 4, 'Oficinas Listo', '<p><strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902</p>\r\n', '854.08', '425.00', '180.00', '360.00', '', 1, '2016-10-06 17:48:01', '2016-11-01 23:55:01', 1, 1, 0),
-(2, 1, 3, 'Veterinaria', '<p><strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902 &quot; rows=&quot;5&quot;&gt;<strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902</p>\r\n', '991.90', '12.00', '195.40', '339.10', '', 1, '2016-10-06 17:48:13', '2016-11-01 23:58:03', 1, 1, 0),
-(3, 1, 1, 'Corral 2', '<p><strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902&quot; rows=&quot;5&quot;&gt;<strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902</p>\r\n', '10.00', '360.00', '500.00', '100.00', '', 2, '2016-10-06 17:48:38', '2016-11-01 23:57:45', 1, 1, 0),
-(4, 1, 1, 'Corral 1', '<p><strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902 &quot; rows=&quot;5&quot;&gt;<strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902</p>\r\n', '600.00', '12.59', '350.14', '168.14', '', 1, '2016-10-06 17:48:55', '2016-11-01 23:57:35', 1, 1, 0),
-(5, 1, 2, 'Sala de ordene 2', '<p><strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902&quot; rows=&quot;5&quot;&gt;<strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902</p>\r\n', '600.00', '270.00', '200.00', '230.00', '', 1, '2016-11-01 23:22:42', '2016-11-01 23:51:37', 1, 1, 0),
+(1, 1, 4, 'Oficinas', '<p><strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902&quot; rows=&quot;5&quot;&gt;<strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902</p>\r\n', '0.00', '0.00', '0.00', '0.00', '12.72 685.56 153.78 685.56 153.78 747.64 215.44 747.64 215.44 712.85 263.89 712.85 263.89 787.41 12.72 787.41 12.72 685.56', 1, '2016-11-01 23:23:48', '2016-11-01 23:56:51', 1, 1, 0),
+(2, 1, 3, 'Veterinaria', '<p><strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902&quot; rows=&quot;5&quot;&gt;<strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902</p>\r\n', '49.12', '175.57', '180.00', '135.00', '', 1, '2016-11-01 23:23:20', '2016-11-01 23:57:12', 1, 1, 0),
+(3, 1, 1, 'Corral 2', '<p><strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902 &quot; rows=&quot;5&quot;&gt;<strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902</p>\r\n', '991.90', '12.00', '195.40', '339.10', '', 1, '2016-10-06 17:48:13', '2016-11-01 23:58:03', 1, 1, 0),
+(4, 1, 1, 'Corral 1', '<p><strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902</p>\r\n', '854.08', '425.00', '180.00', '360.00', '', 1, '2016-10-06 17:48:01', '2016-11-01 23:55:01', 1, 1, 0),
+(5, 1, 2, 'Alimentacion', '<p><strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902&quot; rows=&quot;5&quot;&gt;<strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902</p>\r\n', '10.00', '360.00', '500.00', '100.00', '', 2, '2016-10-06 17:48:38', '2016-11-01 23:57:45', 1, 1, 0),
 (6, 1, 3, 'Maternidad', '<p><strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902&quot; rows=&quot;5&quot;&gt;<strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902</p>\r\n', '49.09', '12.16', '334.73', '94.85', '', 2, '2016-11-01 23:23:00', '2016-11-01 23:57:53', 1, 1, 0),
-(7, 1, 2, 'Sala de ordene 1', '<p><strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902&quot; rows=&quot;5&quot;&gt;<strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902</p>\r\n', '49.12', '175.57', '180.00', '135.00', '', 1, '2016-11-01 23:23:20', '2016-11-01 23:57:12', 1, 1, 0),
-(8, 1, 2, 'Alimentacion', '<p><strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902&quot; rows=&quot;5&quot;&gt;<strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902</p>\r\n', '0.00', '0.00', '0.00', '0.00', '12.72 685.56 153.78 685.56 153.78 747.64 215.44 747.64 215.44 712.85 263.89 712.85 263.89 787.41 12.72 787.41 12.72 685.56', 1, '2016-11-01 23:23:48', '2016-11-01 23:56:51', 1, 1, 0);
+(7, 1, 2, 'Sala de ordene 2', '<p><strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902&quot; rows=&quot;5&quot;&gt;<strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902</p>\r\n', '600.00', '270.00', '200.00', '230.00', '', 1, '2016-11-01 23:22:42', '2016-11-01 23:51:37', 1, 1, 0),
+(8, 1, 2, 'Sala de ordene 1', '<p><strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902 &quot; rows=&quot;5&quot;&gt;<strong>Opening Hours:</strong> 6:30AM &mdash; 11:30PM <strong>Phone:</strong> (0) 66 5738902</p>\r\n', '600.00', '12.59', '350.14', '168.14', '', 1, '2016-10-06 17:48:55', '2016-11-01 23:57:35', 1, 1, 0);
 
 -- --------------------------------------------------------
 

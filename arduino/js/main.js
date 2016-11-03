@@ -9,7 +9,6 @@
  * http://www.codrops.com
  */
 ;(function(window) {
-
 	'use strict';
 
 	// helper functions
@@ -152,6 +151,7 @@
 				}
 			});
 			pin.addEventListener('click', function(ev) {
+				
 				ev.preventDefault();
 				// open content for this pin
 				openContent(pin.getAttribute('data-space'));
