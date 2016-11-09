@@ -2,7 +2,8 @@
  			Validar los input cuando se estan completando
  --------------------------------------------------------------------------------*/	
 
-$(document).ready(function() {
+$(document).ready(function() 
+{
     $('.input-group input[required], .input-group textarea[required], .input-group select[required]').on('keyup change', function() {
 		var $form = $(this).closest('form'),
             $group = $(this).closest('.input-group'),
@@ -10,41 +11,60 @@ $(document).ready(function() {
 			$icon = $addon.find('span'),
 			state = false;
             
-    	if (!$group.data('validate')) {
+    	if (!$group.data('validate')) 
+    	{
 			state = $(this).val() ? true : false;
-		}else if ($group.data('validate') == "email") {
+			
+		}else if ($group.data('validate') == "email") 
+		{
 			state = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test($(this).val());
-		}else if($group.data('validate') == 'phone') {
+			
+		}else if($group.data('validate') == 'phone') 
+		{
 			state = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/.test($(this).val());
-		}else if($group.data('validate') == 'cuit') {
+			
+		}else if($group.data('validate') == 'cuit') 
+		{
 			state = /^\d{2}\-\d{8}\-\d{1}$/.test($(this).val());
-		}else if($group.data('validate') == 'transaccion') {
-			state = /^\d{5}\-\d{5}$/.test($(this).val());	
-		}else if($group.data('validate') == 'unique') {
-			if($('#mensaje_error').html() != ""){
+			
+		}else if($group.data('validate') == 'transaccion') 
+		{
+			state = /^\d{5}\-\d{5}$/.test($(this).val());
+				
+		}else if($group.data('validate') == 'unique') 
+		{
+			if($('#mensaje_error').html() != "")
+			{
 				state = false;	
-			} else {
+			}else 
+			{
 				state = true;
 			}
-		}else if ($group.data('validate') == "length") {
+		}else if ($group.data('validate') == "length") 
+		{
 			state = $(this).val().length >= $group.data('length') ? true : false;
-		}else if ($group.data('validate') == "number") {
+		}else if ($group.data('validate') == "number") 
+		{
 			state = !isNaN(parseFloat($(this).val())) && isFinite($(this).val());
 		}
 
-		if (state) {
+		if (state) 
+		{
 			$addon.removeClass('danger');
 			$addon.addClass('success');
 			$icon.attr('class', 'glyphicon glyphicon-ok');
-		}else{
+		}else
+		{
 			$addon.removeClass('success');
 			$addon.addClass('danger');
 			$icon.attr('class', 'glyphicon glyphicon-remove');
 		}
         
-        if ($form.find('.input-group-addon.danger').length == 0) {
+        if ($form.find('.input-group-addon.danger').length == 0) 
+        {
             $form.find('[type="submit"]').prop('disabled', false);
-        }else{
+        }else
+        {
             $form.find('[type="submit"]').prop('disabled', true);
         }
 	});
@@ -56,11 +76,15 @@ $(document).ready(function() {
  			Cuando se completa el input solo aceptas numeros
  --------------------------------------------------------------------------------*/	
 
-function onlyInt(evt){
+function onlyInt(evt)
+{
 	var charCode = (evt.which) ? evt.which : event.keyCode;
-	if (charCode > 31 && (charCode < 48 || charCode > 57)){
+	
+	if (charCode > 31 && (charCode < 48 || charCode > 57))
+	{
 		return false;
 	}
+	
 	return true;
 }
 
@@ -68,11 +92,15 @@ function onlyInt(evt){
  			Cuando se completa el input solo acepta numeros y el punto
  --------------------------------------------------------------------------------*/	
 
-function onlyFloat(evt){
+function onlyFloat(evt)
+{
 	var charCode = (evt.which) ? evt.which : event.keyCode;
-	if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode != 46){
+	
+	if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode != 46)
+	{
 		return false;
 	}
+	
 	return true;
 }
 
@@ -80,7 +108,8 @@ function onlyFloat(evt){
  			Cuando se completa el input solo acepta caracteres
  --------------------------------------------------------------------------------*/	
 
-function onlyChar(evt){
+function onlyChar(evt)
+{
 	var charCode = (evt.which) ? evt.which : event.keyCode;
 	if(	255 == charCode ||	// á
 		233 == charCode ||	// é
@@ -106,20 +135,29 @@ function onlyChar(evt){
  			Cuando se completa el input solo acepta caracteres
  --------------------------------------------------------------------------------*/	
 
-function onlyCharInt(evt){
+function onlyCharInt(evt)
+{
 	var charCode = (evt.which) ? evt.which : event.keyCode;
-	if(charCode == 32){
+	if(charCode == 32)
+	{
 		return true;
 	}
-	if(48 <= charCode && charCode <= 57){
+	
+	if(48 <= charCode && charCode <= 57)
+	{
 		return true;
 	}
-	if(65 <= charCode && charCode <= 90){
+	
+	if(65 <= charCode && charCode <= 90)
+	{
 		return true;
 	}
-	if(97 <= charCode && charCode <= 122){
+	
+	if(97 <= charCode && charCode <= 122)
+	{
 		return true;
 	}
+	
 	if(	255 == charCode ||	// á
 		233 == charCode ||	// é
 		237 == charCode ||	// í
@@ -134,6 +172,7 @@ function onlyCharInt(evt){
 			
 		return true;
 	}
+	
 	return false;
 }
 
@@ -141,7 +180,8 @@ function onlyCharInt(evt){
  			Verifica que el valor ingresado sea un entero
  --------------------------------------------------------------------------------*/	
 
-function isInt(value){
+function isInt(value)
+{
     var er = /^(?:[1-9]\d*|0)?(?:\.\d+)?$/;
 
     return er.test(value);
@@ -151,7 +191,8 @@ function isInt(value){
  			Verifica que el valor ingresado sea un float
  --------------------------------------------------------------------------------*/	
 
-function isFloat(value){
+function isFloat(value)
+{
     var er = /^(?:[1-9]\d*|0)?(?:\.\d+)?$/;
 
     return er.test(value);
@@ -161,7 +202,8 @@ function isFloat(value){
  			Configuracion de calendarios
  --------------------------------------------------------------------------------*/	
 
-$(document).ready(function() {
+$(document).ready(function() 
+{
 	$.datepicker.regional['es'] = {
 		closeText: 'Cerrar',
 		prevText: '<Ant',
@@ -186,16 +228,21 @@ $(document).ready(function() {
  			Ir arriba button
  --------------------------------------------------------------------------------*/	
 
-$(document).ready(function(){
-	$(window).scroll(function(){
-		if ($(this).scrollTop() > 100) {
+$(document).ready(function()
+{
+	$(window).scroll(function()
+	{
+		if ($(this).scrollTop() > 100) 
+		{
 			$('.scrollup').fadeIn();
-		} else {
+		}else 
+		{
 			$('.scrollup').fadeOut();
 		}
 	});
   
-	$('.scrollup').click(function(){
+	$('.scrollup').click(function()
+	{
 		$("html, body").animate({ scrollTop: 0 }, 600);
 		return false;
 	});  
@@ -205,13 +252,17 @@ $(document).ready(function(){
  			Seleccionar todos los archivos
  --------------------------------------------------------------------------------*/	
 
-$(function() {
-	$('#selecctall').click(function(event) { 
-        if(this.checked) { 
-            $('.archivos').each(function() { 
+$(function() 
+{
+	$('#selecctall').click(function(event) 
+	{ 
+        if(this.checked) 
+        { 
+            $('.archivos').each(function(){ 
                 this.checked = true;  
             });
-        }else{
+        }else
+        {
             $('.archivos').each(function() { 
                 this.checked = false;                  
             });         
