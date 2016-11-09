@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Tambos_compuertas extends MY_Controller 
+class Tambos_caminos extends MY_Controller 
 {
-	protected $_subject = 'tambos_compuertas';
-    protected $_model   = 'm_tambos_compuertas';
+	protected $_subject = 'tambos_caminos';
+    protected $_model   = 'm_tambos_caminos';
     
     function __construct()
     {
@@ -13,8 +13,7 @@ class Tambos_compuertas extends MY_Controller
         );
         
         $this->load->model($this->_model, 'model');
-        $this->load->model('m_proveedores');    
-		$this->load->model('m_tambos_sectores');    
+        $this->load->model('m_tambos_compuertas');
     } 
     
     
@@ -27,19 +26,10 @@ class Tambos_compuertas extends MY_Controller
 ---------------------------------------------------------------------------------*/   
     
     
-    function abm($id = NULL)
+    function abm($id = NULL)                         
     {                           
-        $db['proveedores']  = $this->m_proveedores->getRegistros();
-		$db['sectores']  = $this->m_tambos_sectores->getRegistros();
-        
-        $db['campos']   = array(
-            array('compuerta',    '', 'required'),
-            array('comentario',    '', ''),
-            array('select',   'id_sector',  'sector', $db['sectores']),
-            array('select',   'id_proveedor',  'proveedor', $db['proveedores']),
-        );
-        
-        $this->armarAbm($id, $db);
+        $db['compuertas']    = $this->m_tambos_compuertas->getRegistros(); 
+        $this->armarVista('abm', $db);
     }
 }
 ?>

@@ -4,8 +4,7 @@
  --------------------------------------------------------------------------------*/
  
 $cabeceras = array(
-    lang('compuerta'),
-    lang('sector'),
+    lang('camino'),
     lang('opciones'), 
 );
 
@@ -34,9 +33,8 @@ if($registros)
     foreach ($registros as $row) 
     {
         $registro = array(
-            $row->compuerta,
-            $row->sector,
-            tableUpd($subjet, $row->id_compuerta),
+            $row->camino,
+            tableUpd($subjet, $row->id_camino),
         );
         
         $html .= setTableContent($registro);    

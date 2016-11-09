@@ -9,6 +9,10 @@ class m_tambos_compuertas extends MY_Model
             'table'     => 'proveedores',
             'subjet'    => 'proveedor'
         ),
+        'id_sector' => array(
+            'table'     => 'tambos_sectores',
+            'subjet'    => 'sector'
+        ),
     );
 		
 	function __construct()
