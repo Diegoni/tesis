@@ -29,7 +29,7 @@ if($id_sector)
 		if($id_camino)
 		{
 			$m_camino_detalles = new m_tambos_caminos_detalles();
-			$camino = $m_camino_detalles->getCamino($id_camino);
+			$caminos = $m_camino_detalles->getCamino($id_camino);
 		}else
 		{
 			$error = "No existe camino desde el sector ".$datos['id_sector']." a ".$id_sector;
@@ -47,6 +47,12 @@ if($id_sector)
 if(isset($error))
 {
 	echo $error;
+}else
+{
+    foreach ($caminos as $camino) 
+    {
+        echo $camino['id_compuerta'].'<br>';
+    }
 }
 
 

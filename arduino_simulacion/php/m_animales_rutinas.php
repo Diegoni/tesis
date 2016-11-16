@@ -34,7 +34,7 @@ class m_animales_rutinas extends My_Model
 	{
 		$sql = "
 		SELECT 
-			* 
+			animales_rutinas.id_sector 
 		FROM 
 			animales_rutinas 
 		INNER JOIN 
@@ -48,10 +48,10 @@ class m_animales_rutinas extends My_Model
 		{
 			while($row = $result->fetch_array())
 			{
-				$rows[] = $row;
+				$id_sector = $row['id_sector'];
 			}
 			
-			return $rows;	
+			return $id_sector;	
 		}
 		else
 		{

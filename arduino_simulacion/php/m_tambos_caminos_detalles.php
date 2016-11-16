@@ -28,4 +28,32 @@ class m_tambos_caminos_detalles extends My_Model
 				$data_model		= $this->_data_model 
 		);
 	}
+    
+    
+    function getCamino($id_camino)
+    {
+        $sql = "
+        SELECT 
+            * 
+        FROM 
+            tambos_caminos_detalles 
+        WHERE
+            tambos_caminos_detalles.id_camino = '$id_camino'";
+            
+        $result = $this->_db->query($sql);
+        
+        if($result->num_rows > 0)
+        {
+            while($row = $result->fetch_array())
+            {
+                $rows[] = $row;
+            }
+            
+            return $rows;   
+        }
+        else
+        {
+            return FALSE;   
+        }
+    }
 }
