@@ -136,7 +136,7 @@ $tambos = $m_tambos->get_registros();
 									';
 									if($tambo['id_tipo'] != 4)
 									{
-										echo getForm();
+										echo getForm($tambo['id_sector']);
 									}
 								echo '
 								</p>
