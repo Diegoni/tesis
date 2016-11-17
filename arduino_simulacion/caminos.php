@@ -48,6 +48,7 @@ if($id_sector)
 
 echo '<body>';
 echo '<div class="container">';
+echo '<div class="container">';
 
 if(isset($error))
 {
