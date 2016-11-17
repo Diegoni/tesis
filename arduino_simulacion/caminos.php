@@ -57,7 +57,7 @@ if(isset($error))
     foreach ($caminos as $camino) 
     {
         echo '<div>';
-        echo $camino['id_compuerta'].'<br>';
+        echo 'Compuerta nro '.$camino['id_compuerta'].'<br>';
         echo '</div>';
     }
 }

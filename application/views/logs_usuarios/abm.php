@@ -1,4 +1,4 @@
-<?php
+    <?php
 /*--------------------------------------------------------------------------------  
             Comienzo del contenido
  --------------------------------------------------------------------------------*/ 
@@ -9,30 +9,40 @@ $html = startContent();
             Formulario
  --------------------------------------------------------------------------------*/ 
 
-if($registro){  
-    foreach ($registro as $row) {
+if($registro)
+{  
+    foreach ($registro as $row) 
+    {
         $try_log = json_decode($row->log);
     
-        if (json_last_error() === 0) {
+        if (json_last_error() === 0) 
+        {
             $log = '';    
-            foreach ($try_log as $key => $value) {
+            foreach ($try_log as $key => $value) 
+            {
                 $log .= setTableContent(array($key, $value));
             }
-        }else{
+        }else
+        {
             $log = setTableContent(array('log', $row->log));
         }
         
         $try_registro = json_decode($row->registro);
     
-        if (json_last_error() === 0 && is_array($try_registro)) {
+        if (json_last_error() === 0 && is_array($try_registro)) 
+        {
             $registro = '';   
-            foreach ($try_registro as $key => $value) {
+            foreach ($try_registro as $key => $value) 
+            {
                 $registro .= setTableContent(array($key, $value));
             }    
-        }else{
-            if($row->registro != ''){
+        }else
+        {
+            if($row->registro != '')
+            {
                 $registro = setTableContent(array('ID', $row->registro));
-            }else {
+            }else 
+            {
                 $registro = setTableContent(array('', ''));
             }
         }

@@ -32,6 +32,7 @@ $lang['apellidos']          = "Apellidos";
     C
  --------------------------------------------------------------------------------*/ 
 
+$lang['camino']             = "Camino";
 $lang['cantidad']           = "Cantidad";
 $lang['carga']              = "Carga";
 $lang['categoria']          = "Categoria";

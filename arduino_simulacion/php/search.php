@@ -4,7 +4,7 @@ function getSearch($tambos)
 {
 	$html = '<aside class="spaces-list" id="spaces-list">
 				<div class="search">
-					<input class="search__input" placeholder="Search..." />
+					<input class="search__input" placeholder="Buscar..." />
 					<button class="boxbutton boxbutton--darker close-search" aria-label="Close details"><svg class="icon icon--cross"><use xlink:href="#icon-cross"></use></svg></button>
 				</div>
 				<span class="label">

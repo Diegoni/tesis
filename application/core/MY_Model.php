@@ -376,12 +376,28 @@ class MY_Model extends CI_Model
 	{
 		$arreglo_campos = $this->getExtraField($arreglo_campos, 'update');
 		
-		$this->db->where($this->_id_table, $id);
-		$this->db->update($this->_tablename, $arreglo_campos);
-		
-        if($this->_debug)
+        if(is_array($id))
         {
-            $this->logUsuario($arreglo_campos, 'update', $id);    
+            foreach ($id as $key => $value) 
+            {
+                $this->db->where($key, $value);
+            }
+        }else
+        {
+            $this->db->where($this->_id_table, $id);    
+        }
+		
+		$this->db->update($this->_tablename, $arreglo_campos);
+		if($this->_debug){
+            if(is_array($id))
+            {
+                $id_json = json_encode($id);
+                       
+                $this->logUsuario($arreglo_campos, 'update', $id_json);    
+            }else
+            {
+                $this->logUsuario($arreglo_campos, 'update', $id);
+            }
         }
 		
 		return $id;
