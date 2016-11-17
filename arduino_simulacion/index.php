@@ -1,5 +1,5 @@
 <?php
-include_once('php/svg.php');
+include_once('php/html.php');
 include_once('php/search.php');
 include_once('php/form.php');
 include_once('php/m_tambos_sectores.php');
@@ -7,25 +7,9 @@ include_once('php/m_tambos_sectores.php');
 $m_tambos = new m_tambos_sectores();
 $tambos = $m_tambos->get_registros();
 
+echo getHead();
 ?>
-
-<!DOCTYPE html>
-<html lang="en" class="no-js">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Interactive 3D Mall Map | Codrops</title>
-
-		<!--<link rel="shortcut icon" href="favicon.ico">-->
-		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
-		<link rel="stylesheet" type="text/css" href="css/style.css" />
-		<link href="../librerias/plantilla/plugins/font/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-		<link href="../librerias/plantilla/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
-
-		<script src="js/modernizr-custom.js"></script>
-	</head>
-	<body>
-		
+<body>
 	<?php echo getSvg();?>
 		
 	<div class="container">
@@ -151,13 +135,11 @@ $tambos = $m_tambos->get_registros();
 				<!-- content -->
 			</div>
 			<!-- /main -->
-			<?php echo getSearch() ?>
+			<?php echo getSearch($tambos) ?>
 			<!-- /spaces-list -->
 		</div>
 		<!-- /container -->
-		<script src="js/classie.js"></script>
-		<script src="js/list.min.js"></script>
-		<script src="js/main.js"></script>
+		<?php echo getJs();?>
 	</body>
 	
 <script>

@@ -44,6 +44,11 @@ if($id_sector)
 }
 
 
+// Ver por pantalla
+
+echo '<body>';
+echo '<div class="container">';
+
 if(isset($error))
 {
 	echo $error;
@@ -51,7 +56,9 @@ if(isset($error))
 {
     foreach ($caminos as $camino) 
     {
+        echo '<div>';
         echo $camino['id_compuerta'].'<br>';
+        echo '</div>';
     }
 }
 

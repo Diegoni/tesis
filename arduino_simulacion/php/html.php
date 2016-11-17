@@ -1,4 +1,33 @@
 <?php
+function getHead()
+{
+    return 
+    '<!DOCTYPE html>
+    <html lang="en" class="no-js">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Simulación del sistema de tambos</title>
+
+        <!--<link rel="shortcut icon" href="favicon.ico">-->
+        <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link href="../librerias/plantilla/plugins/font/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="../librerias/plantilla/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+
+        <script src="js/modernizr-custom.js"></script>
+    </head>';
+}
+
+
+function getJs()
+{
+    return 
+    '<script src="js/classie.js"></script>
+        <script src="js/list.min.js"></script>
+        <script src="js/main.js"></script>';
+}
+
 
 function getSvg()
 {
