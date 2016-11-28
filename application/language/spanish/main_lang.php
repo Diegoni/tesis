@@ -206,6 +206,8 @@ $lang['registro']           = "Registro";
 $lang['salir']              = "Salir";
 $lang['siguiente']          = "Siguiente";
 $lang['sector']             = "Sector";
+$lang['servo_uno']          = "Servo uno";
+$lang['servo_dos']          = "Servo dos";
 
 /*--------------------------------------------------------------------------------  
     T

@@ -28,5 +28,47 @@ class m_animales_rutinas extends MY_Model
 			$relation		= $this->_relation
 		);
 	}
+	
+/*--------------------------------------------------------------------------------- 
+-----------------------------------------------------------------------------------  
+            
+       Devuelve el sector
+  
+----------------------------------------------------------------------------------- 
+---------------------------------------------------------------------------------*/   
+	
+	function getSector($datos)
+	{
+		$sql = "
+		SELECT 
+			animales_rutinas.id_sector 
+		FROM 
+			animales_rutinas 
+		INNER JOIN 
+			animales_tipos ON(animales_rutinas.id_tipo = animales_tipos.id_tipo)
+		INNER JOIN 
+			animales ON(animales.id_tipo = animales_tipos.id_tipo)";
+			
+		$query = $this->db->query($sql);
+		
+		if($query->num_rows() > 0)
+		{
+			foreach ($query->result() as $fila)
+			{
+				$sectores[] = $fila;
+			}	
+			
+			foreach ($sectores as $sector) 
+			{
+				$id_sector = $sector->id_sector;
+			}
+			
+			return $id_sector;	
+		}
+		else
+		{
+			return FALSE;	
+		}
+	}
 } 
 ?>

@@ -18,82 +18,72 @@ if(isset($mensaje))
             Formulario
  --------------------------------------------------------------------------------*/ 
  
-if($detalles)
+$_option = '';
+foreach ($compuertas as $compuerta) 
 {
-    foreach ($detalles as $detalle) 
+    $_option .= '<option value="'.$compuerta->id_compuerta.'">'.$compuerta->compuerta.'</option>';
+}
+
+if($caminos)
+{
+    foreach ($caminos as $camino) 
     {
-        $id_compuertas[] = $detalle->id_compuerta;  
-        if($detalle->id_estado == 1)
-        {
-            $estados[$detalle->id_compuerta] =    
-            '<option value="1" selected><i class="fa fa-ban"></i> Cerrada</option>
-             <option value="2"><i class="fa fa-check"></i> Abierta</option>';  
-        }else if($detalle->id_estado == 2)
-        {
-             $estados[$detalle->id_compuerta] =    
-            '<option value="1"><i class="fa fa-ban"></i> Cerrada</option>
-             <option value="2" selected><i class="fa fa-check"></i> Abierta</option>';  
-        }
-    }    
+        $_camino = $camino->camino;   
+		$_servo_uno = $camino->servo_uno;   
+		$_servo_dos = $camino->servo_dos;     
+    }
 }else
 {
-    $id_compuertas[] = array();
-} 
- 
- 
-$option = '<option value="1"><i class="fa fa-ban"></i> Cerrada</option>
-             <option value="2"><i class="fa fa-check"></i> Abierta</option>';
+    $_camino = '';
+	$_servo_uno = '';   
+	$_servo_dos = '';    
+}
 
-$option_sector = '<option value="3"><i class="fa fa-play"></i> Inicio</option>
-				<option value="4"><i class="fa fa-map-marker"></i> Final</option>';
  
 $html .= '<form action="'.base_url().'index.php/tambos_caminos/procesar/" method="post" class="form-horizontal">';
 
 $html .= '<div class="form-group">';
 $html .= setLabel(lang('camino'), 2);
 $html .= '<div class="col-sm-8">';
-
-if($caminos)
-{
-    foreach ($caminos as $camino) 
-    {
-        $_camino = $camino->camino;     
-    }
-}else
-{
-    $_camino = '';
-}
-
 $html .= '<input '.completarTag('camino', $_camino).'>';
 $html .= '</div>';
 $html .= '</div>';
 
-foreach ($compuertas as $compuerta) 
-{
-	$html .= '<div class="form-group">';
-	$html .= setLabel($compuerta->compuerta, 2);
-	
-	$html .= '<div class="col-sm-8">';
-	$html .= '<select name="com_'.$compuerta->id_compuerta.'" id="'.$compuerta->compuerta.'" class="select2 form-control">';
-    
-    if(in_array($compuerta->id_compuerta, $id_compuertas))
-    {
-        $html .= $estados[$compuerta->id_compuerta];
-    }else
-    {
-        $html .= $option;    
-    }    
-    
-	if($compuerta->id_sector != 0)
-	{
-	    $html .= $option_sector;    
-	}
-    
-    $html .= '</select>';
-	$html .= '</div>';
-	$html .= '<div class="col-sm-2"></div>';
-	$html .= '</div>';
-}
+
+$html .= '<div class="form-group">';
+$html .= setLabel(lang('inicio'), 2);
+$html .= '<div class="col-sm-8">';
+$html .= '<select name="inicio" id="inicio" class="select2 form-control">';
+$html .= $_option;
+$html .= '</select>';
+$html .= '</div>';
+$html .= '</div>';
+
+
+$html .= '<div class="form-group">';
+$html .= setLabel(lang('final'), 2);
+$html .= '<div class="col-sm-8">';
+$html .= '<select name="final" id="final" class="select2 form-control">';
+$html .= $_option;
+$html .= '</select>';
+$html .= '</div>';
+$html .= '</div>';
+
+
+$html .= '<div class="form-group">';
+$html .= setLabel(lang('servo_uno'), 2);
+$html .= '<div class="col-sm-8">';
+$html .= '<input '.completarTag('servo_uno', $_servo_uno).'>';
+$html .= '</div>';
+$html .= '</div>';
+
+
+$html .= '<div class="form-group">';
+$html .= setLabel(lang('servo_dos'), 2);
+$html .= '<div class="col-sm-8">';
+$html .= '<input '.completarTag('servo_dos', $_servo_dos).'>';
+$html .= '</div>';
+$html .= '</div>';
 
 $html .= '<div class="form-group">';
 $html .= '<div class="col-md-12 text-center">';
