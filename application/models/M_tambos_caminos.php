@@ -15,5 +15,43 @@ class m_tambos_caminos extends MY_Model
 			$relation		= $this->_relation
 		);
 	}
+
+
+/*--------------------------------------------------------------------------------- 
+-----------------------------------------------------------------------------------  
+            
+       Devuelve el camino
+  
+----------------------------------------------------------------------------------- 
+---------------------------------------------------------------------------------*/ 
+	
+	
+	function getCamino($inicio, $final)
+    {
+        $sql = "
+        SELECT 
+            * 
+        FROM 
+            tambos_caminos 
+        WHERE
+            tambos_caminos.inicio = '$inicio' AND
+            tambos_caminos.final = '$final'";
+            
+        $query = $this->db->query($sql);
+        
+        if($query->num_rows() > 0)
+        {
+            foreach ($query->result() as $fila)
+			{
+				$caminos[] = $fila;
+			}	
+			
+			return $caminos;	
+        }
+        else
+        {
+            return FALSE;   
+        }
+    }
 } 
 ?>

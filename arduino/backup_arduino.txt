@@ -1,0 +1,275 @@
+#include <SPI.h>
+#include <RFID.h>
+#include <LiquidCrystal.h>
+#include <Ethernet.h>
+#include <Servo.h>
+ 
+Servo myservo;  // create servo object to control a servo
+                // a maximum of eight servo objects can be created
+ 
+int pos = 0;    // variable to store the servo position
+
+// Mac unica de cada EthernetShield (deben cambiarla)
+byte mac[] = { 0x90, 0xA2, 0xDA, 0x0D, 0x4E, 0xD7 };
+
+//IP fijo
+IPAddress ip(192,168,0,40); //Asigno IP fija al arduino
+
+// server(192,168,1,40); // Direccion LAN IP de la pc corriendo apache LAN IP address
+//byte server[] = { 192, 168, 1, 40 };
+// Direccion del servidor
+char server[] = "192.168.0.100"; //Direccion LAN IP de la pc corriendo apache LAN IP address
+// Inicializa la instancia client
+EthernetClient client; //apache web server corriendo en el puerto 80
+
+RFID rfid(8,9);
+String nroTarjeta="";
+bool cardExist = 0;
+boolean ultimoEstado = false;
+
+int ledVerdePin = 0;
+int ledRojoPin = 1;
+
+
+/*----------------------------------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------------------------------------
+         
+          Variables de configuración
+          
+  ----------------------------------------------------------------------------------------------------------------
+  ---------------------------------------------------------------------------------------------------------------*/
+
+
+void setup()
+{
+    myservo.attach(9);  // attaches the servo on pin 9 to the servo object
+    pinMode(ledVerdePin, OUTPUT); 
+    pinMode(ledRojoPin, OUTPUT);
+
+    Serial.begin(9600); //Inicializa la velocidad de Serial
+    while (!Serial) 
+    {
+        ; // Se espera a que se conecte el puerto serie (solo para Arduino Leonardo)
+    }
+
+    SPI.begin();  //Función que inicializa SPI
+    rfid.init();  //Función  que inicializa RFID
+
+    Serial.println("Iniciando guardar nro tarjeta");
+    Serial.println("Sensor RFID RC-522/ web");
+    Serial.println();
+
+    delay(1000); // Espera 1 segundo para que se inicie la tarjeta Ethernet
+  
+    Ethernet.begin(mac, ip);
+    // Imprime la direccion IP de la tarjeta
+    Serial.print("Direccion IP Arduino: ");
+    Serial.println(Ethernet.localIP());
+
+    delay(1000);
+}
+
+
+/*----------------------------------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------------------------------------
+         
+         Programa principal
+          
+  ----------------------------------------------------------------------------------------------------------------
+  ---------------------------------------------------------------------------------------------------------------*/
+
+ 
+void loop()
+{
+    //digitalWrite(ledVerdePin, HIGH);
+    //digitalWrite(ledRojoPin, LOW);
+    String request;
+    int servo_uno;
+  
+    leerNroTarjeta();
+
+    // Si no hay conexion de red y se conecto correctamente la ultima vez
+    // detiene el cliente Ehternet
+    if (!client.connected() && ultimoEstado) 
+    {
+        Serial.println();
+        Serial.println("Desconectando...");
+        client.stop();
+    }
+  
+    if(cardExist)
+    {
+        bool conexion = abrirConexion();
+        if (conexion)
+        {
+            request = httpRequest();
+          
+            servo_uno = request.toInt();
+            myservo.write(servo_uno);
+            delay(1000);
+        }
+        
+        /*Volvemos los valores a 0*/
+        delay(3000);
+        myservo.write(0);
+  
+        cardExist = 0; 
+    }
+
+  // Actualiza la variable ultimoEstado 
+  ultimoEstado = client.connected(); 
+}
+
+
+/*----------------------------------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------------------------------------
+         
+          Devuelve el nro de tarjeta leida
+          
+  ----------------------------------------------------------------------------------------------------------------
+  ---------------------------------------------------------------------------------------------------------------*/
+
+
+void leerNroTarjeta()
+{
+    if (rfid.isCard()) 
+    { //Verifica si hay una tarjeta
+        if (rfid.readCardSerial()) 
+        { //Funcion que lee la tarjeta
+            nroTarjeta = "";
+            //Serial.println(" ");
+            //Serial.println("El numero de serie de la tarjeta es: ");
+            for(int i=0; i<=4; i++)
+            {
+              nroTarjeta += String(rfid.serNum[i],HEX);
+            }
+            if (nroTarjeta !="")
+            {
+              cardExist = 1;
+            }
+            //Serial.println(nroTarjeta);
+            //Serial.print(" ");
+            delay(1000);
+        }
+        rfid.halt();
+    }
+}
+
+
+/*----------------------------------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------------------------------------
+         
+          Conecta con el back end
+          
+  ----------------------------------------------------------------------------------------------------------------
+  ---------------------------------------------------------------------------------------------------------------*/
+
+
+bool abrirConexion()
+{
+    //Cerrar cualquier conexion antes de enviar una request nueva
+    client.stop();
+    //Inicio conexion
+    Serial.println("Iniciando conexion...");
+    
+    // Se conecta al servidor en el puerto 80 (web)
+    if (client.connect(server, 80)) 
+    {
+        Serial.println("connectado");
+        return true;
+    }else 
+    {
+        // Si la conexion fallo se desconecta
+        Serial.println("Error al conectarse al servidor");
+        Serial.println("Desconectando...");
+        client.stop();
+        return false;
+    } 
+  
+}
+
+
+/*----------------------------------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------------------------------------
+         
+          Petición de valores para esa tarjeta
+          
+  ----------------------------------------------------------------------------------------------------------------
+  ---------------------------------------------------------------------------------------------------------------*/
+  
+
+String httpRequest()
+{
+    // Envia el dato al puerto serial 
+    Serial.println("numero de serie de la tarjeta: "); 
+    Serial.println(nroTarjeta);
+    // Envia el requerimiento al servidor via GET
+    client.print("GET /tesis2/arduino/db.php?registro=/"); //página php invocando mi servicio web
+    client.print(nroTarjeta);
+    client.print(" HTTP/1.1");
+    client.println();
+    client.print("Host: ");
+    client.println(server);
+    client.println("User-Agent: Arduino-Ethernet");
+    client.println("Connection: close");
+    client.println();
+    delay(50);
+
+    String respuesta = "";  // variable para guardar la respuesta
+    int contador = 0;
+    char c = 'a';
+    String cadena;
+    char c_previo = 'a';
+    while(true)
+    {    
+        if (client.available())
+        {
+            //leo los datos que entran el la conexion
+            c = client.read();
+            // Si hay datos que llegan por la conexion los envia a la puerta serial
+            //Esto es dolo para propositos de debbuging
+        
+            Serial.print(c);
+            cadena = cadena+c;
+        }
+
+        //Se no hay nada más que leer desde el servidor, se muestra el mensaje
+        if (!client.connected())
+        {    
+            client.stop();
+            Serial.println();
+            Serial.println("Desconectando...");
+            Serial.println("==================================");
+            Serial.println("");
+            /* Leo el ultimo caracter del string
+            - Si leo el caracter ';' se debe haber producido algun error, entonces se prende el led rojo (en el pin 4)
+            - Si leo el caracter '.' todo estuvo ok y se enciende el led verde (en el pin 5)
+            */
+            respuesta.trim();
+            if(respuesta.lastIndexOf(';')>0)
+            {   
+                respuesta.replace(';', '\0'); 
+                digitalWrite(ledRojoPin, HIGH);
+                cadena = "Error";
+                Serial.print("cadena "+cadena);
+                
+                delay(1000);
+            }else{
+                digitalWrite(ledVerdePin, HIGH);
+                cadena = cadena.substring(202);
+                Serial.print("cadena "+cadena);
+                
+                delay(1000);
+            }
+            
+            // turn off the leds and the buzzer
+            digitalWrite(ledVerdePin, LOW);
+            digitalWrite(ledRojoPin, LOW);
+            //digitalWrite(7, HIGH);
+            //lcd.clear();
+            break;
+        }             
+    }
+
+    return cadena;
+}
