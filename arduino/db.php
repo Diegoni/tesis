@@ -13,6 +13,6 @@ if(isset($_GET['registro'])){
 	$id = mysql_insert_id();
 	
 	//echo $id;
-	echo '90';
+	echo '090';
 }
 

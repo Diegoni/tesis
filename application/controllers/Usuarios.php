@@ -39,5 +39,34 @@ class Usuarios extends MY_Controller
         
         $this->armarAbm($id, $db);                     // Envia todo a la plantilla de la pagina
     }
+	
+/*--------------------------------------------------------------------------------- 
+-----------------------------------------------------------------------------------  
+            
+       Login 
+  
+----------------------------------------------------------------------------------- 
+---------------------------------------------------------------------------------*/   
+    
+    
+    function login()                             
+    {
+    	$user = $this->input->post('usu');
+		$pass = $this->input->post('pass');
+		
+		log_message('DEBUG', '--------------------------- Login Usuario');
+
+		$id_usuarios = $this->model->login($user, $pass);
+		if($id_usuarios)
+		{
+			log_message('DEBUG', 'Login de '.$user);
+			echo 1;
+		}else
+		{
+			log_message('DEBUG', 'No existe '.$user);
+	    	echo false;	
+		}
+		
+	}
 }
 ?>

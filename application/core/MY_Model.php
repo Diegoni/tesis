@@ -388,9 +388,7 @@ class MY_Model extends CI_Model
         }
 		
 		$this->db->update($this->_tablename, $arreglo_campos);
-        
-		if($this->_debug)
-		{
+		if($this->_debug){
             if(is_array($id))
             {
                 $id_json = json_encode($id);

@@ -52,5 +52,25 @@ class Animales extends MY_Controller
         
         $this->armarAbm($id, $db);                     // Envia todo a la plantilla de la pagina
     }
+
+
+/*--------------------------------------------------------------------------------- 
+-----------------------------------------------------------------------------------  
+            
+       Estadisticas
+  
+----------------------------------------------------------------------------------- 
+---------------------------------------------------------------------------------*/   
+    
+    
+    function estadisticas()
+    {
+   		$registros    = $this->model->getRegistros(); 
+			
+		if($registros)
+		{
+			echo json_encode($registros);
+		}                                             
+    }
 }
 ?>

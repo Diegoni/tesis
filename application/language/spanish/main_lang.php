@@ -223,7 +223,6 @@ $lang['total']              = "Total";
 $lang['totales']            = "Totales";
 $lang['tiempo']             = "Tiempo";
 $lang['titulo']             = "Título";
-$lang['tarjeta']            = "Tarjeta";
 
 /*--------------------------------------------------------------------------------  
     U
