@@ -41,13 +41,17 @@ class m_animales_rutinas extends MY_Model
 	{
 		$sql = "
 		SELECT 
-			animales_rutinas.id_sector 
+			animales_rutinas.id_sector
 		FROM 
 			animales_rutinas 
 		INNER JOIN 
 			animales_tipos ON(animales_rutinas.id_tipo = animales_tipos.id_tipo)
 		INNER JOIN 
-			animales ON(animales.id_tipo = animales_tipos.id_tipo)";
+			animales ON(animales.id_tipo = animales_tipos.id_tipo)
+		WHERE 
+			animales.id_animal = '$datos[id_animal]' AND
+			animales_rutinas.id_dia = '$datos[dia]' AND
+			(TIME('$datos[hora]') BETWEEN animales_rutinas.inicio  AND animales_rutinas.final)";
 			
 		$query = $this->db->query($sql);
 		
