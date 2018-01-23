@@ -5,7 +5,7 @@
  
 $cabeceras = array(
     lang('compuerta'),
-    lang('sector'),
+    lang('tipo'),
     lang('opciones'), 
 );
 
@@ -35,7 +35,7 @@ if($registros)
     {
         $registro = array(
             $row->compuerta,
-            $row->sector,
+            $row->tipo,
             tableUpd($subjet, $row->id_compuerta),
         );
         
