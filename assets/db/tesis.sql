@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-01-2018 a las 19:47:31
--- Versión del servidor: 10.1.9-MariaDB
--- Versión de PHP: 5.6.15
+-- Tiempo de generación: 09-02-2018 a las 20:24:37
+-- Versión del servidor: 5.6.20
+-- Versión de PHP: 5.5.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Base de datos: `tesis`
@@ -26,8 +26,8 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `alertas`
 --
 
-CREATE TABLE `alertas` (
-  `id_alerta` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `alertas` (
+`id_alerta` int(11) NOT NULL,
   `alerta` text NOT NULL,
   `id_emisor` int(11) NOT NULL,
   `id_remitente` int(11) NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE `alertas` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -46,15 +46,15 @@ CREATE TABLE `alertas` (
 -- Estructura de tabla para la tabla `alertas_estado`
 --
 
-CREATE TABLE `alertas_estado` (
-  `id_estado` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `alertas_estado` (
+`id_estado` int(11) NOT NULL,
   `estado` varchar(128) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -62,7 +62,7 @@ CREATE TABLE `alertas_estado` (
 -- Estructura de tabla para la tabla `animales`
 --
 
-CREATE TABLE `animales` (
+CREATE TABLE IF NOT EXISTS `animales` (
   `id_animal` int(11) NOT NULL,
   `animal` varchar(64) NOT NULL,
   `tarjeta` varchar(64) NOT NULL,
@@ -92,7 +92,7 @@ INSERT INTO `animales` (`id_animal`, `animal`, `tarjeta`, `id_tipo`, `fecha_ingr
 (2, '0', 'f446b1999b', 1, '2016-05-06 00:00:00', '2016-05-06', 0, 0, 0, '26.00', '2.50', 0, '-', '2016-10-06 21:05:47', '2016-10-06 21:05:47', 1, 1, 0),
 (3, '0', 'f446b1999c', 1, '2016-05-06 00:00:00', '2016-05-06', 0, 0, 0, '26.00', '2.50', 0, '-', '2016-10-06 21:05:47', '2016-10-06 21:05:47', 1, 1, 0),
 (4, '0', 'f446b1999d', 2, '2016-05-06 00:00:00', '2016-05-06', 0, 0, 0, '26.00', '2.50', 0, '-', '2016-10-06 21:05:47', '2016-10-06 21:05:47', 1, 1, 0),
-(5, '0', 'f446b1999e', 2, '2016-05-06 00:00:00', '2016-05-06', 0, 0, 0, '26.00', '2.50', 0, '-', '2016-10-06 21:05:47', '2016-10-06 21:05:47', 1, 1, 0);
+(5, '0', 'f446b1999e', 1, '2016-05-06 00:00:00', '2016-05-06', 0, 0, 0, '26.00', '2.50', 0, '-', '2016-10-06 21:05:47', '2016-10-06 21:05:47', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -100,15 +100,15 @@ INSERT INTO `animales` (`id_animal`, `animal`, `tarjeta`, `id_tipo`, `fecha_ingr
 -- Estructura de tabla para la tabla `animales_estados`
 --
 
-CREATE TABLE `animales_estados` (
-  `id_estado` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `animales_estados` (
+`id_estado` int(11) NOT NULL,
   `estado` varchar(64) NOT NULL,
   `date_add` int(11) NOT NULL,
   `date_upd` datetime NOT NULL,
   `user_add` datetime NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `animales_estados`
@@ -125,8 +125,8 @@ INSERT INTO `animales_estados` (`id_estado`, `estado`, `date_add`, `date_upd`, `
 -- Estructura de tabla para la tabla `animales_marcaciones`
 --
 
-CREATE TABLE `animales_marcaciones` (
-  `id_marcacion` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `animales_marcaciones` (
+`id_marcacion` int(11) NOT NULL,
   `id_animal` int(11) NOT NULL,
   `id_camino` int(11) NOT NULL,
   `marcacion_inicio` datetime NOT NULL,
@@ -137,7 +137,7 @@ CREATE TABLE `animales_marcaciones` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Volcado de datos para la tabla `animales_marcaciones`
@@ -149,9 +149,14 @@ INSERT INTO `animales_marcaciones` (`id_marcacion`, `id_animal`, `id_camino`, `m
 (4, 1, 2, '2018-01-23 18:57:24', '2018-01-23 18:57:49', '', '2018-01-23 18:57:24', '2018-01-23 18:57:49', 0, 0, 0),
 (5, 1, 2, '2018-01-23 18:58:19', '2018-01-23 18:58:43', '', '2018-01-23 18:58:19', '2018-01-23 18:58:43', 0, 0, 0),
 (6, 1, 2, '2018-01-23 19:00:43', '2018-01-23 19:01:09', '', '2018-01-23 19:00:43', '2018-01-23 19:01:09', 0, 0, 0),
-(7, 1, 2, '2018-01-23 19:41:52', '0000-00-00 00:00:00', '', '2018-01-23 19:41:52', '2018-01-23 19:41:52', 0, 0, 0),
+(7, 1, 2, '2018-01-23 19:41:52', '2018-02-09 19:12:50', '', '2018-01-23 19:41:52', '2018-02-09 19:12:50', 0, 0, 0),
 (8, 2, 2, '2018-01-23 19:41:56', '2018-01-23 19:42:39', '', '2018-01-23 19:41:56', '2018-01-23 19:42:39', 0, 0, 0),
-(9, 5, 2, '2018-01-23 19:43:03', '0000-00-00 00:00:00', '', '2018-01-23 19:43:03', '2018-01-23 19:43:03', 0, 0, 0);
+(9, 5, 2, '2018-01-23 19:43:03', '2018-02-09 19:13:14', '', '2018-01-23 19:43:03', '2018-02-09 19:13:14', 0, 0, 0),
+(10, 5, 2, '2018-02-09 19:22:33', '2018-02-09 19:26:37', '', '2018-02-09 19:22:33', '2018-02-09 19:26:37', 0, 0, 0),
+(11, 5, 2, '2018-02-09 19:26:39', '2018-02-09 20:19:05', '', '2018-02-09 19:26:39', '2018-02-09 20:19:05', 0, 0, 0),
+(12, 5, 1, '2018-02-09 20:21:51', '2018-02-09 20:22:17', '', '2018-02-09 20:21:51', '2018-02-09 20:22:17', 0, 0, 0),
+(13, 5, 27, '2018-02-09 20:22:19', '2018-02-09 20:23:08', '', '2018-02-09 20:22:19', '2018-02-09 20:23:08', 0, 0, 0),
+(14, 5, 27, '2018-02-09 20:23:46', '0000-00-00 00:00:00', '', '2018-02-09 20:23:46', '2018-02-09 20:23:46', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -159,8 +164,8 @@ INSERT INTO `animales_marcaciones` (`id_marcacion`, `id_animal`, `id_camino`, `m
 -- Estructura de tabla para la tabla `animales_permisos`
 --
 
-CREATE TABLE `animales_permisos` (
-  `id_permiso` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `animales_permisos` (
+`id_permiso` int(11) NOT NULL,
   `id_animal` int(11) NOT NULL,
   `id_sector` int(11) NOT NULL,
   `comentario` text NOT NULL,
@@ -170,7 +175,7 @@ CREATE TABLE `animales_permisos` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `animales_permisos`
@@ -185,8 +190,8 @@ INSERT INTO `animales_permisos` (`id_permiso`, `id_animal`, `id_sector`, `coment
 -- Estructura de tabla para la tabla `animales_rutinas`
 --
 
-CREATE TABLE `animales_rutinas` (
-  `id_rutina` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `animales_rutinas` (
+`id_rutina` int(11) NOT NULL,
   `id_tipo` int(11) NOT NULL,
   `id_sector` int(11) NOT NULL,
   `id_dia` int(11) NOT NULL,
@@ -198,14 +203,21 @@ CREATE TABLE `animales_rutinas` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Volcado de datos para la tabla `animales_rutinas`
 --
 
 INSERT INTO `animales_rutinas` (`id_rutina`, `id_tipo`, `id_sector`, `id_dia`, `inicio`, `final`, `comentario`, `user_add`, `user_upd`, `date_add`, `date_upd`, `eliminado`) VALUES
-(1, 1, 2, 1, '08:00:00', '10:00:00', '', 1, 1, '2016-10-13 20:50:29', '2016-10-13 20:50:29', 0);
+(1, 1, 2, 1, '00:00:00', '23:59:59', '', 1, 1, '2016-10-13 20:50:29', '2016-10-13 20:50:29', 0),
+(2, 1, 2, 1, '00:00:00', '23:59:59', '', 1, 1, '2016-10-13 20:50:29', '2016-10-13 20:50:29', 0),
+(3, 1, 2, 2, '00:00:00', '23:59:59', '', 1, 1, '2016-10-13 20:50:29', '2016-10-13 20:50:29', 0),
+(4, 1, 2, 3, '00:00:00', '23:59:59', '', 1, 1, '2016-10-13 20:50:29', '2016-10-13 20:50:29', 0),
+(5, 1, 2, 4, '00:00:00', '23:59:59', '', 1, 1, '2016-10-13 20:50:29', '2016-10-13 20:50:29', 0),
+(6, 1, 2, 5, '00:00:00', '23:59:59', '', 1, 1, '2016-10-13 20:50:29', '2016-10-13 20:50:29', 0),
+(7, 1, 2, 6, '00:00:00', '23:59:59', '', 1, 1, '2016-10-13 20:50:29', '2016-10-13 20:50:29', 0),
+(8, 1, 2, 7, '00:00:00', '23:59:59', '', 1, 1, '2016-10-13 20:50:29', '2016-10-13 20:50:29', 0);
 
 -- --------------------------------------------------------
 
@@ -213,15 +225,15 @@ INSERT INTO `animales_rutinas` (`id_rutina`, `id_tipo`, `id_sector`, `id_dia`, `
 -- Estructura de tabla para la tabla `animales_tipos`
 --
 
-CREATE TABLE `animales_tipos` (
-  `id_tipo` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `animales_tipos` (
+`id_tipo` int(11) NOT NULL,
   `tipo` varchar(128) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `animales_tipos`
@@ -237,8 +249,8 @@ INSERT INTO `animales_tipos` (`id_tipo`, `tipo`, `date_add`, `date_upd`, `user_a
 -- Estructura de tabla para la tabla `clientes`
 --
 
-CREATE TABLE `clientes` (
-  `id_cliente` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `clientes` (
+`id_cliente` int(11) NOT NULL,
   `cliente` varchar(128) NOT NULL,
   `id_tipo` int(11) NOT NULL,
   `email` varchar(128) NOT NULL,
@@ -257,7 +269,7 @@ CREATE TABLE `clientes` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `clientes`
@@ -273,15 +285,15 @@ INSERT INTO `clientes` (`id_cliente`, `cliente`, `id_tipo`, `email`, `telefono`,
 -- Estructura de tabla para la tabla `clientes_tipos`
 --
 
-CREATE TABLE `clientes_tipos` (
-  `id_tipo` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `clientes_tipos` (
+`id_tipo` int(11) NOT NULL,
   `tipo` varchar(64) NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `clientes_tipos`
@@ -298,8 +310,8 @@ INSERT INTO `clientes_tipos` (`id_tipo`, `tipo`, `user_add`, `user_upd`, `date_a
 -- Estructura de tabla para la tabla `condiciones_pagos`
 --
 
-CREATE TABLE `condiciones_pagos` (
-  `id_condicion_pago` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `condiciones_pagos` (
+`id_condicion_pago` int(11) NOT NULL,
   `condicion_pago` varchar(128) NOT NULL,
   `dias` int(11) NOT NULL,
   `user_add` int(11) NOT NULL,
@@ -307,7 +319,7 @@ CREATE TABLE `condiciones_pagos` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `condiciones_pagos`
@@ -323,11 +335,11 @@ INSERT INTO `condiciones_pagos` (`id_condicion_pago`, `condicion_pago`, `dias`, 
 -- Estructura de tabla para la tabla `dias`
 --
 
-CREATE TABLE `dias` (
-  `id_dia` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `dias` (
+`id_dia` int(11) NOT NULL,
   `dia` varchar(64) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Volcado de datos para la tabla `dias`
@@ -348,8 +360,8 @@ INSERT INTO `dias` (`id_dia`, `dia`, `eliminado`) VALUES
 -- Estructura de tabla para la tabla `empleados`
 --
 
-CREATE TABLE `empleados` (
-  `id_empleado` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `empleados` (
+`id_empleado` int(11) NOT NULL,
   `empleado` varchar(128) NOT NULL,
   `id_puesto` int(11) NOT NULL,
   `id_encargado` int(11) NOT NULL,
@@ -367,7 +379,7 @@ CREATE TABLE `empleados` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `empleados`
@@ -383,8 +395,8 @@ INSERT INTO `empleados` (`id_empleado`, `empleado`, `id_puesto`, `id_encargado`,
 -- Estructura de tabla para la tabla `empleados_marcaciones`
 --
 
-CREATE TABLE `empleados_marcaciones` (
-  `id_marcacion` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `empleados_marcaciones` (
+`id_marcacion` int(11) NOT NULL,
   `id_empleado` int(11) NOT NULL,
   `id_sector` int(11) NOT NULL,
   `marcacion` datetime NOT NULL,
@@ -395,7 +407,7 @@ CREATE TABLE `empleados_marcaciones` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `empleados_marcaciones`
@@ -410,11 +422,11 @@ INSERT INTO `empleados_marcaciones` (`id_marcacion`, `id_empleado`, `id_sector`,
 -- Estructura de tabla para la tabla `empleados_marcaciones_tipos`
 --
 
-CREATE TABLE `empleados_marcaciones_tipos` (
-  `id_tipo` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `empleados_marcaciones_tipos` (
+`id_tipo` int(11) NOT NULL,
   `tipo` varchar(64) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `empleados_marcaciones_tipos`
@@ -430,8 +442,8 @@ INSERT INTO `empleados_marcaciones_tipos` (`id_tipo`, `tipo`, `eliminado`) VALUE
 -- Estructura de tabla para la tabla `empleados_puestos`
 --
 
-CREATE TABLE `empleados_puestos` (
-  `id_puesto` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `empleados_puestos` (
+`id_puesto` int(11) NOT NULL,
   `puesto` varchar(64) NOT NULL,
   `descripcion` text NOT NULL,
   `date_add` datetime NOT NULL,
@@ -439,7 +451,7 @@ CREATE TABLE `empleados_puestos` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `empleados_puestos`
@@ -455,8 +467,8 @@ INSERT INTO `empleados_puestos` (`id_puesto`, `puesto`, `descripcion`, `date_add
 -- Estructura de tabla para la tabla `empleados_turnos`
 --
 
-CREATE TABLE `empleados_turnos` (
-  `id_turno` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `empleados_turnos` (
+`id_turno` int(11) NOT NULL,
   `id_puesto` int(11) NOT NULL,
   `id_sector` int(11) NOT NULL,
   `id_dia` tinyint(4) NOT NULL,
@@ -468,7 +480,7 @@ CREATE TABLE `empleados_turnos` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `empleados_turnos`
@@ -483,15 +495,15 @@ INSERT INTO `empleados_turnos` (`id_turno`, `id_puesto`, `id_sector`, `id_dia`, 
 -- Estructura de tabla para la tabla `envios`
 --
 
-CREATE TABLE `envios` (
-  `id_envio` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `envios` (
+`id_envio` int(11) NOT NULL,
   `envio` varchar(64) NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `envios`
@@ -507,8 +519,8 @@ INSERT INTO `envios` (`id_envio`, `envio`, `user_add`, `user_upd`, `date_add`, `
 -- Estructura de tabla para la tabla `facturas`
 --
 
-CREATE TABLE `facturas` (
-  `id_factura` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `facturas` (
+`id_factura` int(11) NOT NULL,
   `id_cliente` int(11) NOT NULL,
   `id_pedido` int(11) NOT NULL,
   `fecha_entrega` date NOT NULL,
@@ -527,7 +539,7 @@ CREATE TABLE `facturas` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `facturas`
@@ -542,15 +554,15 @@ INSERT INTO `facturas` (`id_factura`, `id_cliente`, `id_pedido`, `fecha_entrega`
 -- Estructura de tabla para la tabla `facturas_estados`
 --
 
-CREATE TABLE `facturas_estados` (
-  `id_estado` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `facturas_estados` (
+`id_estado` int(11) NOT NULL,
   `estado` varchar(64) NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -558,8 +570,8 @@ CREATE TABLE `facturas_estados` (
 -- Estructura de tabla para la tabla `facturas_lineas`
 --
 
-CREATE TABLE `facturas_lineas` (
-  `id_linea` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `facturas_lineas` (
+`id_linea` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `cantidad` decimal(10,2) NOT NULL,
   `precio` decimal(10,2) NOT NULL,
@@ -569,7 +581,7 @@ CREATE TABLE `facturas_lineas` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -577,15 +589,15 @@ CREATE TABLE `facturas_lineas` (
 -- Estructura de tabla para la tabla `facturas_lineas_estados`
 --
 
-CREATE TABLE `facturas_lineas_estados` (
-  `id_estado` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `facturas_lineas_estados` (
+`id_estado` int(11) NOT NULL,
   `estado` varchar(64) NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -593,8 +605,8 @@ CREATE TABLE `facturas_lineas_estados` (
 -- Estructura de tabla para la tabla `facturas_proveedores`
 --
 
-CREATE TABLE `facturas_proveedores` (
-  `id_factura` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `facturas_proveedores` (
+`id_factura` int(11) NOT NULL,
   `id_proveedor` int(11) NOT NULL,
   `id_pedido` int(11) NOT NULL,
   `nro_factura` int(11) NOT NULL,
@@ -613,7 +625,7 @@ CREATE TABLE `facturas_proveedores` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `facturas_proveedores`
@@ -628,8 +640,8 @@ INSERT INTO `facturas_proveedores` (`id_factura`, `id_proveedor`, `id_pedido`, `
 -- Estructura de tabla para la tabla `facturas_proveedores_lineas`
 --
 
-CREATE TABLE `facturas_proveedores_lineas` (
-  `id_linea` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `facturas_proveedores_lineas` (
+`id_linea` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `cantidad` decimal(10,2) NOT NULL,
   `precio` decimal(10,2) NOT NULL,
@@ -639,7 +651,7 @@ CREATE TABLE `facturas_proveedores_lineas` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -647,8 +659,8 @@ CREATE TABLE `facturas_proveedores_lineas` (
 -- Estructura de tabla para la tabla `formas_juridicas`
 --
 
-CREATE TABLE `formas_juridicas` (
-  `id_forma_juridica` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `formas_juridicas` (
+`id_forma_juridica` int(11) NOT NULL,
   `forma_juridica` varchar(64) NOT NULL,
   `monto` decimal(10,2) NOT NULL,
   `user_add` int(11) NOT NULL,
@@ -656,7 +668,7 @@ CREATE TABLE `formas_juridicas` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `formas_juridicas`
@@ -673,15 +685,15 @@ INSERT INTO `formas_juridicas` (`id_forma_juridica`, `forma_juridica`, `monto`, 
 -- Estructura de tabla para la tabla `formas_pagos`
 --
 
-CREATE TABLE `formas_pagos` (
-  `id_forma_pago` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `formas_pagos` (
+`id_forma_pago` int(11) NOT NULL,
   `forma_pago` varchar(64) NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `formas_pagos`
@@ -697,13 +709,13 @@ INSERT INTO `formas_pagos` (`id_forma_pago`, `forma_pago`, `user_add`, `user_upd
 -- Estructura de tabla para la tabla `ingresos`
 --
 
-CREATE TABLE `ingresos` (
-  `id_ingreso` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `ingresos` (
+`id_ingreso` int(11) NOT NULL,
   `id_animal` int(11) NOT NULL,
   `id_sector` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
   `eliminado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `ingresos`
@@ -718,8 +730,8 @@ INSERT INTO `ingresos` (`id_ingreso`, `id_animal`, `id_sector`, `date_add`, `eli
 -- Estructura de tabla para la tabla `ivas`
 --
 
-CREATE TABLE `ivas` (
-  `id_iva` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `ivas` (
+`id_iva` int(11) NOT NULL,
   `iva` varchar(64) NOT NULL,
   `monto` decimal(10,2) NOT NULL,
   `user_add` int(11) NOT NULL,
@@ -727,7 +739,7 @@ CREATE TABLE `ivas` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -735,7 +747,7 @@ CREATE TABLE `ivas` (
 -- Estructura de tabla para la tabla `localidades`
 --
 
-CREATE TABLE `localidades` (
+CREATE TABLE IF NOT EXISTS `localidades` (
   `id_localidad` int(4) NOT NULL,
   `localidad` varchar(60) NOT NULL,
   `codigo_postal` int(4) NOT NULL,
@@ -23369,7 +23381,7 @@ INSERT INTO `localidades` (`id_localidad`, `localidad`, `codigo_postal`, `id_pro
 -- Estructura de tabla para la tabla `logs_niveles`
 --
 
-CREATE TABLE `logs_niveles` (
+CREATE TABLE IF NOT EXISTS `logs_niveles` (
   `id_nivel` int(11) NOT NULL,
   `nivel` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -23394,8 +23406,8 @@ INSERT INTO `logs_niveles` (`id_nivel`, `nivel`) VALUES
 -- Estructura de tabla para la tabla `logs_usuarios`
 --
 
-CREATE TABLE `logs_usuarios` (
-  `id_log` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `logs_usuarios` (
+`id_log` int(11) NOT NULL,
   `id_nivel` tinyint(4) NOT NULL,
   `log` text NOT NULL,
   `accion` varchar(32) NOT NULL,
@@ -23405,7 +23417,7 @@ CREATE TABLE `logs_usuarios` (
   `date_add` datetime NOT NULL,
   `programa` varchar(32) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1358 ;
 
 --
 -- Volcado de datos para la tabla `logs_usuarios`
@@ -24779,8 +24791,8 @@ INSERT INTO `logs_usuarios` (`id_log`, `id_nivel`, `log`, `accion`, `tabla`, `re
 -- Estructura de tabla para la tabla `menus`
 --
 
-CREATE TABLE `menus` (
-  `id_menu` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `menus` (
+`id_menu` int(11) NOT NULL,
   `url` varchar(255) NOT NULL,
   `menu` varchar(128) NOT NULL,
   `icon` varchar(255) NOT NULL,
@@ -24790,7 +24802,7 @@ CREATE TABLE `menus` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
 
 --
 -- Volcado de datos para la tabla `menus`
@@ -24853,8 +24865,8 @@ INSERT INTO `menus` (`id_menu`, `url`, `menu`, `icon`, `id_padre`, `date_add`, `
 -- Estructura de tabla para la tabla `ordenes`
 --
 
-CREATE TABLE `ordenes` (
-  `id_ordene` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `ordenes` (
+`id_ordene` int(11) NOT NULL,
   `id_sector` int(11) NOT NULL,
   `id_animal` int(11) NOT NULL,
   `cantidad` decimal(10,2) NOT NULL,
@@ -24863,7 +24875,7 @@ CREATE TABLE `ordenes` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `ordenes`
@@ -24878,15 +24890,15 @@ INSERT INTO `ordenes` (`id_ordene`, `id_sector`, `id_animal`, `cantidad`, `date_
 -- Estructura de tabla para la tabla `origenes`
 --
 
-CREATE TABLE `origenes` (
-  `id_origen` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `origenes` (
+`id_origen` int(11) NOT NULL,
   `origen` varchar(64) NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `origenes`
@@ -24903,8 +24915,8 @@ INSERT INTO `origenes` (`id_origen`, `origen`, `user_add`, `user_upd`, `date_add
 -- Estructura de tabla para la tabla `pagos`
 --
 
-CREATE TABLE `pagos` (
-  `id_pago` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `pagos` (
+`id_pago` int(11) NOT NULL,
   `id_factura` int(11) NOT NULL,
   `id_forma_pago` int(11) NOT NULL,
   `total` decimal(10,2) NOT NULL,
@@ -24914,7 +24926,7 @@ CREATE TABLE `pagos` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `pagos`
@@ -24929,8 +24941,8 @@ INSERT INTO `pagos` (`id_pago`, `id_factura`, `id_forma_pago`, `total`, `comenta
 -- Estructura de tabla para la tabla `pagos_proveedores`
 --
 
-CREATE TABLE `pagos_proveedores` (
-  `id_pago` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `pagos_proveedores` (
+`id_pago` int(11) NOT NULL,
   `id_factura` int(11) NOT NULL,
   `id_forma_pago` int(11) NOT NULL,
   `total` decimal(10,2) NOT NULL,
@@ -24940,7 +24952,7 @@ CREATE TABLE `pagos_proveedores` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `pagos_proveedores`
@@ -24955,8 +24967,8 @@ INSERT INTO `pagos_proveedores` (`id_pago`, `id_factura`, `id_forma_pago`, `tota
 -- Estructura de tabla para la tabla `pedidos`
 --
 
-CREATE TABLE `pedidos` (
-  `id_pedido` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `pedidos` (
+`id_pedido` int(11) NOT NULL,
   `id_cliente` int(11) NOT NULL,
   `id_empleado` int(11) NOT NULL,
   `fecha_entrega` date NOT NULL,
@@ -24976,7 +24988,7 @@ CREATE TABLE `pedidos` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `pedidos`
@@ -24991,7 +25003,7 @@ INSERT INTO `pedidos` (`id_pedido`, `id_cliente`, `id_empleado`, `fecha_entrega`
 -- Estructura de tabla para la tabla `pedidos_estados`
 --
 
-CREATE TABLE `pedidos_estados` (
+CREATE TABLE IF NOT EXISTS `pedidos_estados` (
   `id_estado` int(11) NOT NULL,
   `estado` varchar(64) NOT NULL,
   `user_add` int(11) NOT NULL,
@@ -25007,8 +25019,8 @@ CREATE TABLE `pedidos_estados` (
 -- Estructura de tabla para la tabla `pedidos_lineas`
 --
 
-CREATE TABLE `pedidos_lineas` (
-  `id_linea` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `pedidos_lineas` (
+`id_linea` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `cantidad` decimal(10,2) NOT NULL,
   `descuento` decimal(10,2) NOT NULL,
@@ -25021,7 +25033,7 @@ CREATE TABLE `pedidos_lineas` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -25029,7 +25041,7 @@ CREATE TABLE `pedidos_lineas` (
 -- Estructura de tabla para la tabla `pedidos_lineas_estados`
 --
 
-CREATE TABLE `pedidos_lineas_estados` (
+CREATE TABLE IF NOT EXISTS `pedidos_lineas_estados` (
   `id_estado` int(11) NOT NULL,
   `estado` varchar(64) NOT NULL,
   `user_add` int(11) NOT NULL,
@@ -25045,8 +25057,8 @@ CREATE TABLE `pedidos_lineas_estados` (
 -- Estructura de tabla para la tabla `pedidos_proveedores`
 --
 
-CREATE TABLE `pedidos_proveedores` (
-  `id_pedido` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `pedidos_proveedores` (
+`id_pedido` int(11) NOT NULL,
   `id_proveedor` int(11) NOT NULL,
   `nro_proveedor` varchar(64) NOT NULL,
   `fecha_entrega` date NOT NULL,
@@ -25065,7 +25077,7 @@ CREATE TABLE `pedidos_proveedores` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `pedidos_proveedores`
@@ -25080,7 +25092,7 @@ INSERT INTO `pedidos_proveedores` (`id_pedido`, `id_proveedor`, `nro_proveedor`,
 -- Estructura de tabla para la tabla `pedidos_proveedores_lineas`
 --
 
-CREATE TABLE `pedidos_proveedores_lineas` (
+CREATE TABLE IF NOT EXISTS `pedidos_proveedores_lineas` (
   `id_linea` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `cantidad` decimal(10,2) NOT NULL,
@@ -25102,8 +25114,8 @@ CREATE TABLE `pedidos_proveedores_lineas` (
 -- Estructura de tabla para la tabla `productos`
 --
 
-CREATE TABLE `productos` (
-  `id_producto` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `productos` (
+`id_producto` int(11) NOT NULL,
   `producto` varchar(128) NOT NULL,
   `codigo_barra` varchar(128) NOT NULL,
   `comentario` text NOT NULL,
@@ -25123,7 +25135,7 @@ CREATE TABLE `productos` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -25131,7 +25143,7 @@ CREATE TABLE `productos` (
 -- Estructura de tabla para la tabla `productos_tipos`
 --
 
-CREATE TABLE `productos_tipos` (
+CREATE TABLE IF NOT EXISTS `productos_tipos` (
   `id_tipo` int(11) NOT NULL,
   `tipo` varchar(64) NOT NULL,
   `user_add` int(11) NOT NULL,
@@ -25147,8 +25159,8 @@ CREATE TABLE `productos_tipos` (
 -- Estructura de tabla para la tabla `proveedores`
 --
 
-CREATE TABLE `proveedores` (
-  `id_proveedor` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `proveedores` (
+`id_proveedor` int(11) NOT NULL,
   `proveedor` varchar(128) NOT NULL,
   `id_tipo` int(11) NOT NULL,
   `email` varchar(128) NOT NULL,
@@ -25167,7 +25179,7 @@ CREATE TABLE `proveedores` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `proveedores`
@@ -25182,15 +25194,15 @@ INSERT INTO `proveedores` (`id_proveedor`, `proveedor`, `id_tipo`, `email`, `tel
 -- Estructura de tabla para la tabla `proveedores_tipos`
 --
 
-CREATE TABLE `proveedores_tipos` (
-  `id_tipo` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `proveedores_tipos` (
+`id_tipo` int(11) NOT NULL,
   `tipo` varchar(64) NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `proveedores_tipos`
@@ -25206,7 +25218,7 @@ INSERT INTO `proveedores_tipos` (`id_tipo`, `tipo`, `user_add`, `user_upd`, `dat
 -- Estructura de tabla para la tabla `provincias`
 --
 
-CREATE TABLE `provincias` (
+CREATE TABLE IF NOT EXISTS `provincias` (
   `id_provincia` smallint(2) NOT NULL,
   `provincia` varchar(50) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
@@ -25248,8 +25260,8 @@ INSERT INTO `provincias` (`id_provincia`, `provincia`, `eliminado`) VALUES
 -- Estructura de tabla para la tabla `seguimientos`
 --
 
-CREATE TABLE `seguimientos` (
-  `id_seguimiento` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `seguimientos` (
+`id_seguimiento` int(11) NOT NULL,
   `id_animal` int(11) NOT NULL,
   `titulo` varchar(128) NOT NULL,
   `comentario` text NOT NULL,
@@ -25259,7 +25271,7 @@ CREATE TABLE `seguimientos` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `seguimientos`
@@ -25274,8 +25286,8 @@ INSERT INTO `seguimientos` (`id_seguimiento`, `id_animal`, `titulo`, `comentario
 -- Estructura de tabla para la tabla `seguimientos_controles`
 --
 
-CREATE TABLE `seguimientos_controles` (
-  `id_control` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `seguimientos_controles` (
+`id_control` int(11) NOT NULL,
   `id_seguimiento` int(11) NOT NULL,
   `descripcion` text NOT NULL,
   `date_add` datetime NOT NULL,
@@ -25283,7 +25295,7 @@ CREATE TABLE `seguimientos_controles` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -25291,15 +25303,15 @@ CREATE TABLE `seguimientos_controles` (
 -- Estructura de tabla para la tabla `seguimientos_estados`
 --
 
-CREATE TABLE `seguimientos_estados` (
-  `id_estado` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `seguimientos_estados` (
+`id_estado` int(11) NOT NULL,
   `estado` varchar(64) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `seguimientos_estados`
@@ -25317,8 +25329,8 @@ INSERT INTO `seguimientos_estados` (`id_estado`, `estado`, `date_add`, `date_upd
 -- Estructura de tabla para la tabla `tambos`
 --
 
-CREATE TABLE `tambos` (
-  `id_tambo` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tambos` (
+`id_tambo` int(11) NOT NULL,
   `tambo` varchar(128) NOT NULL,
   `id_provincia` int(11) NOT NULL,
   `id_localidad` int(11) NOT NULL,
@@ -25333,7 +25345,7 @@ CREATE TABLE `tambos` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `tambos`
@@ -25348,8 +25360,8 @@ INSERT INTO `tambos` (`id_tambo`, `tambo`, `id_provincia`, `id_localidad`, `call
 -- Estructura de tabla para la tabla `tambos_caminos`
 --
 
-CREATE TABLE `tambos_caminos` (
-  `id_camino` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tambos_caminos` (
+`id_camino` int(11) NOT NULL,
   `camino` varchar(64) NOT NULL,
   `inicio` int(11) NOT NULL,
   `final` int(11) NOT NULL,
@@ -25359,17 +25371,43 @@ CREATE TABLE `tambos_caminos` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
 
 --
 -- Volcado de datos para la tabla `tambos_caminos`
 --
 
 INSERT INTO `tambos_caminos` (`id_camino`, `camino`, `inicio`, `final`, `en_proceso`, `date_add`, `date_upd`, `user_add`, `user_upd`, `eliminado`) VALUES
-(1, 'Test', 5, 2, 0, '2016-11-16 00:00:00', '2016-11-16 00:00:00', 1, 1, 0),
-(2, 'camino', 1, 2, 1, '2016-11-17 19:49:40', '2018-01-23 19:41:52', 1, 0, 0),
-(3, 'camino 33', 0, 0, 0, '2016-11-17 19:49:50', '2016-11-17 20:23:18', 1, 1, 0),
-(4, 'camino 2', 0, 0, 0, '2016-11-17 19:50:16', '2016-11-17 20:22:59', 1, 1, 0);
+(1, 'De 1 a 2', 1, 2, 0, '2016-11-16 00:00:00', '2018-02-09 20:22:17', 1, 0, 0),
+(2, 'De 1 a 3', 1, 3, 0, '2016-11-17 19:49:40', '2018-02-09 19:26:39', 1, 0, 0),
+(3, 'De 1 a 4', 1, 4, 0, '2016-11-17 19:49:50', '2016-11-17 20:23:18', 1, 1, 0),
+(4, 'De 1 a 5', 1, 5, 0, '2016-11-17 19:50:16', '2016-11-17 20:22:59', 1, 1, 0),
+(5, 'De 1 a 6', 1, 6, 0, '2016-11-17 19:50:16', '2016-11-17 20:22:59', 1, 1, 0),
+(6, 'De 2 a 3', 2, 3, 0, '2016-11-16 00:00:00', '2016-11-16 00:00:00', 1, 1, 0),
+(7, 'De 2 a 4', 2, 4, 0, '2016-11-17 19:49:40', '2018-02-09 19:26:39', 1, 0, 0),
+(8, 'De 2 a 5', 2, 5, 0, '2016-11-17 19:49:50', '2016-11-17 20:23:18', 1, 1, 0),
+(9, 'De 2 a 6', 2, 6, 0, '2016-11-17 19:50:16', '2016-11-17 20:22:59', 1, 1, 0),
+(10, 'De 2 a 1', 2, 1, 0, '2016-11-17 19:50:16', '2016-11-17 20:22:59', 1, 1, 0),
+(11, 'De 3 a 4', 3, 4, 0, '2016-11-16 00:00:00', '2016-11-16 00:00:00', 1, 1, 0),
+(12, 'De 3 a 5', 3, 5, 0, '2016-11-17 19:49:40', '2018-02-09 19:26:39', 1, 0, 0),
+(13, 'De 3 a 6', 3, 6, 0, '2016-11-17 19:49:50', '2016-11-17 20:23:18', 1, 1, 0),
+(14, 'De 3 a 1', 3, 1, 0, '2016-11-17 19:50:16', '2016-11-17 20:22:59', 1, 1, 0),
+(15, 'De 3 a 2', 3, 2, 0, '2016-11-17 19:50:16', '2016-11-17 20:22:59', 1, 1, 0),
+(16, 'De 4 a 5', 4, 5, 0, '2016-11-16 00:00:00', '2016-11-16 00:00:00', 1, 1, 0),
+(17, 'De 4 a 6', 4, 6, 0, '2016-11-17 19:49:40', '2018-02-09 19:26:39', 1, 0, 0),
+(18, 'De 4 a 1', 4, 1, 0, '2016-11-17 19:49:50', '2016-11-17 20:23:18', 1, 1, 0),
+(19, 'De 4 a 2', 4, 2, 0, '2016-11-17 19:50:16', '2016-11-17 20:22:59', 1, 1, 0),
+(20, 'De 4 a 3', 4, 3, 0, '2016-11-17 19:50:16', '2016-11-17 20:22:59', 1, 1, 0),
+(21, 'De 5 a 6', 5, 6, 0, '2016-11-16 00:00:00', '2016-11-16 00:00:00', 1, 1, 0),
+(22, 'De 5 a 1', 5, 1, 0, '2016-11-17 19:49:40', '2018-02-09 19:26:39', 1, 0, 0),
+(23, 'De 5 a 2', 5, 2, 0, '2016-11-17 19:49:50', '2016-11-17 20:23:18', 1, 1, 0),
+(24, 'De 5 a 3', 5, 3, 0, '2016-11-17 19:50:16', '2016-11-17 20:22:59', 1, 1, 0),
+(25, 'De 5 a 4', 5, 4, 0, '2016-11-17 19:50:16', '2016-11-17 20:22:59', 1, 1, 0),
+(26, 'De 6 a 1', 6, 1, 0, '2016-11-16 00:00:00', '2016-11-16 00:00:00', 1, 1, 0),
+(27, 'De 6 a 2', 6, 2, 1, '2016-11-17 19:49:40', '2018-02-09 20:23:46', 1, 0, 0),
+(28, 'De 6 a 3', 6, 3, 0, '2016-11-17 19:49:50', '2016-11-17 20:23:18', 1, 1, 0),
+(29, 'De 6 a 4', 6, 4, 0, '2016-11-17 19:50:16', '2016-11-17 20:22:59', 1, 1, 0),
+(30, 'De 6 a 5', 6, 5, 0, '2016-11-17 19:50:16', '2016-11-17 20:22:59', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -25377,8 +25415,8 @@ INSERT INTO `tambos_caminos` (`id_camino`, `camino`, `inicio`, `final`, `en_proc
 -- Estructura de tabla para la tabla `tambos_caminos_detalles`
 --
 
-CREATE TABLE `tambos_caminos_detalles` (
-  `id_detalle` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tambos_caminos_detalles` (
+`id_detalle` int(11) NOT NULL,
   `id_camino` int(11) NOT NULL,
   `id_compuerta` int(11) NOT NULL,
   `valor` int(11) NOT NULL,
@@ -25388,15 +25426,133 @@ CREATE TABLE `tambos_caminos_detalles` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=121 ;
 
 --
 -- Volcado de datos para la tabla `tambos_caminos_detalles`
 --
 
 INSERT INTO `tambos_caminos_detalles` (`id_detalle`, `id_camino`, `id_compuerta`, `valor`, `orden`, `date_add`, `date_upd`, `user_add`, `user_upd`, `eliminado`) VALUES
-(1, 2, 2, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
-(2, 2, 2, 1, 1, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0);
+(1, 1, 1, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(2, 1, 2, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(3, 1, 7, 135, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(4, 1, 8, 0, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(5, 2, 1, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(6, 2, 3, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(7, 2, 7, 0, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(8, 2, 8, 135, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(9, 3, 1, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(10, 3, 4, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(11, 3, 7, 0, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(12, 3, 8, 0, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(13, 4, 1, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(14, 4, 5, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(15, 4, 7, 45, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(16, 4, 8, 0, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(17, 5, 1, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(18, 5, 5, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(19, 5, 7, 45, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(20, 5, 8, 0, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(21, 6, 2, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(22, 6, 3, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(23, 6, 7, 45, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(24, 6, 8, 135, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(25, 7, 2, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(26, 7, 4, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(27, 7, 7, 45, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(28, 7, 8, 0, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(29, 8, 2, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(30, 8, 5, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(31, 8, 7, 45, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(32, 8, 8, 45, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(33, 9, 2, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(34, 9, 6, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(35, 9, 7, 90, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(36, 9, 8, 0, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(37, 10, 2, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(38, 10, 7, 1, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(39, 10, 7, 135, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(40, 10, 8, 0, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(41, 11, 3, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(42, 11, 4, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(43, 11, 7, 0, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(44, 11, 8, 45, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(45, 12, 3, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(46, 12, 5, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(47, 12, 7, 0, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(48, 12, 8, 90, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(49, 13, 3, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(50, 13, 6, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(51, 13, 7, 135, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(52, 13, 8, 135, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(53, 14, 3, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(54, 14, 1, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(55, 14, 7, 0, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(56, 14, 8, 135, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(57, 15, 3, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(58, 15, 2, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(59, 15, 7, 45, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(60, 15, 8, 135, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(61, 16, 4, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(62, 16, 5, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(63, 16, 8, 135, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(64, 16, 7, 0, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(65, 17, 4, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(66, 17, 6, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(67, 17, 8, 0, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(68, 17, 7, 135, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(69, 18, 4, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(70, 18, 1, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(71, 18, 8, 0, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(72, 18, 7, 0, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(73, 19, 4, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(74, 19, 2, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(75, 19, 8, 0, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(76, 19, 7, 45, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(77, 20, 4, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(78, 20, 3, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(79, 20, 8, 45, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(80, 20, 7, 0, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(81, 21, 5, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(82, 21, 6, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(83, 21, 8, 45, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(84, 21, 7, 135, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(85, 22, 5, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(86, 22, 1, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(87, 22, 8, 45, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(88, 22, 7, 0, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(89, 23, 5, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(90, 23, 2, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(91, 23, 8, 45, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(92, 23, 7, 45, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(93, 24, 5, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(94, 24, 3, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(95, 24, 8, 90, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(96, 24, 7, 0, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(97, 25, 5, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(98, 25, 4, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(99, 25, 8, 135, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(100, 25, 7, 0, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(101, 26, 6, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(102, 26, 1, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(103, 26, 8, 0, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(104, 26, 7, 45, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(105, 27, 6, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(106, 27, 2, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(107, 27, 8, 0, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(108, 27, 7, 90, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(109, 28, 6, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(110, 28, 3, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(111, 28, 8, 135, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(112, 28, 7, 135, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(113, 29, 6, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(114, 29, 4, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(115, 29, 8, 0, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(116, 29, 7, 135, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(117, 30, 6, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(118, 30, 5, 1, 2, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(119, 30, 8, 45, 4, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0),
+(120, 30, 7, 135, 3, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -25404,8 +25560,8 @@ INSERT INTO `tambos_caminos_detalles` (`id_detalle`, `id_camino`, `id_compuerta`
 -- Estructura de tabla para la tabla `tambos_compuertas`
 --
 
-CREATE TABLE `tambos_compuertas` (
-  `id_compuerta` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tambos_compuertas` (
+`id_compuerta` int(11) NOT NULL,
   `compuerta` varchar(64) NOT NULL,
   `comentario` text NOT NULL,
   `id_tipo` int(11) NOT NULL,
@@ -25415,21 +25571,21 @@ CREATE TABLE `tambos_compuertas` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Volcado de datos para la tabla `tambos_compuertas`
 --
 
 INSERT INTO `tambos_compuertas` (`id_compuerta`, `compuerta`, `comentario`, `id_tipo`, `id_proveedor`, `date_add`, `date_upd`, `user_add`, `user_upd`, `eliminado`) VALUES
-(1, 'Corral 1', '<p>INTEL con doble nucleo</p>\r\n', 1, 1, '2016-10-28 21:21:18', '2016-11-08 23:43:59', 1, 1, 0),
-(2, 'Corral 2', '<p>INTEL con doble nucleo</p>\r\n', 1, 1, '2016-10-28 21:21:35', '2016-11-08 23:44:05', 1, 1, 0),
-(3, 'Sala de ordene 2', '<p>INTEL con doble nucleo</p>\r\n', 1, 1, '2016-11-08 23:34:20', '2016-11-08 23:44:34', 1, 1, 0),
-(4, 'Sala de ordene 1', '<p>INTEL con doble nucleo</p>\r\n', 1, 1, '2016-11-08 23:34:33', '2016-11-08 23:44:27', 1, 1, 0),
+(1, 'Corral', '<p>INTEL con doble nucleo</p>\r\n', 1, 1, '2016-10-28 21:21:18', '2016-11-08 23:43:59', 1, 1, 0),
+(2, 'Maternidad', '<p>INTEL con doble nucleo</p>\r\n', 1, 1, '2016-10-28 21:21:35', '2016-11-08 23:44:05', 1, 1, 0),
+(3, 'Sala de ordene', '<p>INTEL con doble nucleo</p>\r\n', 1, 1, '2016-11-08 23:34:20', '2016-11-08 23:44:34', 1, 1, 0),
+(4, 'Procesos', '<p>INTEL con doble nucleo</p>\r\n', 1, 1, '2016-11-08 23:34:33', '2016-11-08 23:44:27', 1, 1, 0),
 (5, 'Alimentacion', '<p>INTEL con doble nucleo</p>\r\n', 1, 1, '2016-11-08 23:34:50', '2016-11-08 23:43:52', 1, 1, 0),
 (6, 'Veterinaria', '<p>INTEL con doble nucleo</p>\r\n', 1, 1, '2016-11-08 23:35:02', '2016-11-08 23:45:12', 1, 1, 0),
-(7, 'Maternidad', '<p>INTEL con doble nucleo</p>\r\n', 1, 1, '2016-11-08 23:35:45', '2016-11-08 23:44:11', 1, 1, 0),
-(8, 'Procesos', '<p>INTEL con doble nucleo</p>\r\n', 0, 1, '2016-11-08 23:36:24', '2016-11-08 23:44:19', 1, 1, 0);
+(7, 'Servo 1', '<p>INTEL con doble nucleo</p>\r\n', 2, 1, '2016-11-08 23:35:45', '2016-11-08 23:44:11', 1, 1, 0),
+(8, 'Servo 2', '<p>INTEL con doble nucleo</p>\r\n', 2, 1, '2016-11-08 23:36:24', '2016-11-08 23:44:19', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -25437,7 +25593,7 @@ INSERT INTO `tambos_compuertas` (`id_compuerta`, `compuerta`, `comentario`, `id_
 -- Estructura de tabla para la tabla `tambos_compuertas_tipos`
 --
 
-CREATE TABLE `tambos_compuertas_tipos` (
+CREATE TABLE IF NOT EXISTS `tambos_compuertas_tipos` (
   `id_tipo` int(11) NOT NULL,
   `tipo` varchar(64) NOT NULL,
   `date_add` datetime NOT NULL,
@@ -25453,8 +25609,8 @@ CREATE TABLE `tambos_compuertas_tipos` (
 -- Estructura de tabla para la tabla `tambos_lectores`
 --
 
-CREATE TABLE `tambos_lectores` (
-  `id_lector` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tambos_lectores` (
+`id_lector` int(11) NOT NULL,
   `lector` varchar(64) NOT NULL,
   `id_compuerta` int(11) NOT NULL,
   `in_out` tinyint(4) NOT NULL,
@@ -25465,7 +25621,7 @@ CREATE TABLE `tambos_lectores` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `tambos_lectores`
@@ -25481,8 +25637,8 @@ INSERT INTO `tambos_lectores` (`id_lector`, `lector`, `id_compuerta`, `in_out`, 
 -- Estructura de tabla para la tabla `tambos_sectores`
 --
 
-CREATE TABLE `tambos_sectores` (
-  `id_sector` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tambos_sectores` (
+`id_sector` int(11) NOT NULL,
   `id_tambo` int(11) NOT NULL,
   `id_tipo` int(11) NOT NULL,
   `sector` varchar(64) NOT NULL,
@@ -25498,7 +25654,7 @@ CREATE TABLE `tambos_sectores` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Volcado de datos para la tabla `tambos_sectores`
@@ -25520,15 +25676,15 @@ INSERT INTO `tambos_sectores` (`id_sector`, `id_tambo`, `id_tipo`, `sector`, `co
 -- Estructura de tabla para la tabla `tambos_sectores_tipos`
 --
 
-CREATE TABLE `tambos_sectores_tipos` (
-  `id_tipo` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tambos_sectores_tipos` (
+`id_tipo` int(11) NOT NULL,
   `tipo` varchar(64) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `tambos_sectores_tipos`
@@ -25546,8 +25702,8 @@ INSERT INTO `tambos_sectores_tipos` (`id_tipo`, `tipo`, `date_add`, `date_upd`, 
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `usuarios` (
-  `id_usuario` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `usuarios` (
+`id_usuario` int(11) NOT NULL,
   `usuario` varchar(64) NOT NULL,
   `password` varchar(128) NOT NULL,
   `id_perfil` int(11) NOT NULL,
@@ -25562,7 +25718,7 @@ CREATE TABLE `usuarios` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -25577,15 +25733,15 @@ INSERT INTO `usuarios` (`id_usuario`, `usuario`, `password`, `id_perfil`, `last_
 -- Estructura de tabla para la tabla `usuarios_perfiles`
 --
 
-CREATE TABLE `usuarios_perfiles` (
-  `id_perfil` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `usuarios_perfiles` (
+`id_perfil` int(11) NOT NULL,
   `perfil` varchar(64) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `usuarios_perfiles`
@@ -25600,8 +25756,8 @@ INSERT INTO `usuarios_perfiles` (`id_perfil`, `perfil`, `date_add`, `date_upd`, 
 -- Estructura de tabla para la tabla `usuarios_permisos`
 --
 
-CREATE TABLE `usuarios_permisos` (
-  `id_permiso` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `usuarios_permisos` (
+`id_permiso` int(11) NOT NULL,
   `id_perfil` int(11) NOT NULL,
   `id_menu` int(11) NOT NULL,
   `ver` tinyint(4) NOT NULL,
@@ -25611,7 +25767,7 @@ CREATE TABLE `usuarios_permisos` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
 
 --
 -- Volcado de datos para la tabla `usuarios_permisos`
@@ -25676,356 +25832,361 @@ INSERT INTO `usuarios_permisos` (`id_permiso`, `id_perfil`, `id_menu`, `ver`, `e
 -- Indices de la tabla `alertas`
 --
 ALTER TABLE `alertas`
-  ADD PRIMARY KEY (`id_alerta`);
+ ADD PRIMARY KEY (`id_alerta`);
 
 --
 -- Indices de la tabla `alertas_estado`
 --
 ALTER TABLE `alertas_estado`
-  ADD PRIMARY KEY (`id_estado`);
+ ADD PRIMARY KEY (`id_estado`);
+
+--
+-- Indices de la tabla `animales`
+--
+ALTER TABLE `animales`
+ ADD PRIMARY KEY (`id_animal`);
 
 --
 -- Indices de la tabla `animales_estados`
 --
 ALTER TABLE `animales_estados`
-  ADD PRIMARY KEY (`id_estado`);
+ ADD PRIMARY KEY (`id_estado`);
 
 --
 -- Indices de la tabla `animales_marcaciones`
 --
 ALTER TABLE `animales_marcaciones`
-  ADD PRIMARY KEY (`id_marcacion`);
+ ADD PRIMARY KEY (`id_marcacion`);
 
 --
 -- Indices de la tabla `animales_permisos`
 --
 ALTER TABLE `animales_permisos`
-  ADD PRIMARY KEY (`id_permiso`);
+ ADD PRIMARY KEY (`id_permiso`);
 
 --
 -- Indices de la tabla `animales_rutinas`
 --
 ALTER TABLE `animales_rutinas`
-  ADD PRIMARY KEY (`id_rutina`);
+ ADD PRIMARY KEY (`id_rutina`);
 
 --
 -- Indices de la tabla `animales_tipos`
 --
 ALTER TABLE `animales_tipos`
-  ADD PRIMARY KEY (`id_tipo`);
+ ADD PRIMARY KEY (`id_tipo`);
 
 --
 -- Indices de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  ADD PRIMARY KEY (`id_cliente`);
+ ADD PRIMARY KEY (`id_cliente`);
 
 --
 -- Indices de la tabla `clientes_tipos`
 --
 ALTER TABLE `clientes_tipos`
-  ADD PRIMARY KEY (`id_tipo`);
+ ADD PRIMARY KEY (`id_tipo`);
 
 --
 -- Indices de la tabla `condiciones_pagos`
 --
 ALTER TABLE `condiciones_pagos`
-  ADD PRIMARY KEY (`id_condicion_pago`);
+ ADD PRIMARY KEY (`id_condicion_pago`);
 
 --
 -- Indices de la tabla `dias`
 --
 ALTER TABLE `dias`
-  ADD PRIMARY KEY (`id_dia`);
+ ADD PRIMARY KEY (`id_dia`);
 
 --
 -- Indices de la tabla `empleados`
 --
 ALTER TABLE `empleados`
-  ADD PRIMARY KEY (`id_empleado`);
+ ADD PRIMARY KEY (`id_empleado`);
 
 --
 -- Indices de la tabla `empleados_marcaciones`
 --
 ALTER TABLE `empleados_marcaciones`
-  ADD PRIMARY KEY (`id_marcacion`);
+ ADD PRIMARY KEY (`id_marcacion`);
 
 --
 -- Indices de la tabla `empleados_marcaciones_tipos`
 --
 ALTER TABLE `empleados_marcaciones_tipos`
-  ADD PRIMARY KEY (`id_tipo`);
+ ADD PRIMARY KEY (`id_tipo`);
 
 --
 -- Indices de la tabla `empleados_puestos`
 --
 ALTER TABLE `empleados_puestos`
-  ADD PRIMARY KEY (`id_puesto`);
+ ADD PRIMARY KEY (`id_puesto`);
 
 --
 -- Indices de la tabla `empleados_turnos`
 --
 ALTER TABLE `empleados_turnos`
-  ADD PRIMARY KEY (`id_turno`);
+ ADD PRIMARY KEY (`id_turno`);
 
 --
 -- Indices de la tabla `envios`
 --
 ALTER TABLE `envios`
-  ADD PRIMARY KEY (`id_envio`);
+ ADD PRIMARY KEY (`id_envio`);
 
 --
 -- Indices de la tabla `facturas`
 --
 ALTER TABLE `facturas`
-  ADD PRIMARY KEY (`id_factura`);
+ ADD PRIMARY KEY (`id_factura`);
 
 --
 -- Indices de la tabla `facturas_estados`
 --
 ALTER TABLE `facturas_estados`
-  ADD PRIMARY KEY (`id_estado`);
+ ADD PRIMARY KEY (`id_estado`);
 
 --
 -- Indices de la tabla `facturas_lineas`
 --
 ALTER TABLE `facturas_lineas`
-  ADD PRIMARY KEY (`id_linea`);
+ ADD PRIMARY KEY (`id_linea`);
 
 --
 -- Indices de la tabla `facturas_lineas_estados`
 --
 ALTER TABLE `facturas_lineas_estados`
-  ADD PRIMARY KEY (`id_estado`);
+ ADD PRIMARY KEY (`id_estado`);
 
 --
 -- Indices de la tabla `facturas_proveedores`
 --
 ALTER TABLE `facturas_proveedores`
-  ADD PRIMARY KEY (`id_factura`);
+ ADD PRIMARY KEY (`id_factura`);
 
 --
 -- Indices de la tabla `facturas_proveedores_lineas`
 --
 ALTER TABLE `facturas_proveedores_lineas`
-  ADD PRIMARY KEY (`id_linea`);
+ ADD PRIMARY KEY (`id_linea`);
 
 --
 -- Indices de la tabla `formas_juridicas`
 --
 ALTER TABLE `formas_juridicas`
-  ADD PRIMARY KEY (`id_forma_juridica`);
+ ADD PRIMARY KEY (`id_forma_juridica`);
 
 --
 -- Indices de la tabla `formas_pagos`
 --
 ALTER TABLE `formas_pagos`
-  ADD PRIMARY KEY (`id_forma_pago`);
+ ADD PRIMARY KEY (`id_forma_pago`);
 
 --
 -- Indices de la tabla `ingresos`
 --
 ALTER TABLE `ingresos`
-  ADD PRIMARY KEY (`id_ingreso`);
+ ADD PRIMARY KEY (`id_ingreso`);
 
 --
 -- Indices de la tabla `ivas`
 --
 ALTER TABLE `ivas`
-  ADD PRIMARY KEY (`id_iva`);
+ ADD PRIMARY KEY (`id_iva`);
 
 --
 -- Indices de la tabla `localidades`
 --
 ALTER TABLE `localidades`
-  ADD PRIMARY KEY (`id_localidad`),
-  ADD KEY `cp` (`codigo_postal`);
+ ADD PRIMARY KEY (`id_localidad`), ADD KEY `cp` (`codigo_postal`);
 
 --
 -- Indices de la tabla `logs_niveles`
 --
 ALTER TABLE `logs_niveles`
-  ADD PRIMARY KEY (`id_nivel`);
+ ADD PRIMARY KEY (`id_nivel`);
 
 --
 -- Indices de la tabla `logs_usuarios`
 --
 ALTER TABLE `logs_usuarios`
-  ADD PRIMARY KEY (`id_log`);
+ ADD PRIMARY KEY (`id_log`);
 
 --
 -- Indices de la tabla `menus`
 --
 ALTER TABLE `menus`
-  ADD PRIMARY KEY (`id_menu`);
+ ADD PRIMARY KEY (`id_menu`);
 
 --
 -- Indices de la tabla `ordenes`
 --
 ALTER TABLE `ordenes`
-  ADD PRIMARY KEY (`id_ordene`);
+ ADD PRIMARY KEY (`id_ordene`);
 
 --
 -- Indices de la tabla `origenes`
 --
 ALTER TABLE `origenes`
-  ADD PRIMARY KEY (`id_origen`);
+ ADD PRIMARY KEY (`id_origen`);
 
 --
 -- Indices de la tabla `pagos`
 --
 ALTER TABLE `pagos`
-  ADD PRIMARY KEY (`id_pago`);
+ ADD PRIMARY KEY (`id_pago`);
 
 --
 -- Indices de la tabla `pagos_proveedores`
 --
 ALTER TABLE `pagos_proveedores`
-  ADD PRIMARY KEY (`id_pago`);
+ ADD PRIMARY KEY (`id_pago`);
 
 --
 -- Indices de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  ADD PRIMARY KEY (`id_pedido`);
+ ADD PRIMARY KEY (`id_pedido`);
 
 --
 -- Indices de la tabla `pedidos_estados`
 --
 ALTER TABLE `pedidos_estados`
-  ADD PRIMARY KEY (`id_estado`);
+ ADD PRIMARY KEY (`id_estado`);
 
 --
 -- Indices de la tabla `pedidos_lineas`
 --
 ALTER TABLE `pedidos_lineas`
-  ADD PRIMARY KEY (`id_linea`);
+ ADD PRIMARY KEY (`id_linea`);
 
 --
 -- Indices de la tabla `pedidos_lineas_estados`
 --
 ALTER TABLE `pedidos_lineas_estados`
-  ADD PRIMARY KEY (`id_estado`);
+ ADD PRIMARY KEY (`id_estado`);
 
 --
 -- Indices de la tabla `pedidos_proveedores`
 --
 ALTER TABLE `pedidos_proveedores`
-  ADD PRIMARY KEY (`id_pedido`);
+ ADD PRIMARY KEY (`id_pedido`);
 
 --
 -- Indices de la tabla `pedidos_proveedores_lineas`
 --
 ALTER TABLE `pedidos_proveedores_lineas`
-  ADD PRIMARY KEY (`id_linea`);
+ ADD PRIMARY KEY (`id_linea`);
 
 --
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
-  ADD PRIMARY KEY (`id_producto`);
+ ADD PRIMARY KEY (`id_producto`);
 
 --
 -- Indices de la tabla `productos_tipos`
 --
 ALTER TABLE `productos_tipos`
-  ADD PRIMARY KEY (`id_tipo`);
+ ADD PRIMARY KEY (`id_tipo`);
 
 --
 -- Indices de la tabla `proveedores`
 --
 ALTER TABLE `proveedores`
-  ADD PRIMARY KEY (`id_proveedor`);
+ ADD PRIMARY KEY (`id_proveedor`);
 
 --
 -- Indices de la tabla `proveedores_tipos`
 --
 ALTER TABLE `proveedores_tipos`
-  ADD PRIMARY KEY (`id_tipo`);
+ ADD PRIMARY KEY (`id_tipo`);
 
 --
 -- Indices de la tabla `provincias`
 --
 ALTER TABLE `provincias`
-  ADD PRIMARY KEY (`id_provincia`);
+ ADD PRIMARY KEY (`id_provincia`);
 
 --
 -- Indices de la tabla `seguimientos`
 --
 ALTER TABLE `seguimientos`
-  ADD PRIMARY KEY (`id_seguimiento`);
+ ADD PRIMARY KEY (`id_seguimiento`);
 
 --
 -- Indices de la tabla `seguimientos_controles`
 --
 ALTER TABLE `seguimientos_controles`
-  ADD PRIMARY KEY (`id_control`);
+ ADD PRIMARY KEY (`id_control`);
 
 --
 -- Indices de la tabla `seguimientos_estados`
 --
 ALTER TABLE `seguimientos_estados`
-  ADD PRIMARY KEY (`id_estado`);
+ ADD PRIMARY KEY (`id_estado`);
 
 --
 -- Indices de la tabla `tambos`
 --
 ALTER TABLE `tambos`
-  ADD PRIMARY KEY (`id_tambo`);
+ ADD PRIMARY KEY (`id_tambo`);
 
 --
 -- Indices de la tabla `tambos_caminos`
 --
 ALTER TABLE `tambos_caminos`
-  ADD PRIMARY KEY (`id_camino`);
+ ADD PRIMARY KEY (`id_camino`);
 
 --
 -- Indices de la tabla `tambos_caminos_detalles`
 --
 ALTER TABLE `tambos_caminos_detalles`
-  ADD PRIMARY KEY (`id_detalle`);
+ ADD PRIMARY KEY (`id_detalle`);
 
 --
 -- Indices de la tabla `tambos_compuertas`
 --
 ALTER TABLE `tambos_compuertas`
-  ADD PRIMARY KEY (`id_compuerta`);
+ ADD PRIMARY KEY (`id_compuerta`);
 
 --
 -- Indices de la tabla `tambos_lectores`
 --
 ALTER TABLE `tambos_lectores`
-  ADD PRIMARY KEY (`id_lector`);
+ ADD PRIMARY KEY (`id_lector`);
 
 --
 -- Indices de la tabla `tambos_sectores`
 --
 ALTER TABLE `tambos_sectores`
-  ADD PRIMARY KEY (`id_sector`);
+ ADD PRIMARY KEY (`id_sector`);
 
 --
 -- Indices de la tabla `tambos_sectores_tipos`
 --
 ALTER TABLE `tambos_sectores_tipos`
-  ADD PRIMARY KEY (`id_tipo`);
+ ADD PRIMARY KEY (`id_tipo`);
 
 --
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id_usuario`);
+ ADD PRIMARY KEY (`id_usuario`);
 
 --
 -- Indices de la tabla `usuarios_perfiles`
 --
 ALTER TABLE `usuarios_perfiles`
-  ADD PRIMARY KEY (`id_perfil`);
+ ADD PRIMARY KEY (`id_perfil`);
 
 --
 -- Indices de la tabla `usuarios_permisos`
 --
 ALTER TABLE `usuarios_permisos`
-  ADD PRIMARY KEY (`id_permiso`);
+ ADD PRIMARY KEY (`id_permiso`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -26035,262 +26196,262 @@ ALTER TABLE `usuarios_permisos`
 -- AUTO_INCREMENT de la tabla `alertas`
 --
 ALTER TABLE `alertas`
-  MODIFY `id_alerta` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_alerta` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `alertas_estado`
 --
 ALTER TABLE `alertas_estado`
-  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `animales_estados`
 --
 ALTER TABLE `animales_estados`
-  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `animales_marcaciones`
 --
 ALTER TABLE `animales_marcaciones`
-  MODIFY `id_marcacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+MODIFY `id_marcacion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT de la tabla `animales_permisos`
 --
 ALTER TABLE `animales_permisos`
-  MODIFY `id_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+MODIFY `id_permiso` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `animales_rutinas`
 --
 ALTER TABLE `animales_rutinas`
-  MODIFY `id_rutina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+MODIFY `id_rutina` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `animales_tipos`
 --
 ALTER TABLE `animales_tipos`
-  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `clientes_tipos`
 --
 ALTER TABLE `clientes_tipos`
-  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `condiciones_pagos`
 --
 ALTER TABLE `condiciones_pagos`
-  MODIFY `id_condicion_pago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+MODIFY `id_condicion_pago` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `dias`
 --
 ALTER TABLE `dias`
-  MODIFY `id_dia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+MODIFY `id_dia` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `empleados`
 --
 ALTER TABLE `empleados`
-  MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `empleados_marcaciones`
 --
 ALTER TABLE `empleados_marcaciones`
-  MODIFY `id_marcacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+MODIFY `id_marcacion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `empleados_marcaciones_tipos`
 --
 ALTER TABLE `empleados_marcaciones_tipos`
-  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `empleados_puestos`
 --
 ALTER TABLE `empleados_puestos`
-  MODIFY `id_puesto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+MODIFY `id_puesto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `empleados_turnos`
 --
 ALTER TABLE `empleados_turnos`
-  MODIFY `id_turno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+MODIFY `id_turno` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `envios`
 --
 ALTER TABLE `envios`
-  MODIFY `id_envio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+MODIFY `id_envio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `facturas`
 --
 ALTER TABLE `facturas`
-  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `facturas_estados`
 --
 ALTER TABLE `facturas_estados`
-  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `facturas_lineas`
 --
 ALTER TABLE `facturas_lineas`
-  MODIFY `id_linea` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_linea` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `facturas_lineas_estados`
 --
 ALTER TABLE `facturas_lineas_estados`
-  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `facturas_proveedores`
 --
 ALTER TABLE `facturas_proveedores`
-  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `facturas_proveedores_lineas`
 --
 ALTER TABLE `facturas_proveedores_lineas`
-  MODIFY `id_linea` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_linea` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `formas_juridicas`
 --
 ALTER TABLE `formas_juridicas`
-  MODIFY `id_forma_juridica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+MODIFY `id_forma_juridica` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `formas_pagos`
 --
 ALTER TABLE `formas_pagos`
-  MODIFY `id_forma_pago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+MODIFY `id_forma_pago` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `ingresos`
 --
 ALTER TABLE `ingresos`
-  MODIFY `id_ingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+MODIFY `id_ingreso` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `ivas`
 --
 ALTER TABLE `ivas`
-  MODIFY `id_iva` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_iva` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `logs_usuarios`
 --
 ALTER TABLE `logs_usuarios`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1358;
+MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1358;
 --
 -- AUTO_INCREMENT de la tabla `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT de la tabla `ordenes`
 --
 ALTER TABLE `ordenes`
-  MODIFY `id_ordene` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+MODIFY `id_ordene` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `origenes`
 --
 ALTER TABLE `origenes`
-  MODIFY `id_origen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+MODIFY `id_origen` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `pagos`
 --
 ALTER TABLE `pagos`
-  MODIFY `id_pago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+MODIFY `id_pago` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `pagos_proveedores`
 --
 ALTER TABLE `pagos_proveedores`
-  MODIFY `id_pago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+MODIFY `id_pago` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `pedidos_lineas`
 --
 ALTER TABLE `pedidos_lineas`
-  MODIFY `id_linea` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_linea` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `pedidos_proveedores`
 --
 ALTER TABLE `pedidos_proveedores`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `proveedores`
 --
 ALTER TABLE `proveedores`
-  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `proveedores_tipos`
 --
 ALTER TABLE `proveedores_tipos`
-  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `seguimientos`
 --
 ALTER TABLE `seguimientos`
-  MODIFY `id_seguimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+MODIFY `id_seguimiento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `seguimientos_controles`
 --
 ALTER TABLE `seguimientos_controles`
-  MODIFY `id_control` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_control` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `seguimientos_estados`
 --
 ALTER TABLE `seguimientos_estados`
-  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `tambos`
 --
 ALTER TABLE `tambos`
-  MODIFY `id_tambo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+MODIFY `id_tambo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `tambos_caminos`
 --
 ALTER TABLE `tambos_caminos`
-  MODIFY `id_camino` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+MODIFY `id_camino` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT de la tabla `tambos_caminos_detalles`
 --
 ALTER TABLE `tambos_caminos_detalles`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=121;
 --
 -- AUTO_INCREMENT de la tabla `tambos_compuertas`
 --
 ALTER TABLE `tambos_compuertas`
-  MODIFY `id_compuerta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+MODIFY `id_compuerta` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `tambos_lectores`
 --
 ALTER TABLE `tambos_lectores`
-  MODIFY `id_lector` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+MODIFY `id_lector` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `tambos_sectores`
 --
 ALTER TABLE `tambos_sectores`
-  MODIFY `id_sector` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+MODIFY `id_sector` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `tambos_sectores_tipos`
 --
 ALTER TABLE `tambos_sectores_tipos`
-  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `usuarios_perfiles`
 --
 ALTER TABLE `usuarios_perfiles`
-  MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `usuarios_permisos`
 --
 ALTER TABLE `usuarios_permisos`
-  MODIFY `id_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+MODIFY `id_permiso` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

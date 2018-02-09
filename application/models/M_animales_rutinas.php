@@ -52,7 +52,7 @@ class m_animales_rutinas extends MY_Model
 			animales.id_animal = '$datos[id_animal]' AND
 			animales_rutinas.id_dia = '$datos[dia]' AND
 			(TIME('$datos[hora]') BETWEEN animales_rutinas.inicio  AND animales_rutinas.final)";
-			
+		
 		$query = $this->db->query($sql);
 		
 		if($query->num_rows() > 0)
