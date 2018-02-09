@@ -171,7 +171,10 @@ class Tambos_caminos extends MY_Controller
     
     function getCamino($tarjeta = NULL, $inicio = NULL)                         
     {
-    	$debug = 1;
+    	$debug = FALSE;
+		
+		log_message('DEBUG', 'Lectura tarjeta '.$tarjeta);
+		log_message('DEBUG', 'Lectura compuer '.$inicio);
 		
 		
     	if($tarjeta != NULL)
