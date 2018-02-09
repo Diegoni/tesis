@@ -4,9 +4,8 @@
  --------------------------------------------------------------------------------*/
  
 $cabeceras = array(
-    lang('camino'),
-    lang('en_proceso'),
-    lang('opciones'), 
+    lang('animal'),
+    lang('marcacion'),
 );
 
 $html = startContent();
@@ -19,13 +18,8 @@ if(isset($mensaje)){
             Tabla
  --------------------------------------------------------------------------------*/
 
-if($permiso_editar == 1)
-{
-    $html .= getExportsButtons($cabeceras, tableAdd($subjet));    
-}else
-{
-    $html .= getExportsButtons($cabeceras);
-}
+$html .= getExportsButtons($cabeceras);
+
 
 $html .= startTable($cabeceras);
 
@@ -33,27 +27,31 @@ if($registros)
 {
     foreach ($registros as $row) 
     {
-    	if($row->en_proceso > 0)
-    	{
-			$registro = array(
-	            $row->camino,
-	            setSpan($row->en_proceso),
-	            tableButton($subjet.'/en_proceso', $row->id_camino, 'fa fa-eye'),
-	        );
-    	}else
-    	{
-    		$registro = array(
-	            $row->camino,
-	            '',
-	            tableUpd($subjet, $row->id_camino),
-	        );
-    	}
+    	$registro = array(
+	        $row->id_animal,
+	    	formatDatetime($row->marcacion_inicio),
+		);
+
 		
         $html .= setTableContent($registro);    
     }
 }
             
-$html .= endTable($cabeceras);         
+$html .= endTable($cabeceras);     
+
+$loading = loadingButton();	
+
+$button = '<center>
+		<form method="post" action="'.base_url().'index.php/tambos_caminos/cierre/">
+		<button class="btn btn-app" data-loading-text="'.$loading['loading'].'" name="cierre" id="cierre" onclick="return confirm("Esta seguro de querer cerrar!")" type="submit" value="1">';
+$button	.= '<i class="fa fa-close"></i>';
+$button	.= lang('cierre');
+$button	.= '</button></form></center>';
+	
+$button	.= $loading['script'];
+
+$html .= $button;
+    
 $html .= setDatatables(NULL, array(1, "desc"));           
 
 /*--------------------------------------------------------------------------------  

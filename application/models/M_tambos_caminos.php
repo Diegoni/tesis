@@ -36,7 +36,7 @@ class m_tambos_caminos extends MY_Model
         WHERE
             tambos_caminos.inicio = '$inicio' AND
             tambos_caminos.final = '$final'";
-            
+		    
         $query = $this->db->query($sql);
         
         if($query->num_rows() > 0)

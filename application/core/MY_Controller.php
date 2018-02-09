@@ -265,7 +265,7 @@ class MY_Controller extends CI_Controller
 	        $db['session'] = $this->session->userdata('logged_in');
             $db['subjet']  = ucwords($this->_subject);
             
-            if($vista == 'abm')
+            if($vista == 'abm' || $vista == 'en_proceso')
             {
                 $_vista = 'table';
             }else

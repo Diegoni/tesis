@@ -50,6 +50,7 @@ $lang['calle']              = "Calle";
 $lang['calle_numero']       = "Calle nro";
 $lang['cliente']            = "Cliente";
 $lang['condicion_pago']     = "Condición pago";
+$lang['cierre']             = "Cierre";
 
 /*--------------------------------------------------------------------------------  
     D
@@ -80,6 +81,7 @@ $lang['encargado']          = "Encargado";
 $lang['egreso']             = "Egreso";
 $lang['empleado']           = "Empleado";
 $lang['envio']              = "Envio";
+$lang['en_proceso']         = "En proceso";
 
 /*--------------------------------------------------------------------------------  
     F

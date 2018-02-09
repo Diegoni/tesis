@@ -105,6 +105,61 @@ class Tambos_caminos extends MY_Controller
         $this->table();
     }  
 
+
+/*--------------------------------------------------------------------------------- 
+-----------------------------------------------------------------------------------  
+            
+       Animalees en camino
+  
+----------------------------------------------------------------------------------- 
+---------------------------------------------------------------------------------*/ 
+
+	
+	function en_proceso($id_camino)
+	{
+		$db['registros'] = $this->m_animales_marcaciones->getRegistros('0000-00-00 00:00:00', 'marcacion_final');
+				
+		$this->armarVista('en_proceso', $db);
+	}
+
+/*--------------------------------------------------------------------------------- 
+-----------------------------------------------------------------------------------  
+            
+       Cerrar circuito 
+  
+----------------------------------------------------------------------------------- 
+---------------------------------------------------------------------------------*/ 
+
+	
+	function cierre()
+	{
+		// Marco las finales
+		$registro = array(
+			'marcacion_final' 	=> date('Y-m-d H:i:s'),
+			'comentario'		=> 'Cierre forzado'
+		);
+		
+		$where = array(
+			'marcacion_final' => '0000-00-00 00:00:00',
+		);
+								
+		$this->m_animales_marcaciones->update($registro, $where);
+		
+		
+		$registro = array(
+			'en_proceso'	=> 0,
+		);
+							
+		$where = array(
+			'en_proceso'	=> 1,
+		);
+													
+		$this->model->update($registro, $where);
+		
+		redirect('tambos_caminos/table/', 'refresh');							
+	}
+
+
 /*--------------------------------------------------------------------------------- 
 -----------------------------------------------------------------------------------  
             
@@ -116,6 +171,9 @@ class Tambos_caminos extends MY_Controller
     
     function getCamino($tarjeta = NULL, $inicio = NULL)                         
     {
+    	$debug = 1;
+		
+		
     	if($tarjeta != NULL)
     	{
     		$animales = $this->m_animales->getRegistros($tarjeta, 'tarjeta'); 
@@ -131,33 +189,92 @@ class Tambos_caminos extends MY_Controller
 				$activos = $this->m_animales_marcaciones->getRegistros('0000-00-00 00:00:00', 'marcacion_final');
 				
 				$marcacion_inicial = TRUE;
+				$abiertos = 0;
 				
 				if($activos)
 				{
-					$abiertos = 0;
+					if($debug)
+					{
+						echo 'Hay marcaciones abierta <br>';
+					}
 					
 					foreach ($activos as $row_activo) 
 					{
 						if($row_activo->id_animal == $id_animal)
 						{
-							$registro = array(
-								'marcacion_final' => date('Y-m-d H:i:s'),
+							$marcacion_inicial = FALSE;
+							
+							// Obtengo de la rutina en que sector debe estar el animal
+							$datos = array(
+								'id_animal' => $id_animal,
+								'id_sector' => $inicio, 
+								'hora'		=> date('H:i:s'),
+								'dia'		=> date('w'),
 							);
 							
-							$this->m_animales_marcaciones->update($registro, $row_activo->id_marcacion);
-							$marcacion_inicial = FALSE;
+							$id_sector = $this->m_animales_rutinas->getSector($datos);
+							
+							if($datos['id_sector'] == $id_sector)
+							{
+								$registro = array(
+									'marcacion_final' => date('Y-m-d H:i:s'),
+								);
+								
+								$this->m_animales_marcaciones->update($registro, $row_activo->id_marcacion);
+								
+								if($debug)
+								{
+									echo 'Se actualizo en db la marcacion final <br>';
+								}								
+							}else
+							{
+								$return = 'ERROR: Sector final '.$id_sector.' Lectura de la tarjeta en sector '.$inicio.'<br>';
+							}
 						}else
 						{
 							$abiertos = $abiertos + 1;
 						}
 					}
+
+					if($debug)
+					{
+						echo 'Marcaciones abiertas '.$abiertos.' <br>';
+					}	
 				}
 				
 				if($marcacion_inicial)
 				{
+					if($debug)
+					{
+						echo 'Es una marcacion inicial <br>';
+					}	
+					
+					// Obtengo el camino en proceso, para no permitir mas de un camino a la vez
+					if($abiertos > 0)
+					{
+						$_en_proceso = $this->model->getRegistros('1', 'en_proceso');
+					
+						if($_en_proceso)
+						{
+							foreach ($_en_proceso as $row_en_proceso) 
+							{
+								$camino_en_proceso = $row_en_proceso->id_camino;
+							}
+						}
+					}else
+					{
+						$camino_en_proceso = 0;
+					}
+					
+					if($debug)
+					{
+						echo 'Camino en proceso '.$camino_en_proceso.'<br>';
+					}
+					
+					// Obtengo de la rutina en que sector debe estar el animal
 					$datos = array(
 						'id_animal' => $id_animal,
-						'id_sector' => $inicio, // porque solo tengo un solo lector de rfid
+						'id_sector' => $inicio, 
 						'hora'		=> date('H:i:s'),
 						'dia'		=> date('w'),
 					);
@@ -180,55 +297,61 @@ class Tambos_caminos extends MY_Controller
 									$id_camino = $camino->id_camino;
 								}
 								
-								$camino_en_proceso = $this->model->getRegistros(1, 'en_proceso');
-								
-								//Si ya hay un camino en proceso, verifico que sea el mismo
-								if($camino_en_proceso)
+								// No hay camino en proceso
+								if($camino_en_proceso == 0)
 								{
-									foreach ($camino_en_proceso as $camino) 
-									{
-										$id_camino_en_proceso = $camino->id_camino;
-									}
-									
-									if($id_camino_en_proceso != $id_camino)
-									{
-										$return = 'ERROR: hay otro camino en proceso';
-									}
-								// Si no hay camino en proceso lo marco en proceso	
-								}else
-								{
+									// Actualizaos la base de datos para ponerlo en proceso
 									$registro = array(
 										'en_proceso'	=> 1,
 									);
-									
+										
 									$this->model->update($registro, $id_camino);
-								}
-								
-								
-								
-								$detalles = $this->m_tambos_caminos_detalles->getRegistros($id_camino, 'id_camino');
-								
-								if($detalles)
-								{
-									$registro = array(
-										'id_animal'	=> $id_animal,
-	  									'id_camino' => $id_camino,
-	  									'marcacion_inicio' => date('Y-m-d H:i:s'),
-									);
 									
-									$this->m_animales_marcaciones->insert($registro);
-									
-									$return = '';
-									
-									foreach ($detalles as $row_detalle) 
+									if($debug)
 									{
-										$return .= $row_detalle->id_compuerta.'_'.$row_detalle->valor.'&';
+										echo 'Camino abierto id '.$id_camino.'<br>';
 									}
-									
-									$return = substr($return, 0, -1);
 								}else
 								{
-									$return = 'ERROR: no hay detalle de camino';
+									if($debug)
+									{
+										echo 'Se inteta hacer el camino '.$id_camino.'<br>';
+									}
+									
+									// No permitimos el ingreso
+									if($id_camino != $camino_en_proceso)
+									{
+										$return = 'ERROR: hay otro camino en ejecucion';
+									}
+								}
+								
+								if(!isset($return))
+								{
+									// Buscamos el detalle del camino
+									$detalles = $this->m_tambos_caminos_detalles->getRegistros($id_camino, 'id_camino');
+								
+									if($detalles)
+									{
+										$registro = array(
+											'id_animal'	=> $id_animal,
+		  									'id_camino' => $id_camino,
+		  									'marcacion_inicio' => date('Y-m-d H:i:s'),
+										);
+										
+										$this->m_animales_marcaciones->insert($registro);
+										
+										$return = '';
+										
+										foreach ($detalles as $row_detalle) 
+										{
+											$return .= $row_detalle->id_compuerta.'_'.$row_detalle->valor.'&';
+										}
+										
+										$return = substr($return, 0, -1);
+									}else
+									{
+										$return = 'ERROR: no hay detalle de camino';
+									}
 								}
 								
 							}else
@@ -245,20 +368,29 @@ class Tambos_caminos extends MY_Controller
 					}
 				}else
 				{
-					$return = '';
-					
-					// Fue el ultimo animal en llegar, entonces sacamos la bandera en proceso
-					if($abiertos == 0)
+					if(!isset($return))
 					{
-						$registro = array(
-							'en_proceso'	=> 0,
-						);
-						
-						$where = array(
-							'en_proceso'	=> 1,
-						);
-												
-						$this->model->update($registro, $where);
+						$return = '';
+					
+						// Fue el ultimo animal en llegar, entonces sacamos la bandera en proceso
+						if($abiertos == 0)
+						{
+							$registro = array(
+								'en_proceso'	=> 0,
+							);
+							
+							$where = array(
+								'en_proceso'	=> 1,
+							);
+													
+							$this->model->update($registro, $where);
+						}	
+					}else
+					{
+						if($debug)
+						{
+							echo 'Existe un return no se cambia el dato en_proceso<br>';
+						}
 					}
 				}		
 				
