@@ -30,12 +30,12 @@ class Tambos_compuertas extends MY_Controller
     function abm($id = NULL)
     {                           
         $db['proveedores']  = $this->m_proveedores->getRegistros();
-		$db['sectores']  = $this->m_tambos_sectores->getRegistros();
+		$db['tipos']  = $this->m_tambos_compuertas_tipos->getRegistros();
         
         $db['campos']   = array(
             array('compuerta',    '', 'required'),
             array('comentario',    '', ''),
-            array('select',   'id_sector',  'sector', $db['sectores']),
+            array('select',   'id_tipo',  'tipo', $db['tipos']),
             array('select',   'id_proveedor',  'proveedor', $db['proveedores']),
         );
         

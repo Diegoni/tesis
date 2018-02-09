@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7.1
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-11-2016 a las 20:42:33
--- Versión del servidor: 5.6.20
--- Versión de PHP: 5.5.15
+-- Tiempo de generación: 23-01-2018 a las 19:47:31
+-- Versión del servidor: 10.1.9-MariaDB
+-- Versión de PHP: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de datos: `tesis`
@@ -26,8 +26,8 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `alertas`
 --
 
-CREATE TABLE IF NOT EXISTS `alertas` (
-`id_alerta` int(11) NOT NULL,
+CREATE TABLE `alertas` (
+  `id_alerta` int(11) NOT NULL,
   `alerta` text NOT NULL,
   `id_emisor` int(11) NOT NULL,
   `id_remitente` int(11) NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `alertas` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -46,15 +46,15 @@ CREATE TABLE IF NOT EXISTS `alertas` (
 -- Estructura de tabla para la tabla `alertas_estado`
 --
 
-CREATE TABLE IF NOT EXISTS `alertas_estado` (
-`id_estado` int(11) NOT NULL,
+CREATE TABLE `alertas_estado` (
+  `id_estado` int(11) NOT NULL,
   `estado` varchar(128) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -62,8 +62,8 @@ CREATE TABLE IF NOT EXISTS `alertas_estado` (
 -- Estructura de tabla para la tabla `animales`
 --
 
-CREATE TABLE IF NOT EXISTS `animales` (
-`id_animal` int(11) NOT NULL,
+CREATE TABLE `animales` (
+  `id_animal` int(11) NOT NULL,
   `animal` varchar(64) NOT NULL,
   `tarjeta` varchar(64) NOT NULL,
   `id_tipo` int(11) NOT NULL,
@@ -81,14 +81,18 @@ CREATE TABLE IF NOT EXISTS `animales` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `animales`
 --
 
 INSERT INTO `animales` (`id_animal`, `animal`, `tarjeta`, `id_tipo`, `fecha_ingreso`, `fecha_nacimiento`, `id_padre`, `id_madre`, `id_proveedor`, `peso`, `altura`, `id_estado`, `comentario`, `date_add`, `date_upd`, `user_add`, `user_upd`, `eliminado`) VALUES
-(1, '0', 'f446b1999a', 1, '2016-05-06 00:00:00', '2016-05-06', 0, 0, 0, '26.00', '2.50', 0, '-', '2016-10-06 21:05:47', '2016-10-06 21:05:47', 1, 1, 0);
+(1, '0', 'f446b1999a', 1, '2016-05-06 00:00:00', '2016-05-06', 0, 0, 0, '26.00', '2.50', 0, '-', '2016-10-06 21:05:47', '2016-10-06 21:05:47', 1, 1, 0),
+(2, '0', 'f446b1999b', 1, '2016-05-06 00:00:00', '2016-05-06', 0, 0, 0, '26.00', '2.50', 0, '-', '2016-10-06 21:05:47', '2016-10-06 21:05:47', 1, 1, 0),
+(3, '0', 'f446b1999c', 1, '2016-05-06 00:00:00', '2016-05-06', 0, 0, 0, '26.00', '2.50', 0, '-', '2016-10-06 21:05:47', '2016-10-06 21:05:47', 1, 1, 0),
+(4, '0', 'f446b1999d', 2, '2016-05-06 00:00:00', '2016-05-06', 0, 0, 0, '26.00', '2.50', 0, '-', '2016-10-06 21:05:47', '2016-10-06 21:05:47', 1, 1, 0),
+(5, '0', 'f446b1999e', 2, '2016-05-06 00:00:00', '2016-05-06', 0, 0, 0, '26.00', '2.50', 0, '-', '2016-10-06 21:05:47', '2016-10-06 21:05:47', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -96,15 +100,15 @@ INSERT INTO `animales` (`id_animal`, `animal`, `tarjeta`, `id_tipo`, `fecha_ingr
 -- Estructura de tabla para la tabla `animales_estados`
 --
 
-CREATE TABLE IF NOT EXISTS `animales_estados` (
-`id_estado` int(11) NOT NULL,
+CREATE TABLE `animales_estados` (
+  `id_estado` int(11) NOT NULL,
   `estado` varchar(64) NOT NULL,
   `date_add` int(11) NOT NULL,
   `date_upd` datetime NOT NULL,
   `user_add` datetime NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `animales_estados`
@@ -118,11 +122,45 @@ INSERT INTO `animales_estados` (`id_estado`, `estado`, `date_add`, `date_upd`, `
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `animales_marcaciones`
+--
+
+CREATE TABLE `animales_marcaciones` (
+  `id_marcacion` int(11) NOT NULL,
+  `id_animal` int(11) NOT NULL,
+  `id_camino` int(11) NOT NULL,
+  `marcacion_inicio` datetime NOT NULL,
+  `marcacion_final` datetime NOT NULL,
+  `comentario` text NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `animales_marcaciones`
+--
+
+INSERT INTO `animales_marcaciones` (`id_marcacion`, `id_animal`, `id_camino`, `marcacion_inicio`, `marcacion_final`, `comentario`, `date_add`, `date_upd`, `user_add`, `user_upd`, `eliminado`) VALUES
+(1, 1, 2, '2018-01-23 18:48:07', '2018-01-23 18:51:33', '', '2018-01-23 18:48:07', '2018-01-23 18:51:33', 0, 0, 0),
+(3, 1, 2, '2018-01-23 18:51:33', '2018-01-23 18:56:10', '', '2018-01-23 18:51:33', '2018-01-23 18:56:10', 0, 0, 0),
+(4, 1, 2, '2018-01-23 18:57:24', '2018-01-23 18:57:49', '', '2018-01-23 18:57:24', '2018-01-23 18:57:49', 0, 0, 0),
+(5, 1, 2, '2018-01-23 18:58:19', '2018-01-23 18:58:43', '', '2018-01-23 18:58:19', '2018-01-23 18:58:43', 0, 0, 0),
+(6, 1, 2, '2018-01-23 19:00:43', '2018-01-23 19:01:09', '', '2018-01-23 19:00:43', '2018-01-23 19:01:09', 0, 0, 0),
+(7, 1, 2, '2018-01-23 19:41:52', '0000-00-00 00:00:00', '', '2018-01-23 19:41:52', '2018-01-23 19:41:52', 0, 0, 0),
+(8, 2, 2, '2018-01-23 19:41:56', '2018-01-23 19:42:39', '', '2018-01-23 19:41:56', '2018-01-23 19:42:39', 0, 0, 0),
+(9, 5, 2, '2018-01-23 19:43:03', '0000-00-00 00:00:00', '', '2018-01-23 19:43:03', '2018-01-23 19:43:03', 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `animales_permisos`
 --
 
-CREATE TABLE IF NOT EXISTS `animales_permisos` (
-`id_permiso` int(11) NOT NULL,
+CREATE TABLE `animales_permisos` (
+  `id_permiso` int(11) NOT NULL,
   `id_animal` int(11) NOT NULL,
   `id_sector` int(11) NOT NULL,
   `comentario` text NOT NULL,
@@ -132,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `animales_permisos` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `animales_permisos`
@@ -147,8 +185,8 @@ INSERT INTO `animales_permisos` (`id_permiso`, `id_animal`, `id_sector`, `coment
 -- Estructura de tabla para la tabla `animales_rutinas`
 --
 
-CREATE TABLE IF NOT EXISTS `animales_rutinas` (
-`id_rutina` int(11) NOT NULL,
+CREATE TABLE `animales_rutinas` (
+  `id_rutina` int(11) NOT NULL,
   `id_tipo` int(11) NOT NULL,
   `id_sector` int(11) NOT NULL,
   `id_dia` int(11) NOT NULL,
@@ -160,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `animales_rutinas` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `animales_rutinas`
@@ -175,22 +213,23 @@ INSERT INTO `animales_rutinas` (`id_rutina`, `id_tipo`, `id_sector`, `id_dia`, `
 -- Estructura de tabla para la tabla `animales_tipos`
 --
 
-CREATE TABLE IF NOT EXISTS `animales_tipos` (
-`id_tipo` int(11) NOT NULL,
+CREATE TABLE `animales_tipos` (
+  `id_tipo` int(11) NOT NULL,
   `tipo` varchar(128) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `animales_tipos`
 --
 
 INSERT INTO `animales_tipos` (`id_tipo`, `tipo`, `date_add`, `date_upd`, `user_add`, `user_upd`, `eliminado`) VALUES
-(1, 'Vacuno criollo', '2016-10-13 20:49:26', '2016-10-13 20:49:26', 1, 1, 0);
+(1, 'Vacuno criollo', '2016-10-13 20:49:26', '2016-10-13 20:49:26', 1, 1, 0),
+(2, 'Vacuno ', '2016-10-13 20:49:26', '2016-10-13 20:49:26', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -198,8 +237,8 @@ INSERT INTO `animales_tipos` (`id_tipo`, `tipo`, `date_add`, `date_upd`, `user_a
 -- Estructura de tabla para la tabla `clientes`
 --
 
-CREATE TABLE IF NOT EXISTS `clientes` (
-`id_cliente` int(11) NOT NULL,
+CREATE TABLE `clientes` (
+  `id_cliente` int(11) NOT NULL,
   `cliente` varchar(128) NOT NULL,
   `id_tipo` int(11) NOT NULL,
   `email` varchar(128) NOT NULL,
@@ -218,7 +257,7 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `clientes`
@@ -234,15 +273,15 @@ INSERT INTO `clientes` (`id_cliente`, `cliente`, `id_tipo`, `email`, `telefono`,
 -- Estructura de tabla para la tabla `clientes_tipos`
 --
 
-CREATE TABLE IF NOT EXISTS `clientes_tipos` (
-`id_tipo` int(11) NOT NULL,
+CREATE TABLE `clientes_tipos` (
+  `id_tipo` int(11) NOT NULL,
   `tipo` varchar(64) NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `clientes_tipos`
@@ -259,8 +298,8 @@ INSERT INTO `clientes_tipos` (`id_tipo`, `tipo`, `user_add`, `user_upd`, `date_a
 -- Estructura de tabla para la tabla `condiciones_pagos`
 --
 
-CREATE TABLE IF NOT EXISTS `condiciones_pagos` (
-`id_condicion_pago` int(11) NOT NULL,
+CREATE TABLE `condiciones_pagos` (
+  `id_condicion_pago` int(11) NOT NULL,
   `condicion_pago` varchar(128) NOT NULL,
   `dias` int(11) NOT NULL,
   `user_add` int(11) NOT NULL,
@@ -268,7 +307,7 @@ CREATE TABLE IF NOT EXISTS `condiciones_pagos` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `condiciones_pagos`
@@ -284,11 +323,11 @@ INSERT INTO `condiciones_pagos` (`id_condicion_pago`, `condicion_pago`, `dias`, 
 -- Estructura de tabla para la tabla `dias`
 --
 
-CREATE TABLE IF NOT EXISTS `dias` (
-`id_dia` int(11) NOT NULL,
+CREATE TABLE `dias` (
+  `id_dia` int(11) NOT NULL,
   `dia` varchar(64) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `dias`
@@ -309,8 +348,8 @@ INSERT INTO `dias` (`id_dia`, `dia`, `eliminado`) VALUES
 -- Estructura de tabla para la tabla `empleados`
 --
 
-CREATE TABLE IF NOT EXISTS `empleados` (
-`id_empleado` int(11) NOT NULL,
+CREATE TABLE `empleados` (
+  `id_empleado` int(11) NOT NULL,
   `empleado` varchar(128) NOT NULL,
   `id_puesto` int(11) NOT NULL,
   `id_encargado` int(11) NOT NULL,
@@ -328,14 +367,14 @@ CREATE TABLE IF NOT EXISTS `empleados` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `empleados`
 --
 
 INSERT INTO `empleados` (`id_empleado`, `empleado`, `id_puesto`, `id_encargado`, `dni`, `fecha_ingreso`, `telefono`, `telefono_alternativo`, `email`, `id_provincia`, `id_localidad`, `calle`, `calle_numero`, `date_add`, `date_upd`, `user_add`, `user_upd`, `eliminado`) VALUES
-(1, 'Diego Nieto', 1, 0, '31246501', '0000-00-00', '', '', '', 0, 0, '', 0, '2016-10-05 19:17:43', '2016-11-18 01:06:51', 1, 1, 0),
+(1, 'Diego Nieto', 1, 0, '31246501', '0000-00-00', '', '', '', 0, 0, '', 0, '2016-10-05 19:17:43', '2016-10-12 17:21:58', 1, 1, 0),
 (2, 'Jose Perales', 2, 0, '32165487', '0000-00-00', '', '', '', 13, 0, '', 0, '2016-10-06 17:50:01', '2016-10-12 17:22:09', 1, 1, 0);
 
 -- --------------------------------------------------------
@@ -344,8 +383,8 @@ INSERT INTO `empleados` (`id_empleado`, `empleado`, `id_puesto`, `id_encargado`,
 -- Estructura de tabla para la tabla `empleados_marcaciones`
 --
 
-CREATE TABLE IF NOT EXISTS `empleados_marcaciones` (
-`id_marcacion` int(11) NOT NULL,
+CREATE TABLE `empleados_marcaciones` (
+  `id_marcacion` int(11) NOT NULL,
   `id_empleado` int(11) NOT NULL,
   `id_sector` int(11) NOT NULL,
   `marcacion` datetime NOT NULL,
@@ -356,7 +395,7 @@ CREATE TABLE IF NOT EXISTS `empleados_marcaciones` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `empleados_marcaciones`
@@ -371,11 +410,11 @@ INSERT INTO `empleados_marcaciones` (`id_marcacion`, `id_empleado`, `id_sector`,
 -- Estructura de tabla para la tabla `empleados_marcaciones_tipos`
 --
 
-CREATE TABLE IF NOT EXISTS `empleados_marcaciones_tipos` (
-`id_tipo` int(11) NOT NULL,
+CREATE TABLE `empleados_marcaciones_tipos` (
+  `id_tipo` int(11) NOT NULL,
   `tipo` varchar(64) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `empleados_marcaciones_tipos`
@@ -391,8 +430,8 @@ INSERT INTO `empleados_marcaciones_tipos` (`id_tipo`, `tipo`, `eliminado`) VALUE
 -- Estructura de tabla para la tabla `empleados_puestos`
 --
 
-CREATE TABLE IF NOT EXISTS `empleados_puestos` (
-`id_puesto` int(11) NOT NULL,
+CREATE TABLE `empleados_puestos` (
+  `id_puesto` int(11) NOT NULL,
   `puesto` varchar(64) NOT NULL,
   `descripcion` text NOT NULL,
   `date_add` datetime NOT NULL,
@@ -400,7 +439,7 @@ CREATE TABLE IF NOT EXISTS `empleados_puestos` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `empleados_puestos`
@@ -416,8 +455,8 @@ INSERT INTO `empleados_puestos` (`id_puesto`, `puesto`, `descripcion`, `date_add
 -- Estructura de tabla para la tabla `empleados_turnos`
 --
 
-CREATE TABLE IF NOT EXISTS `empleados_turnos` (
-`id_turno` int(11) NOT NULL,
+CREATE TABLE `empleados_turnos` (
+  `id_turno` int(11) NOT NULL,
   `id_puesto` int(11) NOT NULL,
   `id_sector` int(11) NOT NULL,
   `id_dia` tinyint(4) NOT NULL,
@@ -429,7 +468,7 @@ CREATE TABLE IF NOT EXISTS `empleados_turnos` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `empleados_turnos`
@@ -444,15 +483,15 @@ INSERT INTO `empleados_turnos` (`id_turno`, `id_puesto`, `id_sector`, `id_dia`, 
 -- Estructura de tabla para la tabla `envios`
 --
 
-CREATE TABLE IF NOT EXISTS `envios` (
-`id_envio` int(11) NOT NULL,
+CREATE TABLE `envios` (
+  `id_envio` int(11) NOT NULL,
   `envio` varchar(64) NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `envios`
@@ -468,8 +507,8 @@ INSERT INTO `envios` (`id_envio`, `envio`, `user_add`, `user_upd`, `date_add`, `
 -- Estructura de tabla para la tabla `facturas`
 --
 
-CREATE TABLE IF NOT EXISTS `facturas` (
-`id_factura` int(11) NOT NULL,
+CREATE TABLE `facturas` (
+  `id_factura` int(11) NOT NULL,
   `id_cliente` int(11) NOT NULL,
   `id_pedido` int(11) NOT NULL,
   `fecha_entrega` date NOT NULL,
@@ -488,7 +527,7 @@ CREATE TABLE IF NOT EXISTS `facturas` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `facturas`
@@ -503,15 +542,15 @@ INSERT INTO `facturas` (`id_factura`, `id_cliente`, `id_pedido`, `fecha_entrega`
 -- Estructura de tabla para la tabla `facturas_estados`
 --
 
-CREATE TABLE IF NOT EXISTS `facturas_estados` (
-`id_estado` int(11) NOT NULL,
+CREATE TABLE `facturas_estados` (
+  `id_estado` int(11) NOT NULL,
   `estado` varchar(64) NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -519,8 +558,8 @@ CREATE TABLE IF NOT EXISTS `facturas_estados` (
 -- Estructura de tabla para la tabla `facturas_lineas`
 --
 
-CREATE TABLE IF NOT EXISTS `facturas_lineas` (
-`id_linea` int(11) NOT NULL,
+CREATE TABLE `facturas_lineas` (
+  `id_linea` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `cantidad` decimal(10,2) NOT NULL,
   `precio` decimal(10,2) NOT NULL,
@@ -530,7 +569,7 @@ CREATE TABLE IF NOT EXISTS `facturas_lineas` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -538,15 +577,15 @@ CREATE TABLE IF NOT EXISTS `facturas_lineas` (
 -- Estructura de tabla para la tabla `facturas_lineas_estados`
 --
 
-CREATE TABLE IF NOT EXISTS `facturas_lineas_estados` (
-`id_estado` int(11) NOT NULL,
+CREATE TABLE `facturas_lineas_estados` (
+  `id_estado` int(11) NOT NULL,
   `estado` varchar(64) NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -554,8 +593,8 @@ CREATE TABLE IF NOT EXISTS `facturas_lineas_estados` (
 -- Estructura de tabla para la tabla `facturas_proveedores`
 --
 
-CREATE TABLE IF NOT EXISTS `facturas_proveedores` (
-`id_factura` int(11) NOT NULL,
+CREATE TABLE `facturas_proveedores` (
+  `id_factura` int(11) NOT NULL,
   `id_proveedor` int(11) NOT NULL,
   `id_pedido` int(11) NOT NULL,
   `nro_factura` int(11) NOT NULL,
@@ -574,7 +613,7 @@ CREATE TABLE IF NOT EXISTS `facturas_proveedores` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `facturas_proveedores`
@@ -589,8 +628,8 @@ INSERT INTO `facturas_proveedores` (`id_factura`, `id_proveedor`, `id_pedido`, `
 -- Estructura de tabla para la tabla `facturas_proveedores_lineas`
 --
 
-CREATE TABLE IF NOT EXISTS `facturas_proveedores_lineas` (
-`id_linea` int(11) NOT NULL,
+CREATE TABLE `facturas_proveedores_lineas` (
+  `id_linea` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `cantidad` decimal(10,2) NOT NULL,
   `precio` decimal(10,2) NOT NULL,
@@ -600,7 +639,7 @@ CREATE TABLE IF NOT EXISTS `facturas_proveedores_lineas` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -608,8 +647,8 @@ CREATE TABLE IF NOT EXISTS `facturas_proveedores_lineas` (
 -- Estructura de tabla para la tabla `formas_juridicas`
 --
 
-CREATE TABLE IF NOT EXISTS `formas_juridicas` (
-`id_forma_juridica` int(11) NOT NULL,
+CREATE TABLE `formas_juridicas` (
+  `id_forma_juridica` int(11) NOT NULL,
   `forma_juridica` varchar(64) NOT NULL,
   `monto` decimal(10,2) NOT NULL,
   `user_add` int(11) NOT NULL,
@@ -617,7 +656,7 @@ CREATE TABLE IF NOT EXISTS `formas_juridicas` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `formas_juridicas`
@@ -634,15 +673,15 @@ INSERT INTO `formas_juridicas` (`id_forma_juridica`, `forma_juridica`, `monto`, 
 -- Estructura de tabla para la tabla `formas_pagos`
 --
 
-CREATE TABLE IF NOT EXISTS `formas_pagos` (
-`id_forma_pago` int(11) NOT NULL,
+CREATE TABLE `formas_pagos` (
+  `id_forma_pago` int(11) NOT NULL,
   `forma_pago` varchar(64) NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `formas_pagos`
@@ -658,13 +697,13 @@ INSERT INTO `formas_pagos` (`id_forma_pago`, `forma_pago`, `user_add`, `user_upd
 -- Estructura de tabla para la tabla `ingresos`
 --
 
-CREATE TABLE IF NOT EXISTS `ingresos` (
-`id_ingreso` int(11) NOT NULL,
+CREATE TABLE `ingresos` (
+  `id_ingreso` int(11) NOT NULL,
   `id_animal` int(11) NOT NULL,
   `id_sector` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
   `eliminado` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `ingresos`
@@ -679,8 +718,8 @@ INSERT INTO `ingresos` (`id_ingreso`, `id_animal`, `id_sector`, `date_add`, `eli
 -- Estructura de tabla para la tabla `ivas`
 --
 
-CREATE TABLE IF NOT EXISTS `ivas` (
-`id_iva` int(11) NOT NULL,
+CREATE TABLE `ivas` (
+  `id_iva` int(11) NOT NULL,
   `iva` varchar(64) NOT NULL,
   `monto` decimal(10,2) NOT NULL,
   `user_add` int(11) NOT NULL,
@@ -688,7 +727,7 @@ CREATE TABLE IF NOT EXISTS `ivas` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -696,7 +735,7 @@ CREATE TABLE IF NOT EXISTS `ivas` (
 -- Estructura de tabla para la tabla `localidades`
 --
 
-CREATE TABLE IF NOT EXISTS `localidades` (
+CREATE TABLE `localidades` (
   `id_localidad` int(4) NOT NULL,
   `localidad` varchar(60) NOT NULL,
   `codigo_postal` int(4) NOT NULL,
@@ -23330,7 +23369,7 @@ INSERT INTO `localidades` (`id_localidad`, `localidad`, `codigo_postal`, `id_pro
 -- Estructura de tabla para la tabla `logs_niveles`
 --
 
-CREATE TABLE IF NOT EXISTS `logs_niveles` (
+CREATE TABLE `logs_niveles` (
   `id_nivel` int(11) NOT NULL,
   `nivel` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -23355,8 +23394,8 @@ INSERT INTO `logs_niveles` (`id_nivel`, `nivel`) VALUES
 -- Estructura de tabla para la tabla `logs_usuarios`
 --
 
-CREATE TABLE IF NOT EXISTS `logs_usuarios` (
-`id_log` int(11) NOT NULL,
+CREATE TABLE `logs_usuarios` (
+  `id_log` int(11) NOT NULL,
   `id_nivel` tinyint(4) NOT NULL,
   `log` text NOT NULL,
   `accion` varchar(32) NOT NULL,
@@ -23366,7 +23405,7 @@ CREATE TABLE IF NOT EXISTS `logs_usuarios` (
   `date_add` datetime NOT NULL,
   `programa` varchar(32) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1232 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `logs_usuarios`
@@ -24478,135 +24517,261 @@ INSERT INTO `logs_usuarios` (`id_log`, `id_nivel`, `log`, `accion`, `tabla`, `re
 (1100, 4, 'tambos_sectores/table', 'access', '', '', '1', '2016-11-17 16:16:49', 'colegio-notarial', 0),
 (1101, 4, '{"id_sector":"2","id_tambo":"1","id_tipo":"3","sector":"Veterinaria","comentario":"<p><strong>Horario apertura:<\\/strong> 6:30AM<strong> Horario cierre:<\\/strong> 20:30PM<\\/p>\\r\\n\\r\\n<p><strong>Encargado:<\\/strong> Diego Nieto<\\/p>\\r\\n","x":"49.12","y":"175.57","width":"180.00","height":"135.00","id_empleado":"1","date_upd":"2016-11-17 16:16:53","user_upd":"1"}', 'update', 'tambos_sectores', '2', '1', '2016-11-17 16:16:53', 'colegio-notarial', 0),
 (1102, 4, 'tambos_sectores/table', 'access', '', '', '1', '2016-11-17 16:16:53', 'colegio-notarial', 0),
-(1103, 3, '{"usuario":"admin","ip":"::1","navegador":"Firefox","sistema":"Windows 7"}', 'login', '', '', '1', '2016-11-18 01:06:02', 'colegio-notarial', 0),
-(1104, 4, 'animales/table', 'access', '', '', '1', '2016-11-18 01:06:02', 'colegio-notarial', 0),
-(1105, 4, 'empleados/table', 'access', '', '', '1', '2016-11-18 01:06:39', 'colegio-notarial', 0),
-(1106, 4, 'empleados/abm', 'access', '', '', '1', '2016-11-18 01:06:42', 'colegio-notarial', 0),
-(1107, 4, '{"id_empleado":"1","empleado":"Diego Nieto","id_puesto":"1","dni":"31246501","telefono":"","telefono_alternativo":"","email":"","id_provincia":"","id_localidad":"","calle":"","calle_numero":"0","date_upd":"2016-11-18 01:06:51","user_upd":"1"}', 'update', 'empleados', '1', '1', '2016-11-18 01:06:51', 'colegio-notarial', 0),
-(1108, 4, 'empleados/table', 'access', '', '', '1', '2016-11-18 01:06:51', 'colegio-notarial', 0),
-(1109, 4, 'menus/table', 'access', '', '', '1', '2016-11-18 01:06:58', 'colegio-notarial', 0),
-(1110, 4, 'usuarios_perfiles/table', 'access', '', '', '1', '2016-11-18 01:07:06', 'colegio-notarial', 0),
-(1111, 4, 'usuarios/table', 'access', '', '', '1', '2016-11-18 01:07:09', 'colegio-notarial', 0),
-(1112, 4, 'usuarios/abm', 'access', '', '', '1', '2016-11-18 01:07:12', 'colegio-notarial', 0),
-(1113, 4, 'usuarios_perfiles/table', 'access', '', '', '1', '2016-11-18 01:07:19', 'colegio-notarial', 0),
-(1114, 4, 'usuarios_perfiles/abm', 'access', '', '', '1', '2016-11-18 01:07:21', 'colegio-notarial', 0),
-(1115, 4, 'animales_tipos/table', 'access', '', '', '1', '2016-11-18 01:07:34', 'colegio-notarial', 0),
-(1116, 3, 'logout', 'logout', '', '', '1', '2016-11-18 01:07:56', 'colegio-notarial', 0),
-(1117, 3, 'logout', 'logout', '', '', 'end_session', '2016-11-18 01:07:59', 'colegio-notarial', 0),
-(1118, 3, 'logout', 'logout', '', '', 'end_session', '2016-11-18 01:08:04', 'colegio-notarial', 0),
-(1119, 3, 'logout', 'logout', '', '', 'end_session', '2016-11-18 01:08:07', 'colegio-notarial', 0),
-(1120, 3, '{"usuario":"admin","ip":"::1","navegador":"Firefox","sistema":"Windows 7"}', 'login', '', '', '1', '2016-11-18 01:08:16', 'colegio-notarial', 0),
-(1121, 4, 'animales/table', 'access', '', '', '1', '2016-11-18 01:08:16', 'colegio-notarial', 0),
-(1122, 4, 'tambos_sectores/table', 'access', '', '', '1', '2016-11-18 01:15:19', 'colegio-notarial', 0),
-(1123, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-18 01:15:27', 'colegio-notarial', 0),
-(1124, 4, 'tambos_compuertas/table', 'access', '', '', '1', '2016-11-18 01:15:35', 'colegio-notarial', 0),
-(1125, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 7"}', 'login', '', '', '1', '2016-11-28 18:40:26', 'colegio-notarial', 0),
-(1126, 4, 'animales/table', 'access', '', '', '1', '2016-11-28 18:40:28', 'colegio-notarial', 0),
-(1127, 4, 'tambos/table', 'access', '', '', '1', '2016-11-28 18:40:37', 'colegio-notarial', 0),
-(1128, 4, 'tambos/table', 'access', '', '', '1', '2016-11-28 18:40:41', 'colegio-notarial', 0),
-(1129, 4, 'tambos_sectores/table', 'access', '', '', '1', '2016-11-28 18:40:41', 'colegio-notarial', 0),
-(1130, 4, 'tambos_sectores/abm', 'access', '', '', '1', '2016-11-28 18:40:52', 'colegio-notarial', 0),
-(1131, 4, '{"id_sector":"4","id_tambo":"1","id_tipo":"1","sector":"1 Corral 1","comentario":"<p><strong>Horario apertura:<\\/strong> 6:30AM<strong> Horario cierre:<\\/strong> 20:30PM<\\/p>\\r\\n\\r\\n<p><strong>Encargado:<\\/strong> Diego Nieto<\\/p>\\r\\n","x":"854.08","y":"425.00","width":"180.00","height":"360.00","id_empleado":"1","date_upd":"2016-11-28 18:41:00","user_upd":"1"}', 'update', 'tambos_sectores', '4', '1', '2016-11-28 18:41:00', 'colegio-notarial', 0),
-(1132, 4, 'tambos_sectores/table', 'access', '', '', '1', '2016-11-28 18:41:00', 'colegio-notarial', 0),
-(1133, 4, 'tambos_sectores/abm', 'access', '', '', '1', '2016-11-28 18:41:06', 'colegio-notarial', 0),
-(1134, 4, '{"id_sector":"3","id_tambo":"1","id_tipo":"1","sector":"3 Corral 2","comentario":"<p><strong>Horario apertura:<\\/strong> 6:30AM<strong> Horario cierre:<\\/strong> 20:30PM<\\/p>\\r\\n\\r\\n<p><strong>Encargado:<\\/strong> Diego Nieto<\\/p>\\r\\n","x":"991.90","y":"12.00","width":"195.40","height":"339.10","id_empleado":"1","date_upd":"2016-11-28 18:41:12","user_upd":"1"}', 'update', 'tambos_sectores', '3', '1', '2016-11-28 18:41:12', 'colegio-notarial', 0),
-(1135, 4, 'tambos_sectores/table', 'access', '', '', '1', '2016-11-28 18:41:12', 'colegio-notarial', 0),
-(1136, 4, 'tambos_sectores/abm', 'access', '', '', '1', '2016-11-28 18:41:16', 'colegio-notarial', 0),
-(1137, 4, '{"id_sector":"5","id_tambo":"1","id_tipo":"2","sector":"2 Alimentacion","comentario":"<p><strong>Horario apertura:<\\/strong> 6:30AM<strong> Horario cierre:<\\/strong> 20:30PM<\\/p>\\r\\n\\r\\n<p><strong>Encargado:<\\/strong> Diego Nieto<\\/p>\\r\\n","x":"10.00","y":"360.00","width":"500.00","height":"100.00","id_empleado":"2","date_upd":"2016-11-28 18:41:21","user_upd":"1"}', 'update', 'tambos_sectores', '5', '1', '2016-11-28 18:41:21', 'colegio-notarial', 0),
-(1138, 4, 'tambos_sectores/table', 'access', '', '', '1', '2016-11-28 18:41:21', 'colegio-notarial', 0),
-(1139, 4, 'tambos_sectores/abm', 'access', '', '', '1', '2016-11-28 18:41:24', 'colegio-notarial', 0),
-(1140, 4, '{"id_sector":"3","id_tambo":"1","id_tipo":"1","sector":"4 Corral 2","comentario":"<p><strong>Horario apertura:<\\/strong> 6:30AM<strong> Horario cierre:<\\/strong> 20:30PM<\\/p>\\r\\n\\r\\n<p><strong>Encargado:<\\/strong> Diego Nieto<\\/p>\\r\\n","x":"991.90","y":"12.00","width":"195.40","height":"339.10","id_empleado":"1","date_upd":"2016-11-28 18:41:28","user_upd":"1"}', 'update', 'tambos_sectores', '3', '1', '2016-11-28 18:41:28', 'colegio-notarial', 0),
-(1141, 4, 'tambos_sectores/table', 'access', '', '', '1', '2016-11-28 18:41:29', 'colegio-notarial', 0),
-(1142, 4, 'tambos_sectores/abm', 'access', '', '', '1', '2016-11-28 18:41:36', 'colegio-notarial', 0),
-(1143, 4, '{"id_sector":"6","id_tambo":"1","id_tipo":"3","sector":"5 Maternidad","comentario":"<p><strong>Horario apertura:<\\/strong> 6:30AM<strong> Horario cierre:<\\/strong> 20:30PM<\\/p>\\r\\n\\r\\n<p><strong>Encargado:<\\/strong> Diego Nieto<\\/p>\\r\\n","x":"49.09","y":"12.16","width":"334.73","height":"94.85","id_empleado":"2","date_upd":"2016-11-28 18:41:42","user_upd":"1"}', 'update', 'tambos_sectores', '6', '1', '2016-11-28 18:41:42', 'colegio-notarial', 0),
-(1144, 4, 'tambos_sectores/table', 'access', '', '', '1', '2016-11-28 18:41:42', 'colegio-notarial', 0),
-(1145, 4, 'tambos_sectores/abm', 'access', '', '', '1', '2016-11-28 18:42:14', 'colegio-notarial', 0),
-(1146, 4, '{"id_sector":"8","id_tambo":"1","id_tipo":"2","sector":"4 Sala de ordene","comentario":"<p><strong>Horario apertura:<\\/strong> 6:30AM<strong> Horario cierre:<\\/strong> 20:30PM<\\/p>\\r\\n\\r\\n<p><strong>Encargado:<\\/strong> Diego Nieto<\\/p>\\r\\n","x":"600.00","y":"12.59","width":"350.14","height":"168.14","id_empleado":"1","date_upd":"2016-11-28 18:42:21","user_upd":"1"}', 'update', 'tambos_sectores', '8', '1', '2016-11-28 18:42:21', 'colegio-notarial', 0),
-(1147, 4, 'tambos_sectores/table', 'access', '', '', '1', '2016-11-28 18:42:21', 'colegio-notarial', 0),
-(1148, 4, 'tambos_sectores/abm', 'access', '', '', '1', '2016-11-28 18:42:29', 'colegio-notarial', 0),
-(1149, 4, '{"id_sector":"3","id_tambo":"1","id_tipo":"1","sector":"4 Corral 2","comentario":"<p><strong>Horario apertura:<\\/strong> 6:30AM<strong> Horario cierre:<\\/strong> 20:30PM<\\/p>\\r\\n\\r\\n<p><strong>Encargado:<\\/strong> Diego Nieto<\\/p>\\r\\n","x":"991.90","y":"12.00","width":"195.40","height":"339.10","id_empleado":"1","date_upd":"2016-11-28 18:42:43","user_upd":"1"}', 'update', 'tambos_sectores', '3', '1', '2016-11-28 18:42:43', 'colegio-notarial', 0),
-(1150, 4, 'tambos_sectores/table', 'access', '', '', '1', '2016-11-28 18:42:43', 'colegio-notarial', 0),
-(1151, 4, 'tambos_sectores/abm', 'access', '', '', '1', '2016-11-28 18:42:56', 'colegio-notarial', 0),
-(1152, 4, '{"id_sector":"2","id_tambo":"1","id_tipo":"3","sector":"6 Veterinaria","comentario":"<p><strong>Horario apertura:<\\/strong> 6:30AM<strong> Horario cierre:<\\/strong> 20:30PM<\\/p>\\r\\n\\r\\n<p><strong>Encargado:<\\/strong> Diego Nieto<\\/p>\\r\\n","x":"49.12","y":"175.57","width":"180.00","height":"135.00","id_empleado":"1","date_upd":"2016-11-28 18:43:02","user_upd":"1"}', 'update', 'tambos_sectores', '2', '1', '2016-11-28 18:43:02', 'colegio-notarial', 0),
-(1153, 4, 'tambos_sectores/table', 'access', '', '', '1', '2016-11-28 18:43:02', 'colegio-notarial', 0),
-(1154, 4, 'tambos_sectores/abm', 'access', '', '', '1', '2016-11-28 18:43:55', 'colegio-notarial', 0),
-(1155, 4, '{"id_sector":"4","id_tambo":"1","id_tipo":"1","sector":"1 Corral","comentario":"<p><strong>Horario apertura:<\\/strong> 6:30AM<strong> Horario cierre:<\\/strong> 20:30PM<\\/p>\\r\\n\\r\\n<p><strong>Encargado:<\\/strong> Diego Nieto<\\/p>\\r\\n","x":"854.08","y":"425.00","width":"180.00","height":"360.00","id_empleado":"1","date_upd":"2016-11-28 18:44:00","user_upd":"1"}', 'update', 'tambos_sectores', '4', '1', '2016-11-28 18:44:00', 'colegio-notarial', 0),
-(1156, 4, 'tambos_sectores/table', 'access', '', '', '1', '2016-11-28 18:44:00', 'colegio-notarial', 0),
-(1157, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-28 18:44:18', 'colegio-notarial', 0),
-(1158, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-28 18:44:20', 'colegio-notarial', 0),
-(1159, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-28 18:44:57', 'colegio-notarial', 0),
-(1160, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-28 18:45:24', 'colegio-notarial', 0),
-(1161, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-28 18:45:26', 'colegio-notarial', 0),
-(1162, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-28 18:46:46', 'colegio-notarial', 0),
-(1163, 4, 'tambos_compuertas/table', 'access', '', '', '1', '2016-11-28 18:46:50', 'colegio-notarial', 0),
-(1164, 4, 'tambos_compuertas/abm', 'access', '', '', '1', '2016-11-28 18:46:52', 'colegio-notarial', 0),
-(1165, 4, '{"id_compuerta":"0","compuerta":"Corral","comentario":"","id_sector":"4","id_proveedor":"1","date_add":"2016-11-28 18:47:13","date_upd":"2016-11-28 18:47:13","user_add":"1","user_upd":"1"}', 'insert', 'tambos_compuertas', '1', '1', '2016-11-28 18:47:13', 'colegio-notarial', 0),
-(1166, 4, 'tambos_compuertas/table', 'access', '', '', '1', '2016-11-28 18:47:13', 'colegio-notarial', 0),
-(1167, 4, 'tambos_compuertas/abm', 'access', '', '', '1', '2016-11-28 18:47:16', 'colegio-notarial', 0),
-(1168, 4, '{"id_compuerta":"0","compuerta":"Alimentacion","comentario":"","id_sector":"5","id_proveedor":"1","date_add":"2016-11-28 18:47:38","date_upd":"2016-11-28 18:47:38","user_add":"1","user_upd":"1"}', 'insert', 'tambos_compuertas', '2', '1', '2016-11-28 18:47:39', 'colegio-notarial', 0),
-(1169, 4, 'tambos_compuertas/table', 'access', '', '', '1', '2016-11-28 18:47:39', 'colegio-notarial', 0),
-(1170, 4, 'tambos_compuertas/abm', 'access', '', '', '1', '2016-11-28 18:47:42', 'colegio-notarial', 0),
-(1171, 4, 'tambos_sectores/table', 'access', '', '', '1', '2016-11-28 18:48:04', 'colegio-notarial', 0),
-(1172, 4, 'tambos_sectores/abm', 'access', '', '', '1', '2016-11-28 18:48:30', 'colegio-notarial', 0),
-(1173, 4, '{"id_sector":"8","id_tambo":"1","id_tipo":"2","sector":"3 Sala de ordene","comentario":"<p><strong>Horario apertura:<\\/strong> 6:30AM<strong> Horario cierre:<\\/strong> 20:30PM<\\/p>\\r\\n\\r\\n<p><strong>Encargado:<\\/strong> Diego Nieto<\\/p>\\r\\n","x":"600.00","y":"12.59","width":"350.14","height":"168.14","id_empleado":"1","date_upd":"2016-11-28 18:48:35","user_upd":"1"}', 'update', 'tambos_sectores', '8', '1', '2016-11-28 18:48:35', 'colegio-notarial', 0),
-(1174, 4, 'tambos_sectores/table', 'access', '', '', '1', '2016-11-28 18:48:35', 'colegio-notarial', 0),
-(1175, 4, 'tambos_sectores/abm', 'access', '', '', '1', '2016-11-28 18:48:38', 'colegio-notarial', 0),
-(1176, 4, '{"id_sector":"0","id_tambo":"1","id_tipo":"1","sector":"4 Corral 2","comentario":"","x":"","y":"","width":"","height":"","id_empleado":"1","date_add":"2016-11-28 18:48:51","date_upd":"2016-11-28 18:48:51","user_add":"1","user_upd":"1"}', 'insert', 'tambos_sectores', '9', '1', '2016-11-28 18:48:51', 'colegio-notarial', 0),
-(1177, 4, 'tambos_sectores/table', 'access', '', '', '1', '2016-11-28 18:48:51', 'colegio-notarial', 0),
-(1178, 4, 'tambos_compuertas/table', 'access', '', '', '1', '2016-11-28 18:49:24', 'colegio-notarial', 0),
-(1179, 4, 'tambos_compuertas/abm', 'access', '', '', '1', '2016-11-28 18:49:27', 'colegio-notarial', 0),
-(1180, 4, '{"id_compuerta":"0","compuerta":"3 Sala de ordene","comentario":"","id_sector":"8","id_proveedor":"1","date_add":"2016-11-28 18:49:49","date_upd":"2016-11-28 18:49:49","user_add":"1","user_upd":"1"}', 'insert', 'tambos_compuertas', '3', '1', '2016-11-28 18:49:49', 'colegio-notarial', 0),
-(1181, 4, 'tambos_compuertas/table', 'access', '', '', '1', '2016-11-28 18:49:49', 'colegio-notarial', 0),
-(1182, 4, 'tambos_compuertas/abm', 'access', '', '', '1', '2016-11-28 18:49:54', 'colegio-notarial', 0),
-(1183, 4, '{"id_compuerta":"0","compuerta":"4 Corral 2","comentario":"","id_sector":"9","id_proveedor":"1","date_add":"2016-11-28 18:50:10","date_upd":"2016-11-28 18:50:10","user_add":"1","user_upd":"1"}', 'insert', 'tambos_compuertas', '4', '1', '2016-11-28 18:50:10', 'colegio-notarial', 0),
-(1184, 4, 'tambos_compuertas/table', 'access', '', '', '1', '2016-11-28 18:50:11', 'colegio-notarial', 0),
-(1185, 4, 'tambos_compuertas/abm', 'access', '', '', '1', '2016-11-28 18:50:18', 'colegio-notarial', 0),
-(1186, 4, '{"id_compuerta":"4","compuerta":"4 Corral 2","comentario":"","id_sector":"9","id_proveedor":"1","date_upd":"2016-11-28 18:50:20","user_upd":"1"}', 'update', 'tambos_compuertas', '4', '1', '2016-11-28 18:50:20', 'colegio-notarial', 0),
-(1187, 4, 'tambos_compuertas/table', 'access', '', '', '1', '2016-11-28 18:50:20', 'colegio-notarial', 0),
-(1188, 4, 'tambos_compuertas/abm', 'access', '', '', '1', '2016-11-28 18:50:22', 'colegio-notarial', 0),
-(1189, 4, '{"id_compuerta":"2","compuerta":"2 Alimentacion","comentario":"","id_sector":"5","id_proveedor":"1","date_upd":"2016-11-28 18:50:27","user_upd":"1"}', 'update', 'tambos_compuertas', '2', '1', '2016-11-28 18:50:27', 'colegio-notarial', 0),
-(1190, 4, 'tambos_compuertas/table', 'access', '', '', '1', '2016-11-28 18:50:27', 'colegio-notarial', 0),
-(1191, 4, 'tambos_compuertas/abm', 'access', '', '', '1', '2016-11-28 18:50:30', 'colegio-notarial', 0),
-(1192, 4, '{"id_compuerta":"1","compuerta":"1 Corral","comentario":"","id_sector":"4","id_proveedor":"1","date_upd":"2016-11-28 18:50:34","user_upd":"1"}', 'update', 'tambos_compuertas', '1', '1', '2016-11-28 18:50:34', 'colegio-notarial', 0),
-(1193, 4, 'tambos_compuertas/table', 'access', '', '', '1', '2016-11-28 18:50:34', 'colegio-notarial', 0),
-(1194, 4, 'tambos_compuertas/abm', 'access', '', '', '1', '2016-11-28 18:51:03', 'colegio-notarial', 0),
-(1195, 4, '{"id_compuerta":"0","compuerta":"5 Maternidad","comentario":"","id_sector":"6","id_proveedor":"1","date_add":"2016-11-28 18:51:17","date_upd":"2016-11-28 18:51:17","user_add":"1","user_upd":"1"}', 'insert', 'tambos_compuertas', '5', '1', '2016-11-28 18:51:17', 'colegio-notarial', 0),
-(1196, 4, 'tambos_compuertas/table', 'access', '', '', '1', '2016-11-28 18:51:18', 'colegio-notarial', 0),
-(1197, 4, 'tambos_compuertas/abm', 'access', '', '', '1', '2016-11-28 18:51:20', 'colegio-notarial', 0),
-(1198, 4, '{"id_compuerta":"0","compuerta":"6 Veterinaria","comentario":"","id_sector":"2","id_proveedor":"1","date_add":"2016-11-28 18:51:35","date_upd":"2016-11-28 18:51:35","user_add":"1","user_upd":"1"}', 'insert', 'tambos_compuertas', '6', '1', '2016-11-28 18:51:35', 'colegio-notarial', 0),
-(1199, 4, 'tambos_compuertas/table', 'access', '', '', '1', '2016-11-28 18:51:35', 'colegio-notarial', 0),
-(1200, 4, 'tambos_compuertas/abm', 'access', '', '', '1', '2016-11-28 18:51:55', 'colegio-notarial', 0),
-(1201, 4, '{"id_compuerta":"0","compuerta":"Servo 1","comentario":"","id_sector":"","id_proveedor":"","date_add":"2016-11-28 18:52:02","date_upd":"2016-11-28 18:52:02","user_add":"1","user_upd":"1"}', 'insert', 'tambos_compuertas', '7', '1', '2016-11-28 18:52:02', 'colegio-notarial', 0),
-(1202, 4, 'tambos_compuertas/table', 'access', '', '', '1', '2016-11-28 18:52:03', 'colegio-notarial', 0),
-(1203, 4, 'tambos_compuertas/abm', 'access', '', '', '1', '2016-11-28 18:52:05', 'colegio-notarial', 0),
-(1204, 4, '{"id_compuerta":"0","compuerta":"Servo 2","comentario":"","id_sector":"","id_proveedor":"","date_add":"2016-11-28 18:52:11","date_upd":"2016-11-28 18:52:11","user_add":"1","user_upd":"1"}', 'insert', 'tambos_compuertas', '8', '1', '2016-11-28 18:52:12', 'colegio-notarial', 0),
-(1205, 4, 'tambos_compuertas/table', 'access', '', '', '1', '2016-11-28 18:52:12', 'colegio-notarial', 0),
-(1206, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-28 18:52:24', 'colegio-notarial', 0),
-(1207, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-28 18:52:26', 'colegio-notarial', 0),
-(1208, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-28 18:54:19', 'colegio-notarial', 0),
-(1209, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-28 18:56:56', 'colegio-notarial', 0),
-(1210, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-28 18:57:44', 'colegio-notarial', 0),
-(1211, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-28 19:00:45', 'colegio-notarial', 0),
-(1212, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-28 19:03:07', 'colegio-notarial', 0),
-(1213, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-28 19:04:12', 'colegio-notarial', 0),
-(1214, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-28 19:05:23', 'colegio-notarial', 0),
-(1215, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-28 19:06:11', 'colegio-notarial', 0),
-(1216, 4, '{"camino":"de corral 1 a alimentacion","inicio":"1","final":"2","servo_uno":"45","servo_dos":"0","date_add":"2016-11-28 19:06:22","date_upd":"2016-11-28 19:06:22","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos', '2', '1', '2016-11-28 19:06:22', 'colegio-notarial', 0),
-(1217, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-28 19:06:22', 'colegio-notarial', 0),
-(1218, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-28 19:07:20', 'colegio-notarial', 0),
-(1219, 4, '{"camino":"de corral 1 a sala de ordene","inicio":"1","final":"3","servo_uno":"0","servo_dos":"45","date_add":"2016-11-28 19:07:44","date_upd":"2016-11-28 19:07:44","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos', '3', '1', '2016-11-28 19:07:45', 'colegio-notarial', 0),
-(1220, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-28 19:07:45', 'colegio-notarial', 0),
-(1221, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-28 19:08:35', 'colegio-notarial', 0),
-(1222, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-28 19:08:45', 'colegio-notarial', 0),
-(1223, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-28 19:08:54', 'colegio-notarial', 0),
-(1224, 4, '{"camino":"de corral 1 a corral 2","inicio":"1","final":"4","servo_uno":"0","servo_dos":"0","date_add":"2016-11-28 19:09:21","date_upd":"2016-11-28 19:09:21","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos', '4', '1', '2016-11-28 19:09:21', 'colegio-notarial', 0),
-(1225, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-28 19:09:21', 'colegio-notarial', 0),
-(1226, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-28 19:09:28', 'colegio-notarial', 0),
-(1227, 4, '{"camino":"de corral 1 a maternidad","inicio":"1","final":"5","servo_uno":"0","servo_dos":"135","date_add":"2016-11-28 19:10:01","date_upd":"2016-11-28 19:10:01","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos', '5', '1', '2016-11-28 19:10:01', 'colegio-notarial', 0),
-(1228, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-28 19:10:02', 'colegio-notarial', 0),
-(1229, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-28 19:10:03', 'colegio-notarial', 0),
-(1230, 4, '{"camino":"de corral 1 a veterinaria","inicio":"1","final":"6","servo_uno":"135","servo_dos":"0","date_add":"2016-11-28 19:10:30","date_upd":"2016-11-28 19:10:30","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos', '6', '1', '2016-11-28 19:10:30', 'colegio-notarial', 0),
-(1231, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-28 19:10:30', 'colegio-notarial', 0);
+(1103, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2016-11-17 19:07:09', 'colegio-notarial', 0),
+(1104, 4, 'animales/table', 'access', '', '', '1', '2016-11-17 19:07:09', 'colegio-notarial', 0),
+(1105, 4, 'tambos_compuertas/table', 'access', '', '', '1', '2016-11-17 19:07:14', 'colegio-notarial', 0),
+(1106, 4, 'tambos_lectores/table', 'access', '', '', '1', '2016-11-17 19:07:20', 'colegio-notarial', 0),
+(1107, 4, 'tambos_sectores/table', 'access', '', '', '1', '2016-11-17 19:07:38', 'colegio-notarial', 0),
+(1108, 4, 'tambos_compuertas/table', 'access', '', '', '1', '2016-11-17 19:07:43', 'colegio-notarial', 0),
+(1109, 4, 'tambos_lectores/table', 'access', '', '', '1', '2016-11-17 19:07:44', 'colegio-notarial', 0),
+(1110, 4, 'tambos/table', 'access', '', '', '1', '2016-11-17 19:07:46', 'colegio-notarial', 0),
+(1111, 4, 'tambos_sectores/table', 'access', '', '', '1', '2016-11-17 19:07:48', 'colegio-notarial', 0),
+(1112, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-17 19:07:50', 'colegio-notarial', 0),
+(1113, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:07:52', 'colegio-notarial', 0),
+(1114, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:10:40', 'colegio-notarial', 0),
+(1115, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:11:07', 'colegio-notarial', 0),
+(1116, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:16:40', 'colegio-notarial', 0),
+(1117, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:16:50', 'colegio-notarial', 0),
+(1118, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:17:03', 'colegio-notarial', 0),
+(1119, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:17:17', 'colegio-notarial', 0),
+(1120, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:20:48', 'colegio-notarial', 0),
+(1121, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:20:53', 'colegio-notarial', 0),
+(1122, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:21:29', 'colegio-notarial', 0),
+(1123, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:21:53', 'colegio-notarial', 0),
+(1124, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:22:14', 'colegio-notarial', 0),
+(1125, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:27:28', 'colegio-notarial', 0),
+(1126, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-17 19:27:38', 'colegio-notarial', 0),
+(1127, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:27:40', 'colegio-notarial', 0),
+(1128, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-17 19:28:18', 'colegio-notarial', 0),
+(1129, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:28:20', 'colegio-notarial', 0),
+(1130, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:29:22', 'colegio-notarial', 0),
+(1131, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:30:13', 'colegio-notarial', 0),
+(1132, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:30:17', 'colegio-notarial', 0),
+(1133, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:31:50', 'colegio-notarial', 0),
+(1134, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:32:06', 'colegio-notarial', 0),
+(1135, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:32:26', 'colegio-notarial', 0),
+(1136, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:43:41', 'colegio-notarial', 0),
+(1137, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-17 19:43:46', 'colegio-notarial', 0),
+(1138, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:43:49', 'colegio-notarial', 0),
+(1139, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:45:09', 'colegio-notarial', 0),
+(1140, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:46:18', 'colegio-notarial', 0),
+(1141, 4, '{"camino":"camino","inicio":"inicio","final":"final","date_add":"2016-11-17 19:49:40","date_upd":"2016-11-17 19:49:40","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos', '2', '1', '2016-11-17 19:49:40', 'colegio-notarial', 0),
+(1142, 4, '{"camino":"camino","inicio":"inicio","final":"final","date_add":"2016-11-17 19:49:50","date_upd":"2016-11-17 19:49:50","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos', '3', '1', '2016-11-17 19:49:50', 'colegio-notarial', 0),
+(1143, 4, '{"id_camino":3,"id_compuerta":"5","id_estado":"1","date_add":"2016-11-17 19:49:50","date_upd":"2016-11-17 19:49:50","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos_detalles', '3', '1', '2016-11-17 19:49:50', 'colegio-notarial', 0),
+(1144, 4, '{"id_camino":3,"id_compuerta":"1","id_estado":"2","date_add":"2016-11-17 19:49:51","date_upd":"2016-11-17 19:49:51","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos_detalles', '4', '1', '2016-11-17 19:49:51', 'colegio-notarial', 0),
+(1145, 4, '{"id_camino":3,"id_compuerta":"2","id_estado":"1","date_add":"2016-11-17 19:49:51","date_upd":"2016-11-17 19:49:51","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos_detalles', '5', '1', '2016-11-17 19:49:51', 'colegio-notarial', 0),
+(1146, 4, '{"id_camino":3,"id_compuerta":"7","id_estado":"2","date_add":"2016-11-17 19:49:51","date_upd":"2016-11-17 19:49:51","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos_detalles', '6', '1', '2016-11-17 19:49:51', 'colegio-notarial', 0),
+(1147, 4, '{"id_camino":3,"id_compuerta":"8","id_estado":"1","date_add":"2016-11-17 19:49:51","date_upd":"2016-11-17 19:49:51","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos_detalles', '7', '1', '2016-11-17 19:49:51', 'colegio-notarial', 0),
+(1148, 4, '{"id_camino":3,"id_compuerta":"4","id_estado":"2","date_add":"2016-11-17 19:49:51","date_upd":"2016-11-17 19:49:51","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos_detalles', '8', '1', '2016-11-17 19:49:51', 'colegio-notarial', 0),
+(1149, 4, '{"id_camino":3,"id_compuerta":"3","id_estado":"1","date_add":"2016-11-17 19:49:51","date_upd":"2016-11-17 19:49:51","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos_detalles', '9', '1', '2016-11-17 19:49:51', 'colegio-notarial', 0),
+(1150, 4, '{"id_camino":3,"id_compuerta":"9","id_estado":"1","date_add":"2016-11-17 19:49:51","date_upd":"2016-11-17 19:49:51","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos_detalles', '10', '1', '2016-11-17 19:49:51', 'colegio-notarial', 0),
+(1151, 4, '{"id_camino":3,"id_compuerta":"6","id_estado":"1","date_add":"2016-11-17 19:49:51","date_upd":"2016-11-17 19:49:51","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos_detalles', '11', '1', '2016-11-17 19:49:51', 'colegio-notarial', 0),
+(1152, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-17 19:49:51', 'colegio-notarial', 0),
+(1153, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:49:55', 'colegio-notarial', 0),
+(1154, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-17 19:50:03', 'colegio-notarial', 0),
+(1155, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:50:10', 'colegio-notarial', 0),
+(1156, 4, '{"camino":"camino 2","inicio":"inicio","final":"final","date_add":"2016-11-17 19:50:16","date_upd":"2016-11-17 19:50:16","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos', '4', '1', '2016-11-17 19:50:16', 'colegio-notarial', 0),
+(1157, 4, '{"id_camino":4,"id_compuerta":"5","id_estado":"2","date_add":"2016-11-17 19:50:16","date_upd":"2016-11-17 19:50:16","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos_detalles', '12', '1', '2016-11-17 19:50:16', 'colegio-notarial', 0),
+(1158, 4, '{"id_camino":4,"id_compuerta":"1","id_estado":"2","date_add":"2016-11-17 19:50:16","date_upd":"2016-11-17 19:50:16","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos_detalles', '13', '1', '2016-11-17 19:50:16', 'colegio-notarial', 0),
+(1159, 4, '{"id_camino":4,"id_compuerta":"2","id_estado":"1","date_add":"2016-11-17 19:50:16","date_upd":"2016-11-17 19:50:16","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos_detalles', '14', '1', '2016-11-17 19:50:16', 'colegio-notarial', 0),
+(1160, 4, '{"id_camino":4,"id_compuerta":"7","id_estado":"1","date_add":"2016-11-17 19:50:16","date_upd":"2016-11-17 19:50:16","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos_detalles', '15', '1', '2016-11-17 19:50:16', 'colegio-notarial', 0),
+(1161, 4, '{"id_camino":4,"id_compuerta":"8","id_estado":"1","date_add":"2016-11-17 19:50:16","date_upd":"2016-11-17 19:50:16","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos_detalles', '16', '1', '2016-11-17 19:50:16', 'colegio-notarial', 0),
+(1162, 4, '{"id_camino":4,"id_compuerta":"4","id_estado":"1","date_add":"2016-11-17 19:50:16","date_upd":"2016-11-17 19:50:16","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos_detalles', '17', '1', '2016-11-17 19:50:16', 'colegio-notarial', 0),
+(1163, 4, '{"id_camino":4,"id_compuerta":"3","id_estado":"1","date_add":"2016-11-17 19:50:16","date_upd":"2016-11-17 19:50:16","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos_detalles', '18', '1', '2016-11-17 19:50:17', 'colegio-notarial', 0),
+(1164, 4, '{"id_camino":4,"id_compuerta":"9","id_estado":"1","date_add":"2016-11-17 19:50:17","date_upd":"2016-11-17 19:50:17","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos_detalles', '19', '1', '2016-11-17 19:50:17', 'colegio-notarial', 0),
+(1165, 4, '{"id_camino":4,"id_compuerta":"6","id_estado":"1","date_add":"2016-11-17 19:50:17","date_upd":"2016-11-17 19:50:17","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos_detalles', '20', '1', '2016-11-17 19:50:17', 'colegio-notarial', 0),
+(1166, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-17 19:50:17', 'colegio-notarial', 0),
+(1167, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:50:19', 'colegio-notarial', 0),
+(1168, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 19:58:43', 'colegio-notarial', 0),
+(1169, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-17 20:04:07', 'colegio-notarial', 0),
+(1170, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 20:04:10', 'colegio-notarial', 0),
+(1171, 4, '{"id_estado":"2","date_upd":"2016-11-17 20:07:51","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"5"}', '1', '2016-11-17 20:07:51', 'colegio-notarial', 0),
+(1172, 4, '{"id_estado":"2","date_upd":"2016-11-17 20:07:51","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"1"}', '1', '2016-11-17 20:07:51', 'colegio-notarial', 0),
+(1173, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:07:51","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"2"}', '1', '2016-11-17 20:07:51', 'colegio-notarial', 0),
+(1174, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:07:51","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"7"}', '1', '2016-11-17 20:07:51', 'colegio-notarial', 0),
+(1175, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:07:51","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"8"}', '1', '2016-11-17 20:07:51', 'colegio-notarial', 0),
+(1176, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:07:51","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"4"}', '1', '2016-11-17 20:07:52', 'colegio-notarial', 0),
+(1177, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:07:52","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"3"}', '1', '2016-11-17 20:07:52', 'colegio-notarial', 0),
+(1178, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:07:52","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"9"}', '1', '2016-11-17 20:07:52', 'colegio-notarial', 0),
+(1179, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:07:52","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"6"}', '1', '2016-11-17 20:07:52', 'colegio-notarial', 0),
+(1180, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-17 20:07:52', 'colegio-notarial', 0),
+(1181, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 20:07:55', 'colegio-notarial', 0),
+(1182, 4, '{"id_estado":"2","date_upd":"2016-11-17 20:08:00","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"5"}', '1', '2016-11-17 20:08:00', 'colegio-notarial', 0),
+(1183, 4, '{"id_estado":"2","date_upd":"2016-11-17 20:08:00","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"1"}', '1', '2016-11-17 20:08:01', 'colegio-notarial', 0),
+(1184, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:08:01","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"2"}', '1', '2016-11-17 20:08:01', 'colegio-notarial', 0),
+(1185, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:08:01","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"7"}', '1', '2016-11-17 20:08:01', 'colegio-notarial', 0),
+(1186, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:08:01","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"8"}', '1', '2016-11-17 20:08:01', 'colegio-notarial', 0),
+(1187, 4, '{"id_estado":"2","date_upd":"2016-11-17 20:08:01","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"4"}', '1', '2016-11-17 20:08:01', 'colegio-notarial', 0),
+(1188, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:08:01","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"3"}', '1', '2016-11-17 20:08:01', 'colegio-notarial', 0),
+(1189, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:08:01","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"9"}', '1', '2016-11-17 20:08:01', 'colegio-notarial', 0),
+(1190, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:08:01","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"6"}', '1', '2016-11-17 20:08:01', 'colegio-notarial', 0),
+(1191, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-17 20:08:01', 'colegio-notarial', 0),
+(1192, 4, 'logs_usuarios/table', 'access', '', '', '1', '2016-11-17 20:08:05', 'colegio-notarial', 0),
+(1193, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-17 20:13:06', 'colegio-notarial', 0),
+(1194, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 20:13:08', 'colegio-notarial', 0),
+(1195, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 20:16:38', 'colegio-notarial', 0),
+(1196, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 20:16:56', 'colegio-notarial', 0),
+(1197, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 20:17:15', 'colegio-notarial', 0),
+(1198, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 20:17:21', 'colegio-notarial', 0),
+(1199, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 20:17:50', 'colegio-notarial', 0),
+(1200, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 20:20:13', 'colegio-notarial', 0),
+(1201, 4, '{"camino":"camino 2","date_upd":"2016-11-17 20:22:59","user_upd":"1"}', 'update', 'tambos_caminos', '4', '1', '2016-11-17 20:22:59', 'colegio-notarial', 0),
+(1202, 4, '{"id_estado":"2","date_upd":"2016-11-17 20:22:59","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"5"}', '1', '2016-11-17 20:22:59', 'colegio-notarial', 0),
+(1203, 4, '{"id_estado":"2","date_upd":"2016-11-17 20:22:59","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"1"}', '1', '2016-11-17 20:22:59', 'colegio-notarial', 0),
+(1204, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:22:59","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"2"}', '1', '2016-11-17 20:22:59', 'colegio-notarial', 0),
+(1205, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:22:59","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"7"}', '1', '2016-11-17 20:22:59', 'colegio-notarial', 0),
+(1206, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:22:59","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"8"}', '1', '2016-11-17 20:22:59', 'colegio-notarial', 0),
+(1207, 4, '{"id_estado":"2","date_upd":"2016-11-17 20:22:59","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"4"}', '1', '2016-11-17 20:22:59', 'colegio-notarial', 0),
+(1208, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:22:59","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"3"}', '1', '2016-11-17 20:22:59', 'colegio-notarial', 0),
+(1209, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:22:59","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"9"}', '1', '2016-11-17 20:22:59', 'colegio-notarial', 0),
+(1210, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:23:00","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"4","id_compuerta":"6"}', '1', '2016-11-17 20:23:00', 'colegio-notarial', 0),
+(1211, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-17 20:23:00', 'colegio-notarial', 0),
+(1212, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 20:23:02', 'colegio-notarial', 0),
+(1213, 4, '{"camino":"camino 3","date_upd":"2016-11-17 20:23:06","user_upd":"1"}', 'update', 'tambos_caminos', '3', '1', '2016-11-17 20:23:06', 'colegio-notarial', 0),
+(1214, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:23:06","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"5"}', '1', '2016-11-17 20:23:06', 'colegio-notarial', 0),
+(1215, 4, '{"id_estado":"2","date_upd":"2016-11-17 20:23:06","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"1"}', '1', '2016-11-17 20:23:06', 'colegio-notarial', 0),
+(1216, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:23:06","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"2"}', '1', '2016-11-17 20:23:06', 'colegio-notarial', 0),
+(1217, 4, '{"id_estado":"2","date_upd":"2016-11-17 20:23:06","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"7"}', '1', '2016-11-17 20:23:06', 'colegio-notarial', 0),
+(1218, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:23:06","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"8"}', '1', '2016-11-17 20:23:06', 'colegio-notarial', 0),
+(1219, 4, '{"id_estado":"2","date_upd":"2016-11-17 20:23:06","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"4"}', '1', '2016-11-17 20:23:06', 'colegio-notarial', 0),
+(1220, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:23:06","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"3"}', '1', '2016-11-17 20:23:06', 'colegio-notarial', 0),
+(1221, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:23:06","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"9"}', '1', '2016-11-17 20:23:06', 'colegio-notarial', 0),
+(1222, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:23:07","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"6"}', '1', '2016-11-17 20:23:07', 'colegio-notarial', 0),
+(1223, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-17 20:23:07', 'colegio-notarial', 0),
+(1224, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 20:23:10', 'colegio-notarial', 0),
+(1225, 4, '{"camino":"camino 33","date_upd":"2016-11-17 20:23:13","user_upd":"1"}', 'update', 'tambos_caminos', '3', '1', '2016-11-17 20:23:13', 'colegio-notarial', 0),
+(1226, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:23:13","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"5"}', '1', '2016-11-17 20:23:13', 'colegio-notarial', 0),
+(1227, 4, '{"id_estado":"2","date_upd":"2016-11-17 20:23:13","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"1"}', '1', '2016-11-17 20:23:13', 'colegio-notarial', 0),
+(1228, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:23:13","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"2"}', '1', '2016-11-17 20:23:13', 'colegio-notarial', 0),
+(1229, 4, '{"id_estado":"2","date_upd":"2016-11-17 20:23:13","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"7"}', '1', '2016-11-17 20:23:14', 'colegio-notarial', 0),
+(1230, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:23:14","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"8"}', '1', '2016-11-17 20:23:14', 'colegio-notarial', 0),
+(1231, 4, '{"id_estado":"2","date_upd":"2016-11-17 20:23:14","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"4"}', '1', '2016-11-17 20:23:14', 'colegio-notarial', 0),
+(1232, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:23:14","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"3"}', '1', '2016-11-17 20:23:14', 'colegio-notarial', 0),
+(1233, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:23:14","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"9"}', '1', '2016-11-17 20:23:14', 'colegio-notarial', 0),
+(1234, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:23:14","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"6"}', '1', '2016-11-17 20:23:14', 'colegio-notarial', 0),
+(1235, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-17 20:23:14', 'colegio-notarial', 0),
+(1236, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2016-11-17 20:23:16', 'colegio-notarial', 0),
+(1237, 4, '{"camino":"camino 33","date_upd":"2016-11-17 20:23:18","user_upd":"1"}', 'update', 'tambos_caminos', '3', '1', '2016-11-17 20:23:18', 'colegio-notarial', 0),
+(1238, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:23:18","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"5"}', '1', '2016-11-17 20:23:18', 'colegio-notarial', 0),
+(1239, 4, '{"id_estado":"2","date_upd":"2016-11-17 20:23:18","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"1"}', '1', '2016-11-17 20:23:18', 'colegio-notarial', 0),
+(1240, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:23:18","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"2"}', '1', '2016-11-17 20:23:18', 'colegio-notarial', 0),
+(1241, 4, '{"id_estado":"2","date_upd":"2016-11-17 20:23:18","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"7"}', '1', '2016-11-17 20:23:19', 'colegio-notarial', 0),
+(1242, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:23:19","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"8"}', '1', '2016-11-17 20:23:19', 'colegio-notarial', 0),
+(1243, 4, '{"id_estado":"2","date_upd":"2016-11-17 20:23:19","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"4"}', '1', '2016-11-17 20:23:19', 'colegio-notarial', 0),
+(1244, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:23:19","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"3"}', '1', '2016-11-17 20:23:19', 'colegio-notarial', 0),
+(1245, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:23:19","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"9"}', '1', '2016-11-17 20:23:19', 'colegio-notarial', 0),
+(1246, 4, '{"id_estado":"1","date_upd":"2016-11-17 20:23:19","user_upd":"1"}', 'update', 'tambos_caminos_detalles', '{"id_camino":"3","id_compuerta":"6"}', '1', '2016-11-17 20:23:19', 'colegio-notarial', 0),
+(1247, 4, 'tambos_caminos/table', 'access', '', '', '1', '2016-11-17 20:23:19', 'colegio-notarial', 0),
+(1248, 3, 'logout', 'logout', '', '', '1', '2016-11-17 20:40:47', 'colegio-notarial', 0),
+(1249, 3, '{"usuario":"admin","ip":"::1","navegador":"Firefox","sistema":"Windows 10"}', 'login', '', '', '1', '2016-12-14 14:05:12', 'colegio-notarial', 0),
+(1250, 4, 'animales/table', 'access', '', '', '1', '2016-12-14 14:05:12', 'colegio-notarial', 0),
+(1251, 4, 'animales/abm', 'access', '', '', '1', '2016-12-14 14:29:44', 'colegio-notarial', 0),
+(1252, 4, 'animales/abm', 'access', '', '', '1', '2016-12-14 14:31:32', 'colegio-notarial', 0),
+(1253, 4, 'animales/abm', 'access', '', '', '1', '2016-12-14 14:32:28', 'colegio-notarial', 0),
+(1254, 3, '{"usuario":"admin","ip":"::1","navegador":"Firefox","sistema":"Windows 10"}', 'login', '', '', '1', '2016-12-14 16:09:14', 'colegio-notarial', 0),
+(1255, 4, 'animales/table', 'access', '', '', '1', '2016-12-14 16:09:15', 'colegio-notarial', 0),
+(1256, 4, 'menus/table', 'access', '', '', '1', '2016-12-14 16:09:29', 'colegio-notarial', 0),
+(1257, 4, 'menus/abm', 'access', '', '', '1', '2016-12-14 16:09:37', 'colegio-notarial', 0),
+(1258, 4, 'menus/abm', 'access', '', '', '1', '2016-12-14 16:13:56', 'colegio-notarial', 0),
+(1259, 4, 'ingresos/table', 'access', '', '', '1', '2016-12-14 16:14:01', 'colegio-notarial', 0),
+(1260, 4, 'ordenes/table', 'access', '', '', '1', '2016-12-14 16:14:19', 'colegio-notarial', 0),
+(1261, 4, 'animales_permisos/table', 'access', '', '', '1', '2016-12-14 16:14:24', 'colegio-notarial', 0),
+(1262, 4, 'animales_rutinas/table', 'access', '', '', '1', '2016-12-14 16:15:05', 'colegio-notarial', 0),
+(1263, 4, 'seguimientos/table', 'access', '', '', '1', '2016-12-14 16:15:08', 'colegio-notarial', 0),
+(1264, 4, 'ingresos/table', 'access', '', '', '1', '2016-12-14 16:15:26', 'colegio-notarial', 0),
+(1265, 4, 'animales_permisos/table', 'access', '', '', '1', '2016-12-14 16:16:36', 'colegio-notarial', 0),
+(1266, 4, 'animales_rutinas/table', 'access', '', '', '1', '2016-12-14 16:17:31', 'colegio-notarial', 0),
+(1267, 4, 'seguimientos/table', 'access', '', '', '1', '2016-12-14 16:18:16', 'colegio-notarial', 0),
+(1268, 4, 'facturas_proveedores/table', 'access', '', '', '1', '2016-12-14 16:19:38', 'colegio-notarial', 0),
+(1269, 4, 'pagos_proveedores/table', 'access', '', '', '1', '2016-12-14 16:20:35', 'colegio-notarial', 0),
+(1270, 4, 'pedidos_proveedores/table', 'access', '', '', '1', '2016-12-14 16:21:07', 'colegio-notarial', 0),
+(1271, 3, 'logout', 'logout', '', '', 'end_session', '2016-12-14 18:34:39', 'colegio-notarial', 0),
+(1272, 3, '{"usuario":"admin","ip":"::1","navegador":"Firefox","sistema":"Windows 10"}', 'login', '', '', '1', '2016-12-14 18:34:45', 'colegio-notarial', 0),
+(1273, 4, 'animales/table', 'access', '', '', '1', '2016-12-14 18:34:45', 'colegio-notarial', 0),
+(1274, 4, 'ingresos/table', 'access', '', '', '1', '2016-12-14 18:36:14', 'colegio-notarial', 0),
+(1275, 4, 'ingresos/abm', 'access', '', '', '1', '2016-12-14 18:36:18', 'colegio-notarial', 0),
+(1276, 4, 'ingresos/table', 'access', '', '', '1', '2016-12-14 18:38:24', 'colegio-notarial', 0),
+(1277, 4, 'ordenes/table', 'access', '', '', '1', '2016-12-14 18:41:34', 'colegio-notarial', 0),
+(1278, 4, 'ordenes/abm', 'access', '', '', '1', '2016-12-14 18:41:38', 'colegio-notarial', 0),
+(1279, 4, 'ingresos/table', 'access', '', '', '1', '2016-12-14 18:42:15', 'colegio-notarial', 0),
+(1280, 4, 'ingresos/abm', 'access', '', '', '1', '2016-12-14 18:42:17', 'colegio-notarial', 0),
+(1281, 4, 'ordenes/table', 'access', '', '', '1', '2016-12-14 18:42:37', 'colegio-notarial', 0),
+(1282, 3, '{"usuario":"admin","ip":"::1","navegador":"Firefox","sistema":"Windows 10"}', 'login', '', '', '1', '2016-12-14 20:21:34', 'colegio-notarial', 0),
+(1283, 4, 'animales/table', 'access', '', '', '1', '2016-12-14 20:21:35', 'colegio-notarial', 0),
+(1284, 4, 'animales/table', 'access', '', '', '1', '2016-12-14 20:22:07', 'colegio-notarial', 0),
+(1285, 4, 'animales/table', 'access', '', '', '1', '2016-12-14 20:22:40', 'colegio-notarial', 0),
+(1286, 4, 'animales/table', 'access', '', '', '1', '2016-12-14 20:22:43', 'colegio-notarial', 0),
+(1287, 4, 'animales/table', 'access', '', '', '1', '2016-12-14 20:23:26', 'colegio-notarial', 0),
+(1288, 4, 'animales/table', 'access', '', '', '1', '2016-12-14 20:23:54', 'colegio-notarial', 0),
+(1289, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2018-01-22 15:22:13', 'colegio-notarial', 0),
+(1290, 4, 'animales/table', 'access', '', '', '1', '2018-01-22 15:22:14', 'colegio-notarial', 0),
+(1291, 3, '{"usuario":"admin","ip":"::1","navegador":"Chrome","sistema":"Windows 10"}', 'login', '', '', '1', '2018-01-23 15:31:43', 'colegio-notarial', 0),
+(1292, 4, 'animales/table', 'access', '', '', '1', '2018-01-23 15:31:43', 'colegio-notarial', 0),
+(1293, 4, 'tambos_caminos/table', 'access', '', '', '1', '2018-01-23 15:31:49', 'colegio-notarial', 0),
+(1294, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 15:32:20', 'colegio-notarial', 0),
+(1295, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 15:32:58', 'colegio-notarial', 0),
+(1296, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 15:33:01', 'colegio-notarial', 0),
+(1297, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 15:33:05', 'colegio-notarial', 0),
+(1298, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 15:34:19', 'colegio-notarial', 0),
+(1299, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 15:36:38', 'colegio-notarial', 0),
+(1300, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 15:36:49', 'colegio-notarial', 0),
+(1301, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 15:36:59', 'colegio-notarial', 0),
+(1302, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 15:37:09', 'colegio-notarial', 0),
+(1303, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 15:37:37', 'colegio-notarial', 0),
+(1304, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 15:39:03', 'colegio-notarial', 0),
+(1305, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 15:40:40', 'colegio-notarial', 0),
+(1306, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 15:42:23', 'colegio-notarial', 0),
+(1307, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 15:45:24', 'colegio-notarial', 0),
+(1308, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 15:45:33', 'colegio-notarial', 0),
+(1309, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 15:46:29', 'colegio-notarial', 0),
+(1310, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 15:48:16', 'colegio-notarial', 0),
+(1311, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 15:48:52', 'colegio-notarial', 0),
+(1312, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:03:33', 'colegio-notarial', 0),
+(1313, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:03:57', 'colegio-notarial', 0),
+(1314, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:04:14', 'colegio-notarial', 0),
+(1315, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:04:38', 'colegio-notarial', 0),
+(1316, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:04:53', 'colegio-notarial', 0),
+(1317, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:05:51', 'colegio-notarial', 0),
+(1318, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:07:13', 'colegio-notarial', 0),
+(1319, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:09:45', 'colegio-notarial', 0),
+(1320, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:09:57', 'colegio-notarial', 0),
+(1321, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:29:57', 'colegio-notarial', 0),
+(1322, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:30:00', 'colegio-notarial', 0),
+(1323, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:30:11', 'colegio-notarial', 0),
+(1324, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:31:01', 'colegio-notarial', 0),
+(1325, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:31:04', 'colegio-notarial', 0),
+(1326, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:32:42', 'colegio-notarial', 0),
+(1327, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:32:47', 'colegio-notarial', 0),
+(1328, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:33:55', 'colegio-notarial', 0),
+(1329, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:33:58', 'colegio-notarial', 0),
+(1330, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:34:12', 'colegio-notarial', 0),
+(1331, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:34:13', 'colegio-notarial', 0),
+(1332, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:34:21', 'colegio-notarial', 0),
+(1333, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:35:03', 'colegio-notarial', 0),
+(1334, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:35:03', 'colegio-notarial', 0),
+(1335, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:35:05', 'colegio-notarial', 0),
+(1336, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:35:50', 'colegio-notarial', 0),
+(1337, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:35:50', 'colegio-notarial', 0),
+(1338, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:35:53', 'colegio-notarial', 0),
+(1339, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:38:54', 'colegio-notarial', 0),
+(1340, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:38:59', 'colegio-notarial', 0),
+(1341, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:38:59', 'colegio-notarial', 0),
+(1342, 4, '{"id_compuerta":"2","valor":"1","orden":"1","date_add":"2018-01-23 16:39:22","date_upd":"2018-01-23 16:39:22","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos_detalles', '1', '1', '2018-01-23 16:39:22', 'colegio-notarial', 0),
+(1343, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:39:22', 'colegio-notarial', 0),
+(1344, 4, '{"id_camino":"2","id_compuerta":"2","valor":"1","orden":"1","date_add":"2018-01-23 16:42:41","date_upd":"2018-01-23 16:42:41","user_add":"1","user_upd":"1"}', 'insert', 'tambos_caminos_detalles', '2', '1', '2018-01-23 16:42:41', 'colegio-notarial', 0),
+(1345, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:42:41', 'colegio-notarial', 0),
+(1346, 4, 'tambos_caminos/table', 'access', '', '', '1', '2018-01-23 16:42:55', 'colegio-notarial', 0),
+(1347, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:42:57', 'colegio-notarial', 0),
+(1348, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:43:05', 'colegio-notarial', 0),
+(1349, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:43:25', 'colegio-notarial', 0),
+(1350, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:43:50', 'colegio-notarial', 0),
+(1351, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 16:45:04', 'colegio-notarial', 0),
+(1352, 4, 'tambos_caminos/abm', 'access', '', '', '1', '2018-01-23 17:01:13', 'colegio-notarial', 0),
+(1353, 4, 'tambos_compuertas/table', 'access', '', '', '1', '2018-01-23 17:01:19', 'colegio-notarial', 0),
+(1354, 4, 'tambos_compuertas/table', 'access', '', '', '1', '2018-01-23 17:04:04', 'colegio-notarial', 0),
+(1355, 4, 'tambos_compuertas/table', 'access', '', '', '1', '2018-01-23 17:05:37', 'colegio-notarial', 0),
+(1356, 4, 'tambos_compuertas/table', 'access', '', '', '1', '2018-01-23 17:05:59', 'colegio-notarial', 0),
+(1357, 4, 'tambos_compuertas/table', 'access', '', '', '1', '2018-01-23 17:06:42', 'colegio-notarial', 0);
 
 -- --------------------------------------------------------
 
@@ -24614,8 +24779,8 @@ INSERT INTO `logs_usuarios` (`id_log`, `id_nivel`, `log`, `accion`, `tabla`, `re
 -- Estructura de tabla para la tabla `menus`
 --
 
-CREATE TABLE IF NOT EXISTS `menus` (
-`id_menu` int(11) NOT NULL,
+CREATE TABLE `menus` (
+  `id_menu` int(11) NOT NULL,
   `url` varchar(255) NOT NULL,
   `menu` varchar(128) NOT NULL,
   `icon` varchar(255) NOT NULL,
@@ -24625,7 +24790,7 @@ CREATE TABLE IF NOT EXISTS `menus` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `menus`
@@ -24688,8 +24853,8 @@ INSERT INTO `menus` (`id_menu`, `url`, `menu`, `icon`, `id_padre`, `date_add`, `
 -- Estructura de tabla para la tabla `ordenes`
 --
 
-CREATE TABLE IF NOT EXISTS `ordenes` (
-`id_ordene` int(11) NOT NULL,
+CREATE TABLE `ordenes` (
+  `id_ordene` int(11) NOT NULL,
   `id_sector` int(11) NOT NULL,
   `id_animal` int(11) NOT NULL,
   `cantidad` decimal(10,2) NOT NULL,
@@ -24698,7 +24863,7 @@ CREATE TABLE IF NOT EXISTS `ordenes` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `ordenes`
@@ -24713,15 +24878,15 @@ INSERT INTO `ordenes` (`id_ordene`, `id_sector`, `id_animal`, `cantidad`, `date_
 -- Estructura de tabla para la tabla `origenes`
 --
 
-CREATE TABLE IF NOT EXISTS `origenes` (
-`id_origen` int(11) NOT NULL,
+CREATE TABLE `origenes` (
+  `id_origen` int(11) NOT NULL,
   `origen` varchar(64) NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `origenes`
@@ -24738,8 +24903,8 @@ INSERT INTO `origenes` (`id_origen`, `origen`, `user_add`, `user_upd`, `date_add
 -- Estructura de tabla para la tabla `pagos`
 --
 
-CREATE TABLE IF NOT EXISTS `pagos` (
-`id_pago` int(11) NOT NULL,
+CREATE TABLE `pagos` (
+  `id_pago` int(11) NOT NULL,
   `id_factura` int(11) NOT NULL,
   `id_forma_pago` int(11) NOT NULL,
   `total` decimal(10,2) NOT NULL,
@@ -24749,7 +24914,7 @@ CREATE TABLE IF NOT EXISTS `pagos` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `pagos`
@@ -24764,8 +24929,8 @@ INSERT INTO `pagos` (`id_pago`, `id_factura`, `id_forma_pago`, `total`, `comenta
 -- Estructura de tabla para la tabla `pagos_proveedores`
 --
 
-CREATE TABLE IF NOT EXISTS `pagos_proveedores` (
-`id_pago` int(11) NOT NULL,
+CREATE TABLE `pagos_proveedores` (
+  `id_pago` int(11) NOT NULL,
   `id_factura` int(11) NOT NULL,
   `id_forma_pago` int(11) NOT NULL,
   `total` decimal(10,2) NOT NULL,
@@ -24775,7 +24940,7 @@ CREATE TABLE IF NOT EXISTS `pagos_proveedores` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `pagos_proveedores`
@@ -24790,8 +24955,8 @@ INSERT INTO `pagos_proveedores` (`id_pago`, `id_factura`, `id_forma_pago`, `tota
 -- Estructura de tabla para la tabla `pedidos`
 --
 
-CREATE TABLE IF NOT EXISTS `pedidos` (
-`id_pedido` int(11) NOT NULL,
+CREATE TABLE `pedidos` (
+  `id_pedido` int(11) NOT NULL,
   `id_cliente` int(11) NOT NULL,
   `id_empleado` int(11) NOT NULL,
   `fecha_entrega` date NOT NULL,
@@ -24811,7 +24976,7 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `pedidos`
@@ -24826,7 +24991,7 @@ INSERT INTO `pedidos` (`id_pedido`, `id_cliente`, `id_empleado`, `fecha_entrega`
 -- Estructura de tabla para la tabla `pedidos_estados`
 --
 
-CREATE TABLE IF NOT EXISTS `pedidos_estados` (
+CREATE TABLE `pedidos_estados` (
   `id_estado` int(11) NOT NULL,
   `estado` varchar(64) NOT NULL,
   `user_add` int(11) NOT NULL,
@@ -24842,8 +25007,8 @@ CREATE TABLE IF NOT EXISTS `pedidos_estados` (
 -- Estructura de tabla para la tabla `pedidos_lineas`
 --
 
-CREATE TABLE IF NOT EXISTS `pedidos_lineas` (
-`id_linea` int(11) NOT NULL,
+CREATE TABLE `pedidos_lineas` (
+  `id_linea` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `cantidad` decimal(10,2) NOT NULL,
   `descuento` decimal(10,2) NOT NULL,
@@ -24856,7 +25021,7 @@ CREATE TABLE IF NOT EXISTS `pedidos_lineas` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -24864,7 +25029,7 @@ CREATE TABLE IF NOT EXISTS `pedidos_lineas` (
 -- Estructura de tabla para la tabla `pedidos_lineas_estados`
 --
 
-CREATE TABLE IF NOT EXISTS `pedidos_lineas_estados` (
+CREATE TABLE `pedidos_lineas_estados` (
   `id_estado` int(11) NOT NULL,
   `estado` varchar(64) NOT NULL,
   `user_add` int(11) NOT NULL,
@@ -24880,8 +25045,8 @@ CREATE TABLE IF NOT EXISTS `pedidos_lineas_estados` (
 -- Estructura de tabla para la tabla `pedidos_proveedores`
 --
 
-CREATE TABLE IF NOT EXISTS `pedidos_proveedores` (
-`id_pedido` int(11) NOT NULL,
+CREATE TABLE `pedidos_proveedores` (
+  `id_pedido` int(11) NOT NULL,
   `id_proveedor` int(11) NOT NULL,
   `nro_proveedor` varchar(64) NOT NULL,
   `fecha_entrega` date NOT NULL,
@@ -24900,7 +25065,7 @@ CREATE TABLE IF NOT EXISTS `pedidos_proveedores` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `pedidos_proveedores`
@@ -24915,7 +25080,7 @@ INSERT INTO `pedidos_proveedores` (`id_pedido`, `id_proveedor`, `nro_proveedor`,
 -- Estructura de tabla para la tabla `pedidos_proveedores_lineas`
 --
 
-CREATE TABLE IF NOT EXISTS `pedidos_proveedores_lineas` (
+CREATE TABLE `pedidos_proveedores_lineas` (
   `id_linea` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `cantidad` decimal(10,2) NOT NULL,
@@ -24937,8 +25102,8 @@ CREATE TABLE IF NOT EXISTS `pedidos_proveedores_lineas` (
 -- Estructura de tabla para la tabla `productos`
 --
 
-CREATE TABLE IF NOT EXISTS `productos` (
-`id_producto` int(11) NOT NULL,
+CREATE TABLE `productos` (
+  `id_producto` int(11) NOT NULL,
   `producto` varchar(128) NOT NULL,
   `codigo_barra` varchar(128) NOT NULL,
   `comentario` text NOT NULL,
@@ -24958,7 +25123,7 @@ CREATE TABLE IF NOT EXISTS `productos` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -24966,7 +25131,7 @@ CREATE TABLE IF NOT EXISTS `productos` (
 -- Estructura de tabla para la tabla `productos_tipos`
 --
 
-CREATE TABLE IF NOT EXISTS `productos_tipos` (
+CREATE TABLE `productos_tipos` (
   `id_tipo` int(11) NOT NULL,
   `tipo` varchar(64) NOT NULL,
   `user_add` int(11) NOT NULL,
@@ -24982,8 +25147,8 @@ CREATE TABLE IF NOT EXISTS `productos_tipos` (
 -- Estructura de tabla para la tabla `proveedores`
 --
 
-CREATE TABLE IF NOT EXISTS `proveedores` (
-`id_proveedor` int(11) NOT NULL,
+CREATE TABLE `proveedores` (
+  `id_proveedor` int(11) NOT NULL,
   `proveedor` varchar(128) NOT NULL,
   `id_tipo` int(11) NOT NULL,
   `email` varchar(128) NOT NULL,
@@ -25002,7 +25167,7 @@ CREATE TABLE IF NOT EXISTS `proveedores` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `proveedores`
@@ -25017,15 +25182,15 @@ INSERT INTO `proveedores` (`id_proveedor`, `proveedor`, `id_tipo`, `email`, `tel
 -- Estructura de tabla para la tabla `proveedores_tipos`
 --
 
-CREATE TABLE IF NOT EXISTS `proveedores_tipos` (
-`id_tipo` int(11) NOT NULL,
+CREATE TABLE `proveedores_tipos` (
+  `id_tipo` int(11) NOT NULL,
   `tipo` varchar(64) NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `proveedores_tipos`
@@ -25041,7 +25206,7 @@ INSERT INTO `proveedores_tipos` (`id_tipo`, `tipo`, `user_add`, `user_upd`, `dat
 -- Estructura de tabla para la tabla `provincias`
 --
 
-CREATE TABLE IF NOT EXISTS `provincias` (
+CREATE TABLE `provincias` (
   `id_provincia` smallint(2) NOT NULL,
   `provincia` varchar(50) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
@@ -25083,8 +25248,8 @@ INSERT INTO `provincias` (`id_provincia`, `provincia`, `eliminado`) VALUES
 -- Estructura de tabla para la tabla `seguimientos`
 --
 
-CREATE TABLE IF NOT EXISTS `seguimientos` (
-`id_seguimiento` int(11) NOT NULL,
+CREATE TABLE `seguimientos` (
+  `id_seguimiento` int(11) NOT NULL,
   `id_animal` int(11) NOT NULL,
   `titulo` varchar(128) NOT NULL,
   `comentario` text NOT NULL,
@@ -25094,7 +25259,7 @@ CREATE TABLE IF NOT EXISTS `seguimientos` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `seguimientos`
@@ -25109,8 +25274,8 @@ INSERT INTO `seguimientos` (`id_seguimiento`, `id_animal`, `titulo`, `comentario
 -- Estructura de tabla para la tabla `seguimientos_controles`
 --
 
-CREATE TABLE IF NOT EXISTS `seguimientos_controles` (
-`id_control` int(11) NOT NULL,
+CREATE TABLE `seguimientos_controles` (
+  `id_control` int(11) NOT NULL,
   `id_seguimiento` int(11) NOT NULL,
   `descripcion` text NOT NULL,
   `date_add` datetime NOT NULL,
@@ -25118,7 +25283,7 @@ CREATE TABLE IF NOT EXISTS `seguimientos_controles` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -25126,15 +25291,15 @@ CREATE TABLE IF NOT EXISTS `seguimientos_controles` (
 -- Estructura de tabla para la tabla `seguimientos_estados`
 --
 
-CREATE TABLE IF NOT EXISTS `seguimientos_estados` (
-`id_estado` int(11) NOT NULL,
+CREATE TABLE `seguimientos_estados` (
+  `id_estado` int(11) NOT NULL,
   `estado` varchar(64) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `seguimientos_estados`
@@ -25152,8 +25317,8 @@ INSERT INTO `seguimientos_estados` (`id_estado`, `estado`, `date_add`, `date_upd
 -- Estructura de tabla para la tabla `tambos`
 --
 
-CREATE TABLE IF NOT EXISTS `tambos` (
-`id_tambo` int(11) NOT NULL,
+CREATE TABLE `tambos` (
+  `id_tambo` int(11) NOT NULL,
   `tambo` varchar(128) NOT NULL,
   `id_provincia` int(11) NOT NULL,
   `id_localidad` int(11) NOT NULL,
@@ -25168,7 +25333,7 @@ CREATE TABLE IF NOT EXISTS `tambos` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tambos`
@@ -25183,30 +25348,28 @@ INSERT INTO `tambos` (`id_tambo`, `tambo`, `id_provincia`, `id_localidad`, `call
 -- Estructura de tabla para la tabla `tambos_caminos`
 --
 
-CREATE TABLE IF NOT EXISTS `tambos_caminos` (
-`id_camino` int(11) NOT NULL,
+CREATE TABLE `tambos_caminos` (
+  `id_camino` int(11) NOT NULL,
   `camino` varchar(64) NOT NULL,
   `inicio` int(11) NOT NULL,
   `final` int(11) NOT NULL,
-  `servo_uno` int(11) NOT NULL,
-  `servo_dos` int(11) NOT NULL,
+  `en_proceso` tinyint(4) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tambos_caminos`
 --
 
-INSERT INTO `tambos_caminos` (`id_camino`, `camino`, `inicio`, `final`, `servo_uno`, `servo_dos`, `date_add`, `date_upd`, `user_add`, `user_upd`, `eliminado`) VALUES
-(2, 'de corral 1 a alimentacion', 1, 2, 45, 0, '2016-11-28 19:06:22', '2016-11-28 19:06:22', 1, 1, 0),
-(3, 'de corral 1 a sala de ordene', 1, 3, 0, 45, '2016-11-28 19:07:44', '2016-11-28 19:07:44', 1, 1, 0),
-(4, 'de corral 1 a corral 2', 1, 4, 0, 0, '2016-11-28 19:09:21', '2016-11-28 19:09:21', 1, 1, 0),
-(5, 'de corral 1 a maternidad', 1, 5, 0, 135, '2016-11-28 19:10:01', '2016-11-28 19:10:01', 1, 1, 0),
-(6, 'de corral 1 a veterinaria', 1, 6, 135, 0, '2016-11-28 19:10:30', '2016-11-28 19:10:30', 1, 1, 0);
+INSERT INTO `tambos_caminos` (`id_camino`, `camino`, `inicio`, `final`, `en_proceso`, `date_add`, `date_upd`, `user_add`, `user_upd`, `eliminado`) VALUES
+(1, 'Test', 5, 2, 0, '2016-11-16 00:00:00', '2016-11-16 00:00:00', 1, 1, 0),
+(2, 'camino', 1, 2, 1, '2016-11-17 19:49:40', '2018-01-23 19:41:52', 1, 0, 0),
+(3, 'camino 33', 0, 0, 0, '2016-11-17 19:49:50', '2016-11-17 20:23:18', 1, 1, 0),
+(4, 'camino 2', 0, 0, 0, '2016-11-17 19:50:16', '2016-11-17 20:22:59', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -25214,17 +25377,26 @@ INSERT INTO `tambos_caminos` (`id_camino`, `camino`, `inicio`, `final`, `servo_u
 -- Estructura de tabla para la tabla `tambos_caminos_detalles`
 --
 
-CREATE TABLE IF NOT EXISTS `tambos_caminos_detalles` (
-`id_detalle` int(11) NOT NULL,
+CREATE TABLE `tambos_caminos_detalles` (
+  `id_detalle` int(11) NOT NULL,
   `id_camino` int(11) NOT NULL,
   `id_compuerta` int(11) NOT NULL,
-  `angulo` int(11) NOT NULL,
+  `valor` int(11) NOT NULL,
+  `orden` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tambos_caminos_detalles`
+--
+
+INSERT INTO `tambos_caminos_detalles` (`id_detalle`, `id_camino`, `id_compuerta`, `valor`, `orden`, `date_add`, `date_upd`, `user_add`, `user_upd`, `eliminado`) VALUES
+(1, 2, 2, 1, 1, '2018-01-23 16:39:22', '2018-01-23 16:39:22', 1, 1, 0),
+(2, 2, 2, 1, 1, '2018-01-23 16:42:41', '2018-01-23 16:42:41', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -25232,32 +25404,48 @@ CREATE TABLE IF NOT EXISTS `tambos_caminos_detalles` (
 -- Estructura de tabla para la tabla `tambos_compuertas`
 --
 
-CREATE TABLE IF NOT EXISTS `tambos_compuertas` (
-`id_compuerta` int(11) NOT NULL,
+CREATE TABLE `tambos_compuertas` (
+  `id_compuerta` int(11) NOT NULL,
   `compuerta` varchar(64) NOT NULL,
   `comentario` text NOT NULL,
-  `id_sector` int(11) NOT NULL,
+  `id_tipo` int(11) NOT NULL,
   `id_proveedor` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tambos_compuertas`
 --
 
-INSERT INTO `tambos_compuertas` (`id_compuerta`, `compuerta`, `comentario`, `id_sector`, `id_proveedor`, `date_add`, `date_upd`, `user_add`, `user_upd`, `eliminado`) VALUES
-(1, '1 Corral', '', 4, 1, '2016-11-28 18:47:13', '2016-11-28 18:50:34', 1, 1, 0),
-(2, '2 Alimentacion', '', 5, 1, '2016-11-28 18:47:38', '2016-11-28 18:50:27', 1, 1, 0),
-(3, '3 Sala de ordene', '', 8, 1, '2016-11-28 18:49:49', '2016-11-28 18:49:49', 1, 1, 0),
-(4, '4 Corral 2', '', 9, 1, '2016-11-28 18:50:10', '2016-11-28 18:50:20', 1, 1, 0),
-(5, '5 Maternidad', '', 6, 1, '2016-11-28 18:51:17', '2016-11-28 18:51:17', 1, 1, 0),
-(6, '6 Veterinaria', '', 2, 1, '2016-11-28 18:51:35', '2016-11-28 18:51:35', 1, 1, 0),
-(7, 'Servo 1', '', 0, 0, '2016-11-28 18:52:02', '2016-11-28 18:52:02', 1, 1, 0),
-(8, 'Servo 2', '', 0, 0, '2016-11-28 18:52:11', '2016-11-28 18:52:11', 1, 1, 0);
+INSERT INTO `tambos_compuertas` (`id_compuerta`, `compuerta`, `comentario`, `id_tipo`, `id_proveedor`, `date_add`, `date_upd`, `user_add`, `user_upd`, `eliminado`) VALUES
+(1, 'Corral 1', '<p>INTEL con doble nucleo</p>\r\n', 1, 1, '2016-10-28 21:21:18', '2016-11-08 23:43:59', 1, 1, 0),
+(2, 'Corral 2', '<p>INTEL con doble nucleo</p>\r\n', 1, 1, '2016-10-28 21:21:35', '2016-11-08 23:44:05', 1, 1, 0),
+(3, 'Sala de ordene 2', '<p>INTEL con doble nucleo</p>\r\n', 1, 1, '2016-11-08 23:34:20', '2016-11-08 23:44:34', 1, 1, 0),
+(4, 'Sala de ordene 1', '<p>INTEL con doble nucleo</p>\r\n', 1, 1, '2016-11-08 23:34:33', '2016-11-08 23:44:27', 1, 1, 0),
+(5, 'Alimentacion', '<p>INTEL con doble nucleo</p>\r\n', 1, 1, '2016-11-08 23:34:50', '2016-11-08 23:43:52', 1, 1, 0),
+(6, 'Veterinaria', '<p>INTEL con doble nucleo</p>\r\n', 1, 1, '2016-11-08 23:35:02', '2016-11-08 23:45:12', 1, 1, 0),
+(7, 'Maternidad', '<p>INTEL con doble nucleo</p>\r\n', 1, 1, '2016-11-08 23:35:45', '2016-11-08 23:44:11', 1, 1, 0),
+(8, 'Procesos', '<p>INTEL con doble nucleo</p>\r\n', 0, 1, '2016-11-08 23:36:24', '2016-11-08 23:44:19', 1, 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tambos_compuertas_tipos`
+--
+
+CREATE TABLE `tambos_compuertas_tipos` (
+  `id_tipo` int(11) NOT NULL,
+  `tipo` varchar(64) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL,
+  `eliminado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -25265,8 +25453,8 @@ INSERT INTO `tambos_compuertas` (`id_compuerta`, `compuerta`, `comentario`, `id_
 -- Estructura de tabla para la tabla `tambos_lectores`
 --
 
-CREATE TABLE IF NOT EXISTS `tambos_lectores` (
-`id_lector` int(11) NOT NULL,
+CREATE TABLE `tambos_lectores` (
+  `id_lector` int(11) NOT NULL,
   `lector` varchar(64) NOT NULL,
   `id_compuerta` int(11) NOT NULL,
   `in_out` tinyint(4) NOT NULL,
@@ -25277,7 +25465,7 @@ CREATE TABLE IF NOT EXISTS `tambos_lectores` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tambos_lectores`
@@ -25293,8 +25481,8 @@ INSERT INTO `tambos_lectores` (`id_lector`, `lector`, `id_compuerta`, `in_out`, 
 -- Estructura de tabla para la tabla `tambos_sectores`
 --
 
-CREATE TABLE IF NOT EXISTS `tambos_sectores` (
-`id_sector` int(11) NOT NULL,
+CREATE TABLE `tambos_sectores` (
+  `id_sector` int(11) NOT NULL,
   `id_tambo` int(11) NOT NULL,
   `id_tipo` int(11) NOT NULL,
   `sector` varchar(64) NOT NULL,
@@ -25310,7 +25498,7 @@ CREATE TABLE IF NOT EXISTS `tambos_sectores` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tambos_sectores`
@@ -25318,12 +25506,13 @@ CREATE TABLE IF NOT EXISTS `tambos_sectores` (
 
 INSERT INTO `tambos_sectores` (`id_sector`, `id_tambo`, `id_tipo`, `sector`, `comentario`, `x`, `y`, `width`, `height`, `points`, `id_empleado`, `date_add`, `date_upd`, `user_add`, `user_upd`, `eliminado`) VALUES
 (1, 1, 4, 'Oficinas', '<p><strong>Horario apertura:</strong> 6:30AM<strong> Horario cierre:</strong> 20:30PM</p>\r\n\r\n<p><strong>Encargado:</strong> Diego Nieto</p>\r\n', '0.00', '0.00', '0.00', '0.00', '12.72 685.56 153.78 685.56 153.78 747.64 215.44 747.64 215.44 712.85 263.89 712.85 263.89 787.41 12.72 787.41 12.72 685.56', 1, '2016-11-01 23:23:48', '2016-11-17 16:16:41', 1, 1, 0),
-(2, 1, 3, '6 Veterinaria', '<p><strong>Horario apertura:</strong> 6:30AM<strong> Horario cierre:</strong> 20:30PM</p>\r\n\r\n<p><strong>Encargado:</strong> Diego Nieto</p>\r\n', '49.12', '175.57', '180.00', '135.00', '', 1, '2016-11-01 23:23:20', '2016-11-28 18:43:02', 1, 1, 0),
-(4, 1, 1, '1 Corral', '<p><strong>Horario apertura:</strong> 6:30AM<strong> Horario cierre:</strong> 20:30PM</p>\r\n\r\n<p><strong>Encargado:</strong> Diego Nieto</p>\r\n', '854.08', '425.00', '180.00', '360.00', '', 1, '2016-10-06 17:48:01', '2016-11-28 18:44:00', 1, 1, 0),
-(5, 1, 2, '2 Alimentacion', '<p><strong>Horario apertura:</strong> 6:30AM<strong> Horario cierre:</strong> 20:30PM</p>\r\n\r\n<p><strong>Encargado:</strong> Diego Nieto</p>\r\n', '10.00', '360.00', '500.00', '100.00', '', 2, '2016-10-06 17:48:38', '2016-11-28 18:41:21', 1, 1, 0),
-(6, 1, 3, '5 Maternidad', '<p><strong>Horario apertura:</strong> 6:30AM<strong> Horario cierre:</strong> 20:30PM</p>\r\n\r\n<p><strong>Encargado:</strong> Diego Nieto</p>\r\n', '49.09', '12.16', '334.73', '94.85', '', 2, '2016-11-01 23:23:00', '2016-11-28 18:41:42', 1, 1, 0),
-(8, 1, 2, '3 Sala de ordene', '<p><strong>Horario apertura:</strong> 6:30AM<strong> Horario cierre:</strong> 20:30PM</p>\r\n\r\n<p><strong>Encargado:</strong> Diego Nieto</p>\r\n', '600.00', '12.59', '350.14', '168.14', '', 1, '2016-10-06 17:48:55', '2016-11-28 18:48:35', 1, 1, 0),
-(9, 1, 1, '4 Corral 2', '', '0.00', '0.00', '0.00', '0.00', '', 1, '2016-11-28 18:48:51', '2016-11-28 18:48:51', 1, 1, 0);
+(2, 1, 3, 'Veterinaria', '<p><strong>Horario apertura:</strong> 6:30AM<strong> Horario cierre:</strong> 20:30PM</p>\r\n\r\n<p><strong>Encargado:</strong> Diego Nieto</p>\r\n', '49.12', '175.57', '180.00', '135.00', '', 1, '2016-11-01 23:23:20', '2016-11-17 16:16:53', 1, 1, 0),
+(3, 1, 1, 'Corral 2', '<p><strong>Horario apertura:</strong> 6:30AM<strong> Horario cierre:</strong> 20:30PM</p>\r\n\r\n<p><strong>Encargado:</strong> Diego Nieto</p>\r\n', '991.90', '12.00', '195.40', '339.10', '', 1, '2016-10-06 17:48:13', '2016-11-17 16:16:31', 1, 1, 0),
+(4, 1, 1, 'Corral 1', '<p><strong>Horario apertura:</strong> 6:30AM<strong> Horario cierre:</strong> 20:30PM</p>\r\n\r\n<p><strong>Encargado:</strong> Diego Nieto</p>\r\n', '854.08', '425.00', '180.00', '360.00', '', 1, '2016-10-06 17:48:01', '2016-11-17 16:16:26', 1, 1, 0),
+(5, 1, 2, 'Alimentacion', '<p><strong>Horario apertura:</strong> 6:30AM<strong> Horario cierre:</strong> 20:30PM</p>\r\n\r\n<p><strong>Encargado:</strong> Diego Nieto</p>\r\n', '10.00', '360.00', '500.00', '100.00', '', 2, '2016-10-06 17:48:38', '2016-11-17 16:14:44', 1, 1, 0),
+(6, 1, 3, 'Maternidad', '<p><strong>Horario apertura:</strong> 6:30AM<strong> Horario cierre:</strong> 20:30PM</p>\r\n\r\n<p><strong>Encargado:</strong> Diego Nieto</p>\r\n', '49.09', '12.16', '334.73', '94.85', '', 2, '2016-11-01 23:23:00', '2016-11-17 16:16:36', 1, 1, 0),
+(7, 1, 2, 'Sala de ordene 2', '<p><strong>Horario apertura:</strong> 6:30AM<strong> Horario cierre:</strong> 20:30PM</p>\r\n\r\n<p><strong>Encargado:</strong> Diego Nieto</p>\r\n', '600.00', '270.00', '200.00', '230.00', '', 1, '2016-11-01 23:22:42', '2016-11-17 16:16:49', 1, 1, 0),
+(8, 1, 2, 'Sala de ordene 1', '<p><strong>Horario apertura:</strong> 6:30AM<strong> Horario cierre:</strong> 20:30PM</p>\r\n\r\n<p><strong>Encargado:</strong> Diego Nieto</p>\r\n', '600.00', '12.59', '350.14', '168.14', '', 1, '2016-10-06 17:48:55', '2016-11-17 16:16:45', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -25331,15 +25520,15 @@ INSERT INTO `tambos_sectores` (`id_sector`, `id_tambo`, `id_tipo`, `sector`, `co
 -- Estructura de tabla para la tabla `tambos_sectores_tipos`
 --
 
-CREATE TABLE IF NOT EXISTS `tambos_sectores_tipos` (
-`id_tipo` int(11) NOT NULL,
+CREATE TABLE `tambos_sectores_tipos` (
+  `id_tipo` int(11) NOT NULL,
   `tipo` varchar(64) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tambos_sectores_tipos`
@@ -25357,8 +25546,8 @@ INSERT INTO `tambos_sectores_tipos` (`id_tipo`, `tipo`, `date_add`, `date_upd`, 
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE IF NOT EXISTS `usuarios` (
-`id_usuario` int(11) NOT NULL,
+CREATE TABLE `usuarios` (
+  `id_usuario` int(11) NOT NULL,
   `usuario` varchar(64) NOT NULL,
   `password` varchar(128) NOT NULL,
   `id_perfil` int(11) NOT NULL,
@@ -25373,7 +25562,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -25388,15 +25577,15 @@ INSERT INTO `usuarios` (`id_usuario`, `usuario`, `password`, `id_perfil`, `last_
 -- Estructura de tabla para la tabla `usuarios_perfiles`
 --
 
-CREATE TABLE IF NOT EXISTS `usuarios_perfiles` (
-`id_perfil` int(11) NOT NULL,
+CREATE TABLE `usuarios_perfiles` (
+  `id_perfil` int(11) NOT NULL,
   `perfil` varchar(64) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuarios_perfiles`
@@ -25411,8 +25600,8 @@ INSERT INTO `usuarios_perfiles` (`id_perfil`, `perfil`, `date_add`, `date_upd`, 
 -- Estructura de tabla para la tabla `usuarios_permisos`
 --
 
-CREATE TABLE IF NOT EXISTS `usuarios_permisos` (
-`id_permiso` int(11) NOT NULL,
+CREATE TABLE `usuarios_permisos` (
+  `id_permiso` int(11) NOT NULL,
   `id_perfil` int(11) NOT NULL,
   `id_menu` int(11) NOT NULL,
   `ver` tinyint(4) NOT NULL,
@@ -25422,7 +25611,7 @@ CREATE TABLE IF NOT EXISTS `usuarios_permisos` (
   `user_add` int(11) NOT NULL,
   `user_upd` int(11) NOT NULL,
   `eliminado` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuarios_permisos`
@@ -25487,355 +25676,356 @@ INSERT INTO `usuarios_permisos` (`id_permiso`, `id_perfil`, `id_menu`, `ver`, `e
 -- Indices de la tabla `alertas`
 --
 ALTER TABLE `alertas`
- ADD PRIMARY KEY (`id_alerta`);
+  ADD PRIMARY KEY (`id_alerta`);
 
 --
 -- Indices de la tabla `alertas_estado`
 --
 ALTER TABLE `alertas_estado`
- ADD PRIMARY KEY (`id_estado`);
-
---
--- Indices de la tabla `animales`
---
-ALTER TABLE `animales`
- ADD PRIMARY KEY (`id_animal`);
+  ADD PRIMARY KEY (`id_estado`);
 
 --
 -- Indices de la tabla `animales_estados`
 --
 ALTER TABLE `animales_estados`
- ADD PRIMARY KEY (`id_estado`);
+  ADD PRIMARY KEY (`id_estado`);
+
+--
+-- Indices de la tabla `animales_marcaciones`
+--
+ALTER TABLE `animales_marcaciones`
+  ADD PRIMARY KEY (`id_marcacion`);
 
 --
 -- Indices de la tabla `animales_permisos`
 --
 ALTER TABLE `animales_permisos`
- ADD PRIMARY KEY (`id_permiso`);
+  ADD PRIMARY KEY (`id_permiso`);
 
 --
 -- Indices de la tabla `animales_rutinas`
 --
 ALTER TABLE `animales_rutinas`
- ADD PRIMARY KEY (`id_rutina`);
+  ADD PRIMARY KEY (`id_rutina`);
 
 --
 -- Indices de la tabla `animales_tipos`
 --
 ALTER TABLE `animales_tipos`
- ADD PRIMARY KEY (`id_tipo`);
+  ADD PRIMARY KEY (`id_tipo`);
 
 --
 -- Indices de la tabla `clientes`
 --
 ALTER TABLE `clientes`
- ADD PRIMARY KEY (`id_cliente`);
+  ADD PRIMARY KEY (`id_cliente`);
 
 --
 -- Indices de la tabla `clientes_tipos`
 --
 ALTER TABLE `clientes_tipos`
- ADD PRIMARY KEY (`id_tipo`);
+  ADD PRIMARY KEY (`id_tipo`);
 
 --
 -- Indices de la tabla `condiciones_pagos`
 --
 ALTER TABLE `condiciones_pagos`
- ADD PRIMARY KEY (`id_condicion_pago`);
+  ADD PRIMARY KEY (`id_condicion_pago`);
 
 --
 -- Indices de la tabla `dias`
 --
 ALTER TABLE `dias`
- ADD PRIMARY KEY (`id_dia`);
+  ADD PRIMARY KEY (`id_dia`);
 
 --
 -- Indices de la tabla `empleados`
 --
 ALTER TABLE `empleados`
- ADD PRIMARY KEY (`id_empleado`);
+  ADD PRIMARY KEY (`id_empleado`);
 
 --
 -- Indices de la tabla `empleados_marcaciones`
 --
 ALTER TABLE `empleados_marcaciones`
- ADD PRIMARY KEY (`id_marcacion`);
+  ADD PRIMARY KEY (`id_marcacion`);
 
 --
 -- Indices de la tabla `empleados_marcaciones_tipos`
 --
 ALTER TABLE `empleados_marcaciones_tipos`
- ADD PRIMARY KEY (`id_tipo`);
+  ADD PRIMARY KEY (`id_tipo`);
 
 --
 -- Indices de la tabla `empleados_puestos`
 --
 ALTER TABLE `empleados_puestos`
- ADD PRIMARY KEY (`id_puesto`);
+  ADD PRIMARY KEY (`id_puesto`);
 
 --
 -- Indices de la tabla `empleados_turnos`
 --
 ALTER TABLE `empleados_turnos`
- ADD PRIMARY KEY (`id_turno`);
+  ADD PRIMARY KEY (`id_turno`);
 
 --
 -- Indices de la tabla `envios`
 --
 ALTER TABLE `envios`
- ADD PRIMARY KEY (`id_envio`);
+  ADD PRIMARY KEY (`id_envio`);
 
 --
 -- Indices de la tabla `facturas`
 --
 ALTER TABLE `facturas`
- ADD PRIMARY KEY (`id_factura`);
+  ADD PRIMARY KEY (`id_factura`);
 
 --
 -- Indices de la tabla `facturas_estados`
 --
 ALTER TABLE `facturas_estados`
- ADD PRIMARY KEY (`id_estado`);
+  ADD PRIMARY KEY (`id_estado`);
 
 --
 -- Indices de la tabla `facturas_lineas`
 --
 ALTER TABLE `facturas_lineas`
- ADD PRIMARY KEY (`id_linea`);
+  ADD PRIMARY KEY (`id_linea`);
 
 --
 -- Indices de la tabla `facturas_lineas_estados`
 --
 ALTER TABLE `facturas_lineas_estados`
- ADD PRIMARY KEY (`id_estado`);
+  ADD PRIMARY KEY (`id_estado`);
 
 --
 -- Indices de la tabla `facturas_proveedores`
 --
 ALTER TABLE `facturas_proveedores`
- ADD PRIMARY KEY (`id_factura`);
+  ADD PRIMARY KEY (`id_factura`);
 
 --
 -- Indices de la tabla `facturas_proveedores_lineas`
 --
 ALTER TABLE `facturas_proveedores_lineas`
- ADD PRIMARY KEY (`id_linea`);
+  ADD PRIMARY KEY (`id_linea`);
 
 --
 -- Indices de la tabla `formas_juridicas`
 --
 ALTER TABLE `formas_juridicas`
- ADD PRIMARY KEY (`id_forma_juridica`);
+  ADD PRIMARY KEY (`id_forma_juridica`);
 
 --
 -- Indices de la tabla `formas_pagos`
 --
 ALTER TABLE `formas_pagos`
- ADD PRIMARY KEY (`id_forma_pago`);
+  ADD PRIMARY KEY (`id_forma_pago`);
 
 --
 -- Indices de la tabla `ingresos`
 --
 ALTER TABLE `ingresos`
- ADD PRIMARY KEY (`id_ingreso`);
+  ADD PRIMARY KEY (`id_ingreso`);
 
 --
 -- Indices de la tabla `ivas`
 --
 ALTER TABLE `ivas`
- ADD PRIMARY KEY (`id_iva`);
+  ADD PRIMARY KEY (`id_iva`);
 
 --
 -- Indices de la tabla `localidades`
 --
 ALTER TABLE `localidades`
- ADD PRIMARY KEY (`id_localidad`), ADD KEY `cp` (`codigo_postal`);
+  ADD PRIMARY KEY (`id_localidad`),
+  ADD KEY `cp` (`codigo_postal`);
 
 --
 -- Indices de la tabla `logs_niveles`
 --
 ALTER TABLE `logs_niveles`
- ADD PRIMARY KEY (`id_nivel`);
+  ADD PRIMARY KEY (`id_nivel`);
 
 --
 -- Indices de la tabla `logs_usuarios`
 --
 ALTER TABLE `logs_usuarios`
- ADD PRIMARY KEY (`id_log`);
+  ADD PRIMARY KEY (`id_log`);
 
 --
 -- Indices de la tabla `menus`
 --
 ALTER TABLE `menus`
- ADD PRIMARY KEY (`id_menu`);
+  ADD PRIMARY KEY (`id_menu`);
 
 --
 -- Indices de la tabla `ordenes`
 --
 ALTER TABLE `ordenes`
- ADD PRIMARY KEY (`id_ordene`);
+  ADD PRIMARY KEY (`id_ordene`);
 
 --
 -- Indices de la tabla `origenes`
 --
 ALTER TABLE `origenes`
- ADD PRIMARY KEY (`id_origen`);
+  ADD PRIMARY KEY (`id_origen`);
 
 --
 -- Indices de la tabla `pagos`
 --
 ALTER TABLE `pagos`
- ADD PRIMARY KEY (`id_pago`);
+  ADD PRIMARY KEY (`id_pago`);
 
 --
 -- Indices de la tabla `pagos_proveedores`
 --
 ALTER TABLE `pagos_proveedores`
- ADD PRIMARY KEY (`id_pago`);
+  ADD PRIMARY KEY (`id_pago`);
 
 --
 -- Indices de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
- ADD PRIMARY KEY (`id_pedido`);
+  ADD PRIMARY KEY (`id_pedido`);
 
 --
 -- Indices de la tabla `pedidos_estados`
 --
 ALTER TABLE `pedidos_estados`
- ADD PRIMARY KEY (`id_estado`);
+  ADD PRIMARY KEY (`id_estado`);
 
 --
 -- Indices de la tabla `pedidos_lineas`
 --
 ALTER TABLE `pedidos_lineas`
- ADD PRIMARY KEY (`id_linea`);
+  ADD PRIMARY KEY (`id_linea`);
 
 --
 -- Indices de la tabla `pedidos_lineas_estados`
 --
 ALTER TABLE `pedidos_lineas_estados`
- ADD PRIMARY KEY (`id_estado`);
+  ADD PRIMARY KEY (`id_estado`);
 
 --
 -- Indices de la tabla `pedidos_proveedores`
 --
 ALTER TABLE `pedidos_proveedores`
- ADD PRIMARY KEY (`id_pedido`);
+  ADD PRIMARY KEY (`id_pedido`);
 
 --
 -- Indices de la tabla `pedidos_proveedores_lineas`
 --
 ALTER TABLE `pedidos_proveedores_lineas`
- ADD PRIMARY KEY (`id_linea`);
+  ADD PRIMARY KEY (`id_linea`);
 
 --
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
- ADD PRIMARY KEY (`id_producto`);
+  ADD PRIMARY KEY (`id_producto`);
 
 --
 -- Indices de la tabla `productos_tipos`
 --
 ALTER TABLE `productos_tipos`
- ADD PRIMARY KEY (`id_tipo`);
+  ADD PRIMARY KEY (`id_tipo`);
 
 --
 -- Indices de la tabla `proveedores`
 --
 ALTER TABLE `proveedores`
- ADD PRIMARY KEY (`id_proveedor`);
+  ADD PRIMARY KEY (`id_proveedor`);
 
 --
 -- Indices de la tabla `proveedores_tipos`
 --
 ALTER TABLE `proveedores_tipos`
- ADD PRIMARY KEY (`id_tipo`);
+  ADD PRIMARY KEY (`id_tipo`);
 
 --
 -- Indices de la tabla `provincias`
 --
 ALTER TABLE `provincias`
- ADD PRIMARY KEY (`id_provincia`);
+  ADD PRIMARY KEY (`id_provincia`);
 
 --
 -- Indices de la tabla `seguimientos`
 --
 ALTER TABLE `seguimientos`
- ADD PRIMARY KEY (`id_seguimiento`);
+  ADD PRIMARY KEY (`id_seguimiento`);
 
 --
 -- Indices de la tabla `seguimientos_controles`
 --
 ALTER TABLE `seguimientos_controles`
- ADD PRIMARY KEY (`id_control`);
+  ADD PRIMARY KEY (`id_control`);
 
 --
 -- Indices de la tabla `seguimientos_estados`
 --
 ALTER TABLE `seguimientos_estados`
- ADD PRIMARY KEY (`id_estado`);
+  ADD PRIMARY KEY (`id_estado`);
 
 --
 -- Indices de la tabla `tambos`
 --
 ALTER TABLE `tambos`
- ADD PRIMARY KEY (`id_tambo`);
+  ADD PRIMARY KEY (`id_tambo`);
 
 --
 -- Indices de la tabla `tambos_caminos`
 --
 ALTER TABLE `tambos_caminos`
- ADD PRIMARY KEY (`id_camino`);
+  ADD PRIMARY KEY (`id_camino`);
 
 --
 -- Indices de la tabla `tambos_caminos_detalles`
 --
 ALTER TABLE `tambos_caminos_detalles`
- ADD PRIMARY KEY (`id_detalle`);
+  ADD PRIMARY KEY (`id_detalle`);
 
 --
 -- Indices de la tabla `tambos_compuertas`
 --
 ALTER TABLE `tambos_compuertas`
- ADD PRIMARY KEY (`id_compuerta`);
+  ADD PRIMARY KEY (`id_compuerta`);
 
 --
 -- Indices de la tabla `tambos_lectores`
 --
 ALTER TABLE `tambos_lectores`
- ADD PRIMARY KEY (`id_lector`);
+  ADD PRIMARY KEY (`id_lector`);
 
 --
 -- Indices de la tabla `tambos_sectores`
 --
 ALTER TABLE `tambos_sectores`
- ADD PRIMARY KEY (`id_sector`);
+  ADD PRIMARY KEY (`id_sector`);
 
 --
 -- Indices de la tabla `tambos_sectores_tipos`
 --
 ALTER TABLE `tambos_sectores_tipos`
- ADD PRIMARY KEY (`id_tipo`);
+  ADD PRIMARY KEY (`id_tipo`);
 
 --
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
- ADD PRIMARY KEY (`id_usuario`);
+  ADD PRIMARY KEY (`id_usuario`);
 
 --
 -- Indices de la tabla `usuarios_perfiles`
 --
 ALTER TABLE `usuarios_perfiles`
- ADD PRIMARY KEY (`id_perfil`);
+  ADD PRIMARY KEY (`id_perfil`);
 
 --
 -- Indices de la tabla `usuarios_permisos`
 --
 ALTER TABLE `usuarios_permisos`
- ADD PRIMARY KEY (`id_permiso`);
+  ADD PRIMARY KEY (`id_permiso`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -25845,262 +26035,262 @@ ALTER TABLE `usuarios_permisos`
 -- AUTO_INCREMENT de la tabla `alertas`
 --
 ALTER TABLE `alertas`
-MODIFY `id_alerta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_alerta` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `alertas_estado`
 --
 ALTER TABLE `alertas_estado`
-MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `animales`
---
-ALTER TABLE `animales`
-MODIFY `id_animal` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `animales_estados`
 --
 ALTER TABLE `animales_estados`
-MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT de la tabla `animales_marcaciones`
+--
+ALTER TABLE `animales_marcaciones`
+  MODIFY `id_marcacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `animales_permisos`
 --
 ALTER TABLE `animales_permisos`
-MODIFY `id_permiso` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `animales_rutinas`
 --
 ALTER TABLE `animales_rutinas`
-MODIFY `id_rutina` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_rutina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `animales_tipos`
 --
 ALTER TABLE `animales_tipos`
-MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `clientes_tipos`
 --
 ALTER TABLE `clientes_tipos`
-MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `condiciones_pagos`
 --
 ALTER TABLE `condiciones_pagos`
-MODIFY `id_condicion_pago` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_condicion_pago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `dias`
 --
 ALTER TABLE `dias`
-MODIFY `id_dia` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `id_dia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `empleados`
 --
 ALTER TABLE `empleados`
-MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `empleados_marcaciones`
 --
 ALTER TABLE `empleados_marcaciones`
-MODIFY `id_marcacion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_marcacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `empleados_marcaciones_tipos`
 --
 ALTER TABLE `empleados_marcaciones_tipos`
-MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `empleados_puestos`
 --
 ALTER TABLE `empleados_puestos`
-MODIFY `id_puesto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_puesto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `empleados_turnos`
 --
 ALTER TABLE `empleados_turnos`
-MODIFY `id_turno` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_turno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `envios`
 --
 ALTER TABLE `envios`
-MODIFY `id_envio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_envio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `facturas`
 --
 ALTER TABLE `facturas`
-MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `facturas_estados`
 --
 ALTER TABLE `facturas_estados`
-MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `facturas_lineas`
 --
 ALTER TABLE `facturas_lineas`
-MODIFY `id_linea` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_linea` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `facturas_lineas_estados`
 --
 ALTER TABLE `facturas_lineas_estados`
-MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `facturas_proveedores`
 --
 ALTER TABLE `facturas_proveedores`
-MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `facturas_proveedores_lineas`
 --
 ALTER TABLE `facturas_proveedores_lineas`
-MODIFY `id_linea` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_linea` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `formas_juridicas`
 --
 ALTER TABLE `formas_juridicas`
-MODIFY `id_forma_juridica` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id_forma_juridica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `formas_pagos`
 --
 ALTER TABLE `formas_pagos`
-MODIFY `id_forma_pago` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_forma_pago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `ingresos`
 --
 ALTER TABLE `ingresos`
-MODIFY `id_ingreso` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_ingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `ivas`
 --
 ALTER TABLE `ivas`
-MODIFY `id_iva` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_iva` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `logs_usuarios`
 --
 ALTER TABLE `logs_usuarios`
-MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1232;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1358;
 --
 -- AUTO_INCREMENT de la tabla `menus`
 --
 ALTER TABLE `menus`
-MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT de la tabla `ordenes`
 --
 ALTER TABLE `ordenes`
-MODIFY `id_ordene` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_ordene` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `origenes`
 --
 ALTER TABLE `origenes`
-MODIFY `id_origen` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id_origen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `pagos`
 --
 ALTER TABLE `pagos`
-MODIFY `id_pago` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_pago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `pagos_proveedores`
 --
 ALTER TABLE `pagos_proveedores`
-MODIFY `id_pago` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_pago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `pedidos_lineas`
 --
 ALTER TABLE `pedidos_lineas`
-MODIFY `id_linea` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_linea` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `pedidos_proveedores`
 --
 ALTER TABLE `pedidos_proveedores`
-MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `proveedores`
 --
 ALTER TABLE `proveedores`
-MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `proveedores_tipos`
 --
 ALTER TABLE `proveedores_tipos`
-MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `seguimientos`
 --
 ALTER TABLE `seguimientos`
-MODIFY `id_seguimiento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_seguimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `seguimientos_controles`
 --
 ALTER TABLE `seguimientos_controles`
-MODIFY `id_control` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_control` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `seguimientos_estados`
 --
 ALTER TABLE `seguimientos_estados`
-MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `tambos`
 --
 ALTER TABLE `tambos`
-MODIFY `id_tambo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_tambo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `tambos_caminos`
 --
 ALTER TABLE `tambos_caminos`
-MODIFY `id_camino` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id_camino` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `tambos_caminos_detalles`
 --
 ALTER TABLE `tambos_caminos_detalles`
-MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `tambos_compuertas`
 --
 ALTER TABLE `tambos_compuertas`
-MODIFY `id_compuerta` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id_compuerta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `tambos_lectores`
 --
 ALTER TABLE `tambos_lectores`
-MODIFY `id_lector` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_lector` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `tambos_sectores`
 --
 ALTER TABLE `tambos_sectores`
-MODIFY `id_sector` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `id_sector` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `tambos_sectores_tipos`
 --
 ALTER TABLE `tambos_sectores_tipos`
-MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `usuarios_perfiles`
 --
 ALTER TABLE `usuarios_perfiles`
-MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `usuarios_permisos`
 --
 ALTER TABLE `usuarios_permisos`
-MODIFY `id_permiso` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
+  MODIFY `id_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

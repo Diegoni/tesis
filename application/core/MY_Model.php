@@ -447,6 +447,8 @@ class MY_Model extends CI_Model
 	{
 		$no_log = array (
 			'logs_usuarios',
+			'tambos_caminos',
+			'animales_marcaciones'
 		);
 		
 		if(!in_array($this->_tablename, $no_log))
