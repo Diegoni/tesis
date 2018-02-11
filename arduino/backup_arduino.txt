@@ -1,6 +1,5 @@
 #include <SPI.h>
 #include <RFID.h>
-#include <LiquidCrystal.h>
 #include <Ethernet.h>
 #include <Servo.h>
 
@@ -16,45 +15,38 @@ int input_rfid          = 8;
 int input_servo_uno     = 9;    
 int input_servo_dos     = 10;    
 int input_buzzer        = 11;    
-int input_button        = 12;   
+int input_button        = 12; 
 
-// Para internet
 // Mac unica de cada EthernetShield (deben cambiarla)
 byte mac[] = { 0x90, 0xA2, 0xDA, 0x0D, 0x4E, 0xD7 };
 
 //IP fijo
 IPAddress ip(192,168,0,50); //Asigno IP fija al arduino
-
 // Direccion del servidor
 char server[] = "192.168.0.40"; //Direccion LAN IP de la pc corriendo apache LAN IP address
-
 // Inicializa la instancia client
 EthernetClient client; //apache web server corriendo en el puerto 80
 
-// Inicializacion de clases y variables
 RFID rfid(input_rfid,9);
-Servo servo_uno;  // Objeto servo uno
-Servo servo_dos;  // Objeto servo dos
-
 String nroTarjeta="";
 bool cardExist = 0;
 boolean ultimoEstado = false;
 int compuerta = 1;
 int secuencia = 2;
-int destino = 2;
-
-int numTones = 10;
-int tones[ ] = {261, 277, 294, 311, 330, 349, 370, 392, 415, 440,466, 494};
-               // mid C C# D D# E F F# G G# A
-
-
-
+char compuerta_inicio = '0';
+char compuerta_final = '0';
+int camino_tiempo = 0;
+//Servo servo_uno;  // Objeto servo uno
+//Servo servo_dos;  // Objeto servo dos
+char angulo_uno = '0';
+char angulo_dos = '0';
+int vueltas = 0;
 
 
 /*----------------------------------------------------------------------------------------------------------------
   ----------------------------------------------------------------------------------------------------------------
          
-          Variables de configuraci�n
+          Variables de configuración
           
   ----------------------------------------------------------------------------------------------------------------
   ---------------------------------------------------------------------------------------------------------------*/
@@ -62,42 +54,46 @@ int tones[ ] = {261, 277, 294, 311, 330, 349, 370, 392, 415, 440,466, 494};
 
 void setup()
 {
+    Serial.begin(9600); //Inicializa la velocidad de Serial
+    while (!Serial) 
+    {
+        ; // Se espera a que se conecte el puerto serie (solo para Arduino Leonardo)
+    }
+
+    Serial.println("==================================");
+    Serial.println("Comienzo setup");
+    Serial.println("==================================");
+
+    // Led Compuertas
     pinMode(input_led_uno, OUTPUT); 
     pinMode(input_led_dos, OUTPUT);
     pinMode(input_led_tres, OUTPUT);
     pinMode(input_led_cuatro, OUTPUT);
     pinMode(input_led_cinco, OUTPUT);
     pinMode(input_led_seis, OUTPUT);
-      
-    servo_uno.attach(input_servo_uno);  // Defino la conexion de los servo_uno
-    servo_dos.attach(input_servo_dos);  // Defino la conexion de los servo
 
-    pinMode(input_button, INPUT_PULLUP);
-    
-  
+    //servo_uno.attach(input_servo_uno);  // Defino la conexion de los servo_uno
+    //servo_dos.attach(input_servo_dos);  // Defino la conexion de los servo
 
-    Serial.begin(9600); //Inicializa la velocidad de Serial
-    
-    while (!Serial) 
-    {
-        ; // Se espera a que se conecte el puerto serie (solo para Arduino Leonardo)
-    }
-
-    SPI.begin();  //Funci�n que inicializa SPI
-    rfid.init();  //Funci�n  que inicializa RFID
+    camino_tiempo = millis();
 
     Serial.println("Iniciando guardar nro tarjeta");
     Serial.println("Sensor RFID RC-522/ web");
-    Serial.println();
-
     delay(1000); // Espera 1 segundo para que se inicie la tarjeta Ethernet
-   
+  
     Ethernet.begin(mac, ip);
     // Imprime la direccion IP de la tarjeta
-    Serial.print("Direccion IP Arduino: ");
+    Serial.println("Direccion IP Arduino: ");
     Serial.println(Ethernet.localIP());
-    
+    Serial.println("Comienzo de tiempo");
+    Serial.println(camino_tiempo);
+
     delay(1000);
+    
+    
+    Serial.println("==================================");
+    Serial.println("Comienzo loop");
+    Serial.println("==================================");
 }
 
 
@@ -113,54 +109,77 @@ void setup()
 void loop()
 {
     String request;
-    int servo_uno;
-    int servo_dos;
   
     leerNroTarjeta();
 
     // Si no hay conexion de red y se conecto correctamente la ultima vez
     // detiene el cliente Ehternet
-
     if (!client.connected() && ultimoEstado) 
     {
         Serial.println();
         Serial.println("Desconectando...");
         client.stop();
     }
-    
+  
     if(cardExist)
     {
         bool conexion = abrirConexion();
         if (conexion)
         {
             request = httpRequest();
-          
-            //servo_uno = request.toInt();
-           // servo_uno.write(servo_uno);
             delay(1000);
         }
-
         
         /*Volvemos los valores a 0*/
         delay(3000);
-        //servo_uno.write(0);
-  
         cardExist = 0; 
-    }
-
-    int sensorVal = digitalRead(input_button);
-
-    if (sensorVal == HIGH) 
-    {
-    }else 
-    {
-        Serial.println("Pulsado...");
-        cambiarCompuerta();  
     }
 
     // Actualiza la variable ultimoEstado 
     ultimoEstado = client.connected(); 
+    
+    int sensorVal = digitalRead(input_button);
+
+    if (sensorVal == HIGH) 
+    {
+        vueltas = 0;
+        
+    }else 
+    {
+        vueltas = vueltas + 1;
+        if(vueltas > 3)
+        {
+            Serial.println("----------------------------------");
+            Serial.println("Pulsado...");
+            cambiarCompuerta();  
+        }
+    }
+    
+    // Control de animales obstruido
+    if(compuerta_inicio != '0')
+    {
+
+      if(millis() > camino_tiempo + 30000  )
+      {
+        Serial.println("----------------------------------");
+        Serial.println("Alerta de animales obstruido");
+        Serial.println(camino_tiempo);
+        Serial.println(millis());
+
+        tone(input_buzzer, 261);
+        delay(200);
+        tone(input_buzzer, 2000, 500);
+        delay(1000);
+        noTone(input_buzzer);
+        camino_tiempo = millis() + 30000;
+        
+        Serial.println("----------------------------------");
+      
+      }
+    }
 }
+
+
 
 /*----------------------------------------------------------------------------------------------------------------
   ----------------------------------------------------------------------------------------------------------------
@@ -186,19 +205,20 @@ int cambiarCompuerta()
     
     secuencia = compuerta + 1;
 
-    
-
     digitalWrite(secuencia, HIGH); 
     delay(300);
     tone(input_buzzer, 261);
-    delay(200);
+    delay(100);
     digitalWrite(secuencia, LOW);   // set the LED on
     noTone(input_buzzer);
     delay(500);
+    prenderInicioFinal();
 
     Serial.println("Pasa al sector");
     Serial.println(compuerta);
 
+    Serial.println("----------------------------------");
+    Serial.println("");
     return compuerta;
 }
 
@@ -219,8 +239,8 @@ void leerNroTarjeta()
         if (rfid.readCardSerial()) 
         { //Funcion que lee la tarjeta
             nroTarjeta = "";
-            Serial.println(" ");
-            Serial.println("El numero de serie de la tarjeta es: ");
+            //Serial.println(" ");
+            //Serial.println("El numero de serie de la tarjeta es: ");
             for(int i=0; i<=4; i++)
             {
               nroTarjeta += String(rfid.serNum[i],HEX);
@@ -229,8 +249,8 @@ void leerNroTarjeta()
             {
               cardExist = 1;
             }
-            Serial.println(nroTarjeta);
-            Serial.print(" ");
+            //Serial.println(nroTarjeta);
+            //Serial.print(" ");
             delay(1000);
         }
         rfid.halt();
@@ -249,7 +269,7 @@ void leerNroTarjeta()
 
 bool abrirConexion()
 {
-   //Cerrar cualquier conexion antes de enviar una request nueva
+    //Cerrar cualquier conexion antes de enviar una request nueva
     client.stop();
     //Inicio conexion
     Serial.println("Iniciando conexion...");
@@ -267,13 +287,14 @@ bool abrirConexion()
         client.stop();
         return false;
     } 
+  
 }
 
 
 /*----------------------------------------------------------------------------------------------------------------
   ----------------------------------------------------------------------------------------------------------------
          
-          Petici�n de valores para esa tarjeta
+          Petición de valores para esa tarjeta
           
   ----------------------------------------------------------------------------------------------------------------
   ---------------------------------------------------------------------------------------------------------------*/
@@ -281,11 +302,13 @@ bool abrirConexion()
 
 String httpRequest()
 {
+    // Envia el dato al puerto serial 
+    Serial.println("numero de serie de la tarjeta: "); 
+    Serial.println(nroTarjeta);
     // Envia el requerimiento al servidor via GET
-    
-    client.print("GET /tesis2/index.php/tambos_caminos/getCamino/"); //pagina php invocando mi servicio web
+    client.print("GET /tesis2/arduino/curl.php?tarjeta="); //página php invocando mi servicio web
     client.print(nroTarjeta);
-    client.print("/");
+    client.print("&sector=");
     client.print(compuerta);
     client.print(" HTTP/1.1");
     client.println();
@@ -294,13 +317,16 @@ String httpRequest()
     client.println("User-Agent: Arduino-Ethernet");
     client.println("Connection: close");
     client.println();
-    delay(200);
+    delay(50);
 
     String respuesta = "";  // variable para guardar la respuesta
     int contador = 0;
     char c = 'a';
     String cadena;
     char c_previo = 'a';
+    // Para que termine de leer los datos
+    delay(2000);
+    
     while(true)
     {    
         if (client.available())
@@ -314,20 +340,18 @@ String httpRequest()
             cadena = cadena+c;
         }
 
-        //Se no hay nada m�s que leer desde el servidor, se muestra el mensaje
+        //Se no hay nada más que leer desde el servidor, se muestra el mensaje
         if (!client.connected())
         {    
             client.stop();
             Serial.println();
             Serial.println("Desconectando...");
-            Serial.println("==================================");
-            Serial.println("");
             /* Leo el ultimo caracter del string
             - Si leo el caracter ';' se debe haber producido algun error, entonces se prende el led rojo (en el pin 4)
             - Si leo el caracter '.' todo estuvo ok y se enciende el led verde (en el pin 5)
             */
             respuesta.trim();
-             if(respuesta.lastIndexOf(';')>0)
+            if(respuesta.lastIndexOf(';')>0)
             {   
                 respuesta.replace(';', '\0'); 
                 cadena = "Error";
@@ -335,17 +359,64 @@ String httpRequest()
                 
                 delay(1000);
             }else{
-                cadena = cadena.substring(202);
-                Serial.print("cadena "+cadena);
-                
-                delay(1000);
+                cadena = cadena.substring(203);
+                Serial.println("----------------------------------");
+                Serial.println("cadena "+cadena);
+               
+                char sub_cadena = cadena.charAt(0);
+
+                // Consultamos si hay error
+                if (sub_cadena == 'E') 
+                {
+                  Serial.println("Deteccion de error ");
+                  tone(input_buzzer, 261);
+                  delay(200);
+                  tone(input_buzzer, 2000, 500);
+                  delay(1000);
+                  noTone(input_buzzer);
+                // Consultamos si es un cierre
+                }else if (sub_cadena == 'C') 
+                {
+                  Serial.println("Cierre de camino ");
+                  tone(input_buzzer, 415, 200);
+                  delay(200);
+                  compuerta_inicio = '0';
+                  compuerta_final = '0';
+                  prenderInicioFinal();
+                }else if (
+                  sub_cadena == '1' ||
+                  sub_cadena == '2' ||
+                  sub_cadena == '3' ||
+                  sub_cadena == '4' ||
+                  sub_cadena == '5' ||
+                  sub_cadena == '6' )
+                {
+                  Serial.println("Comienzo de camino ");
+                  tone(input_buzzer, 349, 200);
+                  delay(200);
+                  compuerta_inicio = cadena.charAt(0);
+                  compuerta_final = cadena.charAt(2);
+                  angulo_uno = cadena.charAt(5);
+                  angulo_dos = cadena.charAt(9);
+
+                  Serial.println("compuerta_inicio");
+                  Serial.println(compuerta_inicio);
+                  Serial.println("compuerta_final");
+                  Serial.println(compuerta_final);
+                  Serial.println("servo_uno");
+                  Serial.println(angulo_uno);
+                  Serial.println("servo_dos");
+                  Serial.println(angulo_dos);
+                  prenderInicioFinal();
+                }else 
+                {
+                  Serial.println("No hay cadena");
+                  // entonces es un camino
+                  delay(1000);
+                }
             }
-            
-            // turn off the leds and the buzzer
-            //digitalWrite(ledVerdePin, LOW);
-            //digitalWrite(ledRojoPin, LOW);
-            //digitalWrite(7, HIGH);
-            //lcd.clear();
+
+            Serial.println("----------------------------------");
             break;
         }             
     }
@@ -353,103 +424,73 @@ String httpRequest()
     return cadena;
 }
 
-
 /*----------------------------------------------------------------------------------------------------------------
   ----------------------------------------------------------------------------------------------------------------
          
-          Para prepara caminos 
+          Activa las compuertas
           
   ----------------------------------------------------------------------------------------------------------------
   ---------------------------------------------------------------------------------------------------------------*/
 
-
-
-void prepararCamino()
+void prenderInicioFinal()
 {
-  int tmp_servo  = 0;
-  int tmp_dos  = 0;
- 
-  int temporal = destino + 1;
-  // Camino desde uno
+  /*
+  if(angulo_uno == '4')
+  {
+    servo_uno.write(45);
+  }else if(angulo_uno == '9')
+  {
+    servo_uno.write(90);
+  }else if(angulo_uno == '3')
+  {
+    servo_uno.write(135);
+  }
 
-  Serial.println("Compuerta de lectura");
-  Serial.println(compuerta);
-  Serial.println("Destino");
-  Serial.println(destino);
+  if(angulo_dos == '4')
+  {
+    servo_dos.write(45);
+  }else if(angulo_dos == '9')
+  {
+    servo_dos.write(90);
+  }else if(angulo_dos == '3')
+  {
+    servo_dos.write(135);
+  }
+  */
   
-  if(compuerta == 1)
+  if(compuerta_inicio == '1' || compuerta_final == '1')
   {
-            if(destino == 2){tmp_servo = 45;
-      }else if(destino == 3){tmp_dos = 45;
-      }else if(destino == 5){tmp_dos = 135;
-      }else if(destino == 6){tmp_servo = 135;}  
-  }else if(compuerta == 2)
+    digitalWrite(input_led_uno, HIGH); 
+  }
+  if(compuerta_inicio == '2' || compuerta_final == '2')
   {
-          if(destino == 3){tmp_servo = 135; tmp_dos = 45;
-    }else if(destino == 4){tmp_dos = 45;
-    }else if(destino == 5){tmp_servo = 135; tmp_dos = 135;
-    }else if(destino == 6){tmp_servo = 90;
-    }else if(destino == 1){tmp_servo = 45;}    
-  }else if(compuerta == 3)
+    digitalWrite(input_led_dos, HIGH); 
+  }         
+  if(compuerta_inicio == '3' || compuerta_final == '3')
   {
-          if(destino == 4){tmp_dos = 135;
-    }else if(destino == 5){tmp_dos = 90;
-    }else if(destino == 6){tmp_servo = 135; tmp_dos = 45;
-    }else if(destino == 1){tmp_dos = 45;
-    }else if(destino == 2){tmp_servo = 135; tmp_dos = 45;}  
-  }else if(compuerta == 4)
+    digitalWrite(input_led_tres, HIGH); 
+  }
+  if(compuerta_inicio == '4' || compuerta_final == '4')
   {
-          if(destino == 5){tmp_dos = 45;
-    }else if(destino == 6){tmp_servo = 45;
-    }else if(destino == 2){tmp_dos = 45;
-    }else if(destino == 2){tmp_servo = 135; tmp_dos = 45;}  
-  }else if(compuerta == 5)
+    digitalWrite(input_led_cuatro, HIGH); 
+  }   
+  if(compuerta_inicio == '5' || compuerta_final == '5')
   {
-    if(destino == 6)
-    {
-     
-    }else if(destino == 1)
-    {
-      
-    }else if(destino == 2)
-    {
-      
-    }else if(destino == 3)
-    {
-      
-    }else if(destino == 4)
-    {
-      
-    }
-  }else if(compuerta == 6)
+    digitalWrite(input_led_cinco, HIGH); 
+  }
+  if(compuerta_inicio == '6' || compuerta_final == '6')
   {
-    if(destino == 1)
-    {
-      
-    }else if(destino == 2)
-    {
-      
-    }else if(destino == 3)
-    {
-      
-    }else if(destino == 4)
-    {
-      
-    }else if(destino == 5)
-    {
-      
-    }
-  }  
-
-    servo_uno.write(tmp_servo);
-    servo_dos.write(tmp_dos);
-    digitalWrite(secuencia, HIGH); 
-    digitalWrite(temporal, HIGH); 
-    delay(5000); 
-    //Volvemos a poner en 0 todo
-    servo_uno.write(0);
-    servo_dos.write(0);
-    digitalWrite(secuencia, LOW); 
-    digitalWrite(temporal, LOW);  
-  
+    digitalWrite(input_led_seis, HIGH); 
+  } 
+  if(compuerta_inicio == '0' || compuerta_final == '0')
+  {
+    digitalWrite(input_led_uno, LOW); 
+    digitalWrite(input_led_dos, LOW);
+    digitalWrite(input_led_tres, LOW);
+    digitalWrite(input_led_cuatro, LOW);
+    digitalWrite(input_led_cinco, LOW);
+    digitalWrite(input_led_seis, LOW);
+    //servo_uno.write(0);
+    //servo_dos.write(0);
+  }
 }
