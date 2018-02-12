@@ -4,7 +4,12 @@ class m_animales_marcaciones extends MY_Model
 	protected $_tablename	= 'animales_marcaciones';
 	protected $_id_table	= 'id_marcacion';
 	protected $_order		= 'id_marcacion';
-	protected $_relation    =  '';
+	protected $_relation    = array(   
+        'id_camino' => array(
+            'table'     => 'tambos_caminos',
+            'subjet'    => 'camino'
+        ),
+    );
 		
 	function __construct()
 	{

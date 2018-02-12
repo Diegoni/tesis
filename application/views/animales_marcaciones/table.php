@@ -5,9 +5,9 @@
  
 $cabeceras = array(
     lang('animal'),
-    lang('sector'),
-    lang('date_add'),
-    lang('opciones'),
+    lang('camino'),
+    lang('inicio'),
+    lang('final'),
 );
 
 $html = startContent();
@@ -20,13 +20,7 @@ if(isset($mensaje)){
             Tabla
  --------------------------------------------------------------------------------*/
 
-if($permiso_editar == 1)
-{
-    $html .= getExportsButtons($cabeceras, tableAdd($subjet));    
-}else
-{
-    $html .= getExportsButtons($cabeceras);
-}
+$html .= getExportsButtons($cabeceras);
 
 $html .= startTable($cabeceras);
 
@@ -35,10 +29,10 @@ if($registros)
     foreach ($registros as $row) 
     {
         $registro = array(
-            $row->animal,
-            $row->sector,
-            $row->date_add,
-            tableUpd($subjet, $row->id_ingreso),
+            $row->id_animal,
+            $row->camino,
+            $row->marcacion_inicio,
+            $row->marcacion_final,
         );
         
         $html .= setTableContent($registro);    

@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Ingresos extends MY_Controller 
+class Animales_marcaciones extends MY_Controller 
 {
-	protected $_subject = 'ingresos';
-    protected $_model   = 'm_ingresos';
+	protected $_subject = 'animales_marcaciones';
+    protected $_model   = 'm_animales_marcaciones';
     
     function __construct()
     {

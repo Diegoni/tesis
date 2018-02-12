@@ -347,7 +347,24 @@ class Tambos_caminos extends MY_Controller
 										
 										foreach ($detalles as $row_detalle) 
 										{
-											$return .= $row_detalle->id_compuerta.'_'.$row_detalle->valor.'&';
+											if($row_detalle->id_compuerta == 7 || $row_detalle->id_compuerta == 8)
+											{
+												if(strlen($row_detalle->valor) == 3)
+												{
+													$_cad = $row_detalle->valor;
+												}else if(strlen($row_detalle->valor) == 2)
+												{
+													$_cad = '0'.$row_detalle->valor;
+												}else
+												{
+													$_cad = '00'.$row_detalle->valor;
+												}
+											}else
+											{
+												$_cad = $row_detalle->id_compuerta;
+											}
+											
+											$return .= $_cad.'-';
 										}
 										
 										$return = substr($return, 0, -1);
@@ -367,6 +384,14 @@ class Tambos_caminos extends MY_Controller
 						}
 					}else
 					{
+						if($debug)
+						{
+							foreach ($datos as $key => $value) 
+							{
+								echo $key.' => '.$value.'<br>';
+							}
+						}
+						
 						$return = "ERROR: No hay un sector asignado para el animal en este horario";
 					}
 				}else
@@ -387,6 +412,8 @@ class Tambos_caminos extends MY_Controller
 							);
 													
 							$this->model->update($registro, $where);
+							
+							$return = "CCC";
 						}	
 					}else
 					{
