@@ -1,0 +1,10 @@
+Lectura de tarjeta 8a8df2897c sector 3 hora 19:29:39 
+Lectura de tarjeta 8a8df2897c sector 1 hora 19:39:46 
+Lectura de tarjeta 539fcc22 sector 3 hora 19:41:15 
+Lectura de tarjeta 539fcc22 sector 2 hora 19:42:12 
+Lectura de tarjeta 8a8df2897c sector 1 hora 20:26:55 
+Lectura de tarjeta 539fcc22 sector 1 hora 20:32:54 
+Lectura de tarjeta a5d6631bb sector 1 hora 20:33:21 
+Lectura de tarjeta a5d6631bb sector 4 hora 20:34:32 
+Lectura de tarjeta 8a8df2897c sector 2 hora 20:35:00 
+Lectura de tarjeta 539fcc22 sector 2 hora 20:35:11 

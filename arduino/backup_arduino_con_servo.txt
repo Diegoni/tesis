@@ -42,6 +42,12 @@ char angulo_uno = '0';
 char angulo_dos = '0';
 int vueltas = 0;
 
+// Intervalo version 1.3          
+unsigned long previousMillis = 0;        
+unsigned long previousMillisAnimall = 0;    
+const long interval_led   = 3000; 
+const long interval_animal = 10000; 
+
 
 /*----------------------------------------------------------------------------------------------------------------
   ----------------------------------------------------------------------------------------------------------------
@@ -109,6 +115,17 @@ void setup()
 void loop()
 {
     String request;
+    // Cada x segundo hace parpadear el sector activo
+    unsigned long currentMillis = millis();
+    
+    if (currentMillis - previousMillis >= interval_led) 
+    {
+      previousMillis = currentMillis;
+  
+      digitalWrite(secuencia, HIGH);
+      delay(250);
+      digitalWrite(secuencia, LOW);     
+    }
   
     leerNroTarjeta();
 
@@ -158,18 +175,29 @@ void loop()
     // Control de animales obstruido
     if(compuerta_inicio != '0')
     {
-
-      if(millis() > camino_tiempo + 30000  )
+      if (currentMillis - previousMillisAnimall >= interval_animal) 
       {
+
+        previousMillisAnimall = currentMillis;
         Serial.println("----------------------------------");
         Serial.println("Alerta de animales obstruido");
-        Serial.println(camino_tiempo);
-        Serial.println(millis());
-
+       
         tone(input_buzzer, 261);
         delay(200);
         tone(input_buzzer, 2000, 500);
+        digitalWrite(input_led_uno, HIGH);
+        digitalWrite(input_led_dos, HIGH);
+        digitalWrite(input_led_tres, HIGH);
+        digitalWrite(input_led_cuatro, HIGH);
+        digitalWrite(input_led_cinco, HIGH);
+        digitalWrite(input_led_seis, HIGH);
         delay(1000);
+        digitalWrite(input_led_uno, LOW);
+        digitalWrite(input_led_dos, LOW);
+        digitalWrite(input_led_tres, LOW);
+        digitalWrite(input_led_cuatro, LOW);
+        digitalWrite(input_led_cinco, LOW);
+        digitalWrite(input_led_seis, LOW);
         noTone(input_buzzer);
         camino_tiempo = millis() + 30000;
         
@@ -236,6 +264,8 @@ void leerNroTarjeta()
 {
     if (rfid.isCard()) 
     { //Verifica si hay una tarjeta
+        tone(input_buzzer, 349, 250);
+        delay(250);
         if (rfid.readCardSerial()) 
         { //Funcion que lee la tarjeta
             nroTarjeta = "";
@@ -437,13 +467,13 @@ void prenderInicioFinal()
   
   if(angulo_uno == '4')
   {
-    servo_uno.write(45);
+    servo_uno.write(135);
   }else if(angulo_uno == '9')
   {
     servo_uno.write(90);
   }else if(angulo_uno == '3')
   {
-    servo_uno.write(135);
+    servo_uno.write(45);
   }
 /*
   if(angulo_dos == '4')

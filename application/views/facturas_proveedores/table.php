@@ -40,7 +40,7 @@ if($registros)
             $row->proveedor,
             $row->estado,
             $row->total,
-            tableUpd($subjet, $row->id_factura),
+            tableButton($subjet.'/vista', $row->id_factura, 'fa fa-user', lang('usuario')),
         );
         
         $html .= setTableContent($registro);    
