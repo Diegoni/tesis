@@ -172,7 +172,7 @@ echo $html;
 		<div class="modal-content">
 			<form action="<?php echo base_url().'index.php/tambos_caminos/abm/'?>" method="post" class="form-horizontal">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<h5 class="modal-title" id="exampleModalLabel">Cargar detalle</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
