@@ -71,7 +71,7 @@ for ($i=0; $i < 32 ; $i++)
 	$fechas[] = array(
 		'title' => 'Vacuno',
 		'date' => date('Y-m-'.$i),
-		'color' => '#868e96'
+		'color' => '	868e96'
 	);
 	
 	
