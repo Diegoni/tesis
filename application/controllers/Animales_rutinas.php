@@ -15,6 +15,7 @@ class Animales_rutinas extends MY_Controller
         $this->load->model($this->_model, 'model');
         $this->load->model('m_animales_tipos');
         $this->load->model('m_tambos_sectores');
+		$this->load->library('calendarios');
         $this->load->model('m_dias');
     } 
     
@@ -30,7 +31,8 @@ class Animales_rutinas extends MY_Controller
     
     function abm($id = NULL)
     {
-        $db['animales_tipos']   = $this->m_animales_tipos->getRegistros();
+    	
+    	$db['animales_tipos']   = $this->m_animales_tipos->getRegistros();
         $db['sectores']         = $this->m_tambos_sectores->getRegistros();
         $db['dias']      = $this->m_dias->getRegistros();
                                          

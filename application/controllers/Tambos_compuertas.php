@@ -14,7 +14,8 @@ class Tambos_compuertas extends MY_Controller
         
         $this->load->model($this->_model, 'model');
         $this->load->model('m_proveedores');    
-		$this->load->model('m_tambos_sectores');    
+		$this->load->model('m_tambos_sectores'); 
+		$this->load->model('m_tambos_compuertas_tipos');       
     } 
     
     
