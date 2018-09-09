@@ -29,6 +29,7 @@ if($caminos)
         $_camino = $camino->camino;    
 		$_inicio = $camino->inicio;    
 		$_final = $camino->final;
+		$_img = $camino->img;
     }
 }else
 {
@@ -104,25 +105,17 @@ if($id_registro)
 	$html .= '<button type="button" class="btn btn-app" data-toggle="modal" data-target="#exampleModal">
     		<i class="fa fa-table"></i>
   			Detalle
-			</button>';    
+			</button>';   
+			
+		$html .= '<button type="button" class="btn btn-app" data-toggle="modal" data-target="#imgModal">
+    		<i class="fa fa-eye"></i>
+  			Ver Camino
+			</button>';  
 }else
 {
     $html .= '<input type="hidden" name="id_camino" value="-1">';
     $html .= btnAdd();    
 }
-
-
-
-
-if($detalles)
-{
-	foreach ($detalles as $row_detalle) 
-	{
-		
-	}
-}
-
-
 
 $html .= '</div>';
 $html .= '</div>';
@@ -183,7 +176,7 @@ echo $html;
 			$html .= '';
 			                
 			$html .= '<div class="form-group">';
-			$html .= setLabel(lang('compuerta'), 2);
+			$html .= setLabel(lang('dispositivo'), 2);
 			$html .= '<div class="col-sm-10">';
 			$html .= '<select name="compuerta" id="compuerta" class="select2 form-control">';
 			$html .= $_option_compuertas;
@@ -215,6 +208,30 @@ echo $html;
 				<button type="submit" class="btn btn-primary" value="detalle" name="detalle">Agregar</button>
 			</div>
 			</form>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="imgModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Detalle camino</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+	        	<img src="<?php echo base_url().'assets/uploads/img/'.$_img.'.png'?>" />
+	        	
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+			</div>
 		</div>
 	</div>
 </div>

@@ -63,6 +63,7 @@ $lang['domicilio']          = "Domicilio";
 $lang['date_add']           = "Fecha alta";
 $lang['dia']                = "Día";
 $lang['dias']               = "Días";
+$lang['dispositivo']        = "Dispositivo";
 
 /*--------------------------------------------------------------------------------  
     E

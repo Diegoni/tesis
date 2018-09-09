@@ -19,6 +19,7 @@ class Tambos_caminos extends MY_Controller
         $this->load->model('m_tambos_compuertas');
 		$this->load->model('m_tambos_sectores');
 		$this->load->model('m_tambos_caminos_detalles');
+		
     } 
     
     
@@ -117,6 +118,7 @@ class Tambos_caminos extends MY_Controller
 	
 	function en_proceso($id_camino)
 	{
+		$db['caminos']      = $this->model->getRegistros($id_camino);      
 		$db['registros'] = $this->m_animales_marcaciones->getRegistros('0000-00-00 00:00:00', 'marcacion_final');
 				
 		$this->armarVista('en_proceso', $db);

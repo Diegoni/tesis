@@ -35,11 +35,21 @@ if($registros)
     {
     	if($row->en_proceso > 0)
     	{
-			$registro = array(
+    		$registro = array(
 	            $row->camino,
 	            setSpan($row->en_proceso),
 	            tableButton($subjet.'/en_proceso', $row->id_camino, 'fa fa-eye'),
 	        );
+			
+			$_date_upd = $row->date_upd;
+			$_date_now = date('Y-m-d H:i:s');
+			
+			$minutos = ceil((strtotime($_date_now) - strtotime($_date_upd)) / 60);
+			
+			if ($minutos > 5) {
+				$error_minutos = 'Animales fuera del rango de tiempo permitido, '.$minutos.' minutos de retraso';
+				$html .= setMensaje($error_minutos);
+			}
     	}else
     	{
     		$registro = array(

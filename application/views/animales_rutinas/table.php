@@ -63,6 +63,7 @@ for ($i=0; $i < 32 ; $i++)
 {
 	
 	$fechas[] = array(
+	
 		'title' => 'Vacuno criollo',
 		'date' => date('Y-m-'.$i),
 		'color' => '5cb85c'
